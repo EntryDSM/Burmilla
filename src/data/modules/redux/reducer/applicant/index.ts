@@ -88,31 +88,31 @@ const applicantReducer = (
         payload: action.payload,
       });
     }
-    // case UPDATE_APPLICANT_LIST:
-    //   const newApplicantsList = { ...state.applicantsList };
-    //   const newCurrnetApplicantInfo = { ...state.currnetApplicantInfo };
-    //   const { applicants_information } = state.applicantsList;
-    //   const { email, is_arrived, is_paid, is_final_submit } = action.payload;
+    case UPDATE_APPLICANT_LIST:
+      const newApplicantsList = { ...state.applicantsList };
+      const newCurrnetApplicantInfo = { ...state.currnetApplicantInfo };
+      const { applicants_information } = state.applicantsList;
+      const { email, is_arrived, is_paid, is_final_submit } = action.payload;
 
-    //   newApplicantsList.applicants_information = applicants_information.map(v =>
-    //     v.email === email ? { ...v, is_arrived, is_paid, is_final_submit } : v,
-    //   );
-    //   newCurrnetApplicantInfo.applicant_information.status = {
-    //     is_arrived,
-    //     is_paid,
-    //     is_final_submit,
-    //   };
+      newApplicantsList.applicants_information = applicants_information.map(v =>
+        v.email === email ? { ...v, is_arrived, is_paid, is_final_submit } : v,
+      );
+      newCurrnetApplicantInfo.applicant_information.status = {
+        is_arrived,
+        is_paid,
+        is_final_submit,
+      };
 
-    //   return {
-    //     ...state,
-    //     applicantsList: newApplicantsList,
-    //     currnetApplicantInfo: newCurrnetApplicantInfo,
-    //   };
-    // case RESET_UPDATE_STATUS:
-    //   return {
-    //     ...state,
-    //     updateApplicantStatusStatus: 0,
-    //   };
+      return {
+        ...state,
+        applicantsList: newApplicantsList,
+        currnetApplicantInfo: newCurrnetApplicantInfo,
+      };
+    case RESET_UPDATE_STATUS:
+      return {
+        ...state,
+        updateApplicantStatusStatus: 0,
+      };
     default:
       return state;
   }

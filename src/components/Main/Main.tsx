@@ -4,7 +4,7 @@ import MainContent from "./content";
 import Progress from "./progress";
 
 interface Props {
-  date: string;
+  date?: string;
 }
 
 const Main: FC<Props> = ({ date }) => {
@@ -14,6 +14,7 @@ const Main: FC<Props> = ({ date }) => {
       <S.MainWrapper>
         <MainContent date={date} />
       </S.MainWrapper>
+      <Progress />
     </S.Main>
   );
 };

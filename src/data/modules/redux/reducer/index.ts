@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 import applicant from './applicant';
 import auth from './auth';
 import statistics from './main';
+import status from './status';
 
 const rootReducer = combineReducers({
     applicant,
     auth,
     statistics,
+    status
 })
 
 export default rootReducer;
