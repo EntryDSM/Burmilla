@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 
 import authSaga from './auth';
 import applicantSaga from './applicant';
-import statisticsSaga from './receipt';
+import statisticsSaga from './main';
 // import { refreshTokenApi } from '../../../api/index';
 
 export default function* rootSaga() {

@@ -3,7 +3,7 @@ import {
     GlobalStyleComponent,
     DefaultTheme,
   } from 'styled-components';
-  import { primaryColor } from './colors';
+  import { color } from './index';
   
   const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     html, body {
@@ -60,8 +60,7 @@ import {
     }
     button {
       all: unset;
-      background: ${primaryColor};
-      color: white;
+      color: ${color.primaryTextColor};
       cursor: pointer;
       text-align: center;
     }

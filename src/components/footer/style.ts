@@ -11,7 +11,7 @@ export const FooterDiv = styled.div`
     padding: ${pxToRem(20)}rem 0px;
     display: flex;
     justify-content: space-between;
-    padding: 0 15%;
+    padding: 0 260px;
     align-items: center;
     flex-shrink: 0;
     box-sizing: border-box;

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 
 import * as S from "./style";
-import { logo } from "../../assets/index";
+import { logo } from "../../assets/header";
 import { Button } from "../Common";
 import { clearStorage } from "../../utils/token";
 
@@ -16,7 +16,7 @@ function Header() {
       content: "일정",
     },
     {
-      link: "/receipt",
+      link: "/main",
       content: "접수 현황",
     },
     {

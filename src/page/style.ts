@@ -12,6 +12,6 @@ export const MessagePageContainer = styled.div`
 
 `;
 
-export const ReceiptPageContainer = styled.div`
+export const MainPageContainer = styled.div`
 
 `;

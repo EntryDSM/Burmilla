@@ -6,7 +6,7 @@ import {
   FooterImgButtonDiv,
 } from "./style";
 import { facebook_icon, github_icon } from "../../assets/footer";
-import { FooterImgLink, FooterLink } from "./";
+import { FooterImgLink, FooterLink } from ".";
 import {
   BUSINESS_NUMBER,
   SCHOOL_ADDRESS,

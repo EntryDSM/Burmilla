@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import applicant from './applicant';
 import auth from './auth';
-import statistics from './receipt';
+import statistics from './main';
 
 const rootReducer = combineReducers({
     applicant,
