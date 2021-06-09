@@ -22,7 +22,6 @@ function App() {
           <Route exact path="/admission" component={() => <Admission />} /> */}
           <Route component={() => <Redirect to="/" />} />
         </CheckToken>
-        z
       </Switch>
       {Footer}
     </BrowserRouter>
