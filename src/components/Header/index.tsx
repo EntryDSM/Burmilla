@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import * as React from "react";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
-import * as S from './style';
-import { logo } from '../../assets/index';
-import { Button } from '../Common';
-import { clearStorage } from '../../utils/token';
+import * as S from "./style";
+import { logo } from "../../assets/index";
+import { Button } from "../Common";
+import { clearStorage } from "../../utils/token";
 
 function Header() {
   const location = useLocation();
@@ -12,20 +12,20 @@ function Header() {
 
   const headerItems = [
     {
-      link: '/',
-      content: '일정',
+      link: "/",
+      content: "일정",
     },
     {
-      link: '/receipt',
-      content: '접수 현황',
+      link: "/receipt",
+      content: "접수 현황",
     },
     {
-      link: '/applicant',
-      content: '지원자 목록',
+      link: "/applicant",
+      content: "지원자 목록",
     },
     {
-      link: '/message',
-      content: '메세지 수정',
+      link: "/message",
+      content: "메세지 수정",
     },
   ];
 
@@ -45,7 +45,7 @@ function Header() {
           <S.HeaderItem
             key={item.content}
             to={item.link}
-            // className={location.pathname === item.link && 'selected'}
+            className={location.pathname === item.link && "selected"}
           >
             {item.content}
           </S.HeaderItem>
