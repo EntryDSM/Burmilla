@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150.508" height="107.002" viewBox="0 0 150.508 107.002">
+  <g id="일정수정_면접_아이콘" data-name="일정수정 면접 아이콘" transform="translate(-1065.494 -372.5)">
+    <path id="Icon_ionic-md-person" data-name="Icon ionic-md-person" d="M37.048,29.707a13.6,13.6,0,1,0-13.6-13.6A13.643,13.643,0,0,0,37.048,29.707Zm0,2.172C25.141,31.7,15.5,41.1,15.5,50.113H58.6C58.6,41.1,48.955,32.063,37.048,31.879Z" transform="translate(1147.538 371.5)" fill="#f57278" stroke="#fff" stroke-width="3"/>
+    <path id="Icon_ionic-md-person-2" data-name="Icon ionic-md-person" d="M37.048,29.707a13.6,13.6,0,1,0-13.6-13.6A13.643,13.643,0,0,0,37.048,29.707Zm0,2.172C25.141,31.7,15.5,41.1,15.5,50.113H58.6C58.6,41.1,48.955,32.063,37.048,31.879Z" transform="translate(1111.616 371.5)" fill="#f57278" stroke="#fff" stroke-width="3"/>
+    <path id="Icon_ionic-md-person-3" data-name="Icon ionic-md-person" d="M37.048,29.707a13.6,13.6,0,1,0-13.6-13.6A13.643,13.643,0,0,0,37.048,29.707Zm0,2.172C25.141,31.7,15.5,41.1,15.5,50.113H58.6C58.6,41.1,48.955,32.063,37.048,31.879Z" transform="translate(1080.616 371.5)" fill="#f57278" stroke="#fff" stroke-width="3"/>
+    <g id="사각형_465" data-name="사각형 465" transform="translate(1094.255 424.535)" fill="#f57278" stroke="#fff" stroke-width="3">
+      <rect width="118.658" height="44.615" rx="5" stroke="none"/>
+      <rect x="1.5" y="1.5" width="115.658" height="41.615" rx="3.5" fill="none"/>
+    </g>
+    <rect id="사각형_466" data-name="사각형 466" width="130.658" height="6.174" rx="3.087" transform="translate(1085.343 424.535)" fill="#f57278"/>
+    <path id="Icon_ionic-md-person-4" data-name="Icon ionic-md-person" d="M41.972,35.925A16.712,16.712,0,1,0,25.259,19.212,16.761,16.761,0,0,0,41.972,35.925Zm0,2.668C24.949,38.957,15.5,53.009,15.5,64.08c0,0-.144,2.519,3.948,3.371,3.134.653,32.313,1.138,44.688,0,3.578-.329,3.28-3.371,3.28-3.371C67.415,53.009,58.994,38.229,41.972,38.593Z" transform="translate(1051.5 409.865)" fill="#f57278" stroke="#fff" stroke-width="3"/>
+  </g>
+</svg>
