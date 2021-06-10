@@ -7,7 +7,7 @@ interface Props {
 
 const MainButton: FC<Props> = ({ children, onClick }) => {
   return (
-    <S.MainButton>
+    <S.MainButton onClick={onClick}>
       <p>{children}</p>
       <div />
     </S.MainButton>
