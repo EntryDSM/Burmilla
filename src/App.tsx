@@ -3,7 +3,6 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 // import Login from "./page/Login";
 // import Applicant from "./page/Applicant";
-// import Admission from "./page/Admission";
 import { MainContainer } from "./containers";
 import CheckToken from "./components/Common/CheckToken";
 import { useFooter, useHeader } from "./hooks/default";
@@ -18,8 +17,7 @@ function App() {
         {/* <Route exact path="/login" component={() => <Login />} /> */}
         <CheckToken>
           <Route exact path="/" component={MainContainer} />
-          {/* <Route exact path="/applicant" component={() => <Applicant />} />
-          <Route exact path="/admission" component={() => <Admission />} /> */}
+          {/* <Route exact path="/applicant" component={() => <Applicant />} />*/}
           <Route component={() => <Redirect to="/" />} />
         </CheckToken>
       </Switch>

@@ -18,6 +18,7 @@
     "allowSyntheticDefaultImports": true,
     "keyofStringsOnly": true,
     "skipLibCheck": true,
+    
   },
   "include": [
     "./src/**/*"

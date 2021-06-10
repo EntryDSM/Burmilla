@@ -3,6 +3,8 @@ import { color, heightRatio ,pxToRem, widthRatio } from '../../styles';
 import { background } from '../../assets/login';
 
 export const Main = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;  
   min-height: 100vh;
   min-width: ${pxToRem(1320)}rem;
@@ -15,10 +17,11 @@ export const MainBackground = styled.div`
   position: absolute;
   min-height: ${pxToRem(900)}rem;
   overflow: hidden;
+  position: fixed;
   background-image: url(${background});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 110%;
+  background-size: 111.5%;
   z-index: -100;
   @media (max-width: 1320px) {
     width: ${pxToRem(1320)}rem;
