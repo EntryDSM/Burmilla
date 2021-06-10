@@ -12,9 +12,9 @@ import { InitialState } from '../../data/modules/redux/reducer/main';
 
 export const useStatistics = () => {
   const statisticsStore = useSelector<AppState, InitialState>(state => ({
-    statistics: state.statistics.statistics,
-    getStatisticsStatus: state.statistics.getStatisticsStatus,
-    selectedRegion: state.statistics.selectedRegion,
+    statistics: state.main.statistics,
+    getStatisticsStatus: state.main.getStatisticsStatus,
+    selectedRegion: state.main.selectedRegion,
   }));
 
   const dispatch = useDispatch();
