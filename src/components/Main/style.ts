@@ -44,7 +44,7 @@ export const MainContentWrapper = styled.div`
     margin-bottom: ${pxToRem(63)}rem;
   }
   > .subDescription {
-    margin-bottom: ${pxToRem(200)}rem;
+    margin-bottom: ${pxToRem(148)}rem;
   }
 `;
 
@@ -55,7 +55,7 @@ export const MainSubTitle = styled.h3`
 
 export const MainTitle = styled.h1`
   font-size: ${pxToRem(35)}rem;
-  margin-bottom: ${pxToRem(130)}rem;
+  margin-bottom: ${pxToRem(112)}rem;
   font-weight: 400;
 `;
 
@@ -108,8 +108,8 @@ export const MainButton = styled.button`
 
 export const Progress = styled.div``;
 
-export const ProgressText = styled.p`
-  color: ${color.fail};
+export const ProgressText = styled.p<{ isNow: boolean; isPassed: boolean }>`
+  color: ${({ isNow, isPassed }) => (isNow ? color.main : isPassed ? 'black' : color.fail)};
   font-size: ${pxToRem(25)}rem;
   font-weight: 600;
 `;
@@ -123,12 +123,12 @@ export const ProgressSubText = styled.p`
 
 export const ProgressContent = styled.div`
   display: flex;
-  margin: ${pxToRem(20)}rem 0px ${pxToRem(20)}rem 0px;
+  margin: ${pxToRem(12)}rem 0px ${pxToRem(12)}rem 0px;
 `;
 
 export const ProgressIcon = styled.div<{ isPassed: boolean }>`
-  width: ${pxToRem(95)}rem;
-  height: ${pxToRem(95)}rem;
+  width: ${pxToRem(82)}rem;
+  height: ${pxToRem(82)}rem;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.16);
   margin: 0px ${pxToRem(65)}rem;
   border-radius: ${pxToRem(95)}rem;
@@ -191,10 +191,10 @@ export const ProgressIcon = styled.div<{ isPassed: boolean }>`
 
 export const ProgressBlankBar = styled.div`
   width: ${pxToRem(4)}rem;
-  height: ${pxToRem(59)}rem;
+  height: ${pxToRem(45)}rem;
   border-radius: 1000px;
   background-color: ${color.middleBar};
-  margin-left: ${pxToRem(290)}rem;
+  margin-left: ${pxToRem(284)}rem;
 `;
 
 export const ProgressTextWrapper = styled.div`
