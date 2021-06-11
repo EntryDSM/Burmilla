@@ -15,7 +15,7 @@ interface Props {
   date: string;
 }
 
-const SECOND_DATE = 86400000;
+const SECOND_DATE = 864000000;
 
 const Progress: FC<Props> = ({ status, date }) => {
   const getLeftDate = (date: string): number => {
