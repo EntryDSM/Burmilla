@@ -1,10 +1,13 @@
 import React, { FC, Suspense, useEffect } from "react";
 import MainDummyData from "../../utils/util/loadingDummyData/MainDummyData";
 import { useProcess } from "../../hooks/main";
+import { useFooter } from "../../hooks/default";
 
 const Main = React.lazy(() => import("../../components/Main"));
 
 const MainContainer: FC = () => {
+  const Footer = useFooter();
+
   const processState = useProcess();
   const getNowProcess = (status: string) => {
     if (!processState.state.processes[status]) return MainDummyData;
@@ -53,6 +56,7 @@ const MainContainer: FC = () => {
         date={getNowProcessDate(status)}
         process={getNowProcess(processState.state.status)}
       />
+      {Footer}
     </Suspense>
   );
 };
