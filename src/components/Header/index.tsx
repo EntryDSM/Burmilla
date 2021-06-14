@@ -16,7 +16,7 @@ function Header() {
       content: "일정",
     },
     {
-      link: "/main",
+      link: "/total",
       content: "접수 현황",
     },
     {
