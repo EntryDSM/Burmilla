@@ -7,7 +7,6 @@ const MainDummyData: processType = {
   isHaveTerm: false,
   isButtonAble: false,
   buttonText: "로딩중...",
-  uri: "",
 };
 
 export default MainDummyData;
