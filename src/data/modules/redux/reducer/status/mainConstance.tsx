@@ -27,7 +27,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: false,
-    uri: "",
   },
   [START_DATE]: {
     title: <p>지금은 {<span>원서 접수</span>} 기간입니다.</p>,
@@ -37,7 +36,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: true,
-    uri: "/",
   },
   [MIDDLE]: {
     title: <p>원서 접수 가 끝났습니다.</p>,
@@ -47,7 +45,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: false,
-    uri: "",
   },
   [FIRST_ANNOUNCEMENT]: {
     title: <p>지금은 {<span>1차 발표</span>} 기간입니다.</p>,
@@ -55,7 +52,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: false,
-    uri: "",
   },
   [INTERVIEW]: {
     title: <p>지금은 {<span>면접</span>} 기간입니다.</p>,
@@ -65,7 +61,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: false,
-    uri: "",
   },
   [SECOND_ANNOUNCEMENT]: {
     title: <p>지금은 {<span>발표 및 등록</span>} 기간입니다.</p>,
@@ -75,7 +70,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: false,
-    uri: "",
   },
   [END_DATE]: {
     title: "원서 접수가 끝났습니다.",
@@ -83,7 +77,6 @@ const mainConstance: Record<statusType, processType> = {
     isHaveTerm: true,
     buttonText: "일정 수정",
     isButtonAble: false,
-    uri: "",
   },
 };
 
