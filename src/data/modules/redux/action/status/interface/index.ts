@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const STATUS = 'status/STATUS' as const;
 export const STATUS_SUCCESS = 'status/GET_STATUS_SUCCESS' as const;
 export const STATUS_FAILURE = 'status/GET_STATUS_FAILURE' as const;
