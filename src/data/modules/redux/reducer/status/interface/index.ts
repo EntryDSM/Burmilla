@@ -21,7 +21,6 @@ export interface processType {
   isHaveTerm: boolean;
   buttonText: string;
   isButtonAble: boolean;
-  uri: string;
 }
 
 export default IStatusState;
