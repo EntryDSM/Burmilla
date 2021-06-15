@@ -36,11 +36,11 @@ export const Button = styled.button`
     margin-top: 2%;
   }
   &.schedule__fix-btn {
-    width: 100px;
-    height: 30px;
+    width: 140px;
+    height: 34px;
     border-radius: 12px;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: bold;
     color: #ffffff;
   }
 `;
