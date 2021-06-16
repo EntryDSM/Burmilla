@@ -4,7 +4,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 // import Login from "./page/Login";
 // import Applicant from "./page/Applicant";
 // import Message from "./page/Message";
-import { MainContainer, ScheduleContainer } from "./containers";
+import { MainContainer, ScheduleContainer, LoginContainer } from "./containers";
 import CheckToken from "./components/Common/CheckToken";
 import { useHeader } from "./hooks/default";
 
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       {Header}
       <Switch>
-        {/* <Route exact path="/login" component={() => <Login />} /> */}
+        <Route exact path="/login" component={LoginContainer} />
         <CheckToken>
           <Route exact path="/" component={MainContainer} />
           {/*<Route exact path="/applicant" component={MainContainer} />*/}
