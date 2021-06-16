@@ -35,26 +35,28 @@ function Header() {
   }, []);
 
   return (
-    <S.HeaderWrapper>
-      <Link to="/">
-        <S.Logo src={logo} alt="Entry_Logo" />
-      </Link>
+    <S.HeaderContainer>
+      <S.HeaderWrapper>
+        <Link to="/">
+          <S.Logo src={logo} alt="Entry_Logo" />
+        </Link>
 
-      <S.HeaderItemsContainer>
-        {headerItems.map((item) => (
-          <S.HeaderItem
-            key={item.content}
-            to={item.link}
-            className={location.pathname === item.link && "selected"}
-          >
-            {item.content}
-          </S.HeaderItem>
-        ))}
-        <Button className="header_logout" onClick={handleButtonClick}>
-          로그아웃
-        </Button>
-      </S.HeaderItemsContainer>
-    </S.HeaderWrapper>
+        <S.HeaderItemsContainer>
+          {headerItems.map((item) => (
+            <S.HeaderItem
+              key={item.content}
+              to={item.link}
+              className={location.pathname === item.link && "selected"}
+            >
+              {item.content}
+            </S.HeaderItem>
+          ))}
+          <Button className="header_logout" onClick={handleButtonClick}>
+            로그아웃
+          </Button>
+        </S.HeaderItemsContainer>
+      </S.HeaderWrapper>
+    </S.HeaderContainer>
   );
 }
 
