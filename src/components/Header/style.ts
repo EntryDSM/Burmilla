@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { color } from '../../styles/index';
 
+export const HeaderContainer = styled.div`
+
+`;
+
 export const HeaderWrapper = styled.header`
   width: 100%;
   height: 60px;
@@ -27,10 +31,14 @@ export const HeaderItemsContainer = styled.div`
 
   &>Button {
     margin-right:15px;
+    font-weight: bold;
+    font-size: 15px;
   }
 `;
 
 export const HeaderItem = styled(Link)`
     color: ${color.primaryTextColor};
-    margin-right: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-right: 15px;
 `;
