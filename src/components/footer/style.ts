@@ -26,9 +26,9 @@ export const FooterDiv = styled.div`
   }
 `;
 export const FooterTitle = styled.p`
-  font-size: ${pxToRem(33)}rem;
+  font-size: ${pxToRem(30)}rem;
   margin-bottom: ${pxToRem(8)}rem;
-  font-weight: 600;
+  font-weight: bold;
 `;
 
 export const FooterText = styled.div<{ margin?: string }>`
