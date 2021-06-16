@@ -41,7 +41,7 @@ export const MainWrapper = styled.div`
 
 export const MainContentWrapper = styled.div`
   > .mainDescription {
-    margin-bottom: ${pxToRem(63)}rem;
+    margin-bottom: ${pxToRem(58)}rem;
   }
   > .subDescription {
     margin-bottom: ${pxToRem(148)}rem;
@@ -49,22 +49,24 @@ export const MainContentWrapper = styled.div`
 `;
 
 export const MainSubTitle = styled.h3`
-  font-size: ${pxToRem(20)}rem;
-  font-weight: 300;
+  font-size: ${pxToRem(19)}rem;
+  font-weight: bold;
 `;
 
 export const MainTitle = styled.h1`
   font-size: ${pxToRem(35)}rem;
-  margin-bottom: ${pxToRem(112)}rem;
-  font-weight: 400;
+  margin-bottom: ${pxToRem(100)}rem;
+  font-weight: bold;
 `;
 
 export const MainDescription = styled.p`
   > p {
-    font-size: ${pxToRem(30)}rem;
+    font-size: ${pxToRem(28)}rem;
+    font-weight: bold;
     > span {
       color: ${color.main};
-      font-weight: 600;
+      font-weight: bold;
+      font-family: 'Noto Sans KR-Bold', sans-serif !important;
       font-size: ${pxToRem(34)}rem;
     }
   }
@@ -102,7 +104,9 @@ export const MainButton = styled.button`
   }
   > p {
     color: white;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
     font-size: ${pxToRem(30)}rem;
+    padding-right: 2rem;
   }
 `;
 
@@ -110,12 +114,14 @@ export const Progress = styled.div``;
 
 export const ProgressText = styled.p<{ isNow: boolean; isPassed: boolean }>`
   color: ${({ isNow, isPassed }) => (isNow ? color.main : isPassed ? 'black' : color.fail)};
-  font-size: ${pxToRem(25)}rem;
-  font-weight: 600;
+  font-size: ${pxToRem(23)}rem;
+  font-family: 'Noto Sans KR-Bold', sans-serif !important;
+  font-weight: bold;
 `;
 
 export const ProgressSubText = styled.p`
-  font-size: ${pxToRem(23)}rem;
+  font-size: ${pxToRem(21)}rem;
+  font-weight: bold;
   > span {
     color: ${color.main};
   }
