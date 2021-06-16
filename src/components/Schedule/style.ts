@@ -49,6 +49,7 @@ export const ScheduleTitle = styled.div`
   align-items: center;
   padding: ${pxToRem(25)}rem 1rem;
   font-weight: bold;
+  font-family: 'Noto Sans KR-Bold', sans-serif !important;
   font-size: 14px;
   color: ${color.primaryTextColor};
 `;
