@@ -22,7 +22,9 @@ const ProgressContent: FC<Props> = ({
           {progressName}
         </S.ProgressText>
         {isNow ? (
-          <S.ProgressSubText>{leftDate}일 남았습니다.</S.ProgressSubText>
+          <S.ProgressSubText>
+            <span>{leftDate}일</span> 남았습니다.
+          </S.ProgressSubText>
         ) : (
           ""
         )}
