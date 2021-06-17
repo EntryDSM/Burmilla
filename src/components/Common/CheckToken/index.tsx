@@ -8,19 +8,19 @@ function CheckToken({ children }) {
   const { push } = useHistory();
   const { setTokens } = useAuth();
 
-  React.useEffect(() => {
-    const token = getAccessToken();
+  // React.useEffect(() => {
+  //   const token = getAccessToken();
 
-    if (!token) {
-      window.alert("로그인 후에 접근할 수 있습니다.");
-      push("/login");
-    } else {
-      setTokens({
-        access_token: getAccessToken(),
-        refresh_token: getRefreshToken(),
-      });
-    }
-  }, []);
+  //   if (!token) {
+  //     window.alert("로그인 후에 접근할 수 있습니다.");
+  //     push("/login");
+  //   } else {
+  //     setTokens({
+  //       access_token: getAccessToken(),
+  //       refresh_token: getRefreshToken(),
+  //     });
+  //   }
+  // }, []);
 
   return children;
 }
