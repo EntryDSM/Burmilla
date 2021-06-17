@@ -6,7 +6,7 @@ import {
   getStatisticsAction,
   setSelectedRegionPayload,
   setSelectedRegionAction,
-} from '../../data/modules/redux/action/main';
+} from '../../data/modules/redux/action/statistics';
 import { AppState } from '../../data/modules/store';
 import { InitialState } from '../../data/modules/redux/reducer/main';
 

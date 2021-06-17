@@ -2,7 +2,7 @@ import {
     StatisticsActions,
     GET_STATISTICS_ASYNC,
     SET_SELECTED_REGION,
-  } from '../../action/main';
+  } from '../../action/statistics';
   import { GetStatisticsResponse } from '../../../../api/apiTypes';
   import { returnApiResponseData } from '..';
   import { API_STATUS } from '../../../../api/index';
