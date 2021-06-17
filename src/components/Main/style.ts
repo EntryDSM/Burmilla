@@ -3,10 +3,10 @@ import { color, heightRatio ,pxToRem, widthRatio } from '../../styles';
 import { background } from '../../assets/login';
 
 export const Main = styled.div`
-  display: flex;
-  align-items: center;
   width: 100%;  
   min-height: 100vh;
+  display: flex;
+  align-items: center;
   min-width: ${pxToRem(1320)}rem;
   box-sizing: border-box;
 `;
