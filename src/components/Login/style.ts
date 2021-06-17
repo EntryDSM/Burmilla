@@ -5,7 +5,7 @@ import { color, pxToRem } from '../../styles/index';
 
 export const LoginContent = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -82,7 +82,7 @@ export const LoginContentTitleHead = styled.div`
   margin-bottom: 12px;
 
   h1 {
-    font-size: 58px;
+    font-size: 64px;
     font-weight: bold;
     font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
@@ -103,15 +103,31 @@ export const LoginContentTitleBody = styled.div`
 
 export const LoginContentSign = styled.div`
     width: 40%;
-    margin-bottom: 18px;
+    padding-top: 10px;
 `;
 
 export const LoginContentSignLogo = styled.div`
+  display: flex;
+  align-items: center;
   width: 80%;
   margin-bottom: 1.25rem;
 
-  img {
+  > img {
     width: 80px;
+    margin-right: 10px;
+  }
+
+  > span {
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
+    color: ${color.loginFailedText}
+  }
+
+  > span:hover {
+    cursor: default;
+    
   }
 `;
 
@@ -121,29 +137,34 @@ export const LoginContentSignInput = styled.div`
 `;
 
 export const LoginInput = styled.input`
-  width: 84%;
+  width: 80%;
   height: 54px;
   box-sizing: border-box;
   padding: 0 28px;
   border-radius: 5px;
-  border: 1px solid #606060;
+  border: 1.4px solid #606060;
   background-color: ${color.backgorund};
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   color: #333333;
   margin-bottom: 24px;
 `;
 
 export const LoginPasswordDisplayIcon = styled.img`
   position: absolute;
-  top: 47.6%;
-  right: 17.5%;
   width: 20px;
+  height: 20px;
+  top: 49%;
+  right: 19.4%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const LoginBtn = styled.button`
-  width: 84%;
-  height: 66px;
+  width: 80%;
+  height: 62px;
   border-radius: 5px;
   background-color: ${color.primaryColor};
   font-size: 22px;
