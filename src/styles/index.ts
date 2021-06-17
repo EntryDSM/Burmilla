@@ -13,6 +13,7 @@ export const color = {
    primaryTextColor : '#000000',
    darkBorderColor : '#222222',
    lightBorderColor : '#3f3f3f',
+   loginFailedText : "#ec484f",
 };
   
   const HTML_FONT_SIZE = 16;
