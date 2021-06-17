@@ -12,7 +12,7 @@ const LoginContent = () => {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const [isFailed, setIsFailed] = React.useState<boolean>(false);
-  const [isToggle, setIsToggle] = React.useState<boolean>(false);
+  const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);
 
   const {
     login,
@@ -46,7 +46,9 @@ const LoginContent = () => {
     login({ email, password });
   }, [email, password]);
 
-  const handleClickDisplayIcon = () => {};
+  const togglePasswordVisiblity = () => {
+    setIsPasswordShown(!isPasswordShown);
+  };
 
   return (
     <S.LoginContent>
@@ -63,6 +65,11 @@ const LoginContent = () => {
         <S.LoginContentSign>
           <S.LoginContentSignLogo>
             <img src={logo} alt="logo" />
+            {isFailed ? (
+              <span>아이디 또는 비밀번호가 잘못되었습니다!</span>
+            ) : (
+              ""
+            )}
           </S.LoginContentSignLogo>
           <S.LoginContentSignInput>
             <S.LoginInput
@@ -73,12 +80,17 @@ const LoginContent = () => {
             />
             <p />
             <S.LoginInput
-              type="password"
+              type={isPasswordShown ? "text" : "password"}
               placeholder="비밀번호"
               value={password}
               onChange={handleChangePassword}
             />
-            <S.LoginPasswordDisplayIcon src={display_icon} alt="show-icon" />
+            <S.LoginPasswordDisplayIcon
+              src={isPasswordShown ? hide_icon : display_icon}
+              title={isPasswordShown ? "문자 숨기기" : "문자 보이기"}
+              alt="show-icon"
+              onClick={togglePasswordVisiblity}
+            />
           </S.LoginContentSignInput>
           <S.LoginBtn onClick={handleLogin}>Sign in</S.LoginBtn>
         </S.LoginContentSign>
