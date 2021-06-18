@@ -72,25 +72,29 @@ const LoginContent = () => {
             )}
           </S.LoginContentSignLogo>
           <S.LoginContentSignInput>
-            <S.LoginInput
+            <S.LoginInputEmail
               type="text"
               placeholder="아이디"
               value={email}
               onChange={handleChangeEmail}
             />
             <p />
-            <S.LoginInput
-              type={isPasswordShown ? "text" : "password"}
-              placeholder="비밀번호"
-              value={password}
-              onChange={handleChangePassword}
-            />
-            <S.LoginPasswordDisplayIcon
-              src={isPasswordShown ? hide_icon : display_icon}
-              title={isPasswordShown ? "문자 숨기기" : "문자 보이기"}
-              alt="show-icon"
-              onClick={togglePasswordVisiblity}
-            />
+            <S.LoginPasswordBox>
+              <S.LoginInputPassword
+                type={isPasswordShown ? "text" : "password"}
+                placeholder="비밀번호"
+                value={password}
+                onChange={handleChangePassword}
+              />
+              <S.LoginPasswordDisplayIcon>
+                <img
+                  src={isPasswordShown ? hide_icon : display_icon}
+                  title={isPasswordShown ? "문자 숨기기" : "문자 보이기"}
+                  alt="show-icon"
+                  onClick={togglePasswordVisiblity}
+                />
+              </S.LoginPasswordDisplayIcon>
+            </S.LoginPasswordBox>
           </S.LoginContentSignInput>
           <S.LoginBtn onClick={handleLogin}>Sign in</S.LoginBtn>
         </S.LoginContentSign>
