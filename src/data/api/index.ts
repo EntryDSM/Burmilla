@@ -14,9 +14,9 @@ export enum API_STATUS {
   updateApplicantStatusStatus = 'updateApplicantStatusStatus',
 }
 
-const instance = () =>
+const instance = (api: 'main' | 'excel') =>
   axios.create({
-    baseURL: `${BaseURL}/admin`,
+    baseURL: `${BaseURL[api]}/admin`,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -28,13 +28,13 @@ const authorization = (token: string) => ({
 });
 
 export const loginApi = async (payload: T.LoginPayload) => {
-  const response = await instance().post<T.Tokens>(uri.signin, payload);
+  const response = await instance('main').post<T.Tokens>(uri.signin, payload);
 
   return [response.data, response.status];
 };
 
 export const refreshTokenApi = async (payload: T.Tokens) => {
-  const response = await instance().put<T.Tokens>(uri.signin, null, {
+  const response = await instance('main').put<T.Tokens>(uri.signin, null, {
     headers: authorization(payload.refresh_token),
   });
 
@@ -42,7 +42,7 @@ export const refreshTokenApi = async (payload: T.Tokens) => {
 };
 
 export const getStatisticsApi = async (payload: T.GetStatisticsPayload) => {
-  const response = await instance().get<T.GetStatisticsResponse>(
+  const response = await instance('main').get<T.GetStatisticsResponse>(
    uri.total ,
     {
       headers: authorization(getAccessToken()),
@@ -56,7 +56,7 @@ export const getStatisticsApi = async (payload: T.GetStatisticsPayload) => {
 export const getApplicantsListApi = async (
   payload: T.GetApplicantsListPayload,
 ) => {
-  const response = await instance().get<T.GetApplicantsListResponse>(
+  const response = await instance('main').get<T.GetApplicantsListResponse>(
    uri.applicants ,
     {
       headers: authorization(getAccessToken()),
@@ -70,7 +70,7 @@ export const getApplicantsListApi = async (
 export const getApplicantInfoApi = async (
   payload: T.GetApplicantInfoPayload,
 ) => {
-  const response = await instance().get<T.GetApplicantInfoResponse>(
+  const response = await instance('main').get<T.GetApplicantInfoResponse>(
    uri.applicant ,
     {
       headers: authorization(getAccessToken()),
@@ -85,7 +85,7 @@ export const updateApplicantStatusApi = async ({
   email,
   ...payload
 }: T.UpdateApplicantStatusPayload) => {
-  const response = await instance().patch(uri.applicant , payload, {
+  const response = await instance('main').patch(uri.applicant , payload, {
     headers: authorization(getAccessToken()),
     params: {
       email,
@@ -96,7 +96,7 @@ export const updateApplicantStatusApi = async ({
 };
 
 export const downloadApplicantsListExcel = async () => {
-  const response = await instance().get(uri.applicants_print , {
+  const response = await instance('excel').get(uri.applicants_print , {
     headers: authorization(getAccessToken()),
     responseType: 'blob',
   });
@@ -105,7 +105,7 @@ export const downloadApplicantsListExcel = async () => {
 };
 
 export const downloadAdmissionExcel = async () => {
-  const response = await instance().get(uri.ticket_print, {
+  const response = await instance('excel').get(uri.ticket_print, {
     headers: {
       Authorization: getAccessToken(),
     },
