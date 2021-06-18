@@ -78,31 +78,41 @@ export const ScheduleDateTitle = styled.div`
   &.scheduleSelectBox-tail {
     padding-top: ${pxToRem(20)}rem;
   }
+  &.dead-line {
+    padding: 8px 0;
+  }
+`;
+
+export const ScheduleDateBody = styled.div`
+
 `;
 
 export const ScheduleDateSelectBox = styled.div`
-  
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const ScheduleSelect = styled.div`
   display: flex;
   align-items: center;
-  padding-bottom: 6px;
-    
-  & > span {
-    margin: 0 14px 0 5px;
+
+  > span {
+    font-size: 15px;
+    font-weight: bold;
+    color: ${color.primaryTextColor};
   }
 `;
 
-export const ScheduleDateSelect = styled.select`
-  appearance: none;
-  width: 60px;
-  height: 30px;
+export const ScheduleDateSelect = styled.div`
+  border: 1px solid #606060;
+  border-radius: 4px;
+  height: 28px;
+  width: 62px;
+  margin-right: 6px;
 `;
 
-export const ScheduleSelectOptions = styled.option`
-
-`;
 
 
 
