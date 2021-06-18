@@ -132,12 +132,12 @@ export const LoginContentSignLogo = styled.div`
 `;
 
 export const LoginContentSignInput = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
 `;
 
-export const LoginInput = styled.input`
-  width: 80%;
+export const LoginInputEmail = styled.input`
+  width: 100%;
   height: 54px;
   box-sizing: border-box;
   padding: 0 28px;
@@ -150,15 +150,37 @@ export const LoginInput = styled.input`
   margin-bottom: 24px;
 `;
 
-export const LoginPasswordDisplayIcon = styled.img`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 49%;
-  right: 19.4%;
+export const LoginInputPassword = styled.input`
+  width: 72%;
+  height: 54px;
+  box-sizing: border-box;
+  padding: 0 28px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+`;
 
+export const LoginPasswordBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1.4px solid #606060;
+  background-color: ${color.backgorund};
+  margin-bottom: 20px;
+`;
+
+export const LoginPasswordDisplayIcon = styled.div`
+  margin-right: 18px;
   &:hover {
     cursor: pointer;
+  }
+
+  > img {
+    width: 20px;
+    height: 20px;
+    top: 49%;
+    right: 19.4%;
   }
 `;
 
