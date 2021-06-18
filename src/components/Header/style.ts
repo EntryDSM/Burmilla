@@ -79,30 +79,33 @@ export const HeaderItem = styled(Link)`
     font-weight: bold;
     font-size: 15px;
 
+    &:hover {
+      font-family: 'Noto Sans KR-Bold', sans-serif !important;
+      font-size: 14px;
+    }
     > div {
-      height: 2px;
+      height: 1.5px;
       width: 1px;
       visibility: hidden;
       position: absolute;
       background-color: ${color.primaryColor};
       transition: all 0.3s;
     }
-
     &:hover > .schedule {
       width: 1.8%;
-      height: 2px;
+      height: 1.5px;
       visibility: visible;
       align-self: flex-start;
     }
     &:hover > .total {
-      width: 3.9%;
-      height: 2px;
+      width: 4%;
+      height: 1.5px;
       visibility: visible;
       align-self: flex-start;
     }
     &:hover > .applicant {
-      width: 4.8%;
-      height: 2px;
+      width: 4.9%;
+      height: 1.5px;
       visibility: visible;
       align-self: flex-start;
     }
