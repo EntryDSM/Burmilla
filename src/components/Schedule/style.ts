@@ -91,28 +91,107 @@ export const ScheduleDateSelectBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 `;
 
 export const ScheduleSelect = styled.div`
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-
-  > span {
-    font-size: 15px;
-    font-weight: bold;
-    color: ${color.primaryTextColor};
-  }
 `;
 
 export const ScheduleDateSelect = styled.div`
+  position: relative;
+  width: 42px;
   border: 1px solid #606060;
   border-radius: 4px;
-  height: 28px;
-  width: 62px;
-  margin-right: 6px;
+  background: ${color.backgorund};
+  padding: 0.2rem 0.7rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover > div ~ div {
+    visibility: visible;
+    height: ${({height}:any) => (height ? height : "156")}px;
+  }
+  & > div ~ div {
+    visibility: hidden;
+    height: 3px;
+  }
 `;
 
+export const ScheduleSelectTitleBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
+export const ScheduleSelectTitle = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+`;
 
+export const ScheduleSelectTitleImg = styled.img`
+  width: 11px;
+  margin-top: 2px;
+`;
 
+export const ScheduleSelectContentBox = styled.div`
+  position: absolute;
+  min-width: 100%;
+  transition: all 0.3s;
+  background: ${color.backgorund};
+  border: 1px solid #606060;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  cursor: pointer;
+  z-index: 1;
+  left: -1px;
+  top: 90%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+`;
+
+export const ScheduleSelectMiddleBar = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  
+  > div {
+    border: 0.1px solid ${color.middleBar};
+    background: ${color.middleBar};
+    height: 0px;
+    width: 46px;
+  }
+`;
+
+export const ScheduleSelectContent = styled.div`
+  font-size: 14px;
+  color: ${color.primaryTextColor};
+  padding: 0.3rem 0.7rem;
+
+  > p {
+    transition: 0.2s;
+    margin-bottom: ${pxToRem(4)}rem;
+
+    &:hover {
+      transition: 0.2s;
+      color: ${color.primaryColor}
+    }
+  }
+`;
+
+export const ScheduleSelectDivision = styled.span`
+  font-size: 15px;
+  font-weight: bold;
+  color: ${color.primaryTextColor};
+  margin-left: ${pxToRem(6)}rem;
+`;
