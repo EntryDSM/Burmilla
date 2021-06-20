@@ -6,8 +6,8 @@ import {
   presentation_regiester_icon,
   presentation_icon,
 } from "../../assets/schedule";
-import ScheduleContent from "./content";
 import { Button } from "../Common";
+import ScheduleContent from "./content";
 
 const Schedule = () => {
   const fixScheduleClickHandler = () => {};
