@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import * as S from "./style";
 import {
   application_icon,
@@ -9,7 +9,7 @@ import {
 import { Button } from "../Common";
 import ScheduleContent from "./content";
 
-const Schedule = () => {
+const Schedule: FC = () => {
   const fixScheduleClickHandler = () => {};
 
   return (
