@@ -3,13 +3,14 @@ import {
     GlobalStyleComponent,
     DefaultTheme,
   } from 'styled-components';
-  import { primaryColor } from './colors';
+  import { color } from './index';
   
   const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
     html, body {
       width: 100%;
       min-width: 1024px;
-      font-family: 'NanumSquare', sans-serif !important;;
+      font-family: 'Noto Sans KR', sans-serif !important;
     }
     input {
       border: none;
@@ -60,8 +61,7 @@ import {
     }
     button {
       all: unset;
-      background: ${primaryColor};
-      color: white;
+      color: ${color.primaryTextColor};
       cursor: pointer;
       text-align: center;
     }

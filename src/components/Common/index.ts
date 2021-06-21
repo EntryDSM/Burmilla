@@ -35,6 +35,14 @@ export const Button = styled.button`
     border-radius: 6px;
     margin-top: 2%;
   }
+  &.schedule__fix-btn {
+    width: 140px;
+    height: 34px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+  }
 `;
 
 export { Checkbox };

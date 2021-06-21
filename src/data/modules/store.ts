@@ -14,3 +14,4 @@ export type AppState = ReturnType<typeof reducer>;
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleWare)));
 
 sagaMiddleWare.run(sagas);
+export type ReducerType = ReturnType<typeof reducer>;
