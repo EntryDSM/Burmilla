@@ -3,12 +3,14 @@ import { combineReducers } from 'redux';
 import applicant from './applicant';
 import auth from './auth';
 import main from './main';
+import schedule from './schedule';
 import status from './status';
 
 const rootReducer = combineReducers({
     applicant,
     auth,
     main,
+    schedule,
     status
 })
 
