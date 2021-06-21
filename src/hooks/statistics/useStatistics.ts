@@ -8,13 +8,13 @@ import {
   setSelectedRegionAction,
 } from '../../data/modules/redux/action/statistics';
 import { AppState } from '../../data/modules/store';
-import { InitialState } from '../../data/modules/redux/reducer/main';
+import { InitialState } from '../../data/modules/redux/reducer/statistics';
 
 export const useStatistics = () => {
   const statisticsStore = useSelector<AppState, InitialState>(state => ({
-    statistics: state.main.statistics,
-    getStatisticsStatus: state.main.getStatisticsStatus,
-    selectedRegion: state.main.selectedRegion,
+    statistics: state.statistics.statistics,
+    getStatisticsStatus: state.statistics.getStatisticsStatus,
+    selectedRegion: state.statistics.selectedRegion,
   }));
 
   const dispatch = useDispatch();
