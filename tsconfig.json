@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "moduleResolution": "node",
+    "module": "es2020",
+    "target": "es6",
+    "lib": [
+      "es2015",
+      "es6",
+      "esnext",
+      "dom",
+      "ES2020"
+    ],
+    "allowJs": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "containers/*": ["./src/containers/*"],
+      "modules/*": ["./modules/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "keyofStringsOnly": true,
+    "skipLibCheck": true,
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./node_modules/**/*"
+  ],
+}
