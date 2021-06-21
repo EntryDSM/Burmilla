@@ -2,20 +2,19 @@ import React, { FC } from "react";
 import * as S from "../style";
 import ProgressContent from "./ProgressContent";
 import {
-  FIRST_ANNOUNCEMENT,
+  FIRST_ANNOUNCE,
   INTERVIEW,
   mainProcessNumber,
-  SECOND_ANNOUNCEMENT,
+  SECOND_ANNOUNCE,
   START_DATE,
   statusType,
 } from "../../../data/modules/redux/reducer/status/mainConstance";
-
 interface Props {
   status: statusType;
   date: string;
 }
 
-const SECOND_DATE = 864000000;
+const SECOND_DATE = 86400;
 
 const Progress: FC<Props> = ({ status, date }) => {
   const getLeftDate = (date: string): number => {
@@ -27,7 +26,7 @@ const Progress: FC<Props> = ({ status, date }) => {
   return (
     <S.Progress>
       <ProgressContent
-        progressName="원서 작성"
+        progressName="원서 접수"
         isNow={status === START_DATE}
         isPassed={mainProcessNumber[status] >= 2}
         leftDate={getLeftDate(date)}
@@ -35,7 +34,7 @@ const Progress: FC<Props> = ({ status, date }) => {
       <S.ProgressBlankBar />
       <ProgressContent
         progressName="1차 발표"
-        isNow={status === FIRST_ANNOUNCEMENT}
+        isNow={status === FIRST_ANNOUNCE}
         isPassed={mainProcessNumber[status] >= 4}
         leftDate={getLeftDate(date)}
       />
@@ -48,8 +47,8 @@ const Progress: FC<Props> = ({ status, date }) => {
       />
       <S.ProgressBlankBar />
       <ProgressContent
-        progressName="발표 및 등록"
-        isNow={status === SECOND_ANNOUNCEMENT}
+        progressName="발표 및 접수"
+        isNow={status === SECOND_ANNOUNCE}
         isPassed={mainProcessNumber[status] >= 6}
         leftDate={getLeftDate(date)}
       />
