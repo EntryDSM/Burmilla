@@ -22,6 +22,14 @@ const instance = (api: 'main' | 'excel') =>
     },
   });
 
+export const getRequest = () => {
+  const request = axios.create({
+    timeout: 10000,
+    baseURL: `${BaseURL}`,
+  });
+  return request;
+};
+
 const authorization = (token: string) => ({
   Authorization: `Bearer ${token}`,
   'Cache-Control': 'no-cache',
