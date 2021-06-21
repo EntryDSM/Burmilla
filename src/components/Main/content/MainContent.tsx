@@ -5,9 +5,9 @@ import MainButton from "./MainButton";
 interface Props {
   title: string | React.ReactNode;
   getDescription?: (date: string) => React.ReactNode;
-  buttonText?: boolean | any;
-  isButtonAble?: boolean;
-  isHaveTerm?: boolean;
+  buttonText: string;
+  isButtonAble: boolean;
+  isHaveTerm: boolean;
   date: string;
   buttonClickHandler?: () => void;
 }
