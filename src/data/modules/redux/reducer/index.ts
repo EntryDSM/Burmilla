@@ -2,18 +2,19 @@ import { combineReducers } from 'redux';
 
 import applicant from './applicant';
 import auth from './auth';
-import main from './main';
+import statistics from './statistics';
 import schedule from './schedule';
 import status from './status';
 
 const rootReducer = combineReducers({
     applicant,
     auth,
-    main,
+    statistics,
     schedule,
     status
 })
 
+export type reducerType = ReturnType<typeof rootReducer>;
 export default rootReducer;
 
 export const returnApiResponseData = <I>(props: {
