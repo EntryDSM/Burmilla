@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/login" component={LoginContainer} />
         <CheckToken>
           <Route exact path="/" component={MainContainer} />
-          <Route exact path="total" component={StatisticsContainer} />
+          <Route exact path="/total" component={StatisticsContainer} />
           <Route exact path="/schedule" component={ScheduleContainer} />
           <Route component={() => <Redirect to="/" />} />
         </CheckToken>

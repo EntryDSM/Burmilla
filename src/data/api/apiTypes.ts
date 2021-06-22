@@ -55,15 +55,14 @@
     total_competition_rate: number;
   }
   
-  export interface GetAllStatisticsResponse {
-    daejeon?: GetEachStatisticsResponse;
-    nationwide?: GetEachStatisticsResponse;
-    total_applicant_count: number;
-    total_competition_rate: number;
-  }
+  // export interface GetAllStatisticsResponse {
+  //   daejeon?: GetEachStatisticsResponse;
+  //   nationwide?: GetEachStatisticsResponse;
+  //   total_applicant_count: number;
+  //   total_competition_rate: number;
+  // }
   
-  export type GetStatisticsResponse = GetEachStatisticsResponse &
-    GetAllStatisticsResponse;
+  export type GetStatisticsResponse = GetEachStatisticsResponse
   
   export interface GetApplicantsListPayload {
     index?: number;

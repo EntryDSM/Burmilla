@@ -11,7 +11,7 @@ export const color = {
    footerGradientColor : '#ff8888',
    receiptGradientColor : '#ff897b',
    primaryTextColor : '#000000',
-   darkBorderColor : '#222222',
+   darkBorderColor : '#333333',
    lightBorderColor : '#3f3f3f',
    loginFailedText : "#ec484f",
 };
