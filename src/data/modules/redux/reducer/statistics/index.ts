@@ -10,7 +10,6 @@ import {
   export interface InitialState {
     getStatisticsStatus: 0 | 200 | 401 | 403;
     statistics: GetEachStatisticsResponse;
-    selectedRegion: string;
   }
   
   const initialState: InitialState = {
@@ -54,8 +53,7 @@ import {
       },
       total_applicant_count: 0,
       total_competition_rate: 0,
-    },
-    selectedRegion: 'all',
+    }
   };
 
   const applicantReducer = (state = initialState, action: StatisticsActions) => {
