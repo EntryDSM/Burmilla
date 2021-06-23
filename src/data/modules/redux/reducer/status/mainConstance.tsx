@@ -29,7 +29,7 @@ const mainConstance: Record<statusType, processType> = {
       <p>원서접수 기간은 {<span>{date}</span>}에 시작됩니다.</p>
     ),
     isHaveTerm: true,
-    buttonText: "원서 작성",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [START_DATE]: {
@@ -38,7 +38,7 @@ const mainConstance: Record<statusType, processType> = {
       <p>원서 접수 기간은 {<span>{date}</span>}까지 입니다.</p>
     ),
     isHaveTerm: true,
-    buttonText: "원서 작성",
+    buttonText: "일정 수정",
     isButtonAble: true,
   },
   [BEFORE_FIRST_ANNOUNCE]: {
@@ -47,14 +47,14 @@ const mainConstance: Record<statusType, processType> = {
       <p>1차 발표일은 {<span>{date}</span>}입니다.</p>
     ),
     isHaveTerm: true,
-    buttonText: "원서 작성",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [FIRST_ANNOUNCE]: {
     title: <p>지금은 {<span>1차 발표</span>} 기간입니다.</p>,
     getDescription: () => "",
     isHaveTerm: true,
-    buttonText: "1차 발표 결과",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [BEFORE_INTERVIEW]: {
@@ -63,7 +63,7 @@ const mainConstance: Record<statusType, processType> = {
       <p>면접 기간은 {<span>{date}</span>}입니다.</p>
     ),
     isHaveTerm: true,
-    buttonText: "면접 일정 확인",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [INTERVIEW]: {
@@ -72,7 +72,7 @@ const mainConstance: Record<statusType, processType> = {
       <p>면접 기간은 {<span>{date}</span>}입니다. </p>
     ),
     isHaveTerm: true,
-    buttonText: "면접 일정 확인",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [BEFORE_SECOND_ANNOUNCE]: {
@@ -81,7 +81,7 @@ const mainConstance: Record<statusType, processType> = {
       <p>2차 발표일은 {<span>{date}</span>}입니다.</p>
     ),
     isHaveTerm: true,
-    buttonText: "원서 작성",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [SECOND_ANNOUNCE]: {
@@ -90,14 +90,14 @@ const mainConstance: Record<statusType, processType> = {
       <p>등록 기간은 {<span>{date}</span>}입니다.</p>
     ),
     isHaveTerm: true,
-    buttonText: "결과 보기",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
   [END_DATE]: {
     title: "원서 접수가 끝났습니다.",
     getDescription: () => <p>내년을 기약해 주세요.</p>,
     isHaveTerm: true,
-    buttonText: "결과 보기",
+    buttonText: "일정 수정",
     isButtonAble: false,
   },
 };
