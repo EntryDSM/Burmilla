@@ -6,7 +6,7 @@ export const FooterDiv = styled.div`
     width: 100%;
     height: ${pxToRem(204)}rem;
     min-width: ${pxToRem(1320)}rem;
-    background-color: ${color.sub};
+    background-image: linear-gradient(to bottom, #ff8888, #f57278);
     color: ${color.backgorund};
     padding: ${pxToRem(20)}rem 0px;
     display: flex;
