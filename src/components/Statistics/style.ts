@@ -91,7 +91,7 @@ export const CompetitionTableWrapper = styled.div`
   > tr, td.table-applicant_title {
     font-size: 14px;
     font-weight: bold;
-    color: ${color.primaryTextColor};
+    color: ${color.darkBorderColor};
   }
 
   > tr, td.table-color_background {
@@ -222,8 +222,38 @@ export const GraphChart = styled.div`
   background-color: ${color.light};
 `;
 
-export const GraphBar = styled.div`
+// isWidthOfSocialGraphBar isWidthOfMeisterGraphBar
+export const CommonGraphBar = styled.div<{isWidthOfCommonGraphBar}>` 
+  width: ${({isWidthOfCommonGraphBar}) => (isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar : "0")}%;
+  height: 42px;
+  background-image: linear-gradient(to bottom,#f57278,#ff897b);
+  border-radius: 0 25px 25px 0;
+`;
 
+export const MeisterGraphBar = styled.div<{isWidthOfMeisterGraphBar}>` 
+  width: ${({isWidthOfMeisterGraphBar}) => (isWidthOfMeisterGraphBar ? isWidthOfMeisterGraphBar : "0")}%;
+  height: 42px;
+  background-image: linear-gradient(to bottom,#f57278,#ff897b);
+  border-radius: 0 25px 25px 0;
+`;
+
+export const SocialGraphBar = styled.div<{isWidthOfSocialGraphBar}>` 
+  width: ${({isWidthOfSocialGraphBar}) => (isWidthOfSocialGraphBar ? isWidthOfSocialGraphBar : "0")}%;
+  height: 42px;
+  background-image: linear-gradient(to bottom,#f57278,#ff897b);
+  border-radius: 0 25px 25px 0;
+`;
+
+export const GraphBarContentText = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 96%;
+  height: 100%;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR-Bold', sans-serif !important;
 `;
 
 export const GraphCompetitionRate = styled.div`
@@ -235,9 +265,17 @@ export const GraphCompetitionRate = styled.div`
 `;
 
 export const GraphRateBar = styled.div`
-display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 76%;
+  padding-left: 14.5%;
 `;
 
 export const GraphItemBox = styled.div`
   display: flex;
+  color: #5a5a5a;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR-Bold', sans-serif !important;
 `;
