@@ -76,7 +76,7 @@ export const MainButton = styled.button`
   width: ${pxToRem(360) * (4 / 5)}rem;
   height: ${pxToRem(100) * (4 / 5)}rem;
   border-radius: ${pxToRem(18)}rem;
-  background-color: ${color.main};
+  background-image: linear-gradient(92deg, #ff8888 1%, #f57278 100%);
   display: flex;
   align-items: center;
   justify-content: center;

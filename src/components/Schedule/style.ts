@@ -27,7 +27,7 @@ export const ScheduleButtonBox = styled.div`
 
     & > Button {
         border: 1px solid ${color.primaryColor};
-        background-color: ${color.primaryColor};
+        background-image: linear-gradient(91deg, #ff8888 1%, #f57278 100%);
     }
 `;
 
