@@ -3,6 +3,8 @@ import * as S from "../../../style";
 import { useStatistics } from "../../../../../hooks/statistics";
 
 const SocialGraph: FC = () => {
+  const [isWidthOfSocialGraphBar, setIsWidthOfSocialGraphBar] =
+    React.useState<any>();
   const {
     statisticsStore: {
       statistics: { social_applicant },
@@ -13,12 +15,25 @@ const SocialGraph: FC = () => {
   React.useEffect(() => {
     // getStatistics({ area: "all" });
   }, []);
+  React.useEffect(() => {
+    setIsWidthOfSocialGraphBar(social_applicant.applicant_count);
+  }, []);
+
+  const graphBarContent = () => {
+    if (isWidthOfSocialGraphBar >= 1) {
+      return (
+        <S.GraphBarContentText>{isWidthOfSocialGraphBar}</S.GraphBarContentText>
+      );
+    }
+  };
 
   return (
     <S.GraphWrapper>
       <S.GraphTitle>사회통합</S.GraphTitle>
       <S.GraphChart>
-        <S.GraphBar></S.GraphBar>
+        <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfSocialGraphBar}>
+          {graphBarContent()}
+        </S.SocialGraphBar>
         <S.GraphCompetitionRate>
           {social_applicant.competition_rate}:1
         </S.GraphCompetitionRate>
