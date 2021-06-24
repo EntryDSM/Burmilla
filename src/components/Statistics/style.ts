@@ -222,12 +222,22 @@ export const GraphChart = styled.div`
   background-color: ${color.light};
 `;
 
-// isWidthOfSocialGraphBar isWidthOfMeisterGraphBar
 export const CommonGraphBar = styled.div<{isWidthOfCommonGraphBar}>` 
   width: ${({isWidthOfCommonGraphBar}) => (isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar : "0")}%;
   height: 42px;
   background-image: linear-gradient(to bottom,#f57278,#ff897b);
   border-radius: 0 25px 25px 0;
+  animation: CommonGraphOpa 1.5s ease-in Alternate;
+
+  @keyframes CommonGraphOpa{
+    from { // same 0%
+      width: 0%;
+    }
+
+    to { // same 100%
+      width: ${({isWidthOfCommonGraphBar}) => (isWidthOfCommonGraphBar ? isWidthOfCommonGraphBar : "0")}%;
+    }
+  }
 `;
 
 export const MeisterGraphBar = styled.div<{isWidthOfMeisterGraphBar}>` 
@@ -235,6 +245,17 @@ export const MeisterGraphBar = styled.div<{isWidthOfMeisterGraphBar}>`
   height: 42px;
   background-image: linear-gradient(to bottom,#f57278,#ff897b);
   border-radius: 0 25px 25px 0;
+  animation: MeisterGraphOpa 1.5s ease-in Alternate;
+
+  @keyframes MeisterGraphOpa{
+    from { // same 0%
+      width: 0%;
+    }
+
+    to { // same 100%
+      width: ${({isWidthOfMeisterGraphBar}) => (isWidthOfMeisterGraphBar ? isWidthOfMeisterGraphBar : "0")}%;
+    }
+  }
 `;
 
 export const SocialGraphBar = styled.div<{isWidthOfSocialGraphBar}>` 
@@ -242,6 +263,17 @@ export const SocialGraphBar = styled.div<{isWidthOfSocialGraphBar}>`
   height: 42px;
   background-image: linear-gradient(to bottom,#f57278,#ff897b);
   border-radius: 0 25px 25px 0;
+  animation: SocialGraphOpa 1.5s ease-in Alternate;
+
+  @keyframes SocialGraphOpa{
+    from { // same 0%
+      width: 0%;
+    }
+
+    to { // same 100%
+      width: ${({isWidthOfSocialGraphBar}) => (isWidthOfSocialGraphBar ? isWidthOfSocialGraphBar : "0")}%;
+    }
+  }
 `;
 
 export const GraphBarContentText = styled.span`
