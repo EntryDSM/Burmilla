@@ -5,6 +5,8 @@ import { useStatistics } from "../../../../../hooks/statistics";
 const SocialGraph: FC = () => {
   const [isWidthOfSocialGraphBar, setIsWidthOfSocialGraphBar] =
     React.useState<any>();
+  const [isAppearGraphOpa, setIsAppearGraphOpa] =
+    React.useState<boolean>(false);
   const {
     statisticsStore: {
       statistics: { social_applicant },
@@ -17,6 +19,7 @@ const SocialGraph: FC = () => {
   }, []);
   React.useEffect(() => {
     setIsWidthOfSocialGraphBar(social_applicant.applicant_count);
+    setIsAppearGraphOpa(true);
   }, []);
 
   const graphBarContent = () => {
@@ -31,9 +34,11 @@ const SocialGraph: FC = () => {
     <S.GraphWrapper>
       <S.GraphTitle>사회통합</S.GraphTitle>
       <S.GraphChart>
-        <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfSocialGraphBar}>
-          {graphBarContent()}
-        </S.SocialGraphBar>
+        {isAppearGraphOpa && (
+          <S.SocialGraphBar isWidthOfSocialGraphBar={isWidthOfSocialGraphBar}>
+            {graphBarContent()}
+          </S.SocialGraphBar>
+        )}
         <S.GraphCompetitionRate>
           {social_applicant.competition_rate}:1
         </S.GraphCompetitionRate>

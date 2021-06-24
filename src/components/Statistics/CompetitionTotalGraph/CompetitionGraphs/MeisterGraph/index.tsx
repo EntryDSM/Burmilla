@@ -5,6 +5,8 @@ import { useStatistics } from "../../../../../hooks/statistics";
 const MeisterGraph: FC = () => {
   const [isWidthOfMeisterGraphBar, setIsWidthOfMeisterGraphBar] =
     React.useState<any>();
+  const [isAppearGraphOpa, setIsAppearGraphOpa] =
+    React.useState<boolean>(false);
   const {
     statisticsStore: {
       statistics: { meister_applicant },
@@ -17,6 +19,7 @@ const MeisterGraph: FC = () => {
   }, []);
   React.useEffect(() => {
     setIsWidthOfMeisterGraphBar(meister_applicant.applicant_count);
+    setIsAppearGraphOpa(true);
   }, []);
 
   const graphBarContent = () => {
@@ -33,9 +36,13 @@ const MeisterGraph: FC = () => {
     <S.GraphWrapper>
       <S.GraphTitle>마이스터</S.GraphTitle>
       <S.GraphChart>
-        <S.MeisterGraphBar isWidthOfMeisterGraphBar={isWidthOfMeisterGraphBar}>
-          {graphBarContent()}
-        </S.MeisterGraphBar>
+        {isAppearGraphOpa && (
+          <S.MeisterGraphBar
+            isWidthOfMeisterGraphBar={isWidthOfMeisterGraphBar}
+          >
+            {graphBarContent()}
+          </S.MeisterGraphBar>
+        )}
         <S.GraphCompetitionRate>
           {meister_applicant.competition_rate}:1
         </S.GraphCompetitionRate>

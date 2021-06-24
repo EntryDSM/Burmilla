@@ -21,7 +21,7 @@ const CompetitionTotalGraph: FC = () => {
       <S.CompetitionFreshmanTotal>
         <span>총계:</span>
         <S.TotalApplicantScore>{total_applicant_count}명</S.TotalApplicantScore>
-        <span>경쟁율:</span>
+        <span>경쟁률:</span>
         <S.TotalCompetitionRate>
           {total_competition_rate}:1
         </S.TotalCompetitionRate>
