@@ -49,7 +49,7 @@ import {
         '81-90': 2,
         '-80': 12,
         applicant_count: 68,
-        competition_rate: 0,
+        competition_rate: 1.7,
       },
       total_applicant_count: 0,
       total_competition_rate: 0,
