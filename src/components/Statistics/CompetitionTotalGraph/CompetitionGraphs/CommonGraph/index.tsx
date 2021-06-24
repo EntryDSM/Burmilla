@@ -5,6 +5,8 @@ import { useStatistics } from "../../../../../hooks/statistics";
 const CommonGraph: FC = () => {
   const [isWidthOfCommonGraphBar, setIsWidthOfCommonGraphBar] =
     React.useState<any>();
+  const [isAppearGraphOpa, setIsAppearGraphOpa] =
+    React.useState<boolean>(false);
   const {
     statisticsStore: {
       statistics: { common_applicant },
@@ -17,6 +19,7 @@ const CommonGraph: FC = () => {
   }, []);
   React.useEffect(() => {
     setIsWidthOfCommonGraphBar(common_applicant.applicant_count);
+    setIsAppearGraphOpa(true);
   }, []);
 
   const graphBarContent = () => {
@@ -31,9 +34,11 @@ const CommonGraph: FC = () => {
     <S.GraphWrapper>
       <S.GraphTitle>일반</S.GraphTitle>
       <S.GraphChart>
-        <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfCommonGraphBar}>
-          {graphBarContent()}
-        </S.CommonGraphBar>
+        {isAppearGraphOpa && (
+          <S.CommonGraphBar isWidthOfCommonGraphBar={isWidthOfCommonGraphBar}>
+            {graphBarContent()}
+          </S.CommonGraphBar>
+        )}
         <S.GraphCompetitionRate>
           {common_applicant.competition_rate}:1
         </S.GraphCompetitionRate>
