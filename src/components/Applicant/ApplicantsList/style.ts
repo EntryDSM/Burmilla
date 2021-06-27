@@ -12,16 +12,17 @@ export const ApplicantsList = styled.table`
 `;
 
 export const ListHeader = styled.thead`
-  background: #a6ebf8;
+  background: ${color.light};
   line-height: 2.8;
 `;
 
 export const TH = styled.th`
   width: 14%;
-  height: 2.8;
   font-size: 14px;
-  font-weight: 400;
-  border-bottom: 1px solid ${color.darkBorderColor};
+  font-weight: bold;
+  color: ${color.darkBorderColor};
+  border-top: 1.5px solid #303030;
+  border-bottom: 1px solid #d3d3d3;
 
   &:first-child {
     width: 16%;

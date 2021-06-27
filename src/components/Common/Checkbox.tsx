@@ -1,11 +1,11 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
 const CheckboxWrapper = styled.div`
-  width: 20px;
-  height: 20px;
-  background: #ededed;
-  border: solid #9b9b9b 1px;
+  width: 14px;
+  height: 14px;
+  background: #fcfcfc;
+  border: solid #606060 1px;
   border-radius: 2px;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ const CheckboxWrapper = styled.div`
 `;
 
 const Check = styled.img`
-  width: 16px;
+  width: 12px;
 `;
 
 interface Props {
@@ -24,9 +24,7 @@ interface Props {
 
 function Checkbox({ isChecked }: Props) {
   return (
-    <CheckboxWrapper>
-      {isChecked && <Check alt="checked" />}
-    </CheckboxWrapper>
+    <CheckboxWrapper>{isChecked && <Check alt="checked" />}</CheckboxWrapper>
   );
 }
 
