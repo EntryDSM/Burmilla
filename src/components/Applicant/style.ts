@@ -1,18 +1,19 @@
 import styled from "styled-components";
-import {color} from "../../styles";
+import { color, pxToRem } from "../../styles";
 
 export const Applicant = styled.div`
-  width: 100%;
+  width: 77%;
+  min-width: ${pxToRem(1024)}rem;
   min-height: 100vh;
   display: flex;
-  background: #fcfcfc;
+  background: ${color.backgorund};
   box-sizing: border-box;
-  padding-top: 60px;
+  padding-top: 75px;
+  margin: 0 auto;
 `;
 
 export const ApplicantContainer = styled.div`
   flex: 4;
-  border-right: solid ${color.darkBorderColor} 1px;
   display: flex;
   flex-direction: column;
   position: relative;
