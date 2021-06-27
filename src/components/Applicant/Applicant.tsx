@@ -23,9 +23,9 @@ const Applicant: FC = () => {
         <ApplicantsList />
         <Pagination />
       </S.ApplicantContainer>
-      <S.ApplicantInfoWrap>
+      {/* <S.ApplicantInfoWrap>
         {currnetApplicantInfo && <ApplicantInfo />}
-      </S.ApplicantInfoWrap>
+      </S.ApplicantInfoWrap> */}
     </S.Applicant>
   );
 };
