@@ -7,16 +7,16 @@ import { downloadApplicantsListExcel } from "../../../../data/api/index";
 
 interface Props {
   searchProgressImg: string;
+  searchIcon: string;
 }
 
-const SearchBar: FC<Props> = ({ searchProgressImg }) => {
+const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon }) => {
   const { setFilter } = useApplicant();
 
   const categoryList = [
-    { content: "접수번호", id: "receipt_code" },
     { content: "전화번호", id: "applicant_tel" },
-    { content: "이메일", id: "email" },
     { content: "이름", id: "name" },
+    { content: "접수번호", id: "receipt_code" },
     { content: "학교명", id: "school_name" },
   ];
 
@@ -83,13 +83,14 @@ const SearchBar: FC<Props> = ({ searchProgressImg }) => {
           value={keyword}
           onChange={handleChangeKeyword}
         />
+        <img src={searchIcon} />
       </S.SearchInputContainer>
-      <Button
+      {/* <Button
         className="applicant-list__excel-btn"
         onClick={handleDownloadExcel}
       >
         Excel 출력
-      </Button>
+      </Button> */}
     </S.SearchBarWrapper>
   );
 };
