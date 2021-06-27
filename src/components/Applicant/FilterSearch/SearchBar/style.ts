@@ -1,39 +1,40 @@
 import styled from 'styled-components';
 
-import { color } from '../../../../styles';
+import { color, pxToRem } from '../../../../styles';
 
 export const SearchBarWrapper = styled.div`
   width: 88%;
   top: 18%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: absolute;
   z-index: 1;
 `;
 
 export const CategoryDropdownClosed = styled.div`
-  width: 114px;
+  width: 100px;
   height: 35px;
-  border: solid ${color.primaryColor} 1px;
+  border: solid ${color.primaryTextColor} 1px;
   background: white;
   border-radius: 4px;
   display: inline-flex;
   box-sizing: border-box;
-  padding: 10px 18px;
+  padding: 8px 12px;
   justify-content: space-between;
-  font-size: 14px;
-  font-weight: 300;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
   cursor: pointer;
 
   > img {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
   }
 `;
 
 export const CategoryDropdownOpened = styled.ul`
-  width: 114px;
-  border: solid ${color.primaryColor} 1px;
+  width: 100px;
+  border: solid ${color.primaryTextColor} 1px;
   background: white;
   border-radius: 5px;
   display: inline-flex;
@@ -43,16 +44,17 @@ export const CategoryDropdownOpened = styled.ul`
 
   > li:first-child {
     width: 78px;
-    height: 35px;
+    height: 36px;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
     border-bottom: solid 1px #dadada;
     margin-bottom: 5px;
-    padding: 0;
+    padding: 0 2px;
 
     > img {
-      width: 16px;
-      height: 16px;
+      width: 12px;
+      height: 12px;
     }
 
     &:hover {
@@ -63,9 +65,9 @@ export const CategoryDropdownOpened = styled.ul`
   > li {
     width: 100%;
     height: 24px;
-    padding: 0 18px;
-    font-size: 12px;
-    font-weight: 300;
+    padding: 0 12px 5px 12px;
+    font-size: 13px;
+    font-weight: bold;
     display: inline-flex;
     box-sizing: border-box;
     align-items: center;
@@ -78,12 +80,13 @@ export const CategoryDropdownOpened = styled.ul`
 `;
 
 export const SearchInputContainer = styled.div`
-  width: 70%;
+  width: 490px;
   height: 35px;
   box-sizing: border-box;
   border: solid ${color.darkBorderColor} 1px;
   border-radius: 4px;
   padding: 10px 18px;
+  margin-left: ${pxToRem(34)}rem;
   display: inline-flex;
   align-items: center;
   background: white;
