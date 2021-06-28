@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { color, pxToRem } from '../../../../styles';
 
 export const SearchBarWrapper = styled.div`
-  width: 88%;
+  width: 95%;
   top: 18%;
   display: flex;
   justify-content: flex-start;
   position: absolute;
   z-index: 1;
+  margin: 0 2.5%;
 `;
 
 export const CategoryDropdownClosed = styled.div`
@@ -80,7 +81,7 @@ export const CategoryDropdownOpened = styled.ul`
 `;
 
 export const SearchInputContainer = styled.div`
-  width: 490px;
+  width: ${pxToRem(520)}rem;
   height: 35px;
   box-sizing: border-box;
   border: solid ${color.darkBorderColor} 1px;
@@ -92,15 +93,14 @@ export const SearchInputContainer = styled.div`
   background: white;
 
   > img {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
+    width: 14px;
+    height: 14px;
     display: inline-block;
   }
 
   > input {
     width: 100%;
-    font-size: 12px;
+    font-size: 13px;
     display: inline-block;
   }
 `;

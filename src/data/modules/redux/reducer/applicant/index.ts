@@ -95,7 +95,7 @@ const applicantReducer = (
       const { email, is_arrived, is_paid, is_final_submit } = action.payload;
 
       newApplicantsList.applicants_information = applicants_information.map(v =>
-        v.email === email ? { ...v, is_arrived, is_paid, is_final_submit } : v,
+        v.email === email ? { ...v, is_arrived, is_final_submit } : v,
       );
       newCurrnetApplicantInfo.applicant_information.status = {
         is_arrived,

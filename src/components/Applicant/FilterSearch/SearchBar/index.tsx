@@ -1,9 +1,6 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { Button } from "../../../Common";
 import { useApplicant } from "../../../../hooks/applicant";
-import { downloadExcel } from "../../../../utils/download";
-import { downloadApplicantsListExcel } from "../../../../data/api/index";
 
 interface Props {
   searchProgressImg: string;
@@ -52,9 +49,6 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon }) => {
     },
     [selectedCategory, keyword]
   );
-  const handleDownloadExcel = React.useCallback(async () => {
-    await downloadExcel(downloadApplicantsListExcel, "지원자목록");
-  }, []);
 
   return (
     <S.SearchBarWrapper>
@@ -85,12 +79,6 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon }) => {
         />
         <img src={searchIcon} />
       </S.SearchInputContainer>
-      {/* <Button
-        className="applicant-list__excel-btn"
-        onClick={handleDownloadExcel}
-      >
-        Excel 출력
-      </Button> */}
     </S.SearchBarWrapper>
   );
 };

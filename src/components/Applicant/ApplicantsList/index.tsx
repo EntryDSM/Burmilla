@@ -1,11 +1,11 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import ApplicantsListHeader from "./ApplicantsListHeader";
 import ApplicantsListItem from "./ApplicantsListItem";
 import { useApplicant } from "../../../hooks/applicant";
 
-function ApplicantsList() {
+const ApplicantsList: FC = () => {
   const {
     applicantStore: { applicantsList },
     getApplicantInfo,
@@ -29,6 +29,6 @@ function ApplicantsList() {
       </tbody>
     </S.ApplicantsList>
   );
-}
+};
 
 export default ApplicantsList;

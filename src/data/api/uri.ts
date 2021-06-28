@@ -2,7 +2,7 @@ enum uri {
     signin = '/auth',
     total = '/statics',
     applicant = '/applicant',
-    applicants = '/applicants',
+    applicants = '/applicants?size=10&page=0',
     schedules = '/schedules',
     ticket_print = '/excel/admission-ticket/',
     applicants_print = '/excel/applicants',

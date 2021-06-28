@@ -7,11 +7,10 @@ export const PaginationContainer = styled.div`
   position: absolute;
   bottom: 2%;
   left: 50%;
-  transform: translateX(-50%);
 `;
 
 export const PageBtn = styled.span`
-  font-weight: 300;
+  font-weight: 500;
   margin: 0 8px;
   cursor: pointer;
 
@@ -19,6 +18,9 @@ export const PageBtn = styled.span`
     font-weight: bold;
   }
   &.move-btn {
-    font-weight: 500;
+    & > img {
+      width: 12px;
+      height: 12px;
+    }
   }
 `;

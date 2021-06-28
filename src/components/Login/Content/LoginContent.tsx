@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { useHistory } from "react-router";
 
 import * as S from "../style";
@@ -8,8 +8,8 @@ import { useAuth } from "../../../hooks/auth";
 import checkApiStatus from "../../../data/api/checkApiStatus";
 import { setToken } from "../../../utils/token";
 
-const LoginContent = () => {
-  const [email, setEmail] = React.useState<string>("");
+const LoginContent: FC = () => {
+  const [id, setId] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const [isFailed, setIsFailed] = React.useState<boolean>(false);
   const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);
@@ -21,21 +21,24 @@ const LoginContent = () => {
   const { push } = useHistory();
 
   React.useEffect(() => {
-    if (checkApiStatus(loginStatus)._200) {
+    if (checkApiStatus(loginStatus)._201) {
       setToken({
         access_token: tokens.access_token,
         refresh_token: tokens.refresh_token,
       });
+      alert("로그인 성공");
       push("/");
     } else if (checkApiStatus(loginStatus)._400) {
       setIsFailed(true);
     } else if (checkApiStatus(loginStatus)._401) {
       setIsFailed(true);
+    } else if (checkApiStatus(loginStatus)._404) {
+      setIsFailed(true);
     }
   }, [loginStatus]);
 
   const handleChangeEmail = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
+    (e: React.ChangeEvent<HTMLInputElement>) => setId(e.target.value),
     []
   );
   const handleChangePassword = React.useCallback(
@@ -43,8 +46,8 @@ const LoginContent = () => {
     []
   );
   const handleLogin = React.useCallback(() => {
-    login({ email, password });
-  }, [email, password]);
+    login({ id, password });
+  }, [id, password]);
 
   const togglePasswordVisiblity = () => {
     setIsPasswordShown(!isPasswordShown);
@@ -75,7 +78,7 @@ const LoginContent = () => {
             <S.LoginInputEmail
               type="text"
               placeholder="아이디"
-              value={email}
+              value={id}
               onChange={handleChangeEmail}
             />
             <p />

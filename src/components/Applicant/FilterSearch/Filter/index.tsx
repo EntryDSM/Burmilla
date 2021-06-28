@@ -1,8 +1,10 @@
-import * as React from "react";
-
+import React, { FC } from "react";
 import * as S from "./style";
+import { Button } from "../../../Common";
 import { Checkbox } from "../../../Common";
 import { useApplicant } from "../../../../hooks/applicant";
+import { downloadExcel } from "../../../../utils/download";
+import { downloadApplicantsListExcel } from "../../../../data/api/index";
 
 function Filter() {
   const {
@@ -56,17 +58,37 @@ function Filter() {
     [filters]
   );
 
+  const handleDownloadExcel = React.useCallback(async () => {
+    await downloadExcel(downloadApplicantsListExcel, "지원자목록");
+  }, []);
+
   return (
     <S.FilterWrapper>
-      {checkLists.map((item) => (
-        <S.FilterItemContainer
-          key={item.value}
-          onClick={() => handleChangeFilter(item.value)}
+      <S.FilterSelectBox>
+        {checkLists.map((item) => (
+          <S.FilterItemContainer
+            key={item.value}
+            onClick={() => handleChangeFilter(item.value)}
+          >
+            <Checkbox isChecked={checkIsChecked(item.value)} />
+            <p>{item.content}</p>
+          </S.FilterItemContainer>
+        ))}
+      </S.FilterSelectBox>
+      <S.FilterButtonContainer>
+        <Button
+          className="admission-code__download-btn"
+          onClick={handleDownloadExcel}
         >
-          <Checkbox isChecked={checkIsChecked(item.value)} />
-          <p>{item.content}</p>
-        </S.FilterItemContainer>
-      ))}
+          수험번호 출력
+        </Button>
+        <Button
+          className="applicant-list__excel-btn"
+          onClick={handleDownloadExcel}
+        >
+          Excel 출력
+        </Button>
+      </S.FilterButtonContainer>
     </S.FilterWrapper>
   );
 }

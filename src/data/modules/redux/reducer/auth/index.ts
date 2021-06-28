@@ -3,7 +3,7 @@ import { returnApiResponseData } from '../';
 import { API_STATUS } from '../../../../api/index';
 
 export interface InitialState {
-  loginStatus: 0 | 200 | 400 | 401;
+  loginStatus: 0 | 200 | 201 | 400 | 401;
   tokens: {
     access_token: string;
     refresh_token: string;
@@ -13,8 +13,8 @@ export interface InitialState {
 const initialState: InitialState = {
   loginStatus: 0,
   tokens: {
-    access_token: null as any,
-    refresh_token: null as any,
+    access_token: null,
+    refresh_token: null,
   },
 };
 

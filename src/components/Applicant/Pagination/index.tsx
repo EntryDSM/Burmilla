@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import * as S from "./style";
+import { shift_left_icon, shift_right_icon } from "../../../assets/applicants";
 import { useApplicant } from "../../../hooks/applicant";
 import { getIndexList } from "../../../utils/pagination";
 
@@ -42,7 +43,7 @@ function Pagination() {
   return (
     <S.PaginationContainer className="no-select">
       <S.PageBtn className="move-btn" onClick={handleClickPrev}>
-        {"<"}
+        <img src={shift_left_icon} alt="shift_left" />
       </S.PageBtn>
       {indexList.map((i) => (
         <S.PageBtn
@@ -54,7 +55,7 @@ function Pagination() {
         </S.PageBtn>
       ))}
       <S.PageBtn className="move-btn" onClick={handleClickNext}>
-        {">"}
+        <img src={shift_right_icon} alt="shift_right" />
       </S.PageBtn>
     </S.PaginationContainer>
   );
