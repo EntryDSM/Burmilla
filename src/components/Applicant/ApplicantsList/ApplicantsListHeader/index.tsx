@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "../style";
 
-function ApplicantsList() {
+const ApplicantsList: FC = () => {
   return (
     <S.ListHeader className="no-select">
       <tr>
@@ -15,6 +15,6 @@ function ApplicantsList() {
       </tr>
     </S.ListHeader>
   );
-}
+};
 
 export default ApplicantsList;
