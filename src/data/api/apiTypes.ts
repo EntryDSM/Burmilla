@@ -4,7 +4,7 @@
   }
   
   export interface LoginPayload {
-    email: string;
+    id: string;
     password: string;
   }
   
@@ -87,7 +87,6 @@
     is_daejeon: boolean;
     apply_type: string;
     is_arrived: boolean;
-    is_paid: boolean;
     is_final_submit: boolean;
   }
   export interface GetApplicantsListResponse {
