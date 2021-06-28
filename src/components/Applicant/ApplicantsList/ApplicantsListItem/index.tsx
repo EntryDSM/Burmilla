@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "../style";
 import { Checkbox } from "../../../Common";
@@ -11,7 +11,7 @@ interface Props {
   handleClick: (email: string) => void;
 }
 
-function ApplicantsListItem({
+const ApplicantsListItem: FC<Props> = ({
   applicantInfo: {
     receipt_code,
     email,
@@ -19,11 +19,10 @@ function ApplicantsListItem({
     is_daejeon,
     apply_type,
     is_arrived,
-    is_paid,
     is_final_submit,
   },
   handleClick,
-}: Props) {
+}) => {
   const {
     applicantStore: { currnetApplicantInfo },
   } = useApplicant();
@@ -55,14 +54,9 @@ function ApplicantsListItem({
           <Checkbox isChecked={is_arrived} />
         </S.CheckboxWrapper>
       </S.TD>
-      <S.TD>
-        <S.CheckboxWrapper>
-          <Checkbox isChecked={is_paid} />
-        </S.CheckboxWrapper>
-      </S.TD>
       <S.TD>{checkSubmitStatus()}</S.TD>
     </S.TR>
   );
-}
+};
 
 export default React.memo(ApplicantsListItem);
