@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { color, pxToRem } from "../../styles";
 
 export const Applicant = styled.div`
-  width: 77%;
-  min-width: ${pxToRem(1024)}rem;
+  width: 80%;
+  min-width: ${pxToRem(1136)}rem;
   min-height: 100vh;
   display: flex;
   background: ${color.backgorund};
