@@ -65,7 +65,7 @@ export const getApplicantsListApi = async (
   payload: T.GetApplicantsListPayload,
 ) => {
   const response = await instance('main').get<T.GetApplicantsListResponse>(
-   uri.applicants ,
+   uri.applicants,
     {
       headers: authorization(getAccessToken()),
       params: payload,
