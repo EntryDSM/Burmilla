@@ -20,9 +20,9 @@ export const TH = styled.th`
   width: 14%;
   font-size: 14px;
   font-weight: bold;
+  font-family: 'Noto Sans KR-Medium', sans-serif !important;
   color: ${color.darkBorderColor};
   border-top: 1.5px solid #303030;
-  border-bottom: 1px solid #d3d3d3;
 
   &:first-child {
     width: 16%;
@@ -32,13 +32,18 @@ export const TH = styled.th`
 export const TR = styled.tr<{ isSelected: boolean }>`
   line-height: 2.6;
   cursor: pointer;
-  background: ${({ isSelected }) => (isSelected ? color.lightPrimaryColor : 'white')};
+  border: 1px 0 solid ${({ isSelected }) => (isSelected ? color.lightPrimaryColor : '#d3d3d3')};
+
+  &:last-child {
+    border-bottom: 1.5px solid #303030;
+  }
 `;
 
 export const TD = styled.td`
   height: 100%;
-  font-weight: 300;
-  border-bottom: 1px solid #ededed;
+  color: #3f3f3f;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 export const CheckboxWrapper = styled.div`
