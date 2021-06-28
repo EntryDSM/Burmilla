@@ -1,27 +1,26 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 
 import * as S from "./style";
 import { logo } from "../../assets/header";
 import { Button } from "../Common";
-import { clearStorage } from "../../utils/token";
-import { useAuth } from "../../hooks/auth";
-import checkApiStatus from "../../data/api/checkApiStatus";
+import { getAccessToken, clearStorage } from "../../utils/token";
 
-const Header = () => {
+const Header: FC = () => {
   const [checkUserTokenStatus, setCheckUserTokenStatus] =
     React.useState<boolean>(false);
 
   const location = useLocation();
   const history = useHistory();
 
-  const {
-    authStore: { loginStatus },
-  } = useAuth();
+  React.useEffect(() => {
+    const token = getAccessToken();
 
-  if (checkApiStatus(loginStatus)._200) {
-    setCheckUserTokenStatus(true);
-  }
+    if (token !== null) {
+      setCheckUserTokenStatus(true);
+      // history.go(0);
+    }
+  }, []);
 
   const headerItems = [
     {
@@ -39,6 +38,7 @@ const Header = () => {
   ];
 
   const handleButtonClick = React.useCallback(() => {
+    alert("로그아웃됩니다.");
     clearStorage();
     history.go(0);
   }, []);
@@ -53,8 +53,7 @@ const Header = () => {
         </S.HeaderLogo>
         <S.HeaderButton>
           <S.HeaderItemsContainer>
-            {
-              // checkUserTokenStatus &&
+            {checkUserTokenStatus &&
               headerItems.map((item) => (
                 <S.HeaderItemBox>
                   <S.HeaderItem
@@ -72,16 +71,14 @@ const Header = () => {
                     ) : null}
                   </S.HeaderItem>
                 </S.HeaderItemBox>
-              ))
-            }
-            {
-              // checkUserTokenStatus &&
+              ))}
+            {checkUserTokenStatus && (
               <S.HeaderLogoutBox>
                 <Button className="header_logout" onClick={handleButtonClick}>
                   로그아웃
                 </Button>
               </S.HeaderLogoutBox>
-            }
+            )}
           </S.HeaderItemsContainer>
         </S.HeaderButton>
       </S.HeaderContainer>
