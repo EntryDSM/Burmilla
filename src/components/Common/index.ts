@@ -1,14 +1,19 @@
 import styled from 'styled-components';
-
+import { color } from "../../styles"
 import Checkbox from './Checkbox';
 
 export const Button = styled.button`
   &.applicant-list__excel-btn {
-    width: 96px;
-    height: 35px;
+    width: 90px;
+    height: 32px;
+    margin-left: 20px;
+    border: 1px solid ${color.primaryColor};
     border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
+    background-color: ${color.primaryColor};
+    color: ${color.backgorund};
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
   &.applicant-info__cancel-btn {
     width: 110px;
@@ -21,6 +26,17 @@ export const Button = styled.button`
     height: 28px;
     border-radius: 17px;
     font-size: 16px;
+  }
+  &.admission-code__download-btn {
+    width: 110px;
+    height: 32px;
+    border: 1px solid ${color.primaryColor};
+    border-radius: 4px;
+    background-color: ${color.primaryColor};
+    color: ${color.backgorund};
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
   &.admission-ticket__download-btn {
     width: 200px;
