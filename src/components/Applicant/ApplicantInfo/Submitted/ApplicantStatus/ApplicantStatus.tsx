@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import { Checkbox, Button } from "../../../../Common";
@@ -11,7 +11,7 @@ interface Props {
   email: string;
 }
 
-const ApplicantStatuses = ({ applicantStatus, email }: Props) => {
+const ApplicantStatuses: FC<Props> = ({ applicantStatus, email }) => {
   const {
     applicantStore: { updateApplicantStatusStatus },
     updateApplicantStatus,
