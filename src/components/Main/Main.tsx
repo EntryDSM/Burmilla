@@ -14,6 +14,7 @@ interface Props {
 
 const Main: FC<Props> = ({ status, process, date }) => {
   const history = useHistory();
+
   const mainButtonClickHandler = () => {
     history.push("/schedule");
   };
