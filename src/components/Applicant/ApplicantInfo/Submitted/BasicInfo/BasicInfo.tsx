@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import { ApplicantPrivacy } from "../../../../../data/api/apiTypes";
@@ -11,7 +11,7 @@ interface Props {
   applicantPrivacy: ApplicantPrivacy;
 }
 
-function BasicInfo({
+const BasicInfo: FC<Props> = ({
   applicantPrivacy: {
     user_photo,
     name,
@@ -22,7 +22,7 @@ function BasicInfo({
     detail_address,
     apply_type,
   },
-}: Props) {
+}) => {
   const checkApplyType = React.useCallback(() => {
     return returnApplyType(apply_type);
   }, [apply_type]);
@@ -50,5 +50,5 @@ function BasicInfo({
       </ul>
     </S.Wrapper>
   );
-}
+};
 export default BasicInfo;
