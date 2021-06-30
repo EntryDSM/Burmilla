@@ -8,31 +8,73 @@ import {
 } from "../../assets/schedule";
 import { Button } from "../Common";
 import ScheduleContent from "./content";
+import {
+  scheduleProcessType,
+  startDateType,
+  endDateType,
+} from "../../data/modules/redux/reducer/schedule/interface";
+import {
+  scheduleType,
+  START_DATE,
+  FIRST_ANNOUNCEMENT,
+  INTERVIEW,
+  SECOND_ANNOUNCEMENT,
+} from "../../data/modules/redux/reducer/schedule/scheduleConstance";
+// import { useSchedule } from "../../hooks/schedule";
 
-const Schedule: FC = () => {
-  const fixScheduleClickHandler = () => {};
+interface Props {
+  // status: scheduleType;
+  // date: startDateType | endDateType;
+  // process: scheduleProcessType;
+  // type: string;
+  // scheduleTimeType: startDateType | endDateType;
+}
+
+const Schedule: FC<Props> = (
+  {
+    // status,
+    // process,
+    // date,
+    // type,
+    // scheduleTimeType,
+  }
+) => {
+  // const {
+  // state: { updateScheduleStatusStatus },
+  // updateScheduleStatus,
+  // } = useSchedule();
+
+  // const handleClickCheckBox = async (type: string, status: string) => {};
 
   return (
     <S.Schedule>
       <S.ScheduleWrapper>
         <S.ScheduleContentsBox>
           <ScheduleContent
-            scheduleName="원서 작성"
+            // {...process}
+            // nowStatus={status === START_DATE}
+            // date={date}
             scheduleImg={application_icon}
             scheduleImgAlt="application_icon"
           />
           <ScheduleContent
-            scheduleName="1차 발표"
+            // {...process}
+            // nowStatus={status === FIRST_ANNOUNCEMENT}
+            // date={date}
             scheduleImg={presentation_icon}
             scheduleImgAlt="1-presentation_icon"
           />
           <ScheduleContent
-            scheduleName="면접"
+            // {...process}
+            // nowStatus={status === INTERVIEW}
+            // date={date}
             scheduleImg={interview_icon}
             scheduleImgAlt="interview_icon"
           />
           <ScheduleContent
-            scheduleName="발표 및 등록"
+            // {...process}
+            // nowStatus={status === SECOND_ANNOUNCEMENT}
+            // date={date}
             scheduleImg={presentation_regiester_icon}
             scheduleImgAlt="presentation_regiester_icon"
           />
@@ -40,7 +82,7 @@ const Schedule: FC = () => {
         <S.ScheduleButtonBox>
           <Button
             className="schedule__fix-btn"
-            onClick={fixScheduleClickHandler}
+            // onClick={() => handleClickCheckBox}
           >
             일정 수정
           </Button>
