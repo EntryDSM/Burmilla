@@ -1,11 +1,11 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import { shift_left_icon, shift_right_icon } from "../../../assets/applicants";
 import { useApplicant } from "../../../hooks/applicant";
 import { getIndexList } from "../../../utils/pagination";
 
-function Pagination() {
+const Pagination: FC = () => {
   const [currentIndex, setCurrentIndex] = React.useState(1);
   const [indexList, setIndexList] = React.useState<number[]>([]);
 
@@ -59,5 +59,5 @@ function Pagination() {
       </S.PageBtn>
     </S.PaginationContainer>
   );
-}
+};
 export default Pagination;
