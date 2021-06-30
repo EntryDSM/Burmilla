@@ -3,6 +3,7 @@ import axios from 'axios';
 import uri from './uri';
 import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
+import { UpdateScheduleProcessTimeType } from '../../data/modules/redux/reducer/schedule/interface';
 import { getAccessToken } from '../../utils/token';
 
 export enum API_STATUS {
@@ -12,6 +13,7 @@ export enum API_STATUS {
   getApplicantsListStatus = 'getApplicantsListStatus',
   getApplicantInfoStatus = 'getApplicantInfoStatus',
   updateApplicantStatusStatus = 'updateApplicantStatusStatus',
+  updateScheduleStatusStatus = 'updateScheduleStatusStatus',
 }
 
 const instance = (api: 'main' | 'excel') =>
@@ -48,6 +50,14 @@ export const refreshTokenApi = async (payload: T.Tokens) => {
 
   return [response.data, response.status];
 };
+
+export const updateScheduleApi = async (payload: UpdateScheduleProcessTimeType) => {
+  const response = await instance('main').patch(uri.schedules , payload, {
+    headers: authorization(getAccessToken()),
+  });
+
+  return [response.data, response.status];
+}
 
 export const getStatisticsApi = async (payload: T.GetStatisticsPayload) => {
   const response = await instance('main').get<T.GetStatisticsResponse>(

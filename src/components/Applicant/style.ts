@@ -21,4 +21,5 @@ export const ApplicantContainer = styled.div`
 
 export const ApplicantInfoWrap = styled.div`
   flex: 3;
+  position: absolute;
 `;

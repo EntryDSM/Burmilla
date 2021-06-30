@@ -10,8 +10,8 @@
     access_token?: string | null;
     refresh_token?: string | null;
   }) => {
-    localStorage.setItem('access_token', tokens.access_token || '');
-    localStorage.setItem('refresh_token', tokens.refresh_token || '');
+    localStorage.setItem('access_token', tokens.access_token);
+    localStorage.setItem('refresh_token', tokens.refresh_token);
   };
   
   export const clearStorage = () => {

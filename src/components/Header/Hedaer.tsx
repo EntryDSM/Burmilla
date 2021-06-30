@@ -7,20 +7,41 @@ import { Button } from "../Common";
 import { getAccessToken, clearStorage } from "../../utils/token";
 
 const Header: FC = () => {
-  const [checkUserTokenStatus, setCheckUserTokenStatus] =
-    React.useState<boolean>(false);
-
   const location = useLocation();
   const history = useHistory();
+  const token = getAccessToken();
 
-  React.useEffect(() => {
-    const token = getAccessToken();
-
-    if (token !== null) {
-      setCheckUserTokenStatus(true);
-      // history.go(0);
+  const headerItemsBox = () => {
+    if (token) {
+      return (
+        <>
+          {headerItems.map((item) => (
+            <S.HeaderItemBox>
+              <S.HeaderItem
+                key={item.content}
+                to={item.link}
+                className={location.pathname === item.link && "selected"}
+              >
+                {item.content}
+                {item.content === "일정" ? (
+                  <div className="schedule" />
+                ) : null || item.content === "접수 현황" ? (
+                  <div className="total" />
+                ) : null || item.content === "지원자 목록" ? (
+                  <div className="applicant" />
+                ) : null}
+              </S.HeaderItem>
+            </S.HeaderItemBox>
+          ))}
+          <S.HeaderLogoutBox>
+            <Button className="header_logout" onClick={handleButtonClick}>
+              로그아웃
+            </Button>
+          </S.HeaderLogoutBox>
+        </>
+      );
     }
-  }, []);
+  };
 
   const headerItems = [
     {
@@ -52,34 +73,7 @@ const Header: FC = () => {
           </Link>
         </S.HeaderLogo>
         <S.HeaderButton>
-          <S.HeaderItemsContainer>
-            {checkUserTokenStatus &&
-              headerItems.map((item) => (
-                <S.HeaderItemBox>
-                  <S.HeaderItem
-                    key={item.content}
-                    to={item.link}
-                    className={location.pathname === item.link && "selected"}
-                  >
-                    {item.content}
-                    {item.content === "일정" ? (
-                      <div className="schedule" />
-                    ) : null || item.content === "접수 현황" ? (
-                      <div className="total" />
-                    ) : null || item.content === "지원자 목록" ? (
-                      <div className="applicant" />
-                    ) : null}
-                  </S.HeaderItem>
-                </S.HeaderItemBox>
-              ))}
-            {checkUserTokenStatus && (
-              <S.HeaderLogoutBox>
-                <Button className="header_logout" onClick={handleButtonClick}>
-                  로그아웃
-                </Button>
-              </S.HeaderLogoutBox>
-            )}
-          </S.HeaderItemsContainer>
+          <S.HeaderItemsContainer>{headerItemsBox()}</S.HeaderItemsContainer>
         </S.HeaderButton>
       </S.HeaderContainer>
     </S.HeaderWrapper>

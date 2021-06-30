@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 import * as S from "../style";
 import { logo } from "../../../assets/header";
@@ -14,17 +14,18 @@ const LoginContent: FC = () => {
   const [isFailed, setIsFailed] = React.useState<boolean>(false);
   const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);
 
+  const { push } = useHistory();
+
   const {
     login,
     authStore: { loginStatus, tokens },
   } = useAuth();
-  const { push } = useHistory();
 
   React.useEffect(() => {
     if (checkApiStatus(loginStatus)._201) {
       setToken({
-        access_token: tokens.access_token,
-        refresh_token: tokens.refresh_token,
+        access_token: tokens["access-token"],
+        refresh_token: tokens["refresh-token"],
       });
       alert("로그인 성공");
       push("/");

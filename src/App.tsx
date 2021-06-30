@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import {
@@ -11,7 +11,7 @@ import {
 import CheckToken from "./components/Common/CheckToken";
 import { useHeader } from "./hooks/default";
 
-function App() {
+const App = () => {
   const Header = useHeader();
   return (
     <BrowserRouter>
@@ -28,6 +28,6 @@ function App() {
       </Switch>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

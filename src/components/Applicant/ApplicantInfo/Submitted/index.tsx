@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import ApplicantStatusContainer from "./ApplicantStatus";
@@ -18,11 +18,11 @@ interface Props {
   applicantStatus: ApplicantStatus;
 }
 
-function Submitted({
+const Submitted: FC<Props> = ({
   applicantPrivacy,
   applicantEvaluation,
   applicantStatus,
-}: Props) {
+}) => {
   const checkGradeType = React.useCallback(() => {
     return returnGradeType(applicantPrivacy.grade_type) === "검정고시";
   }, [applicantPrivacy.apply_type]);
@@ -42,6 +42,6 @@ function Submitted({
       <Documents applicantEvaluation={applicantEvaluation} />
     </S.Wrapper>
   );
-}
+};
 
 export default Submitted;
