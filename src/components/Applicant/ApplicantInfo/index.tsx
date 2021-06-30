@@ -1,10 +1,10 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import Unsubmitted from "./Unsubmitted";
 import Submitted from "./Submitted";
 import { useApplicant } from "../../../hooks/applicant";
 
-function ApplicantInfo() {
+const ApplicantInfo: FC = () => {
   const {
     applicantStore: {
       currnetApplicantInfo: {
@@ -27,6 +27,6 @@ function ApplicantInfo() {
       school_tel={school_tel || null}
     />
   );
-}
+};
 
 export default ApplicantInfo;
