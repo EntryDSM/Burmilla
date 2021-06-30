@@ -1,10 +1,10 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { list_progressbar, search_icon } from "../../../assets/applicants";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 import FilterSearchWrapper from "./style";
 
-function FilterSearch() {
+const FilterSearch: FC = () => {
   return (
     <FilterSearchWrapper>
       <SearchBar
@@ -14,6 +14,6 @@ function FilterSearch() {
       <Filter />
     </FilterSearchWrapper>
   );
-}
+};
 
 export default FilterSearch;
