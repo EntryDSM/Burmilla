@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import { ApplicantEvaluation } from "../../../../../data/api/apiTypes";
@@ -7,9 +7,9 @@ interface Props {
   applicantEvaluation: ApplicantEvaluation;
 }
 
-function Documents({
+const Documents: FC<Props> = ({
   applicantEvaluation: { self_introduction, study_plan },
-}: Props) {
+}) => {
   const [selectedItem, setSelectedItem] = React.useState("자기소개서");
 
   const handleClickContent = React.useCallback(
@@ -39,6 +39,6 @@ function Documents({
       </S.Document>
     </S.Wrapper>
   );
-}
+};
 
 export default Documents;
