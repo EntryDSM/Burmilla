@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { FC } from "react";
 
-import * as S from './style';
+import * as S from "./style";
 
 interface Props {
   applicant_contact: {
@@ -12,10 +12,10 @@ interface Props {
   school_tel?: number;
 }
 
-function Unsubmitted({
+const Unsubmitted: FC<Props> = ({
   applicant_contact: { email, applicant_tel, parent_tel, home_tel },
   school_tel,
-}: Props) {
+}) => {
   return (
     <S.Wrapper>
       <h3>최종제출을 하지 않은 지원자입니다.</h3>
@@ -45,6 +45,6 @@ function Unsubmitted({
       </table>
     </S.Wrapper>
   );
-}
+};
 
 export default Unsubmitted;
