@@ -2,12 +2,18 @@ import React, { FC } from "react";
 import * as S from "../../style";
 import { monthDate, dayDate } from "../scheduleConstance";
 import { select_off, select_on } from "../../../../assets/schedule";
+import {
+  startDateType,
+  endDateType,
+} from "../../../../data/modules/redux/reducer/schedule/interface";
 
 interface Props {
-  scheduleName: string;
+  // date: startDateType | endDateType;
+  // scheduleImgAlt === "": boolean;
+  scheduleImgAlt;
 }
 
-const ScheduleSelect: FC<Props> = ({ scheduleName }) => {
+const ScheduleSelect: FC<Props> = ({ scheduleImgAlt }) => {
   const [monthDatas, setMonthDatas] = React.useState([]);
   const [dayDatas, setDayDatas] = React.useState([]);
   const [isMouseHover, setIsMouseHover] = React.useState<Number>(0);
@@ -90,7 +96,7 @@ const ScheduleSelect: FC<Props> = ({ scheduleName }) => {
     }
   };
   const dateSelectOption = () => {
-    if (scheduleName === "원서 작성") {
+    if (scheduleImgAlt === "application_icon") {
       return (
         <>
           <S.ScheduleDateTitle>시작일</S.ScheduleDateTitle>
@@ -259,7 +265,7 @@ const ScheduleSelect: FC<Props> = ({ scheduleName }) => {
           </S.ScheduleDateSelectBox>
         </>
       );
-    } else if (scheduleName === "1차 발표") {
+    } else if (scheduleImgAlt === "1-presentation_icon") {
       return (
         <>
           <S.ScheduleDateTitle className="scheduleSelectBox-tail">
@@ -347,7 +353,7 @@ const ScheduleSelect: FC<Props> = ({ scheduleName }) => {
           </S.ScheduleDateSelectBox>
         </>
       );
-    } else if (scheduleName === "면접") {
+    } else if (scheduleImgAlt === "interview_icon") {
       return (
         <>
           <S.ScheduleDateTitle className="scheduleSelectBox-tail">
