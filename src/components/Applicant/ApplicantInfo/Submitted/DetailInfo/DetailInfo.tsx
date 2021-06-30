@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import GEDDetailInfo from "./GEDDetailInfo";
 import GeneralDetailInfo from "./GeneralDetailInfo";
@@ -13,7 +13,11 @@ interface Props {
   applicantEvaluation: ApplicantEvaluation;
 }
 
-function DetailInfo({ isGED, applicantPrivacy, applicantEvaluation }: Props) {
+const DetailInfo: FC<Props> = ({
+  isGED,
+  applicantPrivacy,
+  applicantEvaluation,
+}) => {
   return isGED ? (
     <GEDDetailInfo
       applicantPrivacy={applicantPrivacy}
@@ -25,6 +29,6 @@ function DetailInfo({ isGED, applicantPrivacy, applicantEvaluation }: Props) {
       applicantEvaluation={applicantEvaluation}
     />
   );
-}
+};
 
 export default DetailInfo;
