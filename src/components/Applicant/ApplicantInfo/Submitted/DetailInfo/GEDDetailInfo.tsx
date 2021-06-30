@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 
 import * as S from "./style";
 import {
@@ -12,10 +12,10 @@ interface Props {
   applicantEvaluation: ApplicantEvaluation;
 }
 
-function DetailInfo({
+const DetailInfo: FC<Props> = ({
   applicantPrivacy: { applicant_tel, parent_tel, email, home_tel },
   applicantEvaluation: { conversion_score },
-}: Props) {
+}) => {
   const setContactForm = React.useCallback((contact: string) => {
     return returnContact(contact);
   }, []);
@@ -37,5 +37,5 @@ function DetailInfo({
       </tbody>
     </S.DetailInfoTable>
   );
-}
+};
 export default DetailInfo;
