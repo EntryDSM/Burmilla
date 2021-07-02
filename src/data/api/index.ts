@@ -3,8 +3,8 @@ import axios from 'axios';
 import uri from './uri';
 import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
-import { UpdateScheduleProcessTimeType } from '../../data/modules/redux/reducer/schedule/interface';
 import { getAccessToken } from '../../utils/token';
+import { statusRequest } from 'src/models/dto/request/statusRequest';
 
 export enum API_STATUS {
   loginStatus = 'loginStatus',
@@ -13,24 +13,18 @@ export enum API_STATUS {
   getApplicantsListStatus = 'getApplicantsListStatus',
   getApplicantInfoStatus = 'getApplicantInfoStatus',
   updateApplicantStatusStatus = 'updateApplicantStatusStatus',
+  getSchedulesStatus = 'getSchedulesStatus',
   updateScheduleStatusStatus = 'updateScheduleStatusStatus',
 }
 
 const instance = (api: 'main' | 'excel') =>
   axios.create({
-    baseURL: `${BaseURL[api]}/admin`,
+    timeout: 10000,
+    baseURL: `${BaseURL[api]}`,
     headers: {
       'Content-Type': 'application/json',
     },
   });
-
-export const getRequest = () => {
-  const request = axios.create({
-    timeout: 10000,
-    baseURL: `${BaseURL}`,
-  });
-  return request;
-};
 
 const authorization = (token: string) => ({
   Authorization: `Bearer ${token}`,
@@ -51,7 +45,12 @@ export const refreshTokenApi = async (payload: T.Tokens) => {
   return [response.data, response.status];
 };
 
-export const updateScheduleApi = async (payload: UpdateScheduleProcessTimeType) => {
+export const getScheduleApi = async (statusRequest: statusRequest) => {
+  const response = await instance('main').get<T.GetSchedulesResponse>(uri.schedules);
+  return response;
+}
+
+export const updateScheduleApi = async (payload: T.UpdateScheduleStatusPayload) => {
   const response = await instance('main').patch(uri.schedules , payload, {
     headers: authorization(getAccessToken()),
   });
