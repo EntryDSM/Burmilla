@@ -11,14 +11,14 @@ const Pagination: FC = () => {
 
   const {
     applicantStore: {
-      applicantsList: { max_index },
+      applicantsList: { total_elements },
     },
     setFilter,
   } = useApplicant();
 
   React.useEffect(() => {
-    setIndexList(getIndexList(currentIndex, max_index));
-  }, [max_index, currentIndex]);
+    setIndexList(getIndexList(currentIndex, total_elements));
+  }, [total_elements, currentIndex]);
 
   React.useEffect(() => {
     setFilter({
@@ -28,17 +28,17 @@ const Pagination: FC = () => {
 
   React.useEffect(() => {
     setCurrentIndex(1);
-  }, [max_index]);
+  }, [total_elements]);
 
   const handleClickIndex = React.useCallback((index: number) => {
     setCurrentIndex(index);
   }, []);
   const handleClickPrev = React.useCallback(() => {
     if (currentIndex > 1) setCurrentIndex(currentIndex - 1);
-  }, [currentIndex, max_index]);
+  }, [currentIndex, total_elements]);
   const handleClickNext = React.useCallback(() => {
-    if (currentIndex < max_index) setCurrentIndex(currentIndex + 1);
-  }, [currentIndex, max_index]);
+    if (currentIndex < total_elements) setCurrentIndex(currentIndex + 1);
+  }, [currentIndex, total_elements]);
 
   return (
     <S.PaginationContainer className="no-select">
