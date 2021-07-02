@@ -2,10 +2,10 @@ import React, { FC } from "react";
 import * as S from "../../style";
 import { monthDate, dayDate } from "../scheduleConstance";
 import { select_off, select_on } from "../../../../assets/schedule";
-import {
-  startDateType,
-  endDateType,
-} from "../../../../data/modules/redux/reducer/schedule/interface";
+// import {
+//   startDateType,
+//   endDateType,
+// } from "../../../../data/modules/redux/reducer/schedule/interface";
 
 interface Props {
   // date: startDateType | endDateType;
