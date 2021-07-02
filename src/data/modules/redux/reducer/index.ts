@@ -1,17 +1,15 @@
 import { combineReducers } from 'redux';
 
-import applicant from './applicant';
-import auth from './auth';
-import statistics from './statistics';
-import schedule from './schedule';
-import status from './status';
+import applicantReducer from './applicant';
+import authReducer from './auth';
+import statisticsReducer from './statistics';
+import scheduleReducer from './schedule';
 
 const rootReducer = combineReducers({
-    applicant,
-    auth,
-    statistics,
-    schedule,
-    status
+    applicant: applicantReducer,
+    auth: authReducer,
+    statistics: statisticsReducer,
+    schedule: scheduleReducer,
 })
 
 export type reducerType = ReturnType<typeof rootReducer>;
