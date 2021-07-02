@@ -30,7 +30,7 @@ export const MainBackground = styled.div`
 
 export const MainWrapper = styled.div`
   padding: 0px ${pxToRem(250)}rem;
-  padding-top: ${pxToRem(120)}rem;
+  padding-top: ${pxToRem(72)}rem;
   box-sizing: border-box;
   justify-content: center;
   display: flex;
