@@ -1,8 +1,10 @@
 import React from "react";
-import { scheduleProcessType } from "../../../data/modules/redux/reducer/schedule/interface";
+import { processType } from "../../../data/modules/redux/reducer/schedule/interface";
 
-const MainDummyData: scheduleProcessType = {
+const scheduleDummyData: processType = {
   title: <p>로딩중...</p>,
+  getDescription: () => <p>로딩중...</p>,
+  buttonText: "로딩중...",
 };
 
-export default MainDummyData;
+export default scheduleDummyData;
