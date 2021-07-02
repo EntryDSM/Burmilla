@@ -1,99 +1,79 @@
 import IScheduleState from './interface';
-import { IS_START, IS_END, STATUS, PROCESS, scheduleActionType } from '../../action/schedule';
-import scheduleConstance, { START_DATE, scheduleType } from "./scheduleConstance";
-import { STATUS_SUCCESS, STATUS_FAILURE, UPDATE_SCHEDULE_STATUS_ASYNC } from "../../action/schedule/interface";
-import { returnApiResponseData } from '../';
-import { API_STATUS } from '../../../../api/index';
+import { IS_END, IS_START, PROCESS, STATUS, scheduleActionType } from '../../action/schedule';
+import scheduleConstance, { NOT_APPLICATION_PERIOD, scheduleType } from './scheduleConstance';
+import { STATUS_FAILURE, STATUS_SUCCESS } from '../../action/schedule/interface';
 
-const InitState: IScheduleState = {
-    updateScheduleStatusStatus: 0,
-    status: START_DATE,
-    isStart: true,
-    isEnd: true,
-    processes: scheduleConstance,
-    date: [
-      {
-        type: 'START_DATE',
-        startDate: [
-          {
-            month: '10',
-            day: '20',
-          }
-        ],
-        endDate: [
-          {
-            month: '10',
-            day: '20',
-          }
-        ],
-      },
-      {
-        type: 'FIRST_ANNOUNCEMENT',
-        startDate: [
-          {
-            month: '10',
-            day: '20',
-          }
-        ],
-      },
-      {
-        type: 'INTERVIEW',
-        startDate: [
-          {
-            month: '10',
-            day: '20',
-          }
-        ],
-      },
-      {
-        type: 'SECOND_ANNOUNCEMENT',
-        startDate: [
-          {
-            month: '10',
-            day: '20',
-          }
-        ],
-      },
-    ],
-}
-
-const scheduleReducer = (state: IScheduleState = InitState, action: scheduleActionType): IScheduleState => {
-    switch (action.type) {
-        case STATUS: {
-            return {...state, status: action.payload};
-        }
-        case IS_START: {
-            return { ...state, isStart: action.payload };
-        }
-        case IS_END: {
-            return { ...state, isEnd: action.payload };
-        }
-        case PROCESS: {
-            return {...state, processes: action.payload};
-        }
-        case STATUS_SUCCESS: {
-            return {
-                ...state, 
-                date: action.payload.schedules, 
-                status: action.payload.current_status as scheduleType
-            };
-        }
-        case STATUS_FAILURE: {
-            return {
-                ...state,
-            }
-        }
-        case UPDATE_SCHEDULE_STATUS_ASYNC: {
-          return returnApiResponseData<IScheduleState>({
-            state,
-            statusName: API_STATUS.updateApplicantStatusStatus,
-            payload: action.payload,
-          });
-        }
-        default: {
-            return state;
-        }
-    }
+const InitialState: IScheduleState = {
+  status: NOT_APPLICATION_PERIOD,
+  isEnd: false,
+  isStart: true,
+  processes: scheduleConstance,
+  date: [
+    {
+      year: '2022',
+      type: 'START_DATE',
+      date: '2022-10-31',
+    },
+    {
+      year: '2022',
+      type: 'END_DATE',
+      date: '2022-10-31',
+    },
+    {
+      year: '2022',
+      type: 'FIRST_ANNOUNCEMENT',
+      date: '2022-10-31',
+    },
+    {
+      year: '2022',
+      type: 'SECOND_ANNOUNCEMENT',
+      date: '2022-10-31',
+    },
+    {
+      year: '2022',
+      type: 'INTERVIEW',
+      date: '2022-10-31',
+    },
+    {
+      year: '2022',
+      type: 'NOT_APPLICATION_PERIOD',
+      date: '2021-10-20',
+    },
+  ],
+  error: 0,
 };
 
-export default scheduleReducer;
+const statusReducer = (state: IScheduleState = InitialState, action: scheduleActionType): IScheduleState => {
+  switch (action.type) {
+    case STATUS: {
+      return { ...state, status: action.payload };
+    }
+    case IS_START: {
+      return { ...state, isStart: action.payload };
+    }
+    case IS_END: {
+      return { ...state, isEnd: action.payload };
+    }
+    case PROCESS: {
+      return { ...state, processes: action.payload };
+    }
+    case STATUS_SUCCESS: {
+      return {
+        ...state,
+        date: action.payload.schedules,
+        status: action.payload.current_status as scheduleType,
+      };
+    }
+    case STATUS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};
+
+export default statusReducer;
