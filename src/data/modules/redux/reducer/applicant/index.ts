@@ -44,8 +44,8 @@ const initialState: InitialState = {
     is_social: null,
   },
   applicantsList: {
-    max_index: 0,
-    user_per_page: 0,
+    total_elements: 0,
+    total_pages: 0,
     applicants_information: [],
   },
   currnetApplicantInfo: null,
