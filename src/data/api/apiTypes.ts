@@ -20,6 +20,23 @@
   export interface GetStatisticsPayload {
     area: string;
   }
+
+  export interface GetSchedulesPayload {
+    type: string; 
+    date: string;
+    process: string;
+  }
+
+  export interface GetSchedulesResponse {
+    // schedules: GetSchedulesPayload[];
+    schedules: { type: string; date: string; process: string }[];
+    current_status: string;
+  }
+
+  export interface UpdateScheduleStatusPayload {
+    type?: string;
+    date?: string;
+  }
   
   interface CommonScoreDistribution {
     '141-150': number;
@@ -82,16 +99,17 @@
   
   export interface ApplicantListItem {
     receipt_code: number;
-    name: string;
     email: string;
+    name: string;
     is_daejeon: boolean;
-    apply_type: string;
-    is_arrived: boolean;
-    is_final_submit: boolean;
+    application_type: string;
+    is_printed_arrived: boolean;
+    is_paid: boolean;
+    is_submit: boolean;
   }
   export interface GetApplicantsListResponse {
-    max_index: number;
-    user_per_page: number;
+    total_elements: number;
+    total_pages: number;
     applicants_information: ApplicantListItem[];
   }
   
@@ -143,6 +161,7 @@
       email: string;
       parent_tel: number;
       home_tel: number;
+      school_tel?: number;
     };
     school_tel?: number;
   }
