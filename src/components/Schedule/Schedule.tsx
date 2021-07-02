@@ -8,17 +8,22 @@ import {
 } from "../../assets/schedule";
 import { Button } from "../Common";
 import ScheduleContent from "./content";
-import {
-  scheduleProcessType,
-  startDateType,
-  endDateType,
-} from "../../data/modules/redux/reducer/schedule/interface";
+// import {
+//   scheduleProcessType,
+//   startDateType,
+//   endDateType,
+// } from "../../data/modules/redux/reducer/schedule/interface";
 import {
   scheduleType,
   START_DATE,
+  END_DATE,
   FIRST_ANNOUNCEMENT,
-  INTERVIEW,
   SECOND_ANNOUNCEMENT,
+  INTERVIEW,
+  NOT_APPLICATION_PERIOD,
+  BEFORE_FIRST_ANNOUNCEMENT,
+  BEFORE_SECOND_ANNOUNCEMENT,
+  BEFORE_INTERVIEW,
 } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
 // import { useSchedule } from "../../hooks/schedule";
 

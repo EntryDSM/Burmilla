@@ -1,24 +1,12 @@
-import { all, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
+import createRequestSaga from '../../../../../utils/saga/createRequestSaga';
+import { getScheduleApi } from '../../../../api/index';
+import { GET_STATUS } from '../../../../modules/redux/action/schedule/interface';
 
-import { sagaEntity } from '../index';
-import {
-  updateScheduleStatusType,
-  UpdateScheduleStatus,
-} from '../../action/schedule';
-import { UPDATE_SCHEDULE_STATUS, UPDATE_SCHEDULE_STATUS_ASYNC } from '../../action/schedule/interface';
-import { updateScheduleApi } from '../../../../api';
-import { UpdateScheduleProcessTimeType } from '../../reducer/schedule/interface';
+export const getScheduleSaga = createRequestSaga(GET_STATUS, getScheduleApi);
 
-function* updateScheduleStatus(action: UpdateScheduleStatus) {
-    yield sagaEntity<updateScheduleStatusType, UpdateScheduleProcessTimeType>({
-      action,
-      api: updateScheduleApi,
-      type: UPDATE_SCHEDULE_STATUS_ASYNC,
-    });
-  }
+function* userSaga() {
+  yield takeLatest(GET_STATUS, getScheduleSaga);
+}
 
-  export default function* applicantSaga() {
-    yield all([
-      takeLatest(UPDATE_SCHEDULE_STATUS, updateScheduleStatus),
-    ]);
-  }
+export default userSaga;

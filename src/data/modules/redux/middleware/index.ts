@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import authSaga from './auth';
 import applicantSaga from './applicant';
 import statisticsSaga from './statistics';
+import scheduleSaga from './schedule';
 import { refreshTokenApi } from '../../../api/index';
 import { REFRESH_TOKEN_ASYNC } from '../action/auth';
 import { clearStorage, getRefreshToken } from '../../../../utils/token';
@@ -82,5 +83,5 @@ export function* sagaEntity<ActionT, PayloadT = object>({
 }
 
 export default function* rootSaga() {
-  yield all([call(authSaga), call(applicantSaga), call(statisticsSaga)]);
+  yield all([call(authSaga), call(applicantSaga), call(scheduleSaga), call(statisticsSaga)]);
 }

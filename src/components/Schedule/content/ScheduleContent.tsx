@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import * as S from "../style";
 import ScheduleSelect from "./scheduleSelect";
-import {
-  startDateType,
-  endDateType,
-} from "../../../data/modules/redux/reducer/schedule/interface";
+// import {
+//   startDateType,
+//   endDateType,
+// } from "../../../data/modules/redux/reducer/schedule/interface";
 
 interface Props {
   // title: string | React.ReactNode;

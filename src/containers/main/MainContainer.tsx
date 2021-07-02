@@ -1,48 +1,47 @@
-import React, { FC, Suspense, useEffect } from "react";
-import MainDummyData from "../../utils/util/loadingDummyData/MainDummyData";
-import { useProcess } from "../../hooks/main";
+import React, { FC, Suspense } from "react";
+import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
+import { useSchedule } from "../../hooks/schedule";
 import { useFooter } from "../../hooks/default";
 import {
-  BEFORE_FIRST_ANNOUNCE,
+  BEFORE_FIRST_ANNOUNCEMENT,
   BEFORE_INTERVIEW,
-  BEFORE_SECOND_ANNOUNCE,
-  FIRST_ANNOUNCE,
+  BEFORE_SECOND_ANNOUNCEMENT,
+  FIRST_ANNOUNCEMENT,
   INTERVIEW,
   NOT_APPLICATION_PERIOD,
-  SECOND_ANNOUNCE,
+  SECOND_ANNOUNCEMENT,
   START_DATE,
-  statusType,
-} from "../../data/modules/redux/reducer/status/mainConstance";
+  scheduleType,
+} from "../../data/modules/redux/reducer/schedule/scheduleConstance";
 
 const Main = React.lazy(() => import("../../components/Main"));
 
 const MainContainer: FC = () => {
   const Footer = useFooter();
-  const processState = useProcess();
+  const scheduleState = useSchedule();
   const getNowProcess = (status: string) => {
-    if (!processState.state.processes[status]) return MainDummyData;
+    if (!scheduleState.state.processes[status]) return ScheduleDummyData;
     if (status === "NOT_APPLICATION_PERIOD")
-      return processState.state.processes[START_DATE];
-    if (status === "BEFORE_FIRST_ANNOUNCE")
-      return processState.state.processes[FIRST_ANNOUNCE];
-    if (status === "BEFORE_SECOND_ANNOUNCE")
-      return processState.state.processes[SECOND_ANNOUNCE];
+      return scheduleState.state.processes[START_DATE];
+    if (status === "BEFORE_FIRST_ANNOUNCEMENT")
+      return scheduleState.state.processes[FIRST_ANNOUNCEMENT];
+    if (status === "BEFORE_SECOND_ANNOUNCEMENT")
+      return scheduleState.state.processes[SECOND_ANNOUNCEMENT];
     if (status === "BEFORE_INTERVIEW")
-      return processState.state.processes[INTERVIEW];
-    return processState.state.processes[status];
+      return scheduleState.state.processes[INTERVIEW];
+    return scheduleState.state.processes[status];
   };
 
-  const status = processState.state.status;
-  const dates = processState.state.date;
-
-  const getNowProcessDate = (status: statusType): string => {
+  const status = scheduleState.state.status;
+  const dates = scheduleState.state.date;
+  const getNowProcessDate = (status: scheduleType): string => {
     if (status === NOT_APPLICATION_PERIOD)
       return dates.filter((date) => date.type === START_DATE)[0].date;
-    if (status === BEFORE_FIRST_ANNOUNCE) {
-      return dates.filter((date) => date.type === FIRST_ANNOUNCE)[0].date;
+    if (status === BEFORE_FIRST_ANNOUNCEMENT) {
+      return dates.filter((date) => date.type === FIRST_ANNOUNCEMENT)[0].date;
     }
-    if (status === BEFORE_SECOND_ANNOUNCE)
-      return dates.filter((date) => date.type === SECOND_ANNOUNCE)[0].date;
+    if (status === BEFORE_SECOND_ANNOUNCEMENT)
+      return dates.filter((date) => date.type === SECOND_ANNOUNCEMENT)[0].date;
     if (status === BEFORE_INTERVIEW)
       return dates.filter((date) => date.type === INTERVIEW)[0].date;
     const result = dates.filter((date) => {
@@ -51,8 +50,8 @@ const MainContainer: FC = () => {
     return result ? result.date : "";
   };
 
-  useEffect(() => {
-    processState.setState.getStatus();
+  React.useEffect(() => {
+    scheduleState.setState.getStatus();
   }, []);
 
   return (
@@ -60,7 +59,7 @@ const MainContainer: FC = () => {
       <Main
         status={status}
         date={getNowProcessDate(status)}
-        process={getNowProcess(processState.state.status)}
+        process={getNowProcess(scheduleState.state.status)}
       />
       {Footer}
     </Suspense>

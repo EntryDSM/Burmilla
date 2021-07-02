@@ -6,8 +6,6 @@ interface Props {
   title: string | React.ReactNode;
   getDescription?: (date: string) => React.ReactNode;
   buttonText: string;
-  isButtonAble: boolean;
-  isHaveTerm: boolean;
   date: string;
   buttonClickHandler?: () => void;
 }
@@ -17,8 +15,6 @@ const MainContent: FC<Props> = ({
   getDescription,
   buttonText,
   date,
-  isButtonAble,
-  isHaveTerm,
   buttonClickHandler,
 }) => {
   return (

@@ -2,12 +2,12 @@ import React, { FC } from "react";
 import * as S from "./style";
 import MainContent from "./content";
 import Progress from "./progress";
-import { processType } from "../../data/modules/redux/reducer/status/interface";
-import { statusType } from "../../data/modules/redux/reducer/status/mainConstance";
+import { processType } from "../../data/modules/redux/reducer/schedule/interface";
+import { scheduleType } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
 import { useHistory } from "react-router-dom";
 
 interface Props {
-  status: statusType;
+  status: scheduleType;
   process: processType;
   date: string;
 }

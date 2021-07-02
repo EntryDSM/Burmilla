@@ -24,8 +24,8 @@ const LoginContent: FC = () => {
   React.useEffect(() => {
     if (checkApiStatus(loginStatus)._201) {
       setToken({
-        access_token: tokens["access-token"],
-        refresh_token: tokens["refresh-token"],
+        access_token: tokens["access_token"],
+        refresh_token: tokens["refresh_token"],
       });
       alert("로그인 성공");
       push("/");

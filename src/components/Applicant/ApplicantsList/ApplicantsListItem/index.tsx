@@ -17,9 +17,10 @@ const ApplicantsListItem: FC<Props> = ({
     email,
     name,
     is_daejeon,
-    apply_type,
-    is_arrived,
-    is_final_submit,
+    application_type,
+    is_printed_arrived,
+    is_paid,
+    is_submit,
   },
   handleClick,
 }) => {
@@ -30,11 +31,11 @@ const ApplicantsListItem: FC<Props> = ({
     return returnRegion(is_daejeon);
   }, [is_daejeon]);
   const checkApplyType = React.useCallback(() => {
-    return returnApplyType(apply_type);
-  }, [apply_type]);
+    return returnApplyType(application_type);
+  }, [application_type]);
   const checkSubmitStatus = React.useCallback(
-    () => (is_final_submit ? "완료" : "미완료"),
-    [is_final_submit]
+    () => (is_submit ? "완료" : "미완료"),
+    [is_submit]
   );
 
   return (
@@ -51,7 +52,7 @@ const ApplicantsListItem: FC<Props> = ({
       <S.TD>{checkApplyType()}</S.TD>
       <S.TD>
         <S.CheckboxWrapper>
-          <Checkbox isChecked={is_arrived} />
+          <Checkbox isChecked={is_printed_arrived} />
         </S.CheckboxWrapper>
       </S.TD>
       <S.TD>{checkSubmitStatus()}</S.TD>

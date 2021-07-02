@@ -1,9 +1,8 @@
-export const STATUS = 'schedule/STATUS' as const;
-export const STATUS_SUCCESS = 'schedule/GET_STATUS_SUCCESS' as const;
-export const STATUS_FAILURE = 'schedule/GET_STATUS_FAILURE' as const;
-export const IS_END = 'schedule/IS_END' as const;
-export const IS_START = 'schedule/IS_START' as const;
-export const PROCESS = 'schedule/PROCESS' as const;
-export const GET_STATUS = 'schedule/GET_STATUS' as const;
-export const UPDATE_SCHEDULE_STATUS = 'schedule/UPDATE_SCHEDULE_STATUS' as const;
-export const UPDATE_SCHEDULE_STATUS_ASYNC = 'schedule/UPDATE_SCHEDULE_STATUS_ASYNC' as const;
+export const STATUS = 'status/STATUS' as const;
+export const STATUS_SUCCESS = 'status/GET_STATUS_SUCCESS' as const;
+export const STATUS_FAILURE = 'status/GET_STATUS_FAILURE' as const;
+export const DESCRIPTION = 'status/DESCRIPTION' as const;
+export const IS_END = 'status/IS_END' as const;
+export const IS_START = 'status/IS_START' as const;
+export const PROCESS = 'status/PROCESS' as const;
+export const GET_STATUS = 'status/GET_STATUS' as const;
