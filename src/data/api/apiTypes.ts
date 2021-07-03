@@ -28,14 +28,13 @@
   }
 
   export interface GetSchedulesResponse {
-    // schedules: GetSchedulesPayload[];
-    schedules: { type: string; date: string; process: string }[];
+    schedules: GetSchedulesPayload[];
     current_status: string;
   }
 
   export interface UpdateScheduleStatusPayload {
-    type?: string;
-    date?: string;
+    type: string;
+    date: string;
   }
   
   interface CommonScoreDistribution {

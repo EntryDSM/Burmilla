@@ -1,7 +1,7 @@
 import IScheduleState from './interface';
-import { IS_END, IS_START, PROCESS, STATUS, scheduleActionType } from '../../action/schedule';
+import { IS_END, IS_START, PROCESS, STATUS, SET_SCHEDULE, scheduleActionType } from '../../action/schedule';
 import scheduleConstance, { NOT_APPLICATION_PERIOD, scheduleType } from './scheduleConstance';
-import { STATUS_FAILURE, STATUS_SUCCESS } from '../../action/schedule/interface';
+import { STATUS_FAILURE, STATUS_SUCCESS, SET_SCHEDULE_SUCCESS, SET_SCHEDULE_FAILURE } from '../../action/schedule/interface';
 
 const InitialState: IScheduleState = {
   status: NOT_APPLICATION_PERIOD,
@@ -40,7 +40,7 @@ const InitialState: IScheduleState = {
       date: '2021-10-20',
     },
   ],
-  error: 0,
+  error: null,
 };
 
 const statusReducer = (state: IScheduleState = InitialState, action: scheduleActionType): IScheduleState => {
@@ -69,6 +69,23 @@ const statusReducer = (state: IScheduleState = InitialState, action: scheduleAct
         ...state,
         error: action.payload,
       };
+    }
+    case SET_SCHEDULE: {
+      return {
+        ...state,
+        date: action.payload.schedules,
+      }
+    }
+    case SET_SCHEDULE_SUCCESS: {
+      return {
+        ...state,
+      }
+    }
+    case SET_SCHEDULE_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+      }
     }
     default: {
       return state;

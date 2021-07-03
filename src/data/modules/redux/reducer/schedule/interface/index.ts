@@ -1,4 +1,5 @@
 import { scheduleType } from '../scheduleConstance';
+import { error } from "../../../../../../models/error";
 
 interface IScheduleState {
   status: scheduleType;
@@ -6,7 +7,7 @@ interface IScheduleState {
   isStart: boolean;
   processes: Object;
   date: Array<processTimeType>;
-  error: number;
+  error: error;
 }
 
 export interface processTimeType {
