@@ -45,17 +45,21 @@ export const refreshTokenApi = async (payload: T.Tokens) => {
   return [response.data, response.status];
 };
 
-export const getScheduleApi = async (statusRequest: statusRequest) => {
+export const getScheduleApi = async () => {
   const response = await instance('main').get<T.GetSchedulesResponse>(uri.schedules);
+
   return response;
 }
 
 export const updateScheduleApi = async (payload: T.UpdateScheduleStatusPayload) => {
-  const response = await instance('main').patch(uri.schedules , payload, {
+  try {
+    const request = instance('main')
+    await request.patch(uri.schedules , payload, {
     headers: authorization(getAccessToken()),
   });
-
-  return [response.data, response.status];
+  } catch (error) {
+    throw error;
+  }
 }
 
 export const getStatisticsApi = async (payload: T.GetStatisticsPayload) => {
