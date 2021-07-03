@@ -1,4 +1,5 @@
 import { processTimeType } from '../../reducer/schedule/interface';
+import { error } from "../../../../../models/error";
 import { scheduleType } from '../../reducer/schedule/scheduleConstance';
 import {
   IS_END,
@@ -8,6 +9,9 @@ import {
   STATUS_SUCCESS,
   STATUS_FAILURE,
   GET_STATUS,
+  SET_SCHEDULE,
+  SET_SCHEDULE_SUCCESS,
+  SET_SCHEDULE_FAILURE,
 } from './interface';
 
 export const setStatus = (payload: scheduleType) => ({
@@ -38,7 +42,7 @@ export const getStatusSuccess = (payload: {
   payload,
 });
 
-export const getStatusFailure = (payload: number) => ({
+export const getStatusFailure = (payload: error) => ({
   type: STATUS_FAILURE,
   payload,
 });
@@ -47,7 +51,23 @@ export const getStatus = () => ({
   type: GET_STATUS,
 });
 
-export { IS_END, IS_START, STATUS, PROCESS };
+export const setSchedule = (payload: {
+  schedules: Array<processTimeType>;
+}) => ({
+  type: SET_SCHEDULE,
+  payload
+});
+
+export const setScheduleSuccess = () => ({
+  type: SET_SCHEDULE_SUCCESS
+});
+
+export const setScheduleFailure = (payload: error) => ({
+  type: SET_SCHEDULE_FAILURE,
+  payload
+})
+
+export { IS_END, IS_START, STATUS, PROCESS, SET_SCHEDULE };
 export type scheduleActionType =
   | ReturnType<typeof setStatus>
   | ReturnType<typeof setProcess>
@@ -55,4 +75,7 @@ export type scheduleActionType =
   | ReturnType<typeof setIsEnd>
   | ReturnType<typeof getStatusSuccess>
   | ReturnType<typeof getStatusFailure>
-  | ReturnType<typeof getStatus>;
+  | ReturnType<typeof getStatus>
+  | ReturnType<typeof setSchedule>
+  | ReturnType<typeof setScheduleSuccess>
+  | ReturnType<typeof setScheduleFailure>;
