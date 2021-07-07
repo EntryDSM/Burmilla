@@ -1,34 +1,45 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelectState } from "../default";
 import {
-  getStatisticsPayload,
-  getStatisticsAction,
-  setSelectedRegionPayload,
-  setSelectedRegionAction,
+  getStatistics,
+  getStatisticsSuccess,
 } from '../../data/modules/redux/action/statistics';
+import { 
+  CommonScoreDistribution, 
+  SpecialScoreDistribution 
+} from "../../data/api/apiTypes";
 import { AppState } from '../../data/modules/store';
-import { InitialState } from '../../data/modules/redux/reducer/statistics';
+import { IStatisticsState } from '../../data/modules/redux/reducer/statistics';
 
 export const useStatistics = () => {
-  const statisticsStore = useSelector<AppState, InitialState>(state => ({
-    statistics: state.statistics.statistics,
-    getStatisticsStatus: state.statistics.getStatisticsStatus,
-  }));
-
+  // const statisticsStore = useSelector<AppState, InitialState>(state => ({
+    //   statistics: state.statistics.statistics,
+    //   getStatisticsStatus: state.statistics.getStatisticsStatus,
+    // }));
+    
+    // const getStatistics = useCallback(
+      //   () => dispatch(getStatisticsAction()),
+      //   [dispatch],
+      // );
+      
+    // return { statisticsStore, getStatistics };
   const dispatch = useDispatch();
-
-  const getStatistics = useCallback(
-    (payload: getStatisticsPayload) => dispatch(getStatisticsAction(payload)),
-    [dispatch],
-  );
-  const setSelectedRegion = useCallback(
-    (payload: setSelectedRegionPayload) =>
-      dispatch(setSelectedRegionAction(payload)),
-    [],
-  );
-
-  return { statisticsStore, getStatistics, setSelectedRegion };
+  const state = useSelectState().statistics;
+  const setState = {
+    getStatistics: () => dispatch(getStatistics()),
+    setStatisticsSuccess: (payload: { 
+      total_applicant_count: number;
+      total_competition_rate: number;
+      common_score: CommonScoreDistribution;
+      meister_score: SpecialScoreDistribution;
+      social_score: SpecialScoreDistribution }) => 
+      dispatch(getStatisticsSuccess(payload)),
+  };
+  return {
+    state,
+    setState,
+  };
 };
 
 export default useStatistics;
