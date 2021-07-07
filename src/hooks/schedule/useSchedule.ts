@@ -7,6 +7,7 @@ import {
   setStatus,
   getStatus,
   getStatusSuccess,
+  // UpdateSchedulesPayload,
   setSchedule
 } from '../../data/modules/redux/action/schedule';
 import { processTimeType, processType } from '../../data/modules/redux/reducer/schedule/interface';
@@ -23,8 +24,9 @@ const useSchedule = () => {
     getStatus: () => dispatch(getStatus()),
     getStatusSuccess: (payload: { schedules: Array<processTimeType>; current_status: string }) =>
       dispatch(getStatusSuccess(payload)),
-    setSchedule: (payload: { schedules: Array<processTimeType>; }) =>
-      dispatch(setSchedule(payload)),
+    setSchedule: (payload: { schedules: Array<processTimeType> }) => {
+      dispatch(setSchedule(payload))
+    },
   };
   return {
     state,
