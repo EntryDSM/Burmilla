@@ -6,7 +6,7 @@ interface IScheduleState {
   isEnd: boolean;
   isStart: boolean;
   processes: Object;
-  date: Array<processTimeType>;
+  date: processTimeType[];
   error: error;
 }
 
