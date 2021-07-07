@@ -3,13 +3,13 @@ import { processType } from "./interface";
 
 export const START_DATE = "START_DATE" as const;
 export const END_DATE = "END_DATE" as const;
-export const FIRST_ANNOUNCEMENT = "FIRST_ANNOUNCE" as const;
+export const FIRST_ANNOUNCEMENT = "FIRST_ANNOUNCEMENT" as const;
 export const BEFORE_INTERVIEW = "BEFORE_INTERVIEW" as const;
 export const INTERVIEW = "INTERVIEW" as const;
-export const SECOND_ANNOUNCEMENT = "SECOND_ANNOUNCE" as const;
-export const BEFORE_SECOND_ANNOUNCEMENT = "BEFORE_SECOND_ANNOUNCE" as const;
+export const SECOND_ANNOUNCEMENT = "SECOND_ANNOUNCEMENT" as const;
+export const BEFORE_SECOND_ANNOUNCEMENT = "BEFORE_SECOND_ANNOUNCEMENT" as const;
 export const NOT_APPLICATION_PERIOD = "NOT_APPLICATION_PERIOD" as const;
-export const BEFORE_FIRST_ANNOUNCEMENT = "BEFORE_FIRST_ANNOUNCE" as const;
+export const BEFORE_FIRST_ANNOUNCEMENT = "BEFORE_FIRST_ANNOUNCEMENT" as const;
 
 export type scheduleType =
   | typeof START_DATE
