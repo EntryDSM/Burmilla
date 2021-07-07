@@ -1,0 +1,3 @@
+export const GET_STATISTICS = 'GET_STATISTICS' as const;
+export const STATISTICS_SUCCESS = 'STATISTICS_SUCCESS' as const;
+export const STATISTICS_FAILURE = 'STATISTICS_FAILURE' as const;
