@@ -39,11 +39,11 @@ const InitialState: IScheduleState = {
       type: 'NOT_APPLICATION_PERIOD',
       date: '2021-10-20',
     },
-  ],
+  ],  
   error: null,
 };
 
-const statusReducer = (state: IScheduleState = InitialState, action: scheduleActionType): IScheduleState => {
+const scheduleReducer = (state: IScheduleState = InitialState, action: scheduleActionType): IScheduleState => {
   switch (action.type) {
     case STATUS: {
       return { ...state, status: action.payload };
@@ -74,7 +74,7 @@ const statusReducer = (state: IScheduleState = InitialState, action: scheduleAct
       return {
         ...state,
         date: action.payload.schedules,
-      }
+      };
     }
     case SET_SCHEDULE_SUCCESS: {
       return {
@@ -93,4 +93,4 @@ const statusReducer = (state: IScheduleState = InitialState, action: scheduleAct
   }
 };
 
-export default statusReducer;
+export default scheduleReducer;
