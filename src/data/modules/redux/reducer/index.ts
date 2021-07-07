@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     statistics: statisticsReducer,
     schedule: scheduleReducer,
-})
+});
 
 export type reducerType = ReturnType<typeof rootReducer>;
 export default rootReducer;
@@ -18,7 +18,7 @@ export default rootReducer;
 export const returnApiResponseData = <I>(props: {
   state: I;
   statusName: string;
-  payload: {
+  payload?: {
     data?: null | any;
     status?: number;
   };
