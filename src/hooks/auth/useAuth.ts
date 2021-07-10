@@ -6,6 +6,8 @@ import {
   loginPayload,
   setTokenAction,
   setTokenPayload,
+  refreshTokenAction,
+  refreshTokenPayload
 } from '../../data/modules/redux/action/auth';
 import { AppState } from '../../data/modules/store';
 import { InitialState } from '../../data/modules/redux/reducer/auth';
@@ -28,7 +30,12 @@ export const useAuth = () => {
     [dispatch],
   );
 
-  return { authStore, login, setTokens };
+  const refreshtoken = useCallback(
+    (payload: refreshTokenPayload) => dispatch(refreshTokenAction(payload)),
+    [dispatch],
+  )
+
+  return { authStore, login, setTokens, refreshtoken };
 };
 
 export default useAuth;
