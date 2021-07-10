@@ -16,15 +16,16 @@
     access_token?: string;
     refresh_token?: string;
   }
-  
-  export interface GetStatisticsPayload {
-    area: string;
-  }
 
   export interface GetSchedulesPayload {
     type: string; 
     date: string;
     process: string;
+  }
+
+  export interface UpdateSchedulesPayload {
+    type: string; 
+    date: string;
   }
 
   export interface GetSchedulesResponse {
@@ -33,11 +34,12 @@
   }
 
   export interface UpdateScheduleStatusPayload {
-    type: string;
-    date: string;
+    schedules: UpdateSchedulesPayload[];
   }
   
-  interface CommonScoreDistribution {
+  export interface CommonScoreDistribution {
+    common_count: number;
+    common_competition_rate: number;
     '141-150': number;
     '131-140': number;
     '121-130': number;
@@ -46,11 +48,11 @@
     '91-100': number;
     '81-90': number;
     '-80': number;
-    applicant_count: number;
-    competition_rate: number;
   }
 
-  interface MeisterScoreDistribution {
+  export interface SpecialScoreDistribution {
+    special_count: number;
+    special_competition_rate: number;
     '81-90': number;
     '71-80': number;
     '61-70': number;
@@ -59,26 +61,15 @@
     '31-40': number;
     '21-30': number;
     '-20': number;
-    applicant_count: number;
-    competition_rate: number;
   }
   
   export interface GetEachStatisticsResponse {
-    meister_applicant?: MeisterScoreDistribution;
-    social_applicant?: MeisterScoreDistribution;
-    common_applicant?: CommonScoreDistribution;
     total_applicant_count: number;
     total_competition_rate: number;
+    common_score: CommonScoreDistribution;
+    meister_score: SpecialScoreDistribution;
+    social_score: SpecialScoreDistribution;
   }
-  
-  // export interface GetAllStatisticsResponse {
-  //   daejeon?: GetEachStatisticsResponse;
-  //   nationwide?: GetEachStatisticsResponse;
-  //   total_applicant_count: number;
-  //   total_competition_rate: number;
-  // }
-  
-  export type GetStatisticsResponse = GetEachStatisticsResponse
   
   export interface GetApplicantsListPayload {
     index?: number;
