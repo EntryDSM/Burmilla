@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { color, pxToRem, } from '../../styles';
+import styled, { css } from 'styled-components';
+import { color, pxToRem } from '../../styles';
 
 export const Schedule = styled.div`
   width: 100%;
@@ -59,6 +59,7 @@ export const ScheduleImg = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 0.5rem;
+
     & > img {
       width: 90px;
       height: 91px;
@@ -84,7 +85,7 @@ export const ScheduleDateTitle = styled.div`
 `;
 
 export const ScheduleDateBody = styled.div`
-
+  width: 100%;
 `;
 
 export const ScheduleDateSelectBox = styled.div`
@@ -98,59 +99,61 @@ export const ScheduleDateSelectBox = styled.div`
   user-select: none;
 `;
 
-export const ScheduleSelect = styled.div`
+export const ScheduleSelectDivision = styled.span`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-`;
-
-export const ScheduleDateSelect = styled.div`
-  position: relative;
-  width: 42px;
-  border: 1px solid #606060;
-  border-radius: 4px;
-  background: ${color.backgorund};
-  padding: 0.2rem 0.7rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-  &:hover > div ~ div {
-    visibility: visible;
-    height: ${({height}:any) => (height ? height : "156")}px;
-  }
-  & > div ~ div {
-    visibility: hidden;
-    height: 3px;
-  }
-`;
-
-export const ScheduleSelectTitleBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const ScheduleSelectTitle = styled.div`
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
+  color: ${color.primaryTextColor};
 `;
 
-export const ScheduleSelectTitleImg = styled.img`
-  width: 11px;
-  margin-top: 2px;
+export const Select = styled.div<{
+  disabled: string;
+}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${({ disabled }) => css`
+    width: 36%;
+    border: 1px solid ${disabled === 'disabled' ? color.disable : 'black'};
+    color: ${disabled === 'disabled' ? color.disable : 'black'};
+    background-color: ${disabled === 'block' ? '#f1f1f1' : '#ffffff'};
+  `}
+  height: 38px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0.5rem 0.7rem;
+  position: relative;
+  cursor: pointer;
 `;
 
-export const ScheduleSelectContentBox = styled.div`
+export const SelectContent = styled.div<{
+}>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  > img {
+    margin-top: 3px;
+    width: 11px;
+  }
+`;
+
+export const SubSelect = styled.div`
   position: absolute;
   min-width: 100%;
-  transition: all 0.3s;
+  height: 200px;
   background: ${color.backgorund};
   border: 1px solid #606060;
   border-radius: 0 0 4px 4px;
   border-top: none;
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
   left: -1px;
   top: 90%;
   overflow-y: scroll;
@@ -158,40 +161,29 @@ export const ScheduleSelectContentBox = styled.div`
   &::-webkit-scrollbar {
     width: 0;
   }
-`;
-
-export const ScheduleSelectMiddleBar = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
-  
-  > div {
-    border: 0.1px solid ${color.middleBar};
-    background: ${color.middleBar};
-    height: 0px;
-    width: 46px;
-  }
-`;
-
-export const ScheduleSelectContent = styled.div`
-  font-size: 14px;
-  color: ${color.primaryTextColor};
-  padding: 0.3rem 0.7rem;
-
   > p {
-    transition: 0.2s;
-    margin-bottom: ${pxToRem(4)}rem;
-
-    &:hover {
-      transition: 0.2s;
-      color: ${color.primaryColor}
-    }
+    height: 24px;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 11px;
+    margin-bottom: 6px;
+    color: black;
+    cursor: pointer;
+  }
+  > p:hover {
+    color: ${color.sub};
+    font-weight: 500;
   }
 `;
 
-export const ScheduleSelectDivision = styled.span`
-  font-size: 15px;
-  font-weight: bold;
-  color: ${color.primaryTextColor};
-  margin-left: ${pxToRem(6)}rem;
+export const GrayLine = styled.div<{
+  width: number;
+}>`
+  ${({ width }) => css`
+    width: ${width}px;
+  `}
+  border: 0.1px solid ${color.middleBar};
+  background: ${color.middleBar};
+  height: 0px;
+  margin: 8px auto 10px auto;
 `;
