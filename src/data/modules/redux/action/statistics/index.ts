@@ -13,10 +13,11 @@
   // });
   
   // export type StatisticsActions = GetStatistics; 
+import { error } from '../../../../../models/error';
 import { 
   GET_STATISTICS, 
-  STATISTICS_SUCCESS, 
-  STATISTICS_FAILURE 
+  GET_STATISTICS_SUCCESS, 
+  GET_STATISTICS_FAILURE 
 } from "./interface";
 import { 
   CommonScoreDistribution, 
@@ -30,12 +31,12 @@ export const getStatisticsSuccess = (payload: {
   meister_score: SpecialScoreDistribution;
   social_score: SpecialScoreDistribution;
 }) => ({
-  type: STATISTICS_SUCCESS,
+  type: GET_STATISTICS_SUCCESS,
   payload,
 })
 
-export const getStatisticsFailure = (payload: number) => ({
-  type: STATISTICS_FAILURE,
+export const getStatisticsFailure = (payload: error) => ({
+  type: GET_STATISTICS_FAILURE,
   payload,
 })
 
