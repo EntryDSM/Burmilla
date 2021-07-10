@@ -44,7 +44,11 @@ const initialState: IStatisticsState = {
       '-20': 0,
     },
   },
-  error: null,
+  error: {
+    status: 0,
+    message: '',
+    type: '',
+  },
 };
 
 const statisticsReducer = (state: IStatisticsState = initialState, action: statisticsActionType) => {
