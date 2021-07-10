@@ -1,85 +1,77 @@
-  import {
-    statisticsActionType,
-    // GET_STATISTICS_ASYNC,
-  } from '../../action/statistics';
-  import { GetEachStatisticsResponse } from '../../../../api/apiTypes';
-  import { STATISTICS_SUCCESS, STATISTICS_FAILURE } from "../../action/statistics/interface";
-  // import { returnApiResponseData } from '..';
-  // import { API_STATUS } from '../../../../api/index';
-  
-  export interface IStatisticsState {
-    getStatisticsStatus: 0 | 200 | 400 | 401;
-    statistics: GetEachStatisticsResponse;
-  }
-  
-  const initialState: IStatisticsState = {
-    getStatisticsStatus: 0,
-    statistics: {
-      total_applicant_count: 0,
-      total_competition_rate: 0,
-      common_score: {
-        '141-150': 0,
-        '131-140': 0,
-        '121-130': 0,
-        '111-120': 0,
-        '101-110': 0,
-        '91-100': 0,
-        '81-90': 0,
-        '-80': 0,
-        common_count: 0,    
-        common_competition_rate: 0,   
-      },
-      meister_score: {
-        '81-90': 0,
-        '71-80': 0,
-        '61-70': 0,
-        '51-60': 0,
-        '41-50': 0,
-        '31-40': 0,
-        '21-30': 0,
-        '-20': 0,
-        special_count: 0,
-        special_competition_rate: 0,
-      },
-      social_score: {
-        '81-90': 0,
-        '71-80': 0,
-        '61-70': 0,
-        '51-60': 0,
-        '41-50': 0,
-        '31-40': 0,
-        '21-30': 0,
-        '-20': 0,
-        special_count: 0,
-        special_competition_rate: 0,
-      },
-    }
-  };
+import { IStatisticsState } from "./interface";
+import { statisticsActionType } from '../../action/statistics';
+import { GET_STATISTICS_SUCCESS, GET_STATISTICS_FAILURE, GET_STATISTICS } from "../../action/statistics/interface";
 
-  const statisticsReducer = (state: IStatisticsState = initialState, action: statisticsActionType) => {
-    switch (action.type) {
-      // case GET_STATISTICS_ASYNC:
-      //   return returnApiResponseData<InitialState>({
-      //     state,
-      //     statusName: API_STATUS.getStatisticsStatus,
-      //     dataKeyName: 'statistics',
-      //   });
-      case STATISTICS_SUCCESS: {
-        return {
-          ...state,
-          statistics: action.payload
-        };
-      }
-      case STATISTICS_FAILURE: {
-        return {
-          ...state,
+const initialState: IStatisticsState = {
+  getStatisticsStatus: 0,
+  statistics: {
+    total_applicant_count: 0,
+    total_competition_rate: 0,
+    common_score: {
+      common_count: 0,    
+      common_competition_rate: 0,   
+      '141-150': 0,
+      '131-140': 0,
+      '121-130': 0,
+      '111-120': 0,
+      '101-110': 0,
+      '91-100': 0,
+      '81-90': 0,
+      '-80': 0,
+    },
+    meister_score: {
+      special_count: 0,
+      special_competition_rate: 0,
+      '81-90': 0,
+      '71-80': 0,
+      '61-70': 0,
+      '51-60': 0,
+      '41-50': 0,
+      '31-40': 0,
+      '21-30': 0,
+      '-20': 0,
+    },
+    social_score: {
+      special_count: 0,
+      special_competition_rate: 0,
+      '81-90': 0,
+      '71-80': 0,
+      '61-70': 0,
+      '51-60': 0,
+      '41-50': 0,
+      '31-40': 0,
+      '21-30': 0,
+      '-20': 0,
+    },
+  },
+  error: null,
+};
+
+const statisticsReducer = (state: IStatisticsState = initialState, action: statisticsActionType) => {
+  switch (action.type) {  
+    case GET_STATISTICS_SUCCESS: {
+      return {
+        ...state,
+        statistics: {
+          total_applicant_count: action.payload.total_applicant_count,
+          total_competition_rate: action.payload.total_competition_rate,
+          common_score: action.payload.common_score,
+          meister_score: action.payload.meister_score,
+          social_score: action.payload.social_score,
         }
-      }
-      default: {
-        return state;
+      };
+    }
+    case GET_STATISTICS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
       }
     }
-  };
+    default: {
+      return state;
+    }
+  }
+};
   
-  export default statisticsReducer;
+export default statisticsReducer;
   
