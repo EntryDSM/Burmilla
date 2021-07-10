@@ -1,24 +1,29 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
 import { useStatistics } from "../../../../../hooks/statistics";
+import { SpecialScoreDistribution } from "../../../../../data/api/apiTypes";
 
-const SocialGraph: FC = () => {
+interface Props {
+  socialScore: SpecialScoreDistribution;
+}
+
+const SocialGraph: FC<Props> = ({ socialScore }) => {
   const [isWidthOfSocialGraphBar, setIsWidthOfSocialGraphBar] =
     React.useState<any>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
-  const {
-    statisticsStore: {
-      statistics: { social_applicant },
-    },
-    getStatistics,
-  } = useStatistics();
+  // const {
+  //   state: {
+  //     statistics: { social_score },
+  //   },
+  //   setState: { getStatistics },
+  // } = useStatistics();
 
+  // React.useEffect(() => {
+  //   getStatistics();
+  // }, []);
   React.useEffect(() => {
-    // getStatistics({ area: "all" });
-  }, []);
-  React.useEffect(() => {
-    setIsWidthOfSocialGraphBar(social_applicant.applicant_count);
+    setIsWidthOfSocialGraphBar(socialScore.special_count);
     setIsAppearGraphOpa(true);
   }, []);
 
@@ -40,7 +45,7 @@ const SocialGraph: FC = () => {
           </S.SocialGraphBar>
         )}
         <S.GraphCompetitionRate>
-          {social_applicant.competition_rate}:1
+          {socialScore.special_competition_rate}:1
         </S.GraphCompetitionRate>
       </S.GraphChart>
     </S.GraphWrapper>
