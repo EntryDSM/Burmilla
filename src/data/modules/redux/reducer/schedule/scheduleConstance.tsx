@@ -25,21 +25,21 @@ export type scheduleType =
 const scheduleConstance: Record<scheduleType, processType> = {
   [NOT_APPLICATION_PERIOD]: {
     title: <p>지금은 원서접수기간이 아닙니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>원서접수 기간은 {<span>{date}</span>} 에 시작됩니다.</p>
     ),
     buttonText: "일정 수정",
   },
   [START_DATE]: {
     title: <p>지금은 {<span>원서 작성</span>} 기간입니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>원서 접수 기간은 {<span>{date}</span>} 까지 입니다.</p>
     ),
     buttonText: "일정 수정",
   },
   [BEFORE_FIRST_ANNOUNCEMENT]: {
     title: <p>원서 접수가 끝났습니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>1차 발표일은 {<span>{date}</span>} 입니다.</p>
     ),
     buttonText: "일정 수정",
@@ -51,28 +51,28 @@ const scheduleConstance: Record<scheduleType, processType> = {
   },
   [BEFORE_INTERVIEW]: {
     title: <p>면접 진행 전입니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>면접 기간은 {<span>{date}</span>} 입니다.</p>
     ),
     buttonText: "일정 수정",
   },
   [INTERVIEW]: {
     title: <p>지금은 {<span>면접</span>} 기간입니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>면접 기간은 {<span>{date}</span>} 입니다. </p>
     ),
     buttonText: "일정 수정",
   },
   [BEFORE_SECOND_ANNOUNCEMENT]: {
     title: <p>면접이 끝났습니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>2차 발표일은 {<span>{date}</span>} 입니다.</p>
     ),
     buttonText: "일정 수정",
   },
   [SECOND_ANNOUNCEMENT]: {
     title: <p>지금은 {<span>발표 및 등록</span>} 기간입니다.</p>,
-    getDescription: (date: string) => (
+    getDescription: (date?: string) => (
       <p>등록 기간은 {<span>{date}</span>} 입니다.</p>
     ),
     buttonText: "일정 수정",
