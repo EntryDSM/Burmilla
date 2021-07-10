@@ -21,14 +21,6 @@ const MainContainer: FC = () => {
   const scheduleState = useSchedule();
   const getNowProcess = (status: string) => {
     if (!scheduleState.state.processes[status]) return ScheduleDummyData;
-    if (status === "NOT_APPLICATION_PERIOD")
-      return scheduleState.state.processes[START_DATE];
-    if (status === "BEFORE_FIRST_ANNOUNCEMENT")
-      return scheduleState.state.processes[FIRST_ANNOUNCEMENT];
-    if (status === "BEFORE_SECOND_ANNOUNCEMENT")
-      return scheduleState.state.processes[SECOND_ANNOUNCEMENT];
-    if (status === "BEFORE_INTERVIEW")
-      return scheduleState.state.processes[INTERVIEW];
     return scheduleState.state.processes[status];
   };
 
