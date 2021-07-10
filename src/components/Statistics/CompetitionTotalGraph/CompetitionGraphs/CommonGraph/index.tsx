@@ -1,24 +1,29 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
 import { useStatistics } from "../../../../../hooks/statistics";
+import { CommonScoreDistribution } from "../../../../../data/api/apiTypes";
 
-const CommonGraph: FC = () => {
+interface Props {
+  commonScore: CommonScoreDistribution;
+}
+
+const CommonGraph: FC<Props> = ({ commonScore }) => {
   const [isWidthOfCommonGraphBar, setIsWidthOfCommonGraphBar] =
     React.useState<any>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
-  const {
-    statisticsStore: {
-      statistics: { common_applicant },
-    },
-    getStatistics,
-  } = useStatistics();
+  // const {
+  // state: {
+  // statistics: { common_score },
+  // },
+  // setState: { getStatistics },
+  // } = useStatistics();
 
+  // React.useEffect(() => {
+  // getStatistics();
+  // }, []);
   React.useEffect(() => {
-    // getStatistics({ area: "all" });
-  }, []);
-  React.useEffect(() => {
-    setIsWidthOfCommonGraphBar(common_applicant.applicant_count);
+    setIsWidthOfCommonGraphBar(commonScore.common_count);
     setIsAppearGraphOpa(true);
   }, []);
 
@@ -40,7 +45,7 @@ const CommonGraph: FC = () => {
           </S.CommonGraphBar>
         )}
         <S.GraphCompetitionRate>
-          {common_applicant.competition_rate}:1
+          {commonScore.common_competition_rate}:1
         </S.GraphCompetitionRate>
       </S.GraphChart>
     </S.GraphWrapper>
