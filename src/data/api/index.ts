@@ -51,9 +51,10 @@ export const getScheduleApi = async () => {
   return response;
 }
 
-export const updateScheduleApi = async (payload: T.UpdateScheduleStatusPayload) => {
+export const updateScheduleApi = async (access_token: string, payload: T.UpdateScheduleStatusPayload) => {
   try {
-    const request = instance('main')
+    const request = instance('main');
+
     await request.patch(uri.schedules , payload, {
     headers: authorization(getAccessToken()),
   });
@@ -62,16 +63,15 @@ export const updateScheduleApi = async (payload: T.UpdateScheduleStatusPayload) 
   }
 }
 
-export const getStatisticsApi = async (payload: T.GetStatisticsPayload) => {
-  const response = await instance('main').get<T.GetStatisticsResponse>(
+export const getStatisticsApi = async (access_token: string) => {
+  const response = await instance('main').get<T.GetEachStatisticsResponse>(
    uri.total ,
     {
       headers: authorization(getAccessToken()),
-      params: payload,
     },
   );
 
-  return [response.data, response.status];
+  return response;
 };
 
 export const getApplicantsListApi = async (
