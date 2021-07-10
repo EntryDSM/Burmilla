@@ -1,4 +1,4 @@
-import { takeLatest, debounce } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga from '../../../../../utils/saga/createRequestSaga';
 import { getScheduleApi, updateScheduleApi } from '../../../../api/index';
 import { GET_STATUS, SET_SCHEDULE } from '../../../../modules/redux/action/schedule/interface';
@@ -6,9 +6,9 @@ import { GET_STATUS, SET_SCHEDULE } from '../../../../modules/redux/action/sched
 export const getScheduleSaga = createRequestSaga(GET_STATUS, getScheduleApi);
 export const updateScheduleSaga = createRequestSaga(SET_SCHEDULE, updateScheduleApi);
 
-function* userSaga() {
+function* scheduleSaga() {
   yield takeLatest(GET_STATUS, getScheduleSaga);
-  yield debounce(3000, SET_SCHEDULE, updateScheduleSaga);
+  yield takeLatest(SET_SCHEDULE, updateScheduleSaga);
 }
 
-export default userSaga;
+export default scheduleSaga;
