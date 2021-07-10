@@ -62,7 +62,7 @@ export const CompetitionTableWrapper = styled.div`
   justify-content: space-between;
   margin-top: 3%;
 
-  > table.common_applicant-table {
+  > table.common_score-table {
     width: 33%;
     border-spacing: 0;
     border-collapse: collapse;
@@ -72,7 +72,7 @@ export const CompetitionTableWrapper = styled.div`
     padding: 0;
     text-align: center;
   }
-  > table.meister_applicant-table {
+  > table.meister_score-table {
     width: 45%;
     border-spacing: 0;
     border-collapse: collapse;
