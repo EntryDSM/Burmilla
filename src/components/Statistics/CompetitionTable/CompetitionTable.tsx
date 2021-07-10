@@ -1,27 +1,43 @@
 import React, { FC } from "react";
 import * as S from "../style";
 import { useStatistics } from "../../../hooks/statistics";
+import {
+  CommonScoreDistribution,
+  SpecialScoreDistribution,
+} from "../../../data/api/apiTypes";
 
-const CompetitionTable: FC = () => {
-  const {
-    statisticsStore: {
-      statistics: {
-        meister_applicant,
-        social_applicant,
-        common_applicant,
-        total_applicant_count,
-      },
-    },
-    getStatistics,
-  } = useStatistics();
+interface Props {
+  commonScore: CommonScoreDistribution;
+  meisterScore: SpecialScoreDistribution;
+  socialScore: SpecialScoreDistribution;
+  totalApplicantCount: number;
+}
+
+const CompetitionTable: FC<Props> = ({
+  commonScore,
+  meisterScore,
+  socialScore,
+  totalApplicantCount,
+}) => {
+  // const {
+  //   state: {
+  //     statistics: {
+  //       commonScore,
+  //       meisterScore,
+  //       social_score,
+  //       total_applicant_count,
+  //     },
+  //   },
+  //   setState: { getStatistics },
+  // } = useStatistics();
 
   // React.useEffect(() => {
-  //   getStatistics({ area: "all" });
+  //   getStatistics();
   // }, []);
 
   return (
     <S.CompetitionTableWrapper>
-      <table className="common_applicant-table">
+      <table className="common_score-table">
         <tbody>
           <tr>
             <td
@@ -44,7 +60,7 @@ const CompetitionTable: FC = () => {
               141 ~ 150
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["141-150"] || "0"}
+              {commonScore["141-150"] || "0"}
             </td>
           </tr>
           <tr />
@@ -56,7 +72,7 @@ const CompetitionTable: FC = () => {
               131 ~ 140
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["131-140"] || "0"}
+              {commonScore["131-140"] || "0"}
             </td>
           </tr>
           <tr />
@@ -68,7 +84,7 @@ const CompetitionTable: FC = () => {
               121 ~ 130
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["121-130"] || "0"}
+              {commonScore["121-130"] || "0"}
             </td>
           </tr>
           <tr />
@@ -80,7 +96,7 @@ const CompetitionTable: FC = () => {
               111 ~ 120
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["111-120"] || "0"}
+              {commonScore["111-120"] || "0"}
             </td>
           </tr>
           <tr />
@@ -92,7 +108,7 @@ const CompetitionTable: FC = () => {
               101 ~ 110
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["101-110"] || "0"}
+              {commonScore["101-110"] || "0"}
             </td>
           </tr>
           <tr />
@@ -104,7 +120,7 @@ const CompetitionTable: FC = () => {
               91 ~ 100
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["91-100"] || "0"}
+              {commonScore["91-100"] || "0"}
             </td>
           </tr>
           <tr />
@@ -116,7 +132,7 @@ const CompetitionTable: FC = () => {
               81 ~ 90
             </td>
             <td rowSpan={2} className="table-border-right">
-              {common_applicant["81-90"] || "0"}
+              {commonScore["81-90"] || "0"}
             </td>
           </tr>
           <tr />
@@ -128,12 +144,12 @@ const CompetitionTable: FC = () => {
               80점 이하
             </td>
             <td rowSpan={2} className="table-border-right table-border-bottom">
-              {common_applicant["-80"] || "0"}
+              {commonScore["-80"] || "0"}
             </td>
           </tr>
         </tbody>
       </table>
-      <table className="meister_applicant-table">
+      <table className="meister_score-table">
         <tbody>
           <tr>
             <td
@@ -161,9 +177,9 @@ const CompetitionTable: FC = () => {
             >
               81 ~ 90
             </td>
-            <td rowSpan={2}>{meister_applicant["81-90"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["81-90"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["81-90"] || "0"}
+              {socialScore["81-90"] || "0"}
             </td>
           </tr>
           <tr />
@@ -174,9 +190,9 @@ const CompetitionTable: FC = () => {
             >
               71 ~ 80
             </td>
-            <td rowSpan={2}>{meister_applicant["71-80"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["71-80"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["71-80"] || "0"}
+              {socialScore["71-80"] || "0"}
             </td>
           </tr>
           <tr />
@@ -187,9 +203,9 @@ const CompetitionTable: FC = () => {
             >
               61 ~ 70
             </td>
-            <td rowSpan={2}>{meister_applicant["61-70"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["61-70"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["61-70"] || "0"}
+              {socialScore["61-70"] || "0"}
             </td>
           </tr>
           <tr />
@@ -200,9 +216,9 @@ const CompetitionTable: FC = () => {
             >
               51 ~ 60
             </td>
-            <td rowSpan={2}>{meister_applicant["51-60"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["51-60"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["51-60"] || "0"}
+              {socialScore["51-60"] || "0"}
             </td>
           </tr>
           <tr />
@@ -213,9 +229,9 @@ const CompetitionTable: FC = () => {
             >
               41 ~ 50
             </td>
-            <td rowSpan={2}>{meister_applicant["41-50"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["41-50"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["41-50"] || "0"}
+              {socialScore["41-50"] || "0"}
             </td>
           </tr>
           <tr />
@@ -226,9 +242,9 @@ const CompetitionTable: FC = () => {
             >
               31 ~ 40
             </td>
-            <td rowSpan={2}>{meister_applicant["31-40"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["31-40"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["31-40"] || "0"}
+              {socialScore["31-40"] || "0"}
             </td>
           </tr>
           <tr />
@@ -239,9 +255,9 @@ const CompetitionTable: FC = () => {
             >
               21 ~ 30
             </td>
-            <td rowSpan={2}>{meister_applicant["21-30"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["21-30"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {social_applicant["21-30"] || "0"}
+              {socialScore["21-30"] || "0"}
             </td>
           </tr>
           <tr />
@@ -253,16 +269,16 @@ const CompetitionTable: FC = () => {
               20점 이하
             </td>
             <td rowSpan={2} className="table-border-bottom">
-              {meister_applicant["-20"] || "0"}
+              {meisterScore["-20"] || "0"}
             </td>
             <td rowSpan={2} className="table-border-right table-border-bottom">
-              {social_applicant["-20"] || "0"}
+              {socialScore["-20"] || "0"}
             </td>
           </tr>
           <tr />
         </tbody>
       </table>
-      <S.TotalScore>총계: {total_applicant_count}명</S.TotalScore>
+      <S.TotalScore>총계: {totalApplicantCount}명</S.TotalScore>
     </S.CompetitionTableWrapper>
   );
 };
