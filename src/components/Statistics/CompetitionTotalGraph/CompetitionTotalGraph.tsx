@@ -3,33 +3,40 @@ import * as S from "../style";
 import { useStatistics } from "../../../hooks/statistics";
 import { GraphRateItems } from "./CompetitionGraphs/GraphRateItems";
 import { CommonGraph, MeisterGraph, SocialGraph } from "./CompetitionGraphs";
+import {
+  CommonScoreDistribution,
+  SpecialScoreDistribution,
+} from "../../../data/api/apiTypes";
 
-const CompetitionTotalGraph: FC = () => {
-  const {
-    statisticsStore: {
-      statistics: { total_applicant_count, total_competition_rate },
-    },
-    getStatistics,
-  } = useStatistics();
+interface Props {
+  commonScore: CommonScoreDistribution;
+  meisterScore: SpecialScoreDistribution;
+  socialScore: SpecialScoreDistribution;
+  totalApplicantCount: number;
+  totalCompetitionRate: number;
+}
 
-  React.useEffect(() => {
-    // getStatistics({ area: "all" });
-  }, []);
-
+const CompetitionTotalGraph: FC<Props> = ({
+  commonScore,
+  meisterScore,
+  socialScore,
+  totalApplicantCount,
+  totalCompetitionRate,
+}) => {
   return (
     <S.CompetitionTotalGraphWrapper>
       <S.CompetitionFreshmanTotal>
         <span>총계:</span>
-        <S.TotalApplicantScore>{total_applicant_count}명</S.TotalApplicantScore>
+        <S.TotalApplicantScore>{totalApplicantCount}명</S.TotalApplicantScore>
         <span>경쟁률:</span>
         <S.TotalCompetitionRate>
-          {total_competition_rate}:1
+          {totalCompetitionRate}:1
         </S.TotalCompetitionRate>
       </S.CompetitionFreshmanTotal>
       <S.CompetitionGraphContainer>
-        <CommonGraph />
-        <MeisterGraph />
-        <SocialGraph />
+        <CommonGraph commonScore={commonScore} />
+        <MeisterGraph meisterScore={meisterScore} />
+        <SocialGraph socialScore={socialScore} />
       </S.CompetitionGraphContainer>
       <S.GraphRateBar>
         {GraphRateItems.map((item) => (
