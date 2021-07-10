@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+       "paths": {
+        "components/*": ["./src/components/*"],
+        "containers/*": ["./src/containers/*"],
+        "modules/*": ["./modules/*"]
+        },
+        "resolveJsonModule": false,
+        "isolatedModules": false,
+        "noEmit": false
+    }
+}
