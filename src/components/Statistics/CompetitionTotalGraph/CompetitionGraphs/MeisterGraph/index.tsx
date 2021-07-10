@@ -1,24 +1,29 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
 import { useStatistics } from "../../../../../hooks/statistics";
+import { SpecialScoreDistribution } from "../../../../../data/api/apiTypes";
 
-const MeisterGraph: FC = () => {
+interface Props {
+  meisterScore: SpecialScoreDistribution;
+}
+
+const MeisterGraph: FC<Props> = ({ meisterScore }) => {
   const [isWidthOfMeisterGraphBar, setIsWidthOfMeisterGraphBar] =
     React.useState<any>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
-  const {
-    statisticsStore: {
-      statistics: { meister_applicant },
-    },
-    getStatistics,
-  } = useStatistics();
+  // const {
+  //   state: {
+  //     statistics: { meister_score },
+  //   },
+  //   setState: { getStatistics },
+  // } = useStatistics();
 
+  // React.useEffect(() => {
+  //   getStatistics();
+  // }, []);
   React.useEffect(() => {
-    // getStatistics({ area: "all" });
-  }, []);
-  React.useEffect(() => {
-    setIsWidthOfMeisterGraphBar(meister_applicant.applicant_count);
+    setIsWidthOfMeisterGraphBar(meisterScore.special_count);
     setIsAppearGraphOpa(true);
   }, []);
 
@@ -44,7 +49,7 @@ const MeisterGraph: FC = () => {
           </S.MeisterGraphBar>
         )}
         <S.GraphCompetitionRate>
-          {meister_applicant.competition_rate}:1
+          {meisterScore.special_competition_rate}:1
         </S.GraphCompetitionRate>
       </S.GraphChart>
     </S.GraphWrapper>
