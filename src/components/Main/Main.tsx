@@ -18,6 +18,8 @@ const Main: FC<Props> = ({ status, process, date }) => {
   const mainButtonClickHandler = () => {
     history.push("/schedule");
   };
+
+  console.log(date);
   return (
     <S.Main>
       <S.MainBackground />
