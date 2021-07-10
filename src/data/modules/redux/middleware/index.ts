@@ -83,5 +83,10 @@ export function* sagaEntity<ActionT, PayloadT = object>({
 }
 
 export default function* rootSaga() {
-  yield all([call(authSaga), call(applicantSaga), call(scheduleSaga), call(statisticsSaga)]);
+  yield all([
+    call(authSaga), 
+    call(applicantSaga), 
+    call(scheduleSaga), 
+    call(statisticsSaga),
+  ]);
 }
