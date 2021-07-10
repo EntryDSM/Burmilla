@@ -45,14 +45,17 @@ const Header: FC = () => {
 
   const headerItems = [
     {
+      id: 1,
       link: "/",
       content: "일정",
     },
     {
+      id: 2,
       link: "/total",
       content: "접수 현황",
     },
     {
+      id: 3,
       link: "/applicant",
       content: "지원자 목록",
     },
