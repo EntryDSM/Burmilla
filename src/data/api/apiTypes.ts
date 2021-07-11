@@ -38,29 +38,29 @@
   }
   
   export interface CommonScoreDistribution {
+    '158-170': number,
+    '145-157': number,
+    '132-144': number,
+    '119-131': number,
+    '106-118': number,
+    '93-105': number,
+    '80-92': number,
+    '-79': number,
     common_count: number;
     common_competition_rate: number;
-    '141-150': number;
-    '131-140': number;
-    '121-130': number;
-    '111-120': number;
-    '101-110': number;
-    '91-100': number;
-    '81-90': number;
-    '-80': number;
   }
 
   export interface SpecialScoreDistribution {
-    special_count: number;
-    special_competition_rate: number;
-    '81-90': number;
-    '71-80': number;
-    '61-70': number;
-    '51-60': number;
-    '41-50': number;
-    '31-40': number;
-    '21-30': number;
-    '-20': number;
+    '98-110': number,
+    '85-97': number,
+		'72-84': number,
+		'59-71': number,
+		'46-58': number,
+		'33-45': number,
+		'20-32': number,
+		'-19': number,
+    special_count: number,
+    special_competition_rate: number,
   }
   
   export interface GetEachStatisticsResponse {
