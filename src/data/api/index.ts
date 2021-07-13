@@ -98,18 +98,18 @@ export const getApplicantInfoApi = async (
       params: payload,
     },
   );
+  
 
   return [response.data, response.status];
 };
 
-export const updateApplicantStatusApi = async ({
-  email,
-  ...payload
-}: T.UpdateApplicantStatusPayload) => {
-  const response = await instance('main').patch(uri.applicant , payload, {
+export const updateApplicantStatusApi = async (
+  payload: T.UpdateApplicantStatusPayload,
+) => {
+  const response = await instance('main').patch(`/admin/applicant`, {
     headers: authorization(getAccessToken()),
     params: {
-      email,
+      payload,
     },
   });
 
