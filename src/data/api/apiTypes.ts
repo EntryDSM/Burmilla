@@ -72,24 +72,21 @@
   }
   
   export interface GetApplicantsListPayload {
-    index?: number;
-    email?: string | null;
-    receipt_code?: number | null;
-    school_name?: string | null;
-    applicant_tel?: number | null;
-    name?: string | null;
+    size?: number;
+    page?: number;
     is_daejeon?: boolean | null;
     is_nationwide?: boolean | null;
-    is_arrived?: boolean | null;
-    is_paid?: boolean | null;
+    is_printed_arrived?: boolean | null;
     is_common?: boolean | null;
     is_meister?: boolean | null;
     is_social?: boolean | null;
+    receipt_code?: number | null;
+    telephone_number?: number | null;
+    name?: string | null;
   }
   
   export interface ApplicantListItem {
     receipt_code: number;
-    email: string;
     name: string;
     is_daejeon: boolean;
     application_type: string;
@@ -100,67 +97,63 @@
   export interface GetApplicantsListResponse {
     total_elements: number;
     total_pages: number;
-    applicants_information: ApplicantListItem[];
+    applicants_information_response: ApplicantListItem[];
   }
   
   export interface GetApplicantInfoPayload {
-    email: string;
+    receipt_code: number;
   }
   
   export interface ApplicantStatus {
-    is_paid: boolean;
-    is_arrived: boolean;
-    is_final_submit: boolean;
+    is_printed_arrived: boolean;
+    is_submit: boolean;
   }
   
-  export interface ApplicantPrivacy {
-    user_photo: string;
+  export interface ApplicantPersonalData {
+    photo_file_name: string;
     name: string;
     birth_date: string;
     school_name: string;
-    grade_type: string;
-    apply_type: string;
+    is_graduated: boolean;
+    educational_status: string;
+    application_type: string;
     address: string;
     detail_address: string;
-    applicant_tel: string;
+    email: string;
+    telephone_number: string;
     parent_tel: string;
     school_tel: string;
     home_tel: string;
-    email: string;
   }
   
   export interface ApplicantEvaluation {
     volunteer_time: number;
     conversion_score: number;
-    full_absent_count: number;
+    day_absence_count: number;
+    lecture_absence_count: number;
     early_leave_count: number;
-    late_count: number;
-    period_absent_count: number;
-    self_introduction: string;
+    lateness_count: number;
+    self_introduce: string;
     study_plan: string;
   }
   
   export interface GetApplicantInfoResponse {
     applicant_information?: {
       status: ApplicantStatus;
-      privacy: ApplicantPrivacy;
+      personal_data: ApplicantPersonalData;
       evaluation: ApplicantEvaluation;
     };
     applicant_contact?: {
-      applicant_tel: number;
       email: string;
+      telephone_number: number;
       parent_tel: number;
       home_tel: number;
       school_tel?: number;
     };
-    school_tel?: number;
   }
   
   export interface UpdateApplicantStatusPayload {
-    email: string;
-    is_arrived?: boolean;
-    is_paid?: boolean;
-    is_final_submit?: boolean;
+    is_printed_arrived?: boolean;
   }
   
   export interface DownloadExcelResponse {
