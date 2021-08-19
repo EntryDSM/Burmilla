@@ -29,24 +29,22 @@ const initialState: InitialState = {
   getApplicantInfoStatus: 0,
   updateApplicantStatusStatus: 0,
   filters: {
-    index: 1,
-    email: null,
-    receipt_code: null,
-    school_name: null,
-    applicant_tel: null,
-    name: null,
+    size: 1,
+    page: 0,
     is_daejeon: null,
     is_nationwide: null,
-    is_arrived: null,
-    is_paid: null,
+    is_printed_arrived: null,
     is_common: null,
     is_meister: null,
     is_social: null,
+    receipt_code: null,
+    telephone_number: null,
+    name: null,
   },
   applicantsList: {
     total_elements: 0,
     total_pages: 0,
-    applicants_information: [],
+    applicants_information_response: [],
   },
   currnetApplicantInfo: null,
 };
@@ -91,17 +89,12 @@ const applicantReducer = (
     case UPDATE_APPLICANT_LIST:
       const newApplicantsList = { ...state.applicantsList };
       const newCurrnetApplicantInfo = { ...state.currnetApplicantInfo };
-      const { applicants_information } = state.applicantsList;
-      const { email, is_arrived, is_paid, is_final_submit } = action.payload;
+      const { applicants_information_response } = state.applicantsList;
+      const { is_printed_arrived } = action.payload;
 
-      newApplicantsList.applicants_information = applicants_information.map(v =>
-        v.email === email ? { ...v, is_arrived, is_final_submit } : v,
+      newApplicantsList.applicants_information_response = applicants_information_response.map(v =>
+        v.is_printed_arrived === is_printed_arrived ? { ...v } : v,
       );
-      newCurrnetApplicantInfo.applicant_information.status = {
-        is_arrived,
-        is_paid,
-        is_final_submit,
-      };
 
       return {
         ...state,
