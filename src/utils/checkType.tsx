@@ -9,14 +9,14 @@ export const returnApplicationType = (applicationType: string) => {
     case "COMMON":
       return "일반전형";
     case "MEISTER":
-      return "마이스터전형";
+      return "마이스터 전형";
     case "SOCIAL_ONE_PARENT":
     case "SOCIAL_FROM_NORTH":
     case "SOCIAL_MULTICULTURAL":
     case "SOCIAL_BASIC_LIVING":
     case "SOCIAL_LOWEST_INCOME":
     case "SOCIAL_TEEN_HOUSEHOLDER":
-      return "사회통합전형";
+      return "사회통합 전형";
     default:
       return "";
   }
