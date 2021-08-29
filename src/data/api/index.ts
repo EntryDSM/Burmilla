@@ -4,7 +4,6 @@ import uri from './uri';
 import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
 import { getAccessToken } from '../../utils/token';
-import { statusRequest } from 'src/models/dto/request/statusRequest';
 
 export enum API_STATUS {
   loginStatus = 'loginStatus',
@@ -74,20 +73,16 @@ export const getStatisticsApi = async (access_token: string) => {
   return response;
 };
 
-export const getApplicantsListApi = async (
-  payload: T.GetApplicantsListPayload,
-) => {
+export const getApplicantsListApi = async (payload: T.GetApplicantsListPayload,) => {
   const response = await instance('main').get<T.GetApplicantsListResponse>(
-  //  `${uri.applicants}?size=${payload.size}&page=${payload.page}
-  //  &is-daejeon=${payload.is_daejeon}&is-nationwide=${payload.is_nationwide}
-  //  &is-printed-arrived=${payload.is_printed_arrived}
-  //  &is-common=${payload.is_common}&is-meister=${payload.is_meister}
-  //  &is-social=${payload.is_social}&receipt-code=${payload.receipt_code}
-  //  &telephone-number=${payload.telephone_number}&name=${payload.telephone_number}`,
-   uri.applicants,
+  //  uri.applicants,
+   `${uri.applicants}?size=${payload.size}$page=${payload.page}&is-daejeon=${payload.is_daejeon}
+   &is-nationwide=${payload.is_nationwide}&is-printed-arrived=&is-common=${payload.is_common}
+   &is-meister=${payload.is_meister}&is-social=${payload.is_social}
+   &receipt-code=&telephone-number&name=`,
     {
       headers: authorization(getAccessToken()),
-      params: payload,
+      // params: payload,
     },
   );
 
