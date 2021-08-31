@@ -1,44 +1,40 @@
-import {
-  ApplicantActions,
+import { ApplicantState } from "./interface";
+import { applicantActionType } from '../../action/applicant';
+import { 
   SET_FILTER,
-  GET_APPLICANTS_LIST_ASYNC,
-  GET_APPLICANT_INFO_ASYNC,
-  UPDATE_APPLICANT_STATUS_ASYNC,
-  UPDATE_APPLICANT_LIST,
-  RESET_UPDATE_STATUS,
-} from '../../action/applicant';
-import {
-  GetApplicantsListResponse,
-  GetApplicantInfoResponse,
-  GetApplicantsListPayload,
-} from '../../../../api/apiTypes';
-import { returnApiResponseData } from '../';
-import { API_STATUS } from '../../../../api/index';
+  GET_APPLICANT_INFO_SUCCESS,
+  GET_APPLICANT_INFO_FAILURE,
+  GET_APPLICANTS_LIST_SUCCESS,
+  GET_APPLICANTS_LIST_FAILURE,
+  UPDATE_APPLICANT_STATUS,
+  UPDATE_APPLICANT_STATUS_SUCCESS,
+  UPDATE_APPLICANT_STATUS_FAILURE,
+  // UPDATE_APPLICANT_SUBMIT_STATUS,
+  // UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
+  // UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
+  // UPDATE_APPLICANT_LIST,
+  // UPDATE_APPLICANT_LIST_SUCCESS,
+  // UPDATE_APPLICANT_LIST_FAILURE,
+  RESET_UPDATE_STATUS
+} from "../../action/applicant/interface";
+// import { returnApiResponseData } from '../';
+// import { API_STATUS } from '../../../../api/index';
 
-export interface InitialState {
-  getApplicantsListStatus: 0 | 200 | 401 | 403;
-  getApplicantInfoStatus: 0 | 200 | 401 | 403 | 423;
-  updateApplicantStatusStatus: 0 | 204 | 400 | 401 | 403;
-  filters: GetApplicantsListPayload;
-  applicantsList: GetApplicantsListResponse;
-  currnetApplicantInfo: GetApplicantInfoResponse | null;
-}
-
-const initialState: InitialState = {
+const InitialState: ApplicantState = {
   getApplicantsListStatus: 0,
   getApplicantInfoStatus: 0,
   updateApplicantStatusStatus: 0,
   filters: {
-    size: 1,
+    size: 10,
     page: 0,
-    is_daejeon: null,
-    is_nationwide: null,
+    is_daejeon: false,
+    is_nationwide: false,
     is_printed_arrived: null,
-    is_common: null,
-    is_meister: null,
-    is_social: null,
+    is_common: true,
+    is_meister: true,
+    is_social: true,
     receipt_code: null,
-    telephone_number: null,
+    telephone: null,
     name: null,
   },
   applicantsList: {
@@ -47,14 +43,16 @@ const initialState: InitialState = {
     applicants_information_response: [],
   },
   currnetApplicantInfo: null,
+  error: {
+    status: 0,
+    message: '',
+    type: '',
+  },
 };
 
-const applicantReducer = (
-  state = initialState,
-  action: ApplicantActions,
-): InitialState => {
+const applicantReducer = (state: ApplicantState = InitialState, action: applicantActionType) => {
   switch (action.type) {
-    case SET_FILTER:
+    case SET_FILTER: {
       return {
         ...state,
         filters: {
@@ -62,45 +60,64 @@ const applicantReducer = (
           ...action.payload,
         },
       };
-    case GET_APPLICANTS_LIST_ASYNC:
-      return {
-        ...returnApiResponseData<InitialState>({
-          state,
-          statusName: API_STATUS.getApplicantsListStatus,
-          payload: action.payload,
-          dataKeyName: 'applicantsList',
-        }),
-        currnetApplicantInfo: null,
-      };
-    case GET_APPLICANT_INFO_ASYNC:
-      return returnApiResponseData<InitialState>({
-        state,
-        statusName: API_STATUS.getApplicantInfoStatus,
-        payload: action.payload,
-        dataKeyName: 'currnetApplicantInfo',
-      });
-    case UPDATE_APPLICANT_STATUS_ASYNC: {
-      return returnApiResponseData<InitialState>({
-        state,
-        statusName: API_STATUS.updateApplicantStatusStatus,
-        payload: action.payload,
-      });
     }
-    case UPDATE_APPLICANT_LIST:
-      const newApplicantsList = { ...state.applicantsList };
-      const newCurrnetApplicantInfo = { ...state.currnetApplicantInfo };
-      const { applicants_information_response } = state.applicantsList;
-      const { is_printed_arrived } = action.payload;
-
-      newApplicantsList.applicants_information_response = applicants_information_response.map(v =>
-        v.is_printed_arrived === is_printed_arrived ? { ...v } : v,
-      );
-
+    case GET_APPLICANTS_LIST_SUCCESS: {
       return {
         ...state,
-        applicantsList: newApplicantsList,
-        currnetApplicantInfo: newCurrnetApplicantInfo,
+        applicantsList: {
+          total_elements: action.payload.total_elements,
+          total_pages: action.payload.total_pages,
+          applicants_information_response: action.payload.applicants_information_response,
+        },
+        currnetApplicantInfo: null,
       };
+    }
+    case GET_APPLICANTS_LIST_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+    case GET_APPLICANT_INFO_SUCCESS:
+      return {
+        ...state,
+        currnetApplicantInfo: null,
+      };
+    case GET_APPLICANT_INFO_FAILURE:
+      return {
+        ...state,
+      };
+    case UPDATE_APPLICANT_STATUS: 
+      return {
+        ...state,
+      }
+    case UPDATE_APPLICANT_STATUS_SUCCESS: 
+      return {
+        ...state,
+      }
+    case UPDATE_APPLICANT_STATUS_FAILURE: 
+      return {
+        ...state,
+      }
+    // case UPDATE_APPLICANT_LIST:
+    //   const newApplicantsList = { ...state.applicantsList };
+    //   const newCurrnetApplicantInfo = { ...state.currnetApplicantInfo };
+    //   const { applicants_information_response } = state.applicantsList;
+    //   const { is_printed_arrived } = action.payload;
+
+    //   newApplicantsList.applicants_information_response = applicants_information_response.map(v =>
+    //     v.is_printed_arrived === is_printed_arrived ? { ...v } : v,
+    //   );
+    //   // newCurrnetApplicantInfo.applicant_information.status = {
+    //   //   is_printed_arrived,
+    //   //   is_submit,
+    //   // };
+
+    //   return {
+    //     ...state,
+    //     applicantsList: newApplicantsList,
+    //     currnetApplicantInfo: newCurrnetApplicantInfo,
+    //   };
     case RESET_UPDATE_STATUS:
       return {
         ...state,
