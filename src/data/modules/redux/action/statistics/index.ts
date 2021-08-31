@@ -1,18 +1,3 @@
-  // export const GET_STATISTICS = 'GET_STATISTICS';
-  // export const GET_STATISTICS_ASYNC = 'GET_STATISTICS_ASYNC';
-  
-  // export type getStatisticsType =
-  //   | typeof GET_STATISTICS
-  //   | typeof GET_STATISTICS_ASYNC;
-  // export interface GetStatistics {
-  //   type: getStatisticsType;
-  // }
-  // export const getStatisticsAction = (
-  // ): GetStatistics => ({
-  //   type: GET_STATISTICS,
-  // });
-  
-  // export type StatisticsActions = GetStatistics; 
 import { error } from '../../../../../models/error';
 import { 
   GET_STATISTICS, 
