@@ -18,7 +18,7 @@ export default rootReducer;
 export const returnApiResponseData = <I>(props: {
   state: I;
   statusName: string;
-  payload?: {
+  payload: {
     data?: null | any;
     status?: number;
   };
