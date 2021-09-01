@@ -12,7 +12,7 @@ interface Props {
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
-  resetUpdateStatus;
+  // resetUpdateStatus;
 }
 
 const ApplicantInfo: FC<Props> = ({
@@ -20,7 +20,7 @@ const ApplicantInfo: FC<Props> = ({
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  resetUpdateStatus,
+  // resetUpdateStatus,
 }) => {
   return currnetApplicantInfo.applicant_information ? (
     <>
@@ -37,7 +37,7 @@ const ApplicantInfo: FC<Props> = ({
             applicantListItem={info}
             updateApplicantStatusStatus={updateApplicantStatusStatus}
             updateApplicantStatus={updateApplicantStatus}
-            resetUpdateStatus={resetUpdateStatus}
+            // resetUpdateStatus={resetUpdateStatus}
           />
         ))}
     </>

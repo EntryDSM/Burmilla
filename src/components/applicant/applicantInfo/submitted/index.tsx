@@ -20,7 +20,7 @@ interface Props {
   applicantListItem: ApplicantListItem;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
-  resetUpdateStatus;
+  // resetUpdateStatus;
 }
 
 const Submitted: FC<Props> = ({
@@ -30,7 +30,7 @@ const Submitted: FC<Props> = ({
   applicantListItem,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  resetUpdateStatus,
+  // resetUpdateStatus,
 }) => {
   const checkGradeType = React.useCallback(() => {
     return (
@@ -46,7 +46,7 @@ const Submitted: FC<Props> = ({
         receipt_code={applicantListItem.receipt_code}
         updateApplicantStatusStatus={updateApplicantStatusStatus}
         updateApplicantStatus={updateApplicantStatus}
-        resetUpdateStatus={resetUpdateStatus}
+        // resetUpdateStatus={resetUpdateStatus}
       />
       <BasicInfo applicantPersonalData={applicantPersonalData} />
       <DetailInfo

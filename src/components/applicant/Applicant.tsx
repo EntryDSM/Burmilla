@@ -18,7 +18,7 @@ interface Props {
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
   // updateApplicantList: ;
-  resetUpdateStatus;
+  // resetUpdateStatus;
   // getApplicantInfo: (payload: ) => void;
   setFilter: (payload: GetApplicantsListPayload) => void;
 }
@@ -29,7 +29,7 @@ const Applicant: FC<Props> = ({
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  resetUpdateStatus,
+  // resetUpdateStatus,
   setFilter,
 }) => {
   return (
@@ -46,7 +46,7 @@ const Applicant: FC<Props> = ({
             currnetApplicantInfo={currnetApplicantInfo}
             updateApplicantStatusStatus={updateApplicantStatusStatus}
             updateApplicantStatus={updateApplicantStatus}
-            resetUpdateStatus={resetUpdateStatus}
+            // resetUpdateStatus={resetUpdateStatus}
           />
         )}
       </S.ApplicantInfoWrap>

@@ -9,7 +9,7 @@ interface Props {
   receipt_code: number;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
-  resetUpdateStatus;
+  // resetUpdateStatus;
 }
 
 const ApplicantStatuses: FC<Props> = ({
@@ -17,7 +17,7 @@ const ApplicantStatuses: FC<Props> = ({
   receipt_code,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  resetUpdateStatus,
+  // resetUpdateStatus,
 }) => {
   const [changedStatus, setChangedStatus] = React.useState<string>("");
 
@@ -34,7 +34,7 @@ const ApplicantStatuses: FC<Props> = ({
       window.alert("지원자 정보 수정 권한이 없습니다.");
     }
 
-    resetUpdateStatus();
+    // resetUpdateStatus();
   }, [updateApplicantStatusStatus]);
 
   const handleClickCheckbox = async (is_printed_arrived: boolean) => {
