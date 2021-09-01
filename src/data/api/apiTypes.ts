@@ -74,15 +74,15 @@
   export interface GetApplicantsListPayload {
     size?: number;
     page?: number;
-    is_daejeon?: boolean | null;
-    is_nationwide?: boolean | null;
-    is_printed_arrived?: boolean | null;
-    is_common?: boolean | null;
-    is_meister?: boolean | null;
-    is_social?: boolean | null;
-    receipt_code?: number | null;
-    telephone_number?: number | null;
-    name?: string | null;
+    is_daejeon?: boolean;
+    is_nationwide?: boolean;
+    is_printed_arrived?: boolean;
+    is_common?: boolean;
+    is_meister?: boolean;
+    is_social?: boolean;
+    receipt_code?: number;
+    telephone?: number;
+    name?: string;
   }
   
   export interface ApplicantListItem {
@@ -91,9 +91,9 @@
     is_daejeon: boolean;
     application_type: string;
     is_printed_arrived: boolean;
-    is_paid: boolean;
     is_submit: boolean;
   }
+
   export interface GetApplicantsListResponse {
     total_elements: number;
     total_pages: number;
@@ -151,10 +151,10 @@
       school_tel?: number;
     };
   }
-  
+
   export interface UpdateApplicantStatusPayload {
     is_printed_arrived?: boolean;
-  }
+   }
   
   export interface DownloadExcelResponse {
     file_url: string;
