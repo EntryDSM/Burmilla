@@ -1,37 +1,34 @@
 import React, { FC } from "react";
-
 import * as S from "./style";
-import { Checkbox, Button } from "../../../../Common";
-import { ApplicantStatus } from "../../../../../data/api/apiTypes";
-import { useApplicant } from "../../../../../hooks/applicant";
+import { Checkbox, Button } from "../../../../common";
 import checkApiStatus from "../../../../../data/api/checkApiStatus";
+import { UpdateApplicantStatusPayload } from "../../../../../data/api/apiTypes";
 
 interface Props {
-  applicantStatus: ApplicantStatus;
-  email: string;
+  is_printed_arrived: boolean;
+  receipt_code: number;
+  updateApplicantStatusStatus: number;
+  updateApplicantStatus: UpdateApplicantStatusPayload;
+  resetUpdateStatus;
 }
 
-const ApplicantStatuses: FC<Props> = ({ applicantStatus, email }) => {
-  const {
-    applicantStore: { updateApplicantStatusStatus },
-    updateApplicantStatus,
-    updateApplicantList,
-    getApplicantInfo,
-    resetUpdateStatus,
-  } = useApplicant();
-
+const ApplicantStatuses: FC<Props> = ({
+  is_printed_arrived,
+  receipt_code,
+  updateApplicantStatusStatus,
+  updateApplicantStatus,
+  resetUpdateStatus,
+}) => {
   const [changedStatus, setChangedStatus] = React.useState<string>("");
 
   React.useEffect(() => {
     if (checkApiStatus(updateApplicantStatusStatus)._204) {
-      updateApplicantList({
-        email,
-        ...applicantStatus,
-        [changedStatus]: !applicantStatus[changedStatus],
-      });
+      // updateApplicantList({
+      //   is_printed_arrived,
+      // });
 
-      if (changedStatus === "is_final_submit") {
-        getApplicantInfo({ email });
+      if (changedStatus === "is_submit") {
+        // getApplicantInfo({ receipt_code });
       }
     } else if (checkApiStatus(updateApplicantStatusStatus)._400) {
       window.alert("지원자 정보 수정 권한이 없습니다.");
@@ -40,30 +37,25 @@ const ApplicantStatuses: FC<Props> = ({ applicantStatus, email }) => {
     resetUpdateStatus();
   }, [updateApplicantStatusStatus]);
 
-  const handleClickCheckbox = async (email: string, status: string) => {
+  const handleClickCheckbox = async (is_printed_arrived: boolean) => {
     if (window.confirm("지원자의 상태를 수정하시겠습니까?")) {
-      setChangedStatus(status);
-      updateApplicantStatus({ email, [status]: !applicantStatus[status] });
+      // updateApplicantStatus({
+      //   is_printed_arrived,
+      // });
     }
   };
 
   return (
     <S.Wrapper>
       <S.CheckboxContainer
-        onClick={() => handleClickCheckbox(email, "is_arrived")}
+        onClick={() => handleClickCheckbox(is_printed_arrived)}
       >
-        <Checkbox isChecked={applicantStatus.is_arrived} />
-        <p>원서 도착 여부</p>
-      </S.CheckboxContainer>
-      <S.CheckboxContainer
-        onClick={() => handleClickCheckbox(email, "is_paid")}
-      >
-        <Checkbox isChecked={applicantStatus.is_paid} />
-        <p>납부 여부</p>
+        <Checkbox isChecked={is_printed_arrived} />
+        <p>원서 미도착</p>
       </S.CheckboxContainer>
       <Button
         className="applicant-info__cancel-btn"
-        onClick={() => handleClickCheckbox(email, "is_final_submit")}
+        // onClick={() => handleClickCheckbox(email, "is_submit")}
       >
         최종제출 취소
       </Button>
