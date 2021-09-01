@@ -1,42 +1,57 @@
 import React, { FC } from "react";
-
 import * as S from "./style";
-import ApplicantStatusContainer from "./ApplicantStatus";
-import BasicInfo from "./BasicInfo";
-import DetailInfo from "./DetailInfo";
-import Documents from "./Documents";
+import ApplicantStatusContainer from "./applicantStatus";
+import BasicInfo from "./basicInfo";
+import DetailInfo from "./detailInfo";
+import Documents from "./documents";
 import {
+  ApplicantListItem,
+  ApplicantPersonalData,
   ApplicantEvaluation,
-  ApplicantPrivacy,
   ApplicantStatus,
+  UpdateApplicantStatusPayload,
 } from "../../../../data/api/apiTypes";
-import { returnGradeType } from "../../../../utils/checkType";
+import { returnEducationalType } from "../../../../utils/checkType";
 
 interface Props {
-  applicantPrivacy: ApplicantPrivacy;
+  applicantPersonalData: ApplicantPersonalData;
   applicantEvaluation: ApplicantEvaluation;
   applicantStatus: ApplicantStatus;
+  applicantListItem: ApplicantListItem;
+  updateApplicantStatusStatus: number;
+  updateApplicantStatus: UpdateApplicantStatusPayload;
+  resetUpdateStatus;
 }
 
 const Submitted: FC<Props> = ({
-  applicantPrivacy,
+  applicantPersonalData,
   applicantEvaluation,
   applicantStatus,
+  applicantListItem,
+  updateApplicantStatusStatus,
+  updateApplicantStatus,
+  resetUpdateStatus,
 }) => {
   const checkGradeType = React.useCallback(() => {
-    return returnGradeType(applicantPrivacy.grade_type) === "검정고시";
-  }, [applicantPrivacy.apply_type]);
+    return (
+      returnEducationalType(applicantPersonalData.educational_status) ===
+      "검정고시"
+    );
+  }, [applicantPersonalData.application_type]);
 
   return (
     <S.Wrapper>
       <ApplicantStatusContainer
-        applicantStatus={applicantStatus}
-        email={applicantPrivacy.email}
+        is_printed_arrived={applicantStatus.is_printed_arrived}
+        receipt_code={applicantListItem.receipt_code}
+        updateApplicantStatusStatus={updateApplicantStatusStatus}
+        updateApplicantStatus={updateApplicantStatus}
+        resetUpdateStatus={resetUpdateStatus}
       />
-      <BasicInfo applicantPrivacy={applicantPrivacy} />
+      <BasicInfo applicantPersonalData={applicantPersonalData} />
       <DetailInfo
-        isGED={checkGradeType()}
-        applicantPrivacy={applicantPrivacy}
+        isQUALIFICATION_EXAM={checkGradeType()}
+        applicantPersonalData={applicantPersonalData}
         applicantEvaluation={applicantEvaluation}
       />
       <Documents applicantEvaluation={applicantEvaluation} />
