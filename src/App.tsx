@@ -8,7 +8,7 @@ import {
   StatisticsContainer,
   ApplicantContainer,
 } from "./containers";
-import CheckToken from "./components/Common/CheckToken";
+import CheckToken from "./components/common/checkToken";
 import { useHeader } from "./hooks/default";
 
 const App = () => {
