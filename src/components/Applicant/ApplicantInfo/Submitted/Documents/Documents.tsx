@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 
 import * as S from "./style";
-import { ApplicantEvaluation } from "../../../../../data/api/apiTypes";
+import { applicantEvaluation } from "../../../../../data/modules/redux/reducer/applicant/interface";
 
 interface Props {
-  applicantEvaluation: ApplicantEvaluation;
+  applicantEvaluation: applicantEvaluation;
 }
 
 const Documents: FC<Props> = ({
-  applicantEvaluation: { self_introduction, study_plan },
+  applicantEvaluation: { self_introduce, study_plan },
 }) => {
   const [selectedItem, setSelectedItem] = React.useState("자기소개서");
 
@@ -35,7 +35,7 @@ const Documents: FC<Props> = ({
         ))}
       </S.ContentSelector>
       <S.Document>
-        {selectedItem === contents[0] ? self_introduction : study_plan}
+        {selectedItem === contents[0] ? self_introduce : study_plan}
       </S.Document>
     </S.Wrapper>
   );
