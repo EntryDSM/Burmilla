@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { useStatistics } from "../../../../../hooks/statistics";
 import { SpecialScoreDistribution } from "../../../../../data/api/apiTypes";
 
 interface Props {
@@ -12,16 +11,7 @@ const SocialGraph: FC<Props> = ({ socialScore }) => {
     React.useState<any>();
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
-  // const {
-  //   state: {
-  //     statistics: { social_score },
-  //   },
-  //   setState: { getStatistics },
-  // } = useStatistics();
 
-  // React.useEffect(() => {
-  //   getStatistics();
-  // }, []);
   React.useEffect(() => {
     setIsWidthOfSocialGraphBar(socialScore.special_count);
     setIsAppearGraphOpa(true);
