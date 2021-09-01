@@ -2,25 +2,31 @@ import React, { FC } from "react";
 
 import * as S from "./style";
 import {
-  ApplicantPrivacy,
-  ApplicantEvaluation,
-} from "../../../../../data/api/apiTypes";
+  applicantPersonalData,
+  applicantEvaluation,
+} from "../../../../../data/modules/redux/reducer/applicant/interface";
 import { returnContact } from "../../../../../utils/checkType";
 
 interface Props {
-  applicantPrivacy: ApplicantPrivacy;
-  applicantEvaluation: ApplicantEvaluation;
+  applicantPersonalData: applicantPersonalData;
+  applicantEvaluation: applicantEvaluation;
 }
 
 const DetailInfo: FC<Props> = ({
-  applicantPrivacy: { applicant_tel, parent_tel, school_tel, email, home_tel },
+  applicantPersonalData: {
+    telephone_number,
+    parent_tel,
+    school_tel,
+    email,
+    home_tel,
+  },
   applicantEvaluation: {
     volunteer_time,
     conversion_score,
-    full_absent_count,
+    day_absence_count,
+    lecture_absence_count,
     early_leave_count,
-    late_count,
-    period_absent_count,
+    lateness_count,
   },
 }) => {
   const setContactForm = React.useCallback((contact: string) => {
@@ -31,21 +37,22 @@ const DetailInfo: FC<Props> = ({
     <S.DetailInfoTable>
       <tbody>
         <tr>
+          <th>이메일</th>
+          <td>{email}</td>
+        </tr>
+        <tr>
           <th>학생 연락처</th>
-          <td>{setContactForm(applicant_tel)}</td>
+          <td>{setContactForm(telephone_number)}</td>
           <th>부모님 연락처</th>
           <td>{setContactForm(parent_tel)}</td>
         </tr>
         <tr>
           <th>학교 연락처</th>
           <td>{setContactForm(school_tel)}</td>
-          <th>이메일</th>
-          <td>{email}</td>
-        </tr>
-        <tr>
           <th>자택 연락처</th>
           <td>{setContactForm(home_tel)}</td>
         </tr>
+        <tr></tr>
         <tr>
           <th>봉사시간</th>
           <td>{volunteer_time || 0} 시간</td>
@@ -57,7 +64,7 @@ const DetailInfo: FC<Props> = ({
           <td>
             <div>
               <span>전체 무단 결석 일수</span>
-              <span>{full_absent_count || 0} 일</span>
+              <span>{day_absence_count || 0} 일</span>
             </div>
           </td>
           <td colSpan={2}>
@@ -70,13 +77,14 @@ const DetailInfo: FC<Props> = ({
         <tr>
           <td>
             <div>
-              <span>전체 무단 지각 일수</span> <span>{late_count || 0} 일</span>
+              <span>전체 무단 지각 일수</span>
+              <span>{lateness_count || 0} 일</span>
             </div>
           </td>
           <td colSpan={2}>
             <div>
               <span>전체 무단 결과 일수</span>
-              <span>{period_absent_count || 0} 일</span>
+              <span>{lecture_absence_count || 0} 일</span>
             </div>
           </td>
         </tr>
