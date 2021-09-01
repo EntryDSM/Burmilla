@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
-import { useStatistics } from "../../../../../hooks/statistics";
 import { CommonScoreDistribution } from "../../../../../data/api/apiTypes";
 
 interface Props {
@@ -9,19 +8,10 @@ interface Props {
 
 const CommonGraph: FC<Props> = ({ commonScore }) => {
   const [isWidthOfCommonGraphBar, setIsWidthOfCommonGraphBar] =
-    React.useState<any>();
+    React.useState<any>("");
   const [isAppearGraphOpa, setIsAppearGraphOpa] =
     React.useState<boolean>(false);
-  // const {
-  // state: {
-  // statistics: { common_score },
-  // },
-  // setState: { getStatistics },
-  // } = useStatistics();
 
-  // React.useEffect(() => {
-  // getStatistics();
-  // }, []);
   React.useEffect(() => {
     setIsWidthOfCommonGraphBar(commonScore.common_count);
     setIsAppearGraphOpa(true);
