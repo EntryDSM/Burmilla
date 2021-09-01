@@ -1,37 +1,39 @@
 import React, { FC } from "react";
 
 import * as S from "../style";
-import { Checkbox } from "../../../Common";
-import { ApplicantListItem } from "../../../../data/api/apiTypes";
-import { useApplicant } from "../../../../hooks/applicant";
-import { returnRegion, returnApplyType } from "../../../../utils/checkType";
+import { Checkbox } from "../../../common";
+import {
+  returnRegion,
+  returnApplicationType,
+} from "../../../../utils/checkType";
+import {
+  ApplicantListItem,
+  GetApplicantsListPayload,
+} from "../../../../data/api/apiTypes";
 
 interface Props {
+  filters: GetApplicantsListPayload;
   applicantInfo: ApplicantListItem;
-  handleClick: (email: string) => void;
+  handleClick: (receipt_code: number) => void;
 }
 
 const ApplicantsListItem: FC<Props> = ({
+  filters,
   applicantInfo: {
     receipt_code,
-    email,
     name,
     is_daejeon,
     application_type,
     is_printed_arrived,
-    is_paid,
     is_submit,
   },
   handleClick,
 }) => {
-  const {
-    applicantStore: { currnetApplicantInfo },
-  } = useApplicant();
   const checkRegion = React.useCallback(() => {
     return returnRegion(is_daejeon);
   }, [is_daejeon]);
   const checkApplyType = React.useCallback(() => {
-    return returnApplyType(application_type);
+    return returnApplicationType(application_type);
   }, [application_type]);
   const checkSubmitStatus = React.useCallback(
     () => (is_submit ? "완료" : "미완료"),
@@ -40,11 +42,8 @@ const ApplicantsListItem: FC<Props> = ({
 
   return (
     <S.TR
-      isSelected={
-        email === currnetApplicantInfo?.applicant_information?.privacy?.email ||
-        email === currnetApplicantInfo?.applicant_contact?.email
-      }
-      onClick={() => handleClick(email)}
+      isSelected={receipt_code === filters?.receipt_code}
+      onClick={() => handleClick(receipt_code)}
     >
       <S.TD>{receipt_code}</S.TD>
       <S.TD>{name}</S.TD>
