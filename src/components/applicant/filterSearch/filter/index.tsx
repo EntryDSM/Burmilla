@@ -44,11 +44,11 @@ const Filter: FC<Props> = ({ filters, setFilter }) => {
   // };
 
   const checkIsChecked = React.useCallback(
-    (value: any) => {
+    (value: string) => {
       if (value === "is_printed_arrived" && filters[value] === false) {
         return true;
       } else {
-        return filters[value];
+        return false;
       }
     },
     [filters]
