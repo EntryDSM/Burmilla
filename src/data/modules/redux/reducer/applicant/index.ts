@@ -27,8 +27,8 @@ const InitialState: ApplicantState = {
   filters: {
     size: 10,
     page: 0,
-    is_daejeon: false,
-    is_nationwide: false,
+    is_daejeon: true,
+    is_nationwide: true,
     is_printed_arrived: null,
     is_common: true,
     is_meister: true,
@@ -69,7 +69,6 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
           total_pages: action.payload.total_pages,
           applicants_information_response: action.payload.applicants_information_response,
         },
-        currnetApplicantInfo: null,
       };
     }
     case GET_APPLICANTS_LIST_FAILURE: {
@@ -86,6 +85,7 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
     case GET_APPLICANT_INFO_FAILURE:
       return {
         ...state,
+        error: action.payload,
       };
     case UPDATE_APPLICANT_STATUS: 
       return {
