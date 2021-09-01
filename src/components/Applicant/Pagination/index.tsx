@@ -2,43 +2,45 @@ import React, { FC } from "react";
 
 import * as S from "./style";
 import { shift_left_icon, shift_right_icon } from "../../../assets/applicants";
-import { useApplicant } from "../../../hooks/applicant";
 import { getIndexList } from "../../../utils/pagination";
+import {
+  GetApplicantsListPayload,
+  GetApplicantsListResponse,
+} from "../../../data/api/apiTypes";
 
-const Pagination: FC = () => {
+interface Props {
+  applicantsList: GetApplicantsListResponse;
+  setFilter: (payload: GetApplicantsListPayload) => void;
+}
+
+const Pagination: FC<Props> = ({ applicantsList, setFilter }) => {
   const [currentIndex, setCurrentIndex] = React.useState(1);
   const [indexList, setIndexList] = React.useState<number[]>([]);
 
-  const {
-    applicantStore: {
-      applicantsList: { total_elements },
-    },
-    setFilter,
-  } = useApplicant();
-
   React.useEffect(() => {
-    setIndexList(getIndexList(currentIndex, total_elements));
-  }, [total_elements, currentIndex]);
+    setIndexList(getIndexList(currentIndex, applicantsList.total_elements));
+  }, [applicantsList.total_elements, currentIndex]);
 
   React.useEffect(() => {
     setFilter({
-      index: currentIndex,
+      size: currentIndex,
     });
   }, [currentIndex]);
 
   React.useEffect(() => {
     setCurrentIndex(1);
-  }, [total_elements]);
+  }, [applicantsList.total_elements]);
 
   const handleClickIndex = React.useCallback((index: number) => {
     setCurrentIndex(index);
   }, []);
   const handleClickPrev = React.useCallback(() => {
     if (currentIndex > 1) setCurrentIndex(currentIndex - 1);
-  }, [currentIndex, total_elements]);
+  }, [currentIndex, applicantsList.total_elements]);
   const handleClickNext = React.useCallback(() => {
-    if (currentIndex < total_elements) setCurrentIndex(currentIndex + 1);
-  }, [currentIndex, total_elements]);
+    if (currentIndex < applicantsList.total_elements)
+      setCurrentIndex(currentIndex + 1);
+  }, [currentIndex, applicantsList.total_elements]);
 
   return (
     <S.PaginationContainer className="no-select">
