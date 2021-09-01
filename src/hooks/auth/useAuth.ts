@@ -1,3 +1,28 @@
+// import { useDispatch } from 'react-redux';
+// import { useSelectState } from '../default';
+// import { refreshToken, signin, setIsLogin } from '../../data/modules/redux/action/auth';
+// import { LoginPayload } from "../../data/api/apiTypes";
+
+// const useSignin = () => {
+//   const dispatch = useDispatch();
+//   const state = useSelectState().auth;
+//   const setState = {
+//     setIsLogin: (payload: boolean) => dispatch(setIsLogin(payload)),
+//     signin: (payload: LoginPayload) => {
+//       dispatch(signin(payload));
+//     },
+//     refreshToken: (callback: () => void) => {
+//       dispatch(refreshToken({ callback }));
+//     },
+//   };
+//   return {
+//     state,
+//     setState,
+//   };
+// };
+
+// export default useSignin;
+
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 

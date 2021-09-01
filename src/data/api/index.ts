@@ -29,6 +29,27 @@ const authorization = (token: string) => ({
   'Cache-Control': 'no-cache',
 });
 
+// export const loginApi = async (payload: T.LoginPayload) => {
+//   try {
+//     const response = await instance('main').post<T.Tokens>(uri.signin, payload);
+//     localStorage.setItem('access_token', response.data.access_token);
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
+// export const refreshTokenApi = async (payload: T.RefreshToken) => {
+//   try {
+//     const response = await instance('main').put<T.RefreshResponse>(uri.signin, null, {
+//       headers: authorization(payload.refresh_token),
+//     });
+//     localStorage.setItem('access_token', response.data.access_token);
+//     return response;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 export const loginApi = async (payload: T.LoginPayload) => {
   const response = await instance('main').post<T.Tokens>(uri.signin, payload);
 

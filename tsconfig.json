@@ -18,7 +18,7 @@
     "paths": {
       "components/*": ["./src/components/*"],
       "containers/*": ["./src/containers/*"],
-      "modules/*": ["./modules/*"]
+      "modules/*": ["./src/modules/*"]
     },
     "allowSyntheticDefaultImports": true,
     "keyofStringsOnly": true,

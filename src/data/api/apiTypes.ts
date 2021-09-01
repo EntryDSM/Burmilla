@@ -17,6 +17,14 @@
     refresh_token?: string;
   }
 
+  // export interface RefreshToken {
+  //   refresh_token: string;
+  // }
+
+  // export interface RefreshResponse {
+  //   access_token: string;
+  // }
+
   export interface GetSchedulesPayload {
     type: string; 
     date: string;

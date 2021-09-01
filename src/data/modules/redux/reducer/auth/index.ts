@@ -1,3 +1,51 @@
+// import IAuthState from './interface';
+// import { 
+//   IS_LOGIN, 
+//   authActionType,
+//   ERROR,
+//   SIGNIN_FAILURE,
+//   SIGNIN_SUCCESS, } from '../../action/auth';
+
+// const initState: IAuthState = {
+//   isLogin: localStorage.getItem('access_token') ? true : false,
+//   id: '',
+//   password: '',
+//   error: null
+// };
+
+// const authReducer = (state: IAuthState = initState, action: authActionType) => {
+//   switch (action.type) {
+//     case ERROR: {
+//       return {
+//         ...state,
+//         error: action.payload,
+//       };
+//     }
+//     case IS_LOGIN: {
+//       return {
+//         ...state,
+//         isLogin: action.payload,
+//       };
+//     }
+//     case SIGNIN_FAILURE: {
+//       return {
+//         ...state,
+//         error: action.payload,
+//       };
+//     }
+//     case SIGNIN_SUCCESS: {
+//       return {
+//         ...state,
+//       };
+//     }
+//     default: {
+//       return state;
+//     }
+//   }
+// };
+
+// export default authReducer;
+
 import { LOGIN_ASYNC, REFRESH_TOKEN_ASYNC, AuthActions } from '../../action/auth';
 import { returnApiResponseData } from '../';
 import { API_STATUS } from '../../../../api/index';

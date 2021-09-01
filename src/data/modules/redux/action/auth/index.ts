@@ -50,4 +50,52 @@ import {
   });
   
   export type AuthActions = Login | RefreshToken | SetToken;
-  
+
+// import {
+//     LoginPayload,
+//     RefreshTokenPayload,
+//     Tokens,
+//   } from '../../../../api/apiTypes';
+// import { error } from 'src/models/error';
+// import { 
+//   IS_LOGIN, 
+//   ERROR,
+//   SIGNIN_FAILURE,
+//   SIGNIN_SUCCESS,
+//   SIGNIN,
+//   REFRESH_TOKEN,
+//   REFRESH_TOKEN_SUCCESS,
+//   REFRESH_TOKEN_FAILURE, 
+// } from './interface';
+// import { createAction } from 'typesafe-actions'
+
+
+// export const setIsLogin = createAction(IS_LOGIN)<boolean>();
+// export const setError = createAction(ERROR)<number>();
+// export const signinFailure = createAction(SIGNIN_FAILURE)<error>();
+// export const signinSuccess = createAction(SIGNIN_SUCCESS)<string>();
+// export const signin = createAction(SIGNIN)<LoginPayload>();
+// export const refreshToken = createAction(REFRESH_TOKEN)<{ callback: () => void }>();
+// export const refreshTokenFailure = createAction(REFRESH_TOKEN_FAILURE)<error>();
+// export const refreshTokenSuccess = createAction(REFRESH_TOKEN_SUCCESS)();
+
+
+// export type authActionType = 
+//   | ReturnType<typeof setIsLogin>
+//   | ReturnType<typeof setError>
+//   | ReturnType<typeof signinFailure>
+//   | ReturnType<typeof signinSuccess>
+//   | ReturnType<typeof refreshToken>
+//   | ReturnType<typeof refreshTokenFailure>
+//   | ReturnType<typeof refreshTokenSuccess>;
+
+// export { 
+//   IS_LOGIN,
+//   ERROR,
+//   SIGNIN,
+//   SIGNIN_FAILURE,
+//   SIGNIN_SUCCESS,
+//   REFRESH_TOKEN,
+//   REFRESH_TOKEN_FAILURE,
+//   REFRESH_TOKEN_SUCCESS,
+// };
