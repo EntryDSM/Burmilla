@@ -1,20 +1,18 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import { useApplicant } from "../../../../hooks/applicant";
+import { GetApplicantsListPayload } from "../../../../data/api/apiTypes";
 
 interface Props {
   searchProgressImg: string;
   searchIcon: string;
+  setFilter: (payload: GetApplicantsListPayload) => void;
 }
 
-const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon }) => {
-  const { setFilter } = useApplicant();
-
+const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
   const categoryList = [
-    { content: "전화번호", id: "applicant_tel" },
+    { content: "전화번호", id: "telephone_number" },
     { content: "이름", id: "name" },
     { content: "접수번호", id: "receipt_code" },
-    { content: "학교명", id: "school_name" },
   ];
 
   const [keyword, setKeyword] = React.useState("");
@@ -30,7 +28,7 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon }) => {
   const handleSelectItem = React.useCallback(
     (category: { content; id }) => {
       setFilter({
-        index: 1,
+        size: 1,
         [selectedCategory.id]: null,
         [category.id]: keyword,
       });
@@ -43,7 +41,7 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon }) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(e.target.value);
       setFilter({
-        index: 1,
+        size: 1,
         [selectedCategory.id]: e.currentTarget.value || null,
       });
     },
