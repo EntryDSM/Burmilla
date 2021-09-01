@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import ApplicantInfo from "./applicantInfo";
+// import ApplicantInfo from "./applicantInfo";
 import ApplicantsList from "./applicantsList";
 import FilterSearch from "./filterSearch";
 import Pagination from "./pagination";
@@ -39,7 +39,7 @@ const Applicant: FC<Props> = ({
         <ApplicantsList applicantsList={applicantsList} filters={filters} />
         <Pagination applicantsList={applicantsList} setFilter={setFilter} />
       </S.ApplicantContainer>
-      <S.ApplicantInfoWrap>
+      {/* <S.ApplicantInfoWrap>
         {currnetApplicantInfo && (
           <ApplicantInfo
             applicantsList={applicantsList}
@@ -49,7 +49,7 @@ const Applicant: FC<Props> = ({
             // resetUpdateStatus={resetUpdateStatus}
           />
         )}
-      </S.ApplicantInfoWrap>
+      </S.ApplicantInfoWrap> */}
     </S.Applicant>
   );
 };
