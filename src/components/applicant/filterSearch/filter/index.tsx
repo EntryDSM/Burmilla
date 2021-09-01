@@ -21,27 +21,27 @@ const Filter: FC<Props> = ({ filters, setFilter }) => {
     { content: "사회통합 전형", value: "is_social" },
   ];
 
-  const handleChangeFilter = (value: string) => {
-    let newFilter = { size: 1 };
+  // const handleChangeFilter = (value: string) => {
+  //   let newFilter = { size: 1 };
 
-    if (value === "is_daejeon" && !filters[value] && filters["is_nationwide"]) {
-      newFilter["is_daejeon"] = true;
-      newFilter["is_nationwide"] = null;
-    } else if (
-      value === "is_nationwide" &&
-      !filters[value] &&
-      filters["is_daejeon"]
-    ) {
-      newFilter["is_nationwide"] = true;
-      newFilter["is_daejeon"] = null;
-    } else if (value === "is_arrived") {
-      newFilter[value] = filters[value] === false ? null : false;
-    } else {
-      newFilter[value] = !filters[value] || null;
-    }
+  //   if (value === "is_daejeon" && !filters[value] && filters["is_nationwide"]) {
+  //     newFilter["is_daejeon"] = true;
+  //     newFilter["is_nationwide"] = null;
+  //   } else if (
+  //     value === "is_nationwide" &&
+  //     !filters[value] &&
+  //     filters["is_daejeon"]
+  //   ) {
+  //     newFilter["is_nationwide"] = true;
+  //     newFilter["is_daejeon"] = null;
+  //   } else if (value === "is_arrived") {
+  //     newFilter[value] = filters[value] === false ? null : false;
+  //   } else {
+  //     newFilter[value] = !filters[value] || null;
+  //   }
 
-    setFilter(newFilter);
-  };
+  //   setFilter(newFilter);
+  // };
 
   const checkIsChecked = React.useCallback(
     (value: string) => {
@@ -66,7 +66,7 @@ const Filter: FC<Props> = ({ filters, setFilter }) => {
         {checkLists.map((item) => (
           <S.FilterItemContainer
             key={item.value}
-            onClick={() => handleChangeFilter(item.value)}
+            // onClick={() => handleChangeFilter(item.value)}
           >
             <Checkbox isChecked={checkIsChecked(item.value)} />
             <p>{item.content}</p>
