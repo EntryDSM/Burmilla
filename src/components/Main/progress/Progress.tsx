@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import * as S from "../style";
 import ProgressContent from "./ProgressContent";
 import {
+  APPLICATION_PERIOD,
   FIRST_ANNOUNCEMENT,
   INTERVIEW,
   mainProcessNumber,
@@ -14,20 +15,20 @@ interface Props {
   date: string;
 }
 
-const SECOND_DATE = 86400;
+const SECOND_DATE = 86400000;
 
 const Progress: FC<Props> = ({ status, date }) => {
   const getLeftDate = (date: string): number => {
     const dateObj = new Date(date);
     const nowDateObj = new Date();
     const leftSecond = dateObj.getTime() - nowDateObj.getTime();
-    return Math.floor(leftSecond / SECOND_DATE);
+    return Math.ceil(leftSecond / SECOND_DATE);
   };
   return (
     <S.Progress>
       <ProgressContent
         progressName="원서 접수"
-        isNow={status === START_DATE}
+        isNow={status === APPLICATION_PERIOD}
         isPassed={mainProcessNumber[status] >= 2}
         leftDate={getLeftDate(date)}
       />
