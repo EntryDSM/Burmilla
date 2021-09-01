@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import uri from './uri';
 import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
@@ -73,20 +72,16 @@ export const getStatisticsApi = async (access_token: string) => {
   return response;
 };
 
-export const getApplicantsListApi = async (payload: T.GetApplicantsListPayload,) => {
+export const getApplicantsListApi = async (access_token: string, payload: T.GetApplicantsListPayload) => {
   const response = await instance('main').get<T.GetApplicantsListResponse>(
-  //  uri.applicants,
-   `${uri.applicants}?size=${payload.size}$page=${payload.page}&is-daejeon=${payload.is_daejeon}
-   &is-nationwide=${payload.is_nationwide}&is-printed-arrived=&is-common=${payload.is_common}
-   &is-meister=${payload.is_meister}&is-social=${payload.is_social}
-   &receipt-code=&telephone-number&name=`,
+   uri.applicants,
     {
       headers: authorization(getAccessToken()),
-      // params: payload,
+      params: payload,
     },
   );
 
-  return [response.data, response.status];
+  return response;
 };
 
 export const getApplicantInfoApi = async (
@@ -101,13 +96,13 @@ export const getApplicantInfoApi = async (
   );
   
 
-  return [response.data, response.status];
+  return response;
 };
 
 export const updateApplicantStatusApi = async (
   payload: T.UpdateApplicantStatusPayload,
 ) => {
-  const response = await instance('main').patch(`/admin/applicant`, {
+  const response = await instance('main').patch(uri.applicant, {
     headers: authorization(getAccessToken()),
     params: {
       payload,
