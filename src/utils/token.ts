@@ -7,8 +7,8 @@
   };
   
   export const setToken = (tokens: {
-    access_token?: string | null;
-    refresh_token?: string | null;
+    access_token?: string;
+    refresh_token?: string;
   }) => {
     localStorage.setItem('access_token', tokens.access_token);
     localStorage.setItem('refresh_token', tokens.refresh_token);
