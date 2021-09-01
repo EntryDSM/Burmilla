@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from "react";
 
-const Login = React.lazy(() => import("../../components/Login"));
+const Login = React.lazy(() => import("../../components/login"));
 
 const LoginContainer: FC = () => {
   return (

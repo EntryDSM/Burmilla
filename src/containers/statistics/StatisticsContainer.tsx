@@ -1,13 +1,10 @@
 import React, { FC, Suspense } from "react";
 import { useStatistics } from "../../hooks/statistics";
-import { useAuth } from "../../hooks/auth";
-import { getRefreshToken } from "../../utils/token";
 
-const Statistics = React.lazy(() => import("../../components/Statistics"));
+const Statistics = React.lazy(() => import("../../components/statistics"));
 
 const StatisticsContainer: FC = () => {
   const statisticsState = useStatistics();
-  const { refreshtoken } = useAuth();
   const {
     common_score,
     meister_score,
@@ -18,14 +15,6 @@ const StatisticsContainer: FC = () => {
 
   React.useEffect(() => {
     statisticsState.setState.getStatistics();
-
-    const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401 || errorStatus === 403) {
-      refreshtoken({
-        refreshToken: getRefreshToken(),
-      });
-      console.log(refreshtoken);
-    }
   }, []);
 
   return (

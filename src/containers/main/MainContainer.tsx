@@ -3,9 +3,11 @@ import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyDa
 import { useSchedule } from "../../hooks/schedule";
 import { useFooter } from "../../hooks/default";
 import {
-  BEFORE_FIRST_ANNOUNCEMENT,
+  APPLICATION_PERIOD,
+  BEFORE_FIRST_ANNOUNCE,
   BEFORE_INTERVIEW,
-  BEFORE_SECOND_ANNOUNCEMENT,
+  BEFORE_SECOND_ANNOUNCE,
+  END_DATE,
   FIRST_ANNOUNCEMENT,
   INTERVIEW,
   NOT_APPLICATION_PERIOD,
@@ -14,7 +16,7 @@ import {
   scheduleType,
 } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
 
-const Main = React.lazy(() => import("../../components/Main"));
+const Main = React.lazy(() => import("../../components/main"));
 
 const MainContainer: FC = () => {
   const Footer = useFooter();
@@ -26,13 +28,17 @@ const MainContainer: FC = () => {
 
   const status = scheduleState.state.status;
   const dates = scheduleState.state.date;
+
   const getNowProcessDate = (status: scheduleType): string => {
+    if (status === APPLICATION_PERIOD) {
+      return dates.filter((date) => date.type === END_DATE)[0].date;
+    }
     if (status === NOT_APPLICATION_PERIOD)
       return dates.filter((date) => date.type === START_DATE)[0].date;
-    if (status === BEFORE_FIRST_ANNOUNCEMENT) {
+    if (status === BEFORE_FIRST_ANNOUNCE) {
       return dates.filter((date) => date.type === FIRST_ANNOUNCEMENT)[0].date;
     }
-    if (status === BEFORE_SECOND_ANNOUNCEMENT)
+    if (status === BEFORE_SECOND_ANNOUNCE)
       return dates.filter((date) => date.type === SECOND_ANNOUNCEMENT)[0].date;
     if (status === BEFORE_INTERVIEW)
       return dates.filter((date) => date.type === INTERVIEW)[0].date;
