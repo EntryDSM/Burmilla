@@ -5,26 +5,26 @@ import { color, pxToRem } from '../../styles/index';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
-  min-width: ${pxToRem(1320)}rem;
   height: 60px;
+  background-color: white;
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.12);
-  padding: 0 260px;
-  box-sizing: border-box;
-  background: white;
+  min-width: auto;
   position: absolute;
-  z-index: 1;
+  top: 0;
+  min-width: 1340px;
+  z-index: 3;
 `;
 
 export const HeaderContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 export const HeaderLogo = styled.div`
-  width: 15%;
+  min-width: 15%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -37,10 +37,17 @@ export const Logo = styled.img`
 `;
 
 export const HeaderButton = styled.div`
-  width: 45%;
+  min-width: 25%;
   height: 100%;
   display: flex;
   align-items: center;
+
+  @media ( max-width: 1380px ) {
+    min-width: 27%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const HeaderItemsContainer = styled.div`
@@ -65,19 +72,24 @@ export const HeaderLogoutBox = styled.div`
 
 export const HeaderItemBox = styled.div`
   width: 17%;
+  text-align: center;
   &:nth-child(1) {
     width: 8%;
+    text-align: center;
   }
   &:nth-child(3) {
     width: 21%;
+    text-align: center;
   }
 `;
 
 export const HeaderItem = styled(Link)`
-    width: 100%;
-    color: ${color.primaryTextColor};
-    font-weight: bold;
-    font-size: 15px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  color: ${color.primaryTextColor};
+  font-weight: bold;
+  font-size: 15px;
 
     &:hover {
       font-family: 'Noto Sans KR-Bold', sans-serif !important;
@@ -92,19 +104,19 @@ export const HeaderItem = styled(Link)`
       transition: all 0.3s;
     }
     &:hover > .schedule {
-      width: 1.8%;
+      width: 100%;
       height: 1.5px;
       visibility: visible;
       align-self: flex-start;
     }
     &:hover > .total {
-      width: 4%;
+      width: 100%;
       height: 1.5px;
       visibility: visible;
       align-self: flex-start;
     }
     &:hover > .applicant {
-      width: 4.9%;
+      width: 100%;
       height: 1.5px;
       visibility: visible;
       align-self: flex-start;
