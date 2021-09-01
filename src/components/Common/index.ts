@@ -15,6 +15,18 @@ export const Button = styled.button`
     font-weight: bold;
     font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
+  &.delete-all__btn {
+    width: 80px;
+    height: 32px;
+    margin-left: 20px;
+    border: 1px solid ${color.deleteButton};
+    border-radius: 4px;
+    background-color: ${color.deleteButton};
+    color: ${color.backgorund};
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
+  }
   &.applicant-info__cancel-btn {
     width: 110px;
     height: 32px;
