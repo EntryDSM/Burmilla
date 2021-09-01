@@ -27,6 +27,7 @@ jobs:
         run: npm run build
         env:
           CI: false
+          SKIP_PREFLIGHT_CHECK: true
 
       - name: Deploy                  
         env:
