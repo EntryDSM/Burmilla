@@ -18,52 +18,23 @@ import {
   RESET_UPDATE_STATUS,
 } from "./interface";
 import { 
-  getApplicantsLists, 
-  ApplicantListItem, 
-  getApplicantsListResponse,
-  getApplicantInfoTypes,
-  getApplicantInfoResponse,
-  updateApplicantStatusPayload
-} from "../../reducer/applicant/interface";
-// import { 
-//   GetApplicantsListPayload,
-//   ApplicantListItem,
-//   GetApplicantsListResponse } from "../../../../api/apiTypes"; 
+  GetApplicantsListPayload,
+  GetApplicantsListResponse,
+  GetApplicantInfoPayload,
+  GetApplicantInfoResponse,
+  UpdateApplicantStatusPayload,
+ } from "../../../../api/apiTypes"; 
 import { error } from "../../../../../models/error";
 import { createAction } from 'typesafe-actions';
 
-export type setFilterPayload = getApplicantsLists;
-export type updateApplicantPayload = updateApplicantStatusPayload;
-
-export const setFilter = createAction(SET_FILTER)<setFilterPayload>();
-export const getApplicantInfo = createAction(GET_APPLICANT_INFO)();
-export const getApplicantInfoSuccess = createAction(GET_APPLICANT_INFO_SUCCESS)<getApplicantInfoResponse>();
+export const setFilter = createAction(SET_FILTER)<GetApplicantsListPayload>();
+export const getApplicantInfo = createAction(GET_APPLICANT_INFO)<GetApplicantInfoPayload>();
+export const getApplicantInfoSuccess = createAction(GET_APPLICANT_INFO_SUCCESS)<GetApplicantInfoResponse>();
 export const getApplicantInfoFailure = createAction(GET_APPLICANT_INFO_FAILURE)<error>();
-
-// export const getApplicantsList = createAction(GET_APPLICANTS_LIST)<getApplicantsLists>();
-// export const getApplicantsListSuccess = createAction(GET_APPLICANTS_LIST_SUCCESS)<getApplicantsListResponse>();
-// export const getApplicantsListFailure = createAction(GET_APPLICANTS_LIST_FAILURE)<error>();
-
-export const getApplicantsListSuccess = (payload: {
-  total_elements: number;
-  total_pages: number;
-  applicants_information_response: Array<ApplicantListItem>;
-}) => ({
-  type: GET_APPLICANTS_LIST_SUCCESS,
-  payload,
-})
-
-export const getApplicantsListFailure = (payload: error) => ({
-  type: GET_APPLICANTS_LIST_FAILURE,
-  payload,
-})
-
-export const getApplicantsList = (payload: getApplicantsLists) => ({
-  type: GET_APPLICANTS_LIST,
-  payload,
-})
-
-export const updateApplicantStatus = createAction(UPDATE_APPLICANT_STATUS)<updateApplicantPayload>();
+export const getApplicantsList = createAction(GET_APPLICANTS_LIST)<GetApplicantsListPayload>();
+export const getApplicantsListSuccess = createAction(GET_APPLICANTS_LIST_SUCCESS)<GetApplicantsListResponse>();
+export const getApplicantsListFailure = createAction(GET_APPLICANTS_LIST_FAILURE)<error>();
+export const updateApplicantStatus = createAction(UPDATE_APPLICANT_STATUS)<UpdateApplicantStatusPayload>();
 export const updateApplicantStatusSuccess = createAction(UPDATE_APPLICANT_STATUS_SUCCESS)();
 export const updateApplicantStatusFailure = createAction(UPDATE_APPLICANT_STATUS_FAILURE)<error>();
 
