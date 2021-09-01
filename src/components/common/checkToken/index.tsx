@@ -1,10 +1,13 @@
-import React from "react";
-
+import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { getAccessToken, getRefreshToken } from "../../../utils/token";
 import { useAuth } from "../../../hooks/auth";
 
-const CheckToken = ({ children }) => {
+interface Props {
+  children: any;
+}
+
+const CheckToken: FC<Props> = ({ children }) => {
   const { push } = useHistory();
   const { setTokens } = useAuth();
 
