@@ -19,6 +19,12 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
+            
+      - name: remove cache            # 캐시 삭제
+        run: npm cache clean --force
+      
+      - name: remove package-lock.json
+        run: rm -rf node_modules package-lock.json
 
       - name: Install Dependencies    # 의존 파일 설치
         run: npm install
