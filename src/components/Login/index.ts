@@ -1,3 +1,3 @@
-import LoginContent from './Content/LoginContent';
+import LoginContent from './content/LoginContent';
 
 export default LoginContent;
