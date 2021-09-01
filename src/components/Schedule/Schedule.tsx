@@ -6,11 +6,10 @@ import {
   presentation_regiester_icon,
   presentation_icon,
 } from "../../assets/schedule";
-import { Button } from "../Common";
+import { Button } from "../common";
 import {
   FIRST_ANNOUNCEMENT,
   INTERVIEW,
-  scheduleType,
   SECOND_ANNOUNCEMENT,
   START_DATE,
 } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
