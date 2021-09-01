@@ -21,7 +21,7 @@ export const MainBackground = styled.div`
   background-image: url(${background});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 111.5%;
+  background-size: 110%;
   z-index: -100;
   @media (max-width: 1320px) {
     width: ${pxToRem(1320)}rem;
