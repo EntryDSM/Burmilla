@@ -23,6 +23,7 @@
     "allowSyntheticDefaultImports": true,
     "keyofStringsOnly": true,
     "skipLibCheck": true,
+    "isolatedModules": false,
   },
   "include": [
     "./src/**/*"
