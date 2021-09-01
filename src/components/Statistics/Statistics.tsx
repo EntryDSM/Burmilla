@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import * as S from "./style";
-import CompetitionTable from "./CompetitionTable";
-import CompetitionView from "./CompetitionView";
-import CompetitionTotalGraph from "./CompetitionTotalGraph";
+import CompetitionTable from "./competitionTable";
+import CompetitionView from "./competitionView";
+import CompetitionTotalGraph from "./competitionTotalGraph";
 import {
   CommonScoreDistribution,
   SpecialScoreDistribution,
