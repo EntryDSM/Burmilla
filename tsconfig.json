@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
-    "module": "es2020",
+    "module": "esnext",
     "target": "es6",
     "lib": [
       "es2015",
@@ -15,20 +15,21 @@
     "sourceMap": true,
     "baseUrl": ".",
     "outDir": "dist",
-    "paths": {
-      "components/*": ["./src/components/*"],
-      "containers/*": ["./src/containers/*"],
-      "modules/*": ["./src/modules/*"]
-    },
     "allowSyntheticDefaultImports": true,
     "keyofStringsOnly": true,
     "skipLibCheck": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "noEmit": true
   },
   "include": [
     "./src/**/*"
   ],
   "exclude": [
     "./node_modules/**/*"
-  ],
+  ]
 }

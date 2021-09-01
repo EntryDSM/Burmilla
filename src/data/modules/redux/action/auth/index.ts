@@ -39,7 +39,7 @@ import {
   });
   
   export type setTokenType = typeof SET_TOKEN;
-  export type setTokenPayload = Tokens;
+  export type setTokenPayload = Required<Tokens>;
   export interface SetToken {
     type: setTokenType;
     payload: setTokenPayload;
