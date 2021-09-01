@@ -26,7 +26,7 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
   }, [isOpened]);
 
   const handleSelectItem = React.useCallback(
-    (category: { content; id }) => {
+    (category: { content: string; id: string }) => {
       setFilter({
         size: 1,
         [selectedCategory.id]: null,
