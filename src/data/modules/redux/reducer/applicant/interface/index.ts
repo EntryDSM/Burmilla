@@ -1,4 +1,5 @@
 import { error } from "../../../../../../models/error";
+import { ApplicantListItem } from "../../../../../api/apiTypes";
 
 export interface ApplicantState {
  getApplicantsListStatus: 0 | 200| 400 | 401 | 403 | 404;
@@ -22,15 +23,6 @@ export interface getApplicantsLists {
  receipt_code?: number;
  telephone?: number;
  name?: string;
-}
-
-export interface ApplicantListItem {
- receipt_code: number;
- name: string;
- is_daejeon: boolean;
- application_type: string;
- is_printed_arrived: boolean;
- is_submit: boolean;
 }
 
 export interface getApplicantsListResponse {
@@ -89,8 +81,4 @@ export interface getApplicantInfoResponse {
     home_tel: number;
     school_tel?: number;
  };
-}
-
-export interface updateApplicantStatusPayload {
- is_printed_arrived?: boolean;
 }
