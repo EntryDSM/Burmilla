@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import * as S from "../style";
-import { useStatistics } from "../../../hooks/statistics";
 import {
   CommonScoreDistribution,
   SpecialScoreDistribution,
@@ -19,22 +18,6 @@ const CompetitionTable: FC<Props> = ({
   socialScore,
   totalApplicantCount,
 }) => {
-  // const {
-  //   state: {
-  //     statistics: {
-  //       commonScore,
-  //       meisterScore,
-  //       social_score,
-  //       total_applicant_count,
-  //     },
-  //   },
-  //   setState: { getStatistics },
-  // } = useStatistics();
-
-  // React.useEffect(() => {
-  //   getStatistics();
-  // }, []);
-
   return (
     <S.CompetitionTableWrapper>
       <table className="common_score-table">
@@ -57,10 +40,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              141 ~ 150
+              158 ~ 170
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["141-150"] || "0"}
+              {commonScore["158-170"] || "0"}
             </td>
           </tr>
           <tr />
@@ -69,10 +52,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              131 ~ 140
+              145 ~ 157
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["131-140"] || "0"}
+              {commonScore["145-157"] || "0"}
             </td>
           </tr>
           <tr />
@@ -81,10 +64,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              121 ~ 130
+              132 ~ 144
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["121-130"] || "0"}
+              {commonScore["132-144"] || "0"}
             </td>
           </tr>
           <tr />
@@ -93,10 +76,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              111 ~ 120
+              119 ~ 131
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["111-120"] || "0"}
+              {commonScore["119-131"] || "0"}
             </td>
           </tr>
           <tr />
@@ -105,10 +88,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              101 ~ 110
+              106 ~ 118
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["101-110"] || "0"}
+              {commonScore["106-118"] || "0"}
             </td>
           </tr>
           <tr />
@@ -117,10 +100,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              91 ~ 100
+              93 ~ 105
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["91-100"] || "0"}
+              {commonScore["93-105"] || "0"}
             </td>
           </tr>
           <tr />
@@ -129,10 +112,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              81 ~ 90
+              80 ~ 92
             </td>
             <td rowSpan={2} className="table-border-right">
-              {commonScore["81-90"] || "0"}
+              {commonScore["80-92"] || "0"}
             </td>
           </tr>
           <tr />
@@ -141,10 +124,10 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left table-border-bottom"
             >
-              80점 이하
+              79점 이하
             </td>
             <td rowSpan={2} className="table-border-right table-border-bottom">
-              {commonScore["-80"] || "0"}
+              {commonScore["-79"] || "0"}
             </td>
           </tr>
         </tbody>
@@ -175,11 +158,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              81 ~ 90
+              98 ~ 110
             </td>
-            <td rowSpan={2}>{meisterScore["81-90"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["98-110"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["81-90"] || "0"}
+              {socialScore["98-110"] || "0"}
             </td>
           </tr>
           <tr />
@@ -188,11 +171,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              71 ~ 80
+              85 ~ 97
             </td>
-            <td rowSpan={2}>{meisterScore["71-80"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["85-97"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["71-80"] || "0"}
+              {socialScore["85-97"] || "0"}
             </td>
           </tr>
           <tr />
@@ -201,11 +184,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              61 ~ 70
+              72 ~ 84
             </td>
-            <td rowSpan={2}>{meisterScore["61-70"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["72-84"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["61-70"] || "0"}
+              {socialScore["72-84"] || "0"}
             </td>
           </tr>
           <tr />
@@ -214,11 +197,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              51 ~ 60
+              59 ~ 71
             </td>
-            <td rowSpan={2}>{meisterScore["51-60"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["59-71"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["51-60"] || "0"}
+              {socialScore["59-71"] || "0"}
             </td>
           </tr>
           <tr />
@@ -227,11 +210,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              41 ~ 50
+              46 ~ 58
             </td>
-            <td rowSpan={2}>{meisterScore["41-50"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["46-58"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["41-50"] || "0"}
+              {socialScore["46-58"] || "0"}
             </td>
           </tr>
           <tr />
@@ -240,11 +223,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              31 ~ 40
+              33 ~ 45
             </td>
-            <td rowSpan={2}>{meisterScore["31-40"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["33-45"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["31-40"] || "0"}
+              {socialScore["33-45"] || "0"}
             </td>
           </tr>
           <tr />
@@ -253,11 +236,11 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left"
             >
-              21 ~ 30
+              20 ~ 32
             </td>
-            <td rowSpan={2}>{meisterScore["21-30"] || "0"}</td>
+            <td rowSpan={2}>{meisterScore["20-32"] || "0"}</td>
             <td rowSpan={2} className="table-border-right">
-              {socialScore["21-30"] || "0"}
+              {socialScore["20-32"] || "0"}
             </td>
           </tr>
           <tr />
@@ -266,13 +249,13 @@ const CompetitionTable: FC<Props> = ({
               rowSpan={2}
               className="table-color_background table-border-left table-border-bottom"
             >
-              20점 이하
+              19점 이하
             </td>
             <td rowSpan={2} className="table-border-bottom">
-              {meisterScore["-20"] || "0"}
+              {meisterScore["-19"] || "0"}
             </td>
             <td rowSpan={2} className="table-border-right table-border-bottom">
-              {socialScore["-20"] || "0"}
+              {socialScore["-19"] || "0"}
             </td>
           </tr>
           <tr />
