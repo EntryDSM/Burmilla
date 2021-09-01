@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import * as S from "../style";
-import { useStatistics } from "../../../hooks/statistics";
 import { GraphRateItems } from "./CompetitionGraphs/GraphRateItems";
 import { CommonGraph, MeisterGraph, SocialGraph } from "./CompetitionGraphs";
 import {
