@@ -1,17 +1,24 @@
 import React, { FC } from "react";
 import { list_progressbar, search_icon } from "../../../assets/applicants";
-import SearchBar from "./SearchBar";
-import Filter from "./Filter";
+import SearchBar from "./searchBar";
+import Filter from "./filter";
 import FilterSearchWrapper from "./style";
+import { GetApplicantsListPayload } from "../../../data/api/apiTypes";
 
-const FilterSearch: FC = () => {
+interface Props {
+  filters: GetApplicantsListPayload;
+  setFilter: (payload: GetApplicantsListPayload) => void;
+}
+
+const FilterSearch: FC<Props> = ({ filters, setFilter }) => {
   return (
     <FilterSearchWrapper>
       <SearchBar
         searchProgressImg={list_progressbar}
         searchIcon={search_icon}
+        setFilter={setFilter}
       />
-      <Filter />
+      <Filter filters={filters} setFilter={setFilter} />
     </FilterSearchWrapper>
   );
 };
