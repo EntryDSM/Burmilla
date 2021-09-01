@@ -1,31 +1,31 @@
 import React, { FC } from "react";
 
-import GEDDetailInfo from "./GEDDetailInfo";
+import QualificationexamDetailInfo from "./QualificationexamDetailInfo";
 import GeneralDetailInfo from "./GeneralDetailInfo";
 import {
-  ApplicantPrivacy,
-  ApplicantEvaluation,
-} from "../../../../../data/api/apiTypes";
+  applicantPersonalData,
+  applicantEvaluation,
+} from "../../../../../data/modules/redux/reducer/applicant/interface";
 
 interface Props {
-  isGED: boolean;
-  applicantPrivacy: ApplicantPrivacy;
-  applicantEvaluation: ApplicantEvaluation;
+  isQUALIFICATION_EXAM: boolean;
+  applicantPersonalData: applicantPersonalData;
+  applicantEvaluation: applicantEvaluation;
 }
 
 const DetailInfo: FC<Props> = ({
-  isGED,
-  applicantPrivacy,
+  isQUALIFICATION_EXAM,
+  applicantPersonalData,
   applicantEvaluation,
 }) => {
-  return isGED ? (
-    <GEDDetailInfo
-      applicantPrivacy={applicantPrivacy}
+  return isQUALIFICATION_EXAM ? (
+    <QualificationexamDetailInfo
+      applicantPersonalData={applicantPersonalData}
       applicantEvaluation={applicantEvaluation}
     />
   ) : (
     <GeneralDetailInfo
-      applicantPrivacy={applicantPrivacy}
+      applicantPersonalData={applicantPersonalData}
       applicantEvaluation={applicantEvaluation}
     />
   );
