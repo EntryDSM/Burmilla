@@ -1,6 +1,6 @@
 import IScheduleState from './interface';
 import { IS_END, IS_START, PROCESS, STATUS, scheduleActionType } from '../../action/schedule';
-import scheduleConstance, { NOT_APPLICATION_PERIOD, scheduleType, START_DATE } from './scheduleConstance';
+import scheduleConstance, { NOT_APPLICATION_PERIOD, scheduleType } from './scheduleConstance';
 import {
   GET_STATUS_FAILURE, 
   GET_STATUS_SUCCESS, 
