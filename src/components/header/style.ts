@@ -71,13 +71,22 @@ export const HeaderLogoutBox = styled.div`
 `;
 
 export const HeaderItemBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 17%;
   text-align: center;
   &:nth-child(1) {
-    width: 8%;
-    text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 8%;
+   text-align: center;
   }
   &:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 21%;
     text-align: center;
   }

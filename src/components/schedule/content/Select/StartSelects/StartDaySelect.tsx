@@ -24,7 +24,7 @@ const MonthSelect: FC<Props> = ({ startScheduleDay, setStartScheduleDay }) => {
 
   const onSelectDayClick = (e) => {
     const day = e.target.innerText;
-    setStartScheduleDay(day);
+    day < 10 ? setStartScheduleDay(0 + day) : setStartScheduleDay(day);
   };
 
   const activeImg = React.useMemo(() => {

@@ -6,16 +6,22 @@ import ApplicantsListItem from "./applicantsListItem";
 import {
   GetApplicantsListPayload,
   GetApplicantsListResponse,
+  GetApplicantInfoPayload,
 } from "../../../data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
   applicantsList: GetApplicantsListResponse;
+  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
-const ApplicantsList: FC<Props> = ({ applicantsList, filters }) => {
+const ApplicantsList: FC<Props> = ({
+  applicantsList,
+  filters,
+  getApplicantInfo,
+}) => {
   const handleClickListItem = React.useCallback((receipt_code: number) => {
-    // getApplicantInfo({ receipt_code });
+    getApplicantInfo({ receipt_code });
   }, []);
 
   return (

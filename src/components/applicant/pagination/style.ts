@@ -7,6 +7,7 @@ export const PaginationContainer = styled.div`
   position: absolute;
   bottom: 2%;
   left: 50%;
+  transform: translate(-50%, 0);
 `;
 
 export const PageBtn = styled.span`

@@ -85,7 +85,7 @@ const Schedule: FC<Props> = ({
   setSecondDate,
   setSchedule,
 }) => {
-  const handleClickCheckBox = async () => {
+  const handleClickCheckBox = async (e) => {
     if (window.confirm("일정을 수정하시겠습니까?")) {
       setSchedule({
         schedules: [

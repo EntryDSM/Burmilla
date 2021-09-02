@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import * as S from "../style";
 
-const ApplicantsList: FC = () => {
+const ApplicantsListHedaer: FC = () => {
   return (
     <S.ListHeader className="no-select">
       <tr>
@@ -17,4 +17,4 @@ const ApplicantsList: FC = () => {
   );
 };
 
-export default ApplicantsList;
+export default ApplicantsListHedaer;

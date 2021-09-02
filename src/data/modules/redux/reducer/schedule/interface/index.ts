@@ -1,7 +1,7 @@
 import { scheduleType } from '../scheduleConstance';
 import { error } from "../../../../../../models/error";
 
-interface IScheduleState {
+export interface IScheduleState {
   status: scheduleType;
   isEnd: boolean;
   isStart: boolean;

@@ -2,13 +2,17 @@ import React, { FC } from "react";
 import * as S from "./style";
 import { Checkbox, Button } from "../../../../common";
 import checkApiStatus from "../../../../../data/api/checkApiStatus";
-import { UpdateApplicantStatusPayload } from "../../../../../data/api/apiTypes";
+import {
+  UpdateApplicantStatusPayload,
+  GetApplicantInfoPayload,
+} from "../../../../../data/api/apiTypes";
 
 interface Props {
   is_printed_arrived: boolean;
   receipt_code: number;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
+  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
@@ -17,6 +21,7 @@ const ApplicantStatuses: FC<Props> = ({
   receipt_code,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  getApplicantInfo,
   // resetUpdateStatus,
 }) => {
   const [changedStatus, setChangedStatus] = React.useState<string>("");
@@ -28,7 +33,7 @@ const ApplicantStatuses: FC<Props> = ({
       // });
 
       if (changedStatus === "is_submit") {
-        // getApplicantInfo({ receipt_code });
+        getApplicantInfo({ receipt_code });
       }
     } else if (checkApiStatus(updateApplicantStatusStatus)._400) {
       window.alert("지원자 정보 수정 권한이 없습니다.");

@@ -27,7 +27,7 @@ const MonthSelect: FC<Props> = ({
 
   const onSelectDayClick = (e) => {
     const day = e.target.innerText;
-    setInterviewScheduleDay(day);
+    day < 10 ? setInterviewScheduleDay(0 + day) : setInterviewScheduleDay(day);
   };
 
   const activeImg = React.useMemo(() => {
