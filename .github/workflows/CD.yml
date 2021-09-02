@@ -38,3 +38,6 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             build s3://admin.entrydsm.hs.kr
+            
+      - name : CloudFront Cache invalidation
+        run : aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths "/*"
