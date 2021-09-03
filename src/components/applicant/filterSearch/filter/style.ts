@@ -6,9 +6,8 @@ export const FilterWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  top: 58px;
   margin: 0 2.5%;
+  margin-top: 10px;
 `;
 
 export const FilterSelectBox = styled.div`
