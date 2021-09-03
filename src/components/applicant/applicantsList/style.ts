@@ -30,9 +30,9 @@ export const TH = styled.th`
 `;
 
 export const TR = styled.tr<{ isSelected: boolean }>`
-  line-height: 2.6;
+  line-height: 2.8;
   cursor: pointer;
-  border: 1px 0 solid ${({ isSelected }) => (isSelected ? color.lightPrimaryColor : '#d3d3d3')};
+  border-bottom: 0.4px solid ${({ isSelected }) => (isSelected ? color.lightPrimaryColor : '#d3d3d3')};
 
   &:last-child {
     border-bottom: 1.5px solid #303030;
