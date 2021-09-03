@@ -4,10 +4,8 @@ import { color, pxToRem } from '../../../../styles';
 
 export const SearchBarWrapper = styled.div`
   width: 95%;
-  top: 18%;
   display: flex;
   justify-content: flex-start;
-  position: absolute;
   z-index: 1;
   margin: 0 2.5%;
 `;
