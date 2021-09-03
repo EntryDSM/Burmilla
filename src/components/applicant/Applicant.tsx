@@ -39,11 +39,14 @@ const Applicant: FC<Props> = ({
       <S.ApplicantContainer>
         <FilterSearch filters={filters} setFilter={setFilter} />
         <ApplicantsList
-          applicantsList={applicantsList}
           filters={filters}
+          applicantsList={applicantsList}
+          currnetApplicantInfo={currnetApplicantInfo}
           getApplicantInfo={getApplicantInfo}
         />
-        <Pagination applicantsList={applicantsList} setFilter={setFilter} />
+        <S.PaginationBox>
+          <Pagination applicantsList={applicantsList} setFilter={setFilter} />
+        </S.PaginationBox>
       </S.ApplicantContainer>
       <S.ApplicantInfoWrap>
         {currnetApplicantInfo && (
