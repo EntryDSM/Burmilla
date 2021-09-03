@@ -27,8 +27,8 @@ const ApplicantInfo: FC<Props> = ({
 }) => {
   return currnetApplicantInfo.applicant_information ? (
     <>
-      {applicantsList.applicants_information_response &&
-        applicantsList.applicants_information_response.map((info) => (
+      {applicantsList.applicants_information_responses &&
+        applicantsList.applicants_information_responses.map((info) => (
           <Submitted
             applicantPersonalData={
               currnetApplicantInfo.applicant_information.personal_data
