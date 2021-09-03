@@ -50,7 +50,7 @@ const Pagination: FC<Props> = ({ applicantsList, setFilter }) => {
       {indexList.map((i) => (
         <S.PageBtn
           key={i.toString()}
-          // className={currentIndex === i && "selected"}
+          className={currentIndex === i && "selected"}
           onClick={() => handleClickIndex(i)}
         >
           {i}
