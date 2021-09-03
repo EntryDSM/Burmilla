@@ -28,7 +28,7 @@ export interface getApplicantsLists {
 export interface getApplicantsListResponse {
  total_elements: number;
  total_pages: number;
- applicants_information_response: Array<ApplicantListItem>;
+ applicants_information_responses: Array<ApplicantListItem>;
 }
 
 export interface getApplicantInfoTypes {
