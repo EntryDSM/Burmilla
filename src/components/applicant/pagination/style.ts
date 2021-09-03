@@ -4,10 +4,7 @@ export const PaginationContainer = styled.div`
   font-size: 20px;
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 2%;
-  left: 50%;
-  transform: translate(-50%, 0);
+  align-items: center;
 `;
 
 export const PageBtn = styled.span`
