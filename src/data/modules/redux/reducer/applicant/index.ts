@@ -40,7 +40,7 @@ const InitialState: ApplicantState = {
   applicantsList: {
     total_elements: 0,
     total_pages: 0,
-    applicants_information_response: [],
+    applicants_information_responses: [],
   },
   currnetApplicantInfo: null,
   error: {
@@ -67,7 +67,7 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         applicantsList: {
           total_elements: action.payload.total_elements,
           total_pages: action.payload.total_pages,
-          applicants_information_response: action.payload.applicants_information_response,
+          applicants_information_responses: action.payload.applicants_information_responses,
         },
       };
     }
