@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-
 import * as S from "../style";
 import { Checkbox } from "../../../common";
 import {
@@ -9,16 +8,19 @@ import {
 import {
   ApplicantListItem,
   GetApplicantsListPayload,
+  GetApplicantInfoResponse,
 } from "../../../../data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
+  currnetApplicantInfo: GetApplicantInfoResponse;
   applicantInfo: ApplicantListItem;
   handleClick: (receipt_code: number) => void;
 }
 
 const ApplicantsListItem: FC<Props> = ({
   filters,
+  currnetApplicantInfo,
   applicantInfo: {
     receipt_code,
     name,
@@ -41,21 +43,27 @@ const ApplicantsListItem: FC<Props> = ({
   );
 
   return (
-    <S.TR
-      isSelected={receipt_code === filters?.receipt_code}
-      onClick={() => handleClick(receipt_code)}
-    >
-      <S.TD>{receipt_code}</S.TD>
-      <S.TD>{name}</S.TD>
-      <S.TD>{checkRegion()}</S.TD>
-      <S.TD>{checkApplyType()}</S.TD>
-      <S.TD>
-        <S.CheckboxWrapper>
-          <Checkbox isChecked={is_printed_arrived} />
-        </S.CheckboxWrapper>
-      </S.TD>
-      <S.TD>{checkSubmitStatus()}</S.TD>
-    </S.TR>
+    <>
+      <S.TR
+        isSelected={
+          name ===
+          currnetApplicantInfo?.applicant_information?.personal_data?.name
+          // receipt_code === filters.receipt_code
+        }
+        onClick={() => handleClick(receipt_code)}
+      >
+        <S.TD>{receipt_code}</S.TD>
+        <S.TD>{name}</S.TD>
+        <S.TD>{checkRegion()}</S.TD>
+        <S.TD>{checkApplyType()}</S.TD>
+        <S.TD>
+          <S.CheckboxWrapper>
+            <Checkbox isChecked={is_printed_arrived} />
+          </S.CheckboxWrapper>
+        </S.TD>
+        <S.TD>{checkSubmitStatus()}</S.TD>
+      </S.TR>
+    </>
   );
 };
 
