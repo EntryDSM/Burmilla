@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import {
   LoginContainer,
@@ -23,7 +23,6 @@ const App = () => {
           <Route exact path="/total" component={StatisticsContainer} />
           <Route exact path="/schedule" component={ScheduleContainer} />
           <Route exact path="/applicant" component={ApplicantContainer} />
-          <Route component={() => <Redirect to="/" />} />
         </CheckToken>
       </Switch>
     </BrowserRouter>
