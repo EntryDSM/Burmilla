@@ -76,12 +76,16 @@ export const HeaderItemBox = styled.div`
   align-items: center;
   width: 17%;
   text-align: center;
+  height: 100%;
+  line-height: 60px;
   &:nth-child(1) {
    display: flex;
    justify-content: center;
    align-items: center;
    width: 8%;
    text-align: center;
+   height: 100%;
+   line-height: 60px;
   }
   &:nth-child(3) {
     display: flex;
@@ -89,6 +93,8 @@ export const HeaderItemBox = styled.div`
     align-items: center;
     width: 21%;
     text-align: center;
+    height: 100%;
+    line-height: 60px;
   }
 `;
 
