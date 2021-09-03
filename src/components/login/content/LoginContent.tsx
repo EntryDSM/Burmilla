@@ -50,6 +50,12 @@ const LoginContent: FC = () => {
     login({ id, password });
   }, [id, password]);
 
+  const keyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   const togglePasswordVisiblity = () => {
     setIsPasswordShown(!isPasswordShown);
   };
@@ -81,6 +87,7 @@ const LoginContent: FC = () => {
               placeholder="아이디"
               value={id}
               onChange={handleChangeEmail}
+              onKeyPress={keyPressHandler}
             />
             <p />
             <S.LoginPasswordBox>
@@ -89,6 +96,7 @@ const LoginContent: FC = () => {
                 placeholder="비밀번호"
                 value={password}
                 onChange={handleChangePassword}
+                onKeyPress={keyPressHandler}
               />
               <S.LoginPasswordDisplayIcon>
                 <img
