@@ -105,7 +105,7 @@
   export interface GetApplicantsListResponse {
     total_elements: number;
     total_pages: number;
-    applicants_information_response: ApplicantListItem[];
+    applicants_information_responses: ApplicantListItem[];
   }
   
   export interface GetApplicantInfoPayload {
