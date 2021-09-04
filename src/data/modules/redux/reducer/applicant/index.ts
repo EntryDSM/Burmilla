@@ -17,8 +17,6 @@ import {
   // UPDATE_APPLICANT_LIST_FAILURE,
   RESET_UPDATE_STATUS
 } from "../../action/applicant/interface";
-// import { returnApiResponseData } from '../';
-// import { API_STATUS } from '../../../../api/index';
 
 const InitialState: ApplicantState = {
   getApplicantsListStatus: 0,
