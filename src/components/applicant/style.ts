@@ -13,7 +13,6 @@ export const Applicant = styled.div`
 `;
 
 export const ApplicantContainer = styled.div`
-  flex: 4;
   display: flex;
   flex-direction: column;
 `;
@@ -27,6 +26,11 @@ export const PaginationBox = styled.div`
 `;
 
 export const ApplicantInfoWrap = styled.div`
-  flex: 3;
   position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid black;
+  width: 40%;
+  height: 100%;
+  z-index: 1;
 `;
