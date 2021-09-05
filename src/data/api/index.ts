@@ -105,14 +105,12 @@ export const getApplicantsListApi = async (access_token: string, payload: T.GetA
   return response;
 };
 
-export const getApplicantInfoApi = async (
-  payload: T.GetApplicantInfoPayload,
-) => {
+export const getApplicantInfoApi = async (access_token: string, payload: T.GetApplicantInfoPayload) => {
+  console.log("test", payload)
   const response = await instance('main').get<T.GetApplicantInfoResponse>(
-   uri.applicant ,
+   uri.applicant+`/${payload.receipt_code}` ,
     {
       headers: authorization(getAccessToken()),
-      params: payload,
     },
   );
   
