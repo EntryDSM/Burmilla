@@ -109,7 +109,7 @@
   }
   
   export interface GetApplicantInfoPayload {
-    receipt_code: number;
+    receipt_code?: number;
   }
   
   export interface ApplicantStatus {
@@ -146,12 +146,12 @@
   }
   
   export interface GetApplicantInfoResponse {
-    applicant_information?: {
+    submitted_applicant: {
       status: ApplicantStatus;
       personal_data: ApplicantPersonalData;
       evaluation: ApplicantEvaluation;
     };
-    applicant_contact?: {
+    not_submitted_applicant: {
       email: string;
       telephone_number: number;
       parent_tel: number;
