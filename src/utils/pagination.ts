@@ -1,6 +1,6 @@
 export const getIndexList = (currentIndex: number, maxIndex: number) => {
     const range = (start: number, end: number) => {
-      let arr = [] as any;
+      let arr = [];
   
       let length = end - start;
   
