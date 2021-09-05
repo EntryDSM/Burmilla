@@ -46,9 +46,8 @@ const ApplicantsListItem: FC<Props> = ({
     <>
       <S.TR
         isSelected={
-          name ===
-          currnetApplicantInfo?.applicant_information?.personal_data?.name
-          // receipt_code === filters.receipt_code
+          is_printed_arrived ===
+          currnetApplicantInfo?.submitted_applicant.status.is_printed_arrived
         }
         onClick={() => handleClick(receipt_code)}
       >

@@ -24,6 +24,8 @@ const ApplicantsList: FC<Props> = ({
 }) => {
   const handleClickListItem = React.useCallback((receipt_code: number) => {
     getApplicantInfo({ receipt_code });
+    console.log("test", currnetApplicantInfo);
+    console.log("test", applicantsList);
   }, []);
 
   return (
