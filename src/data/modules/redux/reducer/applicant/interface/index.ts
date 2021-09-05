@@ -32,7 +32,22 @@ export interface getApplicantsListResponse {
 }
 
 export interface getApplicantInfoTypes {
- receipt_code: number;
+ receipt_code?: number;
+}
+
+export interface getApplicantInfoResponse {
+   submitted_applicant: {
+    status: applicantStatus;
+    personal_data:applicantPersonalData;
+    evaluation: applicantEvaluation;
+   };
+   not_submitted_applicant: {
+    email: string;
+    telephone_number: number;
+    parent_tel: number;
+    home_tel: number;
+    school_tel?: number;
+   };
 }
   
 export interface applicantStatus {
@@ -66,19 +81,4 @@ export interface applicantEvaluation {
  lateness_count: number;
  self_introduce: string;
  study_plan: string;
-}
-
-export interface getApplicantInfoResponse {
- applicant_information?: {
-    status: applicantStatus;
-    personal_data:applicantPersonalData;
-    evaluation: applicantEvaluation;
- };
- applicant_contact?: {
-    email: string;
-    telephone_number: number;
-    parent_tel: number;
-    home_tel: number;
-    school_tel?: number;
- };
 }
