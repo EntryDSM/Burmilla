@@ -18,29 +18,38 @@ const Pagination: FC<Props> = ({ applicantsList, setFilter }) => {
   const [indexList, setIndexList] = React.useState<number[]>([]);
 
   React.useEffect(() => {
-    setIndexList(getIndexList(currentIndex, applicantsList.total_elements));
-  }, [applicantsList.total_elements, currentIndex]);
-
-  React.useEffect(() => {
-    setFilter({
-      size: currentIndex,
-    });
-  }, [currentIndex]);
+    setIndexList(getIndexList(currentIndex, applicantsList.total_pages));
+  }, [applicantsList.total_pages, currentIndex]);
 
   React.useEffect(() => {
     setCurrentIndex(1);
-  }, [applicantsList.total_elements]);
+    setFilter({
+      page: currentIndex,
+    });
+  }, [applicantsList.total_pages]);
 
-  const handleClickIndex = React.useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+  const handleClickIndex = React.useCallback(
+    (index: number) => {
+      setCurrentIndex(index);
+      setFilter({
+        page: currentIndex,
+      });
+    },
+    [currentIndex, applicantsList.total_pages]
+  );
   const handleClickPrev = React.useCallback(() => {
     if (currentIndex > 1) setCurrentIndex(currentIndex - 1);
-  }, [currentIndex, applicantsList.total_elements]);
+    setFilter({
+      page: currentIndex,
+    });
+  }, [currentIndex, applicantsList.total_pages]);
   const handleClickNext = React.useCallback(() => {
-    if (currentIndex < applicantsList.total_elements)
+    if (currentIndex < applicantsList.total_pages)
       setCurrentIndex(currentIndex + 1);
-  }, [currentIndex, applicantsList.total_elements]);
+    setFilter({
+      page: currentIndex,
+    });
+  }, [currentIndex, applicantsList.total_pages]);
 
   return (
     <S.PaginationContainer className="no-select">
