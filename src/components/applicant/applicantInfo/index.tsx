@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Unsubmitted from "./unSubmitted";
+import UnSubmitted from "./unSubmitted";
 import Submitted from "./submitted";
 import {
   GetApplicantsListResponse,
@@ -25,18 +25,18 @@ const ApplicantInfo: FC<Props> = ({
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
-  return currnetApplicantInfo.applicant_information ? (
+  return currnetApplicantInfo.submitted_applicant ? (
     <>
       {applicantsList.applicants_information_responses &&
         applicantsList.applicants_information_responses.map((info) => (
           <Submitted
             applicantPersonalData={
-              currnetApplicantInfo.applicant_information.personal_data
+              currnetApplicantInfo.submitted_applicant.personal_data
             }
             applicantEvaluation={
-              currnetApplicantInfo.applicant_information.evaluation
+              currnetApplicantInfo.submitted_applicant.evaluation
             }
-            applicantStatus={currnetApplicantInfo.applicant_information.status}
+            applicantStatus={currnetApplicantInfo.submitted_applicant.status}
             applicantListItem={info}
             updateApplicantStatusStatus={updateApplicantStatusStatus}
             updateApplicantStatus={updateApplicantStatus}
@@ -46,7 +46,9 @@ const ApplicantInfo: FC<Props> = ({
         ))}
     </>
   ) : (
-    <Unsubmitted applicant_contact={currnetApplicantInfo.applicant_contact} />
+    <UnSubmitted
+      not_submitted_applicant={currnetApplicantInfo.not_submitted_applicant}
+    />
   );
 };
 

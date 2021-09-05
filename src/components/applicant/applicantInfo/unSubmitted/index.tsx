@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import { JsxElement } from "typescript";
 import * as S from "./style";
 
 interface Props {
-  applicant_contact: {
+  not_submitted_applicant: {
     email: string;
     telephone_number: number;
     parent_tel: number;
@@ -13,7 +12,7 @@ interface Props {
 }
 
 const Unsubmitted: FC<Props> = ({
-  applicant_contact: {
+  not_submitted_applicant: {
     email,
     telephone_number,
     parent_tel,
