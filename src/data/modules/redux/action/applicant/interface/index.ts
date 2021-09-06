@@ -1,4 +1,5 @@
 export const SET_FILTER = 'applicant/SET_FILTER' as const;
+export const SET_APPLICANT_INFO_APPEAR = 'applicant/SET_APPLICANT_INFO_APPEAR' as const;
 
 export const GET_APPLICANT_INFO = 'applicant/GET_APPLICANT_INFO' as const;
 export const GET_APPLICANT_INFO_SUCCESS = 'applicant/GET_APPLICANT_INFO_SUCCESS' as const;
