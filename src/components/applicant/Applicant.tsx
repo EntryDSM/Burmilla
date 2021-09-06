@@ -13,43 +13,53 @@ import {
 } from "../../data/api/apiTypes";
 
 interface Props {
-  applicantsList: GetApplicantsListResponse;
+  applicantInfoAppear: boolean;
   filters: GetApplicantsListPayload;
+  applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
   // updateApplicantList: ;
   // resetUpdateStatus;
-  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   setFilter: (payload: GetApplicantsListPayload) => void;
+  setApplicantInfoAppear: (payload: boolean) => void;
+  getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const Applicant: FC<Props> = ({
-  applicantsList,
+  applicantInfoAppear,
   filters,
+  applicantsList,
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
   // resetUpdateStatus,
-  getApplicantInfo,
   setFilter,
+  setApplicantInfoAppear,
+  getApplicantInfo,
 }) => {
   return (
     <S.Applicant>
       <S.ApplicantContainer>
         <FilterSearch filters={filters} setFilter={setFilter} />
         <ApplicantsList
+          applicantInfoAppear={applicantInfoAppear}
           filters={filters}
           applicantsList={applicantsList}
           currnetApplicantInfo={currnetApplicantInfo}
+          setApplicantInfoAppear={setApplicantInfoAppear}
           getApplicantInfo={getApplicantInfo}
         />
         <S.PaginationBox>
-          <Pagination applicantsList={applicantsList} setFilter={setFilter} />
+          <Pagination
+            applicantsList={applicantsList}
+            filters={filters}
+            setFilter={setFilter}
+          />
         </S.PaginationBox>
       </S.ApplicantContainer>
       <S.ApplicantInfoWrap>
-        {currnetApplicantInfo && (
+        {applicantInfoAppear && (
           <ApplicantInfo
             applicantsList={applicantsList}
             currnetApplicantInfo={currnetApplicantInfo}

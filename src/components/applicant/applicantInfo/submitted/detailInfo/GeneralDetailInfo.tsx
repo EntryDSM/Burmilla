@@ -2,14 +2,14 @@ import React, { FC } from "react";
 
 import * as S from "./style";
 import {
-  applicantPersonalData,
-  applicantEvaluation,
-} from "../../../../../data/modules/redux/reducer/applicant/interface";
+  ApplicantPersonalData,
+  ApplicantEvaluation,
+} from "../../../../../data/api/apiTypes";
 import { returnContact } from "../../../../../utils/checkType";
 
 interface Props {
-  applicantPersonalData: applicantPersonalData;
-  applicantEvaluation: applicantEvaluation;
+  applicantPersonalData: ApplicantPersonalData;
+  applicantEvaluation: ApplicantEvaluation;
 }
 
 const DetailInfo: FC<Props> = ({

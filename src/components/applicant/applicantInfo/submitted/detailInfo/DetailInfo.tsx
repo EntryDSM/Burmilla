@@ -3,14 +3,14 @@ import React, { FC } from "react";
 import QualificationexamDetailInfo from "./QualificationexamDetailInfo";
 import GeneralDetailInfo from "./GeneralDetailInfo";
 import {
-  applicantPersonalData,
-  applicantEvaluation,
-} from "../../../../../data/modules/redux/reducer/applicant/interface";
+  ApplicantPersonalData,
+  ApplicantEvaluation,
+} from "../../../../../data/api/apiTypes";
 
 interface Props {
   isQUALIFICATION_EXAM: boolean;
-  applicantPersonalData: applicantPersonalData;
-  applicantEvaluation: applicantEvaluation;
+  applicantPersonalData: ApplicantPersonalData;
+  applicantEvaluation: ApplicantEvaluation;
 }
 
 const DetailInfo: FC<Props> = ({

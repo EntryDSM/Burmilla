@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
 `;
 
 export const IDPicture = styled.img`
-  width: 150px;
-  height: 200px;
+  width: 115px;
+  height: 140px;
   border: solid 1px #707070;
   margin-right: 36px;
 `;

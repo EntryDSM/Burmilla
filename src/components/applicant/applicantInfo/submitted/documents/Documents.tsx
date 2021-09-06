@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
 import * as S from "./style";
-import { applicantEvaluation } from "../../../../../data/modules/redux/reducer/applicant/interface";
+import { ApplicantEvaluation } from "../../../../../data/api/apiTypes";
 
 interface Props {
-  applicantEvaluation: applicantEvaluation;
+  applicantEvaluation: ApplicantEvaluation;
 }
 
 const Documents: FC<Props> = ({

@@ -1,26 +1,31 @@
 import React, { FC } from "react";
-
 import * as S from "./style";
-import { applicantPersonalData } from "../../../../../data/modules/redux/reducer/applicant/interface";
+import { ApplicantPersonalData } from "../../../../../data/api/apiTypes";
 import {
   returnApplicationType,
   returnEducationalType,
 } from "../../../../../utils/checkType";
 
 interface Props {
-  applicantPersonalData: applicantPersonalData;
+  applicantPersonalData: ApplicantPersonalData;
 }
 
 const BasicInfo: FC<Props> = ({
   applicantPersonalData: {
     photo_file_name,
     name,
+    email,
     birth_date,
     school_name,
     educational_status,
     application_type,
-    detail_address,
     address,
+    detail_address,
+    telephone_number,
+    parent_tel,
+    school_tel,
+    home_tel,
+    graduated,
   },
 }) => {
   const checkApplicationType = React.useCallback(() => {

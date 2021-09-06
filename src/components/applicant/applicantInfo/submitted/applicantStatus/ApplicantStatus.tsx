@@ -8,7 +8,7 @@ import {
 } from "../../../../../data/api/apiTypes";
 
 interface Props {
-  is_printed_arrived: boolean;
+  printed_arrived: boolean;
   receipt_code: number;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const ApplicantStatuses: FC<Props> = ({
-  is_printed_arrived,
+  printed_arrived,
   receipt_code,
   updateApplicantStatusStatus,
   updateApplicantStatus,
@@ -29,10 +29,10 @@ const ApplicantStatuses: FC<Props> = ({
   React.useEffect(() => {
     if (checkApiStatus(updateApplicantStatusStatus)._204) {
       // updateApplicantList({
-      //   is_printed_arrived,
+      //   printed_arrived,
       // });
 
-      if (changedStatus === "is_submit") {
+      if (changedStatus === "submit") {
         getApplicantInfo({ receipt_code });
       }
     } else if (checkApiStatus(updateApplicantStatusStatus)._400) {
@@ -42,25 +42,23 @@ const ApplicantStatuses: FC<Props> = ({
     // resetUpdateStatus();
   }, [updateApplicantStatusStatus]);
 
-  const handleClickCheckbox = async (is_printed_arrived: boolean) => {
+  const handleClickCheckbox = async (printed_arrived: boolean) => {
     if (window.confirm("지원자의 상태를 수정하시겠습니까?")) {
       // updateApplicantStatus({
-      //   is_printed_arrived,
+      //   printed_arrived,
       // });
     }
   };
 
   return (
     <S.Wrapper>
-      <S.CheckboxContainer
-        onClick={() => handleClickCheckbox(is_printed_arrived)}
-      >
-        <Checkbox isChecked={is_printed_arrived} />
+      <S.CheckboxContainer onClick={() => handleClickCheckbox(printed_arrived)}>
+        <Checkbox isChecked={printed_arrived} />
         <p>원서 미도착</p>
       </S.CheckboxContainer>
       <Button
         className="applicant-info__cancel-btn"
-        // onClick={() => handleClickCheckbox(email, "is_submit")}
+        // onClick={() => handleClickCheckbox(email, "submit")}
       >
         최종제출 취소
       </Button>
