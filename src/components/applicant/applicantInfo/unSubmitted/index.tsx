@@ -4,17 +4,17 @@ import * as S from "./style";
 interface Props {
   not_submitted_applicant: {
     email: string;
-    telephone_number: number;
-    parent_tel: number;
-    school_tel?: number;
-    home_tel: number;
+    applicant_tel: string;
+    parent_tel: string;
+    school_tel?: string;
+    home_tel?: string;
   };
 }
 
 const Unsubmitted: FC<Props> = ({
   not_submitted_applicant: {
     email,
-    telephone_number,
+    applicant_tel,
     parent_tel,
     home_tel,
     school_tel,
@@ -30,7 +30,7 @@ const Unsubmitted: FC<Props> = ({
           </S.BasicInfoTableTR>
           <S.BasicInfoTableTR>
             <th>학생 연락처</th>
-            <td>{telephone_number}</td>
+            <td>{applicant_tel}</td>
           </S.BasicInfoTableTR>
           <S.BasicInfoTableTR>
             <th>부모님 연락처</th>
@@ -56,7 +56,7 @@ const Unsubmitted: FC<Props> = ({
           </S.BasicInfoTableTR>
           <S.BasicInfoTableTR>
             <th>학생 연락처</th>
-            <td>{telephone_number}</td>
+            <td>{applicant_tel}</td>
           </S.BasicInfoTableTR>
           <S.BasicInfoTableTR>
             <th>부모님 연락처</th>
@@ -75,7 +75,7 @@ const Unsubmitted: FC<Props> = ({
     <S.Wrapper>
       <h3>최종제출을 하지 않은 지원자입니다.</h3>
       <table>
-        <tbody>{checkIsSubmitted}</tbody>
+        <tbody>{checkIsSubmitted()}</tbody>
       </table>
     </S.Wrapper>
   );
