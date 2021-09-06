@@ -5,6 +5,7 @@ export interface ApplicantState {
  getApplicantsListStatus: 0 | 200| 400 | 401 | 403 | 404;
  getApplicantInfoStatus: 0 | 200 | 401 | 403 | 423;
  updateApplicantStatusStatus: 0 | 204 | 400 | 401 | 403;
+ applicantInfoAppear: boolean;
  filters: getApplicantsLists;
  applicantsList: getApplicantsListResponse;
  currnetApplicantInfo: getApplicantInfoResponse;
@@ -38,47 +39,48 @@ export interface getApplicantInfoTypes {
 export interface getApplicantInfoResponse {
    submitted_applicant: {
     status: applicantStatus;
-    personal_data:applicantPersonalData;
+    personal_data: applicantPersonalData;
     evaluation: applicantEvaluation;
    };
    not_submitted_applicant: {
     email: string;
-    telephone_number: number;
-    parent_tel: number;
-    home_tel: number;
-    school_tel?: number;
+    applicant_tel: string;
+    parent_tel: string;
+    home_tel?: string;
+    school_tel?: string;
    };
 }
   
 export interface applicantStatus {
- is_printed_arrived: boolean;
- is_submit: boolean;
+   printed_arrived: boolean;
+   submit: boolean;
 }
   
 export interface applicantPersonalData {
- photo_file_name: string;
- name: string;
- birth_date: string;
- school_name: string;
- is_graduated: boolean;
- educational_status: string;
- application_type: string;
- address: string;
- detail_address: string;
- email: string;
- telephone_number: string;
- parent_tel: string;
- school_tel: string;
- home_tel: string;
+   photo_file_name: string;
+   name: string;
+   email: string;
+   birth_date: string;
+   school_name: string;
+   educational_status: string;
+   application_type: string;
+   address: string;
+   detail_address: string;
+   telephone_number: string;
+   parent_tel: string;
+   school_tel: string;
+   home_tel: string;
+   graduated: boolean;
 }
   
 export interface applicantEvaluation {
- volunteer_time: number;
- conversion_score: number;
- day_absence_count: number;
- lecture_absence_count: number;
- early_leave_count: number;
- lateness_count: number;
- self_introduce: string;
- study_plan: string;
+   volunteer_time: number;
+   conversion_score: number;
+   day_absence_count: number;
+   lecture_absence_count: number;
+   early_leave_count: number;
+   lateness_count: number;
+   self_introduce: string;
+   study_plan: string;
+   average_score: number;
 }
