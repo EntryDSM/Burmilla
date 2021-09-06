@@ -1,5 +1,6 @@
 import { 
   SET_FILTER,
+  SET_APPLICANT_INFO_APPEAR,
   GET_APPLICANT_INFO,
   GET_APPLICANT_INFO_SUCCESS,
   GET_APPLICANT_INFO_FAILURE,
@@ -28,9 +29,10 @@ import { error } from "../../../../../models/error";
 import { createAction } from 'typesafe-actions';
 
 export const setFilter = createAction(SET_FILTER)<GetApplicantsListPayload>();
+export const setApplicantInfoAppear = createAction(SET_APPLICANT_INFO_APPEAR)<boolean>();
 export const getApplicantInfo = createAction(GET_APPLICANT_INFO)<GetApplicantInfoPayload>();
 export const getApplicantInfoSuccess = createAction(GET_APPLICANT_INFO_SUCCESS)<GetApplicantInfoResponse>();
-export const getApplicantInfoFailure = createAction(GET_APPLICANT_INFO_FAILURE)<error>();
+export const getApplicantInfoFailure = createAction(GET_APPLICANT_INFO_FAILURE)<GetApplicantInfoResponse>();
 export const getApplicantsList = createAction(GET_APPLICANTS_LIST)<GetApplicantsListPayload>();
 export const getApplicantsListSuccess = createAction(GET_APPLICANTS_LIST_SUCCESS)<GetApplicantsListResponse>();
 export const getApplicantsListFailure = createAction(GET_APPLICANTS_LIST_FAILURE)<error>();
@@ -49,6 +51,7 @@ export const resetUpdateStatus = createAction(RESET_UPDATE_STATUS)<null>();
 
 export type applicantActionType = 
   | ReturnType<typeof setFilter>
+  | ReturnType<typeof setApplicantInfoAppear>
   | ReturnType<typeof getApplicantInfo>
   | ReturnType<typeof getApplicantInfoSuccess>
   | ReturnType<typeof getApplicantInfoFailure>
