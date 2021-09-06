@@ -45,7 +45,7 @@ const Submitted: FC<Props> = ({
   return (
     <S.Wrapper>
       <ApplicantStatusContainer
-        is_printed_arrived={applicantStatus.is_printed_arrived}
+        printed_arrived={applicantStatus.printed_arrived}
         receipt_code={applicantListItem.receipt_code}
         updateApplicantStatusStatus={updateApplicantStatusStatus}
         updateApplicantStatus={updateApplicantStatus}
