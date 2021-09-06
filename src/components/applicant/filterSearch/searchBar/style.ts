@@ -6,6 +6,7 @@ export const SearchBarWrapper = styled.div`
   width: 95%;
   display: flex;
   justify-content: flex-start;
+  position: relative;
   z-index: 1;
   margin: 0 2.5%;
 `;
@@ -20,6 +21,7 @@ export const CategoryDropdownClosed = styled.div`
   box-sizing: border-box;
   padding: 8px 12px;
   justify-content: space-between;
+  position: absolute;
   align-items: center;
   font-size: 13px;
   font-weight: bold;
@@ -37,9 +39,26 @@ export const CategoryDropdownOpened = styled.ul`
   background: white;
   border-radius: 5px;
   display: inline-flex;
+  position: absolute;
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;
+
+  > li {
+    width: 100%;
+    height: 24px;
+    padding: 0 12px 5px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background: ${color.lightPrimaryColor};
+    }
+  }
 
   > li:first-child {
     width: 78px;
@@ -61,20 +80,8 @@ export const CategoryDropdownOpened = styled.ul`
     }
   }
 
-  > li {
-    width: 100%;
-    height: 24px;
-    padding: 0 12px 5px 12px;
-    font-size: 13px;
-    font-weight: bold;
-    display: inline-flex;
-    box-sizing: border-box;
-    align-items: center;
-    cursor: pointer;
-
-    &:hover {
-      background: ${color.lightPrimaryColor};
-    }
+  > li:last-child {
+    border-radius: 0 0 5px 5px;
   }
 `;
 
@@ -85,7 +92,7 @@ export const SearchInputContainer = styled.div`
   border: solid ${color.darkBorderColor} 1px;
   border-radius: 4px;
   padding: 10px 18px;
-  margin-left: ${pxToRem(34)}rem;
+  margin-left: ${pxToRem(134)}rem;
   display: inline-flex;
   align-items: center;
   background: white;
