@@ -10,22 +10,25 @@ import {
 } from "../../../data/api/apiTypes";
 
 interface Props {
+  applicantInfoAppear: boolean;
   filters: GetApplicantsListPayload;
   currnetApplicantInfo: GetApplicantInfoResponse;
   applicantsList: GetApplicantsListResponse;
+  setApplicantInfoAppear: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const ApplicantsList: FC<Props> = ({
+  applicantInfoAppear,
   filters,
   currnetApplicantInfo,
   applicantsList,
+  setApplicantInfoAppear,
   getApplicantInfo,
 }) => {
   const handleClickListItem = React.useCallback((receipt_code: number) => {
     getApplicantInfo({ receipt_code });
-    console.log("test", currnetApplicantInfo);
-    console.log("test", applicantsList);
+    setApplicantInfoAppear(!applicantInfoAppear);
   }, []);
 
   return (
