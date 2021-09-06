@@ -23,6 +23,7 @@ export const TH = styled.th`
   font-family: 'Noto Sans KR-Medium', sans-serif !important;
   color: ${color.darkBorderColor};
   border-top: 1.5px solid #303030;
+  border-bottom: 0.8px solid #d3d3d3;
 
   &:first-child {
     width: 16%;
@@ -32,7 +33,8 @@ export const TH = styled.th`
 export const TR = styled.tr<{ isSelected: boolean }>`
   line-height: 2.8;
   cursor: pointer;
-  border-bottom: 0.4px solid ${({ isSelected }) => (isSelected ? color.lightPrimaryColor : '#d3d3d3')};
+  border-bottom: 0.8px solid ${({ isSelected }) => (isSelected ? color.primaryColor : '#d3d3d3')};
+  background-color: ${({ isSelected }) => (isSelected ? '#fffafa' : 'white')};
 
   &:last-child {
     border-bottom: 1.5px solid #303030;
