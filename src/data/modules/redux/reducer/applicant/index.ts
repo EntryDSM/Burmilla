@@ -43,47 +43,47 @@ const InitialState: ApplicantState = {
     applicants_information_responses: [],
   },
   currnetApplicantInfo: {
-    submitted_applicant: {
-      status: {
-        printed_arrived: false,
-        submit: false,
+      submitted_applicant: {
+        status: {
+          printed_arrived: false,
+          submit: false,
+        },
+        personal_data: {
+          photo_file_name: '',
+          name: '',
+          email: '',
+          birth_date: '',
+          school_name: '',
+          educational_status: '',
+          application_type: '',
+          address: '',
+          detail_address: '',
+          telephone_number: '',
+          parent_tel: '',
+          school_tel: '',
+          home_tel: '',
+          graduated: false,
+        },
+        evaluation: {
+          volunteer_time: 0,
+          conversion_score: 0,
+          day_absence_count: 0,
+          lecture_absence_count: 0,
+          early_leave_count: 0,
+          lateness_count: 0,
+          self_introduce: '',
+          study_plan: '',
+          average_score: 0,
+        },
       },
-      personal_data: {
-        photo_file_name: '',
-        name: '',
+      not_submitted_applicant: {
         email: '',
-        birth_date: '',
-        school_name: '',
-        educational_status: '',
-        application_type: '',
-        address: '',
-        detail_address: '',
-        telephone_number: '',
+        applicant_tel: '',
         parent_tel: '',
-        school_tel: '',
         home_tel: '',
-        graduated: false,
-      },
-      evaluation: {
-        volunteer_time: 0,
-        conversion_score: 0,
-        day_absence_count: 0,
-        lecture_absence_count: 0,
-        early_leave_count: 0,
-        lateness_count: 0,
-        self_introduce: '',
-        study_plan: '',
-        average_score: 0,
-      },
+        school_tel: '',
+      }
     },
-    not_submitted_applicant: {
-      email: '',
-      applicant_tel: '',
-      parent_tel: '',
-      home_tel: '',
-      school_tel: '',
-    }
-  },
   error: {
     status: 0,
     message: '',
@@ -127,7 +127,6 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
     case GET_APPLICANT_INFO_SUCCESS: {
       return {
         ...state,
-        // currnetApplicantInfo: null,
         currnetApplicantInfo: {
           submitted_applicant: {
             status: action.payload.submitted_applicant.status,
@@ -137,19 +136,14 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         },
       };
     }
-    case GET_APPLICANT_INFO_FAILURE:
+    case GET_APPLICANT_INFO_FAILURE: {
       return {
         ...state,
         currnetApplicantInfo: {
-          not_submitted_applicant: {
-            email: action.payload.not_submitted_applicant.email,
-            applicant_tel: action.payload.not_submitted_applicant.applicant_tel,
-            parent_tel: action.payload.not_submitted_applicant.parent_tel,
-            home_tel: action.payload.not_submitted_applicant.home_tel,
-            school_tel: action.payload.not_submitted_applicant.school_tel,
-          }
-        }
+          not_submitted_applicant: action.payload.not_submitted_applicant
+        },
       };
+    }
     case UPDATE_APPLICANT_STATUS: 
       return {
         ...state,
