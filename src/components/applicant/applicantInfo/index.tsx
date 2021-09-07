@@ -5,12 +5,16 @@ import {
   GetApplicantsListResponse,
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
+  // GetApplicantInfoResponseSuccess,
+  // GetApplicantInfoResponseFailure,
   UpdateApplicantStatusPayload,
 } from "../../../data/api/apiTypes";
 
 interface Props {
   applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
+  // currnetApplicantInfoSuccess: GetApplicantInfoResponseSuccess;
+  // currnetApplicantInfoFailure: GetApplicantInfoResponseFailure;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
@@ -20,6 +24,8 @@ interface Props {
 const ApplicantInfo: FC<Props> = ({
   applicantsList,
   currnetApplicantInfo,
+  // currnetApplicantInfoSuccess,
+  // currnetApplicantInfoFailure,
   updateApplicantStatusStatus,
   updateApplicantStatus,
   getApplicantInfo,
@@ -28,11 +34,11 @@ const ApplicantInfo: FC<Props> = ({
   const filterResponse = applicantsList.applicants_information_responses.filter(
     (i) => {
       return (
-        i.name === currnetApplicantInfo.submitted_applicant.personal_data.name
+        i.name ===
+        currnetApplicantInfo?.submitted_applicant?.personal_data?.name
       );
     }
   );
-
   if (currnetApplicantInfo.submitted_applicant) {
     return (
       <>
