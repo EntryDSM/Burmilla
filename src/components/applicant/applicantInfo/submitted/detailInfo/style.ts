@@ -8,23 +8,26 @@ export const DetailInfoTable = styled.table`
 
   th,
   td {
-    border: 1px solid #ededed;
+    border: 1px solid #e0e0e0;
   }
   th {
     text-align: center;
     font-weight: normal;
-    width: 120px;
+    width: 85px;
     font-size: 12px;
+    font-weight: bold;
 
     &:first-child {
       border-left: 0;
+      width: 70px;
+      height: 33px;
     }
   }
   td {
     text-align: left;
     padding-left: 20px;
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: bold;
+    font-size: 13px;
 
     &:first-child {
       width: 35%;
