@@ -7,23 +7,27 @@ import {
 } from "../../../../utils/checkType";
 import {
   ApplicantListItem,
-  GetApplicantsListPayload,
   GetApplicantInfoResponse,
+  // GetApplicantInfoResponseSuccess,
+  // GetApplicantInfoResponseFailure,
 } from "../../../../data/api/apiTypes";
 
 interface Props {
-  filters: GetApplicantsListPayload;
   currnetApplicantInfo: GetApplicantInfoResponse;
+  // currnetApplicantInfoSuccess: GetApplicantInfoResponseSuccess;
+  // currnetApplicantInfoFailure: GetApplicantInfoResponseFailure;
   applicantInfo: ApplicantListItem;
   handleClick: (receipt_code: number) => void;
 }
 
 const ApplicantsListItem: FC<Props> = ({
-  filters,
+  // currnetApplicantInfoSuccess,
+  // currnetApplicantInfoFailure,
   currnetApplicantInfo,
   applicantInfo: {
     receipt_code,
     name,
+    email,
     is_daejeon,
     application_type,
     is_printed_arrived,
@@ -46,7 +50,9 @@ const ApplicantsListItem: FC<Props> = ({
     <>
       <S.TR
         isSelected={
-          name === currnetApplicantInfo?.submitted_applicant.personal_data.name
+          name ===
+            currnetApplicantInfo?.submitted_applicant?.personal_data?.name ||
+          email === currnetApplicantInfo?.not_submitted_applicant?.email
         }
         onClick={() => handleClick(receipt_code)}
       >
