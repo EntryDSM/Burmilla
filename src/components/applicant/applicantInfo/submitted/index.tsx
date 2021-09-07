@@ -15,23 +15,27 @@ import {
 import { returnEducationalType } from "../../../../utils/checkType";
 
 interface Props {
+  applicantInfoAppear: boolean;
   applicantPersonalData: ApplicantPersonalData;
   applicantEvaluation: ApplicantEvaluation;
   applicantStatus: ApplicantStatus;
   applicantListItem: ApplicantListItem;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
+  setApplicantInfoAppear: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
 const Submitted: FC<Props> = ({
+  applicantInfoAppear,
   applicantPersonalData,
   applicantEvaluation,
   applicantStatus,
   applicantListItem,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  setApplicantInfoAppear,
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
@@ -45,10 +49,12 @@ const Submitted: FC<Props> = ({
   return (
     <S.Wrapper>
       <ApplicantStatusContainer
+        applicantInfoAppear={applicantInfoAppear}
         printed_arrived={applicantStatus.printed_arrived}
         receipt_code={applicantListItem.receipt_code}
         updateApplicantStatusStatus={updateApplicantStatusStatus}
         updateApplicantStatus={updateApplicantStatus}
+        setApplicantInfoAppear={setApplicantInfoAppear}
         getApplicantInfo={getApplicantInfo}
         // resetUpdateStatus={resetUpdateStatus}
       />
