@@ -27,9 +27,9 @@ export const PaginationBox = styled.div`
 
 export const ApplicantInfoWrap = styled.div`
   position: absolute;
+  z-index: 1;
   top: 60px;
   right: 0;
   width: 42%;
   min-height: 100%;
-  z-index: 1;
 `;
