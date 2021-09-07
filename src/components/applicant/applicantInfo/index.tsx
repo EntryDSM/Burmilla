@@ -5,29 +5,27 @@ import {
   GetApplicantsListResponse,
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
-  // GetApplicantInfoResponseSuccess,
-  // GetApplicantInfoResponseFailure,
   UpdateApplicantStatusPayload,
 } from "../../../data/api/apiTypes";
 
 interface Props {
+  applicantInfoAppear: boolean;
   applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
-  // currnetApplicantInfoSuccess: GetApplicantInfoResponseSuccess;
-  // currnetApplicantInfoFailure: GetApplicantInfoResponseFailure;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
+  setApplicantInfoAppear: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
 const ApplicantInfo: FC<Props> = ({
+  applicantInfoAppear,
   applicantsList,
   currnetApplicantInfo,
-  // currnetApplicantInfoSuccess,
-  // currnetApplicantInfoFailure,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  setApplicantInfoAppear,
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
@@ -45,6 +43,7 @@ const ApplicantInfo: FC<Props> = ({
         {applicantsList.applicants_information_responses &&
           filterResponse.map((info) => (
             <Submitted
+              applicantInfoAppear={applicantInfoAppear}
               applicantPersonalData={
                 currnetApplicantInfo.submitted_applicant.personal_data
               }
@@ -55,6 +54,7 @@ const ApplicantInfo: FC<Props> = ({
               applicantListItem={info}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
+              setApplicantInfoAppear={setApplicantInfoAppear}
               getApplicantInfo={getApplicantInfo}
               // resetUpdateStatus={resetUpdateStatus}
             />
@@ -65,7 +65,9 @@ const ApplicantInfo: FC<Props> = ({
   if (currnetApplicantInfo.not_submitted_applicant) {
     return (
       <UnSubmitted
+        applicantInfoAppear={applicantInfoAppear}
         not_submitted_applicant={currnetApplicantInfo.not_submitted_applicant}
+        setApplicantInfoAppear={setApplicantInfoAppear}
       />
     );
   }

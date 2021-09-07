@@ -6,8 +6,6 @@ import {
   GetApplicantsListPayload,
   GetApplicantsListResponse,
   GetApplicantInfoResponse,
-  // GetApplicantInfoResponseSuccess,
-  // GetApplicantInfoResponseFailure,
   GetApplicantInfoPayload,
 } from "../../../data/api/apiTypes";
 
@@ -15,8 +13,6 @@ interface Props {
   applicantInfoAppear: boolean;
   filters: GetApplicantsListPayload;
   currnetApplicantInfo: GetApplicantInfoResponse;
-  // currnetApplicantInfoSuccess: GetApplicantInfoResponseSuccess;
-  // currnetApplicantInfoFailure: GetApplicantInfoResponseFailure;
   applicantsList: GetApplicantsListResponse;
   setApplicantInfoAppear: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
@@ -26,8 +22,6 @@ const ApplicantsList: FC<Props> = ({
   applicantInfoAppear,
   filters,
   currnetApplicantInfo,
-  // currnetApplicantInfoSuccess,
-  // currnetApplicantInfoFailure,
   applicantsList,
   setApplicantInfoAppear,
   getApplicantInfo,
