@@ -29,7 +29,7 @@ export const ApplicantInfoWrap = styled.div`
   position: absolute;
   top: 60px;
   right: 0;
-  width: 40%;
-  height: 100%;
+  width: 42%;
+  min-height: 100%;
   z-index: 1;
 `;
