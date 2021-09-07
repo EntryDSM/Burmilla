@@ -64,13 +64,13 @@ const DetailInfo: FC<Props> = ({
           <td>
             <div>
               <span>전체 무단 결석 일수</span>
-              <span>{day_absence_count || 0} 일</span>
+              <span>{day_absence_count || 0}</span>
             </div>
           </td>
           <td colSpan={2}>
             <div>
               <span>전체 무단 조퇴 일수</span>
-              <span>{early_leave_count || 0} 일</span>
+              <span>{early_leave_count || 0}</span>
             </div>
           </td>
         </tr>
@@ -78,13 +78,13 @@ const DetailInfo: FC<Props> = ({
           <td>
             <div>
               <span>전체 무단 지각 일수</span>
-              <span>{lateness_count || 0} 일</span>
+              <span>{lateness_count || 0}</span>
             </div>
           </td>
           <td colSpan={2}>
             <div>
               <span>전체 무단 결과 일수</span>
-              <span>{lecture_absence_count || 0} 일</span>
+              <span>{lecture_absence_count || 0}</span>
             </div>
           </td>
         </tr>
