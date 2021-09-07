@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  margin-top: 30px;
+  margin: 28px 0 20px;
 
   > ul {
-    padding: 18px 0;
+    padding: 8px 0 14px;
     box-sizing: border-box;
   }
 `;
@@ -14,24 +14,26 @@ export const IDPicture = styled.img`
   width: 115px;
   height: 140px;
   border: solid 1px #707070;
-  margin-right: 36px;
+  margin-right: 28px;
 `;
 
 export const InfoLine = styled.li<{ isOneLine: boolean }>`
   display: flex;
   align-items: baseline;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: bold;
   ${({ isOneLine }) => !isOneLine && 'flex-direction: column'};
 
   > h3 {
-    font-size: 32px;
-    margin-right: 20px;
+    font-family: 'Noto Sans KR-Medium', sans-serif !important;
+    font-size: 28px;
+    margin-right: 16px;
     font-weight: bold;
   }
 
   > p {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 13px;
   }
 
   &:last-child {
