@@ -38,19 +38,19 @@ export interface getApplicantInfoTypes {
 
 export interface getApplicantInfoResponse {
    submitted_applicant: {
-    status: applicantStatus;
-    personal_data: applicantPersonalData;
-    evaluation: applicantEvaluation;
+      status: applicantStatus;
+      personal_data: applicantPersonalData;
+      evaluation: applicantEvaluation;
    };
    not_submitted_applicant: {
-    email: string;
-    applicant_tel: string;
-    parent_tel: string;
-    home_tel?: string;
-    school_tel?: string;
+      email: string;
+      applicant_tel: string;
+      parent_tel: string;
+      home_tel?: string;
+      school_tel?: string;
    };
 }
-  
+
 export interface applicantStatus {
    printed_arrived: boolean;
    submit: boolean;
