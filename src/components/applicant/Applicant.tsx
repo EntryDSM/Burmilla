@@ -9,6 +9,8 @@ import {
   GetApplicantsListPayload,
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
+  // GetApplicantInfoResponseSuccess,
+  // GetApplicantInfoResponseFailure,
   UpdateApplicantStatusPayload,
 } from "../../data/api/apiTypes";
 
@@ -17,6 +19,8 @@ interface Props {
   filters: GetApplicantsListPayload;
   applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
+  // currnetApplicantInfoSuccess: GetApplicantInfoResponseSuccess;
+  // currnetApplicantInfoFailure: GetApplicantInfoResponseFailure;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
   // updateApplicantList: ;
@@ -31,6 +35,8 @@ const Applicant: FC<Props> = ({
   filters,
   applicantsList,
   currnetApplicantInfo,
+  // currnetApplicantInfoSuccess,
+  // currnetApplicantInfoFailure,
   updateApplicantStatusStatus,
   updateApplicantStatus,
   // resetUpdateStatus,
@@ -47,6 +53,8 @@ const Applicant: FC<Props> = ({
           filters={filters}
           applicantsList={applicantsList}
           currnetApplicantInfo={currnetApplicantInfo}
+          // currnetApplicantInfoSuccess={currnetApplicantInfoSuccess}
+          // currnetApplicantInfoFailure={currnetApplicantInfoFailure}
           setApplicantInfoAppear={setApplicantInfoAppear}
           getApplicantInfo={getApplicantInfo}
         />
@@ -63,6 +71,8 @@ const Applicant: FC<Props> = ({
           <ApplicantInfo
             applicantsList={applicantsList}
             currnetApplicantInfo={currnetApplicantInfo}
+            // currnetApplicantInfoSuccess={currnetApplicantInfoSuccess}
+            // currnetApplicantInfoFailure={currnetApplicantInfoFailure}
             updateApplicantStatusStatus={updateApplicantStatusStatus}
             updateApplicantStatus={updateApplicantStatus}
             getApplicantInfo={getApplicantInfo}
