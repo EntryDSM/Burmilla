@@ -26,11 +26,12 @@ const Documents: FC<Props> = ({
       <S.ContentSelector>
         {contents.map((v) => (
           <span
+            onClick={() => handleClickContent(v)}
             key={v}
             className={selectedItem === v ? "selected" : ""}
-            onClick={() => handleClickContent(v)}
           >
             {v}
+            <div key={v} className={selectedItem === v ? "selected" : ""} />
           </span>
         ))}
       </S.ContentSelector>
