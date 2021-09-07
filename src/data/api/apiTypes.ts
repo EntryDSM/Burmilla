@@ -100,6 +100,7 @@
     application_type: string;
     is_printed_arrived: boolean;
     is_submit: boolean;
+    email: string;
   }
 
   export interface GetApplicantsListResponse {
@@ -147,12 +148,12 @@
   }
   
   export interface GetApplicantInfoResponse {
-    submitted_applicant: {
+    submitted_applicant?: {
       status: ApplicantStatus;
       personal_data: ApplicantPersonalData;
       evaluation: ApplicantEvaluation;
     };
-    not_submitted_applicant: {
+    not_submitted_applicant?: {
       email: string;
       applicant_tel: string;
       parent_tel: string;
