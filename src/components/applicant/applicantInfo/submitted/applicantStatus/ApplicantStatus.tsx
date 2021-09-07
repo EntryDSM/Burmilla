@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import * as S from "./style";
+import { details_arrow } from "../../../../../assets/applicants";
 import { Checkbox, Button } from "../../../../common";
 import checkApiStatus from "../../../../../data/api/checkApiStatus";
 import {
@@ -8,19 +9,23 @@ import {
 } from "../../../../../data/api/apiTypes";
 
 interface Props {
+  applicantInfoAppear: boolean;
   printed_arrived: boolean;
   receipt_code: number;
   updateApplicantStatusStatus: number;
   updateApplicantStatus: UpdateApplicantStatusPayload;
+  setApplicantInfoAppear: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
 const ApplicantStatuses: FC<Props> = ({
+  applicantInfoAppear,
   printed_arrived,
   receipt_code,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  setApplicantInfoAppear,
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
@@ -50,8 +55,16 @@ const ApplicantStatuses: FC<Props> = ({
     }
   };
 
+  const handleClickDetailArrow = () => {
+    setApplicantInfoAppear(!applicantInfoAppear);
+  };
+
   return (
     <S.Wrapper>
+      <S.DetailInfo
+        src={details_arrow}
+        onClick={() => handleClickDetailArrow()}
+      ></S.DetailInfo>
       <S.CheckboxContainer onClick={() => handleClickCheckbox(printed_arrived)}>
         <Checkbox isChecked={printed_arrived} />
         <p>원서 미도착</p>
