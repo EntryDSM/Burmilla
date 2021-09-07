@@ -22,17 +22,19 @@ export const ContentSelector = styled.div`
     }
     
     > div {
+      position: absolute;
+      top: 33px;
       height: 3.5px;
       width: 1px;
       border-radius: 4px 4px 0px 0px;
       visibility: hidden;
-      position: absolute;
       background-color: ${color.primaryColor};
-      /* transition: */
 
       &.selected {
         width: 100%;
         visibility: visible;
+        transform: translateY(-5px);
+        transition: all 0.4s;
       }
     }
   }
