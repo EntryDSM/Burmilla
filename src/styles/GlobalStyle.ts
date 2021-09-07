@@ -11,6 +11,17 @@ import {
       width: 100%;
       min-width: 1024px;
       font-family: 'Noto Sans KR', sans-serif !important;
+      &::-webkit-scrollbar {
+		    width: 8px;
+		    background: none;
+	    }
+	    &::-webkit-scrollbar-thumb {
+	      background: ${color.primaryColor};
+        border-radius: 6px;
+	    }
+	    &::-webkit-scrollbar-track {
+	      background: none;
+	    }
     }
     input {
       border: none;
