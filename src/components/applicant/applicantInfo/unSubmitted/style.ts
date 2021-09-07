@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { color } from '../../../../styles';
 
 export const Wrapper = styled.div`
-  padding: 120px 72px;
+  padding: 136.5px 72px;
+  height: 28rem;
+  background-color: ${color.backgorund};
 
   > h3 {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: bold;    
+    font-family: 'Noto Sans KR-Medium', sans-serif !important;
     margin-bottom: 55px;
   }
 `;
