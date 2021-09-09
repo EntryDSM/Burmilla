@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   margin: 28px 0 20px;
+  min-width: 25rem;
 
   > ul {
     padding: 8px 0 14px;
