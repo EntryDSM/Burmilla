@@ -75,12 +75,6 @@ const Filter: FC<Props> = ({ filters, setFilter }) => {
       </S.FilterSelectBox>
       <S.FilterButtonContainer>
         <Button
-          className="admission-code__download-btn"
-          onClick={handleDownloadExcel}
-        >
-          수험번호 출력
-        </Button>
-        <Button
           className="applicant-list__excel-btn"
           onClick={handleDownloadExcel}
         >
