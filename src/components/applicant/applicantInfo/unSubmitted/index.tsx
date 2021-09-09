@@ -4,7 +4,7 @@ import { details_arrow } from "../../../../assets/applicants";
 import { returnContact } from "../../../../utils/checkType";
 
 interface Props {
-  applicantInfoAppear: boolean;
+  isContainerWidth: boolean;
   not_submitted_applicant: {
     email: string;
     applicant_tel: string;
@@ -12,11 +12,11 @@ interface Props {
     school_tel?: string;
     home_tel?: string;
   };
-  setApplicantInfoAppear: (payload: boolean) => void;
+  setIsContainerWidth: (payload: boolean) => void;
 }
 
 const Unsubmitted: FC<Props> = ({
-  applicantInfoAppear,
+  isContainerWidth,
   not_submitted_applicant: {
     email,
     applicant_tel,
@@ -24,14 +24,14 @@ const Unsubmitted: FC<Props> = ({
     home_tel,
     school_tel,
   },
-  setApplicantInfoAppear,
+  setIsContainerWidth,
 }) => {
   const setContactForm = React.useCallback((contact: string) => {
     return returnContact(contact);
   }, []);
 
   const handleClickDetailArrow = () => {
-    setApplicantInfoAppear(!applicantInfoAppear);
+    setIsContainerWidth(!isContainerWidth);
   };
 
   const checkIsSubmitted = () => {
