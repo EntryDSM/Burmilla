@@ -3,11 +3,11 @@ enum uri {
     total = '/admin/statics',
     applicant = '/admin/applicant',
     applicants = '/admin/applicants',
+    applicant_status = '/admin/applicant/status',
     schedules = '/admin/schedules',
-    ticket_print = '/admin/excel/admission-ticket/',
+    ticket_print = '/admin/excel/admission-ticket',
     applicants_print = '/admin/excel/applicants',
     make_applicants = '/admin/applicants/examcode',
-    arrived_application = '/admin/applicant/printed-arrived'
 }
 
 export default uri
