@@ -3,6 +3,7 @@ import { color } from '../../../../../styles';
 
 export const Wrapper = styled.div`
   margin-top: 34px;
+  min-width: 25rem;
 `;
 
 export const ContentSelector = styled.div`
