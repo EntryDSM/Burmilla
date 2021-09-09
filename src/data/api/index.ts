@@ -116,18 +116,30 @@ export const getApplicantInfoApi = async (access_token: string, payload: T.GetAp
   }
 };
 
-export const updateApplicantStatusApi = async (
-  payload: T.UpdateApplicantStatusPayload,
-) => {
-  const response = await instance('main').patch(uri.applicant, {
-    headers: authorization(getAccessToken()),
-    params: {
-      payload,
-    },
-  });
+export const updateApplicantStatusApi = async (access_token: string, payload: T.UpdateApplicantStatusPayload) => {
+  try {
+    const request = instance('main');
 
-  return [response.data, response.status];
-};
+    await request.patch(uri.applicant+`/${payload.receipt_code}`, null, {
+    headers: authorization(getAccessToken()),
+    params: payload,
+  });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const updateApplicantSubmitStatusApi = async (access_token: string, payload: T.UpdateApplicantSubmitStatusPayload) => {
+  try {
+    const request = instance('main');
+
+    await request.patch(uri.applicant_status+`/${payload.receipt_code}`, null, {
+    headers: authorization(getAccessToken()),
+  });
+  } catch (error) {
+    throw error;
+  }
+}
 
 export const downloadApplicantsListExcel = async () => {
   const response = await instance('excel').get(uri.applicants_print , {
@@ -135,25 +147,14 @@ export const downloadApplicantsListExcel = async () => {
     responseType: 'blob',
   });
 
-  return response.data;
+  return response;
 };
 
 export const downloadAdmissionExcel = async () => {
   const response = await instance('excel').get(uri.ticket_print, {
-    headers: {
-      Authorization: getAccessToken(),
-    },
+    headers: authorization(getAccessToken()),
     responseType: 'blob',
   });
 
-  return response.data;
+  return response;
 };
-
-// export const downloadStatisticsExcel = async () => {
-//   const response = await instance().get(uri., {
-//     headers: authorization(getAccessToken()),
-//     responseType: 'blob',
-//   });
-
-//   return response.data;
-// };
