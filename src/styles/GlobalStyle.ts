@@ -11,6 +11,7 @@ import {
       width: 100%;
       min-width: 1024px;
       font-family: 'Noto Sans KR', sans-serif !important;
+      overflow-x: hidden;
       &::-webkit-scrollbar {
 		    width: 8px;
 		    background: none;
