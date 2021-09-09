@@ -10,32 +10,37 @@ import {
   ApplicantEvaluation,
   ApplicantStatus,
   UpdateApplicantStatusPayload,
+  UpdateApplicantSubmitStatusPayload,
   GetApplicantInfoPayload,
 } from "../../../../data/api/apiTypes";
 import { returnEducationalType } from "../../../../utils/checkType";
 
 interface Props {
-  applicantInfoAppear: boolean;
+  isContainerWidth: boolean;
   applicantPersonalData: ApplicantPersonalData;
   applicantEvaluation: ApplicantEvaluation;
   applicantStatus: ApplicantStatus;
   applicantListItem: ApplicantListItem;
   updateApplicantStatusStatus: number;
-  updateApplicantStatus: UpdateApplicantStatusPayload;
-  setApplicantInfoAppear: (payload: boolean) => void;
+  updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantSubmitStatus: (
+    payload: UpdateApplicantSubmitStatusPayload
+  ) => void;
+  setIsContainerWidth: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
 const Submitted: FC<Props> = ({
-  applicantInfoAppear,
+  isContainerWidth,
   applicantPersonalData,
   applicantEvaluation,
   applicantStatus,
   applicantListItem,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  setApplicantInfoAppear,
+  updateApplicantSubmitStatus,
+  setIsContainerWidth,
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
@@ -49,12 +54,13 @@ const Submitted: FC<Props> = ({
   return (
     <S.Wrapper>
       <ApplicantStatusContainer
-        applicantInfoAppear={applicantInfoAppear}
-        printed_arrived={applicantStatus.printed_arrived}
+        isContainerWidth={isContainerWidth}
+        is_printed_arrived={applicantStatus.is_printed_arrived}
         receipt_code={applicantListItem.receipt_code}
         updateApplicantStatusStatus={updateApplicantStatusStatus}
         updateApplicantStatus={updateApplicantStatus}
-        setApplicantInfoAppear={setApplicantInfoAppear}
+        updateApplicantSubmitStatus={updateApplicantSubmitStatus}
+        setIsContainerWidth={setIsContainerWidth}
         getApplicantInfo={getApplicantInfo}
         // resetUpdateStatus={resetUpdateStatus}
       />
