@@ -43,11 +43,26 @@ export const returnEducationalType = (educationalType: string) => {
 
 export const returnContact = (contact: string) => {
   if (!contact) return "";
-  return contact
-    .replace(/[^0-9]/g, "")
-    .replace(
-      /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
-      "$1 - $2 - $3"
-    )
-    .replace("--", "-");
+  if (contact) {
+    if (contact.substring(0, 2) === "02") {
+      if (contact.length === 9)
+        return contact.replace(/(\d{2})(\d{3})(\d{4})/, "$1-$2-$3");
+      if (contact.length === 12)
+        return contact
+          .replace(/-/g, "")
+          .replace(/(\d{2})(\d{4})(\d{4})/, "$1-$2-$3");
+    } else {
+      if (contact.length === 10) {
+        return contact.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+      }
+      if (contact.length === 11) {
+        return contact.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+      }
+      if (contact.length === 13) {
+        return contact
+          .replace(/-/g, "")
+          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+      }
+    }
+  }
 };
