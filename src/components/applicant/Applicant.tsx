@@ -3,51 +3,54 @@ import * as S from "./style";
 import ApplicantInfo from "./applicantInfo";
 import ApplicantsList from "./applicantsList";
 import FilterSearch from "./filterSearch";
-import Pagination from "./pagination";
+import Pagination from "./pagination/index";
 import {
   GetApplicantsListResponse,
   GetApplicantsListPayload,
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantSubmitStatusPayload,
 } from "../../data/api/apiTypes";
 
 interface Props {
-  applicantInfoAppear: boolean;
   filters: GetApplicantsListPayload;
   applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
-  updateApplicantStatus: UpdateApplicantStatusPayload;
+  updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantSubmitStatus: (
+    payload: UpdateApplicantSubmitStatusPayload
+  ) => void;
   // updateApplicantList: ;
   // resetUpdateStatus;
   setFilter: (payload: GetApplicantsListPayload) => void;
-  setApplicantInfoAppear: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
 }
 
 const Applicant: FC<Props> = ({
-  applicantInfoAppear,
   filters,
   applicantsList,
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
+  updateApplicantSubmitStatus,
   // resetUpdateStatus,
   setFilter,
-  setApplicantInfoAppear,
   getApplicantInfo,
 }) => {
+  const [isContainerWidth, setIsContainerWidth] =
+    React.useState<boolean>(false);
   return (
     <S.Applicant>
       <S.ApplicantContainer>
         <FilterSearch filters={filters} setFilter={setFilter} />
         <ApplicantsList
-          applicantInfoAppear={applicantInfoAppear}
+          isContainerWidth={isContainerWidth}
           filters={filters}
           applicantsList={applicantsList}
           currnetApplicantInfo={currnetApplicantInfo}
-          setApplicantInfoAppear={setApplicantInfoAppear}
+          setIsContainerWidth={setIsContainerWidth}
           getApplicantInfo={getApplicantInfo}
         />
         <S.PaginationBox>
@@ -58,15 +61,16 @@ const Applicant: FC<Props> = ({
           />
         </S.PaginationBox>
       </S.ApplicantContainer>
-      <S.ApplicantInfoWrap>
-        {applicantInfoAppear && (
+      <S.ApplicantInfoWrap isContainerWidth={isContainerWidth}>
+        {isContainerWidth && (
           <ApplicantInfo
-            applicantInfoAppear={applicantInfoAppear}
+            isContainerWidth={isContainerWidth}
             applicantsList={applicantsList}
             currnetApplicantInfo={currnetApplicantInfo}
             updateApplicantStatusStatus={updateApplicantStatusStatus}
             updateApplicantStatus={updateApplicantStatus}
-            setApplicantInfoAppear={setApplicantInfoAppear}
+            updateApplicantSubmitStatus={updateApplicantSubmitStatus}
+            setIsContainerWidth={setIsContainerWidth}
             getApplicantInfo={getApplicantInfo}
             // resetUpdateStatus={resetUpdateStatus}
           />
