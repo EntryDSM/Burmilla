@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const DetailInfoTable = styled.table`
   width: 100%;
+  min-width: 30rem;
   height: 250px;
   margin-top: 16px;
   border-collapse: collapse;
