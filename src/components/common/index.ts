@@ -28,10 +28,15 @@ export const Button = styled.button`
     font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
   &.applicant-info__cancel-btn {
-    width: 110px;
-    height: 32px;
+    width: 94px;
+    height: 26px;
+    border: 1px solid ${color.primaryColor};
     border-radius: 4px;
-    font-size: 14px;
+    background-color: ${color.primaryColor};
+    color: ${color.backgorund};
+    font-size: 12.6px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
   &.header__logout-btn {
     width: 88px;
@@ -39,23 +44,16 @@ export const Button = styled.button`
     border-radius: 17px;
     font-size: 16px;
   }
-  &.admission-code__download-btn {
-    width: 110px;
-    height: 32px;
+  &.admission-ticket__download-btn {
+    width: 86px;
+    height: 26px;
     border: 1px solid ${color.primaryColor};
     border-radius: 4px;
     background-color: ${color.primaryColor};
     color: ${color.backgorund};
-    font-size: 14px;
+    font-size: 12.6px;
     font-weight: bold;
     font-family: 'Noto Sans KR-Bold', sans-serif !important;
-  }
-  &.admission-ticket__download-btn {
-    width: 200px;
-    height: 60px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 24px;
   }
   &.statistics-all__excel-btn {
     width: 110px;
