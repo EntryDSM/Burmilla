@@ -6,26 +6,31 @@ import {
   GetApplicantInfoPayload,
   GetApplicantInfoResponse,
   UpdateApplicantStatusPayload,
+  UpdateApplicantSubmitStatusPayload,
 } from "../../../data/api/apiTypes";
 
 interface Props {
-  applicantInfoAppear: boolean;
+  isContainerWidth: boolean;
   applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
-  updateApplicantStatus: UpdateApplicantStatusPayload;
-  setApplicantInfoAppear: (payload: boolean) => void;
+  updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantSubmitStatus: (
+    payload: UpdateApplicantSubmitStatusPayload
+  ) => void;
+  setIsContainerWidth: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
 const ApplicantInfo: FC<Props> = ({
-  applicantInfoAppear,
+  isContainerWidth,
   applicantsList,
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  setApplicantInfoAppear,
+  updateApplicantSubmitStatus,
+  setIsContainerWidth,
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
@@ -43,7 +48,7 @@ const ApplicantInfo: FC<Props> = ({
         {applicantsList.applicants_information_responses &&
           filterResponse.map((info) => (
             <Submitted
-              applicantInfoAppear={applicantInfoAppear}
+              isContainerWidth={isContainerWidth}
               applicantPersonalData={
                 currnetApplicantInfo.submitted_applicant.personal_data
               }
@@ -54,7 +59,8 @@ const ApplicantInfo: FC<Props> = ({
               applicantListItem={info}
               updateApplicantStatusStatus={updateApplicantStatusStatus}
               updateApplicantStatus={updateApplicantStatus}
-              setApplicantInfoAppear={setApplicantInfoAppear}
+              updateApplicantSubmitStatus={updateApplicantSubmitStatus}
+              setIsContainerWidth={setIsContainerWidth}
               getApplicantInfo={getApplicantInfo}
               // resetUpdateStatus={resetUpdateStatus}
             />
@@ -65,9 +71,9 @@ const ApplicantInfo: FC<Props> = ({
   if (currnetApplicantInfo.not_submitted_applicant) {
     return (
       <UnSubmitted
-        applicantInfoAppear={applicantInfoAppear}
+        isContainerWidth={isContainerWidth}
         not_submitted_applicant={currnetApplicantInfo.not_submitted_applicant}
-        setApplicantInfoAppear={setApplicantInfoAppear}
+        setIsContainerWidth={setIsContainerWidth}
       />
     );
   }
