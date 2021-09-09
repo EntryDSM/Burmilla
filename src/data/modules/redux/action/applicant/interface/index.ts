@@ -1,5 +1,4 @@
 export const SET_FILTER = 'applicant/SET_FILTER' as const;
-export const SET_APPLICANT_INFO_APPEAR = 'applicant/SET_APPLICANT_INFO_APPEAR' as const;
 
 export const GET_APPLICANT_INFO = 'applicant/GET_APPLICANT_INFO' as const;
 export const GET_APPLICANT_INFO_SUCCESS = 'applicant/GET_APPLICANT_INFO_SUCCESS' as const;
@@ -17,7 +16,10 @@ export const UPDATE_APPLICANT_SUBMIT_STATUS = 'applicant/UPDATE_APPLICANT_SUBMIT
 export const UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS = 'applicant/UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS' as const;
 export const UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE = 'applicant/UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE' as const;
 
-export const UPDATE_APPLICANT_LIST = 'applicant/UPDATE_APPLICANT_LIST' as const;
-export const UPDATE_APPLICANT_LIST_SUCCESS = 'applicant/UPDATE_APPLICANT_LIST_SUCCESS' as const;
-export const UPDATE_APPLICANT_LIST_FAILURE = 'applicant/UPDATE_APPLICANT_LIST_FAILURE' as const;
-export const RESET_UPDATE_STATUS = 'applicant/RESET_UPDATE_STATUS' as const;
+export const CHECK_PASSWORD = 'applicant/CHECK_PASSWORD' as const;
+export const CHECK_PASSWORD_SUCCESS = 'applicant/CHECK_PASSWORD_SUCCESS' as const;
+export const CHECK_PASSWORD_FAILURE = 'applicant/CHECK_PASSWORD_FAILURE' as const;
+
+export const DELETE_APPLICANT_TABLE = 'applicant/DELETE_APPLICANT_TABLE' as const;
+export const DELETE_APPLICANT_TABLE_SUCCESS = 'applicant/DELETE_APPLICANT_TABLE_SUCCESS' as const;
+export const DELETE_APPLICANT_TABLE_FAILURE = 'applicant/DELETE_APPLICANT_TABLE_FAILURE' as const;
