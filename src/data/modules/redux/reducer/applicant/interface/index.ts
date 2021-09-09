@@ -5,10 +5,13 @@ export interface ApplicantState {
  getApplicantsListStatus: 0 | 200| 400 | 401 | 403 | 404;
  getApplicantInfoStatus: 0 | 200 | 401 | 403 | 423;
  updateApplicantStatusStatus: 0 | 204 | 400 | 401 | 403;
- applicantInfoAppear: boolean;
  filters: getApplicantsLists;
  applicantsList: getApplicantsListResponse;
  currnetApplicantInfo: getApplicantInfoResponse;
+ updateApplicantStatus: updateApplicantStatusResponse;
+ updateApplicantSubmitStatus: updateApplicantSubmitStatusResponse;
+//  isCheckPassword: boolean;
+//  isDeleteTable: boolean;
  error: error;
 }
 
@@ -32,10 +35,6 @@ export interface getApplicantsListResponse {
  applicants_information_responses: Array<ApplicantListItem>;
 }
 
-export interface getApplicantInfoTypes {
- receipt_code?: number;
-}
-
 export interface getApplicantInfoResponse {
    submitted_applicant: {
       status: applicantStatus;
@@ -52,8 +51,8 @@ export interface getApplicantInfoResponse {
 }
 
 export interface applicantStatus {
-   printed_arrived: boolean;
-   submit: boolean;
+   is_printed_arrived: boolean;
+   is_submit: boolean;
 }
   
 export interface applicantPersonalData {
@@ -84,3 +83,12 @@ export interface applicantEvaluation {
    study_plan: string;
    average_score: number;
 }
+
+export interface updateApplicantStatusResponse {
+   receipt_code?: number;
+   is_printed_arrived?: boolean;
+}
+
+export interface updateApplicantSubmitStatusResponse {
+   receipt_code?: number;
+ }
