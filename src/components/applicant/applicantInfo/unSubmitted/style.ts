@@ -12,9 +12,10 @@ export const DetailInfo = styled.img`
 `;
 
 export const Wrapper = styled.div`
-  padding: 136.5px 72px;
+  min-width: 28rem;
   height: 28rem;
   background-color: ${color.backgorund};
+  padding: 136.5px 72px;
   border-left: 2.5px solid #f0f0f0;
 
   > h3 {
@@ -22,6 +23,9 @@ export const Wrapper = styled.div`
     font-weight: bold;    
     font-family: 'Noto Sans KR-Medium', sans-serif !important;
     margin-bottom: 55px;
+  }
+  > table {
+    min-width: 25rem;
   }
 `;
 
