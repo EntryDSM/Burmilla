@@ -2,17 +2,16 @@ import { useDispatch } from 'react-redux';
 import { useSelectState } from '../default';
 import {
   setFilter,
-  setApplicantInfoAppear,
   getApplicantsList,
   getApplicantInfo,
   updateApplicantStatus,
-  updateApplicantList,
-  resetUpdateStatus,
+  updateApplicantSubmitStatus,
  } from '../../data/modules/redux/action/applicant';
 import { 
   GetApplicantsListPayload, 
+  GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
-  GetApplicantInfoPayload 
+  UpdateApplicantSubmitStatusPayload,
 } from "../../data/api/apiTypes";
 
 const useApplicant = () => {
@@ -20,12 +19,11 @@ const useApplicant = () => {
   const state = useSelectState().applicant;
   const setState = {
     setFilter: (payload: GetApplicantsListPayload) => dispatch(setFilter(payload)),
-    setApplicantInfoAppear: (payload: boolean) => dispatch(setApplicantInfoAppear(payload)),
     getApplicantsList: (payload: GetApplicantsListPayload) => dispatch(getApplicantsList(payload)),
     getApplicantInfo: (payload: GetApplicantInfoPayload) => dispatch(getApplicantInfo(payload)),
     updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => dispatch(updateApplicantStatus(payload)),
-    updateApplicantList: (payload) => dispatch(updateApplicantList(payload)),
-    resetUpdateStatus: () => dispatch(resetUpdateStatus()),
+    updateApplicantSubmitStatus: (payload: UpdateApplicantSubmitStatusPayload) => dispatch(updateApplicantSubmitStatus(payload)),
+    
   };
   return {
     state,
