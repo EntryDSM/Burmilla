@@ -9,7 +9,7 @@ export const downloadExcel = async (api: () => Promise<any>, title: string) => {
     "download",
     `${title}_${
       currentTime.getMonth() + 1
-    }월${currentTime.getDate()}일_${currentTime.getHours()}시${currentTime.getMinutes()}분.xls`
+    }월${currentTime.getDate()}일_${currentTime.getHours()}시${currentTime.getMinutes()}분.xlsx`
   );
   link.click();
 };
