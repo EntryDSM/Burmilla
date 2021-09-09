@@ -8,21 +8,15 @@ import {
 import {
   ApplicantListItem,
   GetApplicantInfoResponse,
-  // GetApplicantInfoResponseSuccess,
-  // GetApplicantInfoResponseFailure,
 } from "../../../../data/api/apiTypes";
 
 interface Props {
   currnetApplicantInfo: GetApplicantInfoResponse;
-  // currnetApplicantInfoSuccess: GetApplicantInfoResponseSuccess;
-  // currnetApplicantInfoFailure: GetApplicantInfoResponseFailure;
   applicantInfo: ApplicantListItem;
   handleClick: (receipt_code: number) => void;
 }
 
 const ApplicantsListItem: FC<Props> = ({
-  // currnetApplicantInfoSuccess,
-  // currnetApplicantInfoFailure,
   currnetApplicantInfo,
   applicantInfo: {
     receipt_code,
