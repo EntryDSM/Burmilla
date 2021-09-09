@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { color } from '../../../styles/index';
 
 export const ApplicantsList = styled.table`
