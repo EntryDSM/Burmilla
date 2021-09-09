@@ -114,8 +114,8 @@
   }
   
   export interface ApplicantStatus {
-    printed_arrived: boolean;
-    submit: boolean;
+    is_printed_arrived: boolean;
+    is_submit: boolean;
   }
   
   export interface ApplicantPersonalData {
@@ -163,10 +163,14 @@
   }
 
   export interface UpdateApplicantStatusPayload {
+    receipt_code?: number;
     is_printed_arrived?: boolean;
-   }
-  
-  export interface DownloadExcelResponse {
-    file_url: string;
   }
-  
+
+  export interface UpdateApplicantSubmitStatusPayload {
+    receipt_code?: number;
+  }
+
+  export interface CheckPasswordRequest {
+    password: string;
+  }
