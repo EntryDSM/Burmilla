@@ -2,79 +2,88 @@ import React, { FC } from "react";
 import * as S from "./style";
 import { details_arrow } from "../../../../../assets/applicants";
 import { Checkbox, Button } from "../../../../common";
-import checkApiStatus from "../../../../../data/api/checkApiStatus";
+import { downloadExcel } from "../../../../../utils/download";
+import { downloadAdmissionExcel } from "../../../../../data/api/index";
 import {
-  UpdateApplicantStatusPayload,
   GetApplicantInfoPayload,
+  UpdateApplicantStatusPayload,
+  UpdateApplicantSubmitStatusPayload,
 } from "../../../../../data/api/apiTypes";
 
 interface Props {
-  applicantInfoAppear: boolean;
-  printed_arrived: boolean;
+  isContainerWidth: boolean;
+  is_printed_arrived: boolean;
   receipt_code: number;
   updateApplicantStatusStatus: number;
-  updateApplicantStatus: UpdateApplicantStatusPayload;
-  setApplicantInfoAppear: (payload: boolean) => void;
+  updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
+  updateApplicantSubmitStatus: (
+    payload: UpdateApplicantSubmitStatusPayload
+  ) => void;
+  setIsContainerWidth: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   // resetUpdateStatus;
 }
 
 const ApplicantStatuses: FC<Props> = ({
-  applicantInfoAppear,
-  printed_arrived,
+  isContainerWidth,
+  is_printed_arrived,
   receipt_code,
   updateApplicantStatusStatus,
   updateApplicantStatus,
-  setApplicantInfoAppear,
+  updateApplicantSubmitStatus,
+  setIsContainerWidth,
   getApplicantInfo,
   // resetUpdateStatus,
 }) => {
-  const [changedStatus, setChangedStatus] = React.useState<string>("");
-
-  React.useEffect(() => {
-    if (checkApiStatus(updateApplicantStatusStatus)._204) {
-      // updateApplicantList({
-      //   printed_arrived,
-      // });
-
-      if (changedStatus === "submit") {
-        getApplicantInfo({ receipt_code });
-      }
-    } else if (checkApiStatus(updateApplicantStatusStatus)._400) {
-      window.alert("지원자 정보 수정 권한이 없습니다.");
-    }
-
-    // resetUpdateStatus();
-  }, [updateApplicantStatusStatus]);
-
-  const handleClickCheckbox = async (printed_arrived: boolean) => {
-    if (window.confirm("지원자의 상태를 수정하시겠습니까?")) {
-      // updateApplicantStatus({
-      //   printed_arrived,
-      // });
-    }
-  };
-
   const handleClickDetailArrow = () => {
-    setApplicantInfoAppear(!applicantInfoAppear);
+    setIsContainerWidth(!isContainerWidth);
   };
+
+  const handleClickNotArrived = async (
+    receipt_code: number,
+    is_printed_arrived: boolean
+  ) => {
+    if (window.confirm("지원자의 원서 제출 상태를 수정하시겠습니까?")) {
+      updateApplicantStatus({ receipt_code, is_printed_arrived });
+    }
+  };
+
+  const handleClickCancelSubmitted = async (receipt_code: number) => {
+    if (window.confirm("지원자의 최종 제출 상태를 수정하시겠습니까?")) {
+      updateApplicantSubmitStatus({ receipt_code });
+    }
+  };
+
+  const handleDownloadAdmission = React.useCallback(async () => {
+    await downloadExcel(downloadAdmissionExcel, "수험표");
+  }, []);
 
   return (
     <S.Wrapper>
       <S.DetailInfo
         src={details_arrow}
         onClick={() => handleClickDetailArrow()}
-      ></S.DetailInfo>
-      <S.CheckboxContainer onClick={() => handleClickCheckbox(printed_arrived)}>
-        <Checkbox isChecked={printed_arrived} />
+      />
+      <S.CheckboxContainer
+        onClick={() => handleClickNotArrived(receipt_code, !is_printed_arrived)}
+      >
+        <Checkbox isChecked={is_printed_arrived} />
         <p>원서 미도착</p>
       </S.CheckboxContainer>
-      <Button
-        className="applicant-info__cancel-btn"
-        // onClick={() => handleClickCheckbox(email, "submit")}
-      >
-        최종제출 취소
-      </Button>
+      <S.ButtonContainer>
+        <Button
+          className="applicant-info__cancel-btn"
+          onClick={() => handleClickCancelSubmitted(receipt_code)}
+        >
+          최종제출 취소
+        </Button>
+        <Button
+          className="admission-ticket__download-btn"
+          onClick={() => handleDownloadAdmission()}
+        >
+          수험표 출력
+        </Button>
+      </S.ButtonContainer>
     </S.Wrapper>
   );
 };
