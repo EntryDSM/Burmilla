@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { color, pxToRem } from "../../styles";
 
 export const Applicant = styled.div`
@@ -25,11 +25,16 @@ export const PaginationBox = styled.div`
   height: 8%;
 `;
 
-export const ApplicantInfoWrap = styled.div`
+export const ApplicantInfoWrap = styled.div<{
+    isContainerWidth?: boolean, 
+    isContainerVisible?: boolean
+  }>`
   position: absolute;
   z-index: 1;
   top: 60px;
   right: 0;
-  width: 42%;
-  min-height: 100%;
+  transition: all ease 1.2s;
+  ${({ isContainerWidth }) => css`
+    width: ${isContainerWidth ? '42' : '0'}%; 
+  `};
 `;
