@@ -2,7 +2,6 @@ import { ApplicantState } from "./interface";
 import { applicantActionType } from '../../action/applicant';
 import { 
   SET_FILTER,
-  SET_APPLICANT_INFO_APPEAR,
   GET_APPLICANT_INFO_SUCCESS,
   GET_APPLICANT_INFO_FAILURE,
   GET_APPLICANTS_LIST_SUCCESS,
@@ -10,20 +9,15 @@ import {
   UPDATE_APPLICANT_STATUS,
   UPDATE_APPLICANT_STATUS_SUCCESS,
   UPDATE_APPLICANT_STATUS_FAILURE,
-  // UPDATE_APPLICANT_SUBMIT_STATUS,
-  // UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
-  // UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
-  // UPDATE_APPLICANT_LIST,
-  // UPDATE_APPLICANT_LIST_SUCCESS,
-  // UPDATE_APPLICANT_LIST_FAILURE,
-  RESET_UPDATE_STATUS
+  UPDATE_APPLICANT_SUBMIT_STATUS,
+  UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
+  UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
 } from "../../action/applicant/interface";
 
 const InitialState: ApplicantState = {
   getApplicantsListStatus: 0,
   getApplicantInfoStatus: 0,
   updateApplicantStatusStatus: 0,
-  applicantInfoAppear: false,
   filters: {
     size: 10,
     page: 0,
@@ -45,8 +39,8 @@ const InitialState: ApplicantState = {
   currnetApplicantInfo: {
       submitted_applicant: {
         status: {
-          printed_arrived: false,
-          submit: false,
+          is_printed_arrived: false,
+          is_submit: false,
         },
         personal_data: {
           photo_file_name: '',
@@ -75,15 +69,22 @@ const InitialState: ApplicantState = {
           study_plan: '',
           average_score: 0,
         },
-      },
+    },
       not_submitted_applicant: {
         email: '',
         applicant_tel: '',
         parent_tel: '',
         home_tel: '',
         school_tel: '',
-      }
-    },
+    }
+  },
+  updateApplicantStatus: {
+    receipt_code: null,
+    is_printed_arrived: false,
+  },
+  updateApplicantSubmitStatus: {
+    receipt_code: null,
+  },
   error: {
     status: 0,
     message: '',
@@ -93,12 +94,7 @@ const InitialState: ApplicantState = {
 
 const applicantReducer = (state: ApplicantState = InitialState, action: applicantActionType) => {
   switch (action.type) {
-    case SET_APPLICANT_INFO_APPEAR: {
-      return {
-        ...state,
-        applicantInfoAppear: action.payload,
-      };
-    }
+    
     case SET_FILTER: {
       return {
         ...state,
@@ -144,42 +140,44 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         },
       };
     }
-    case UPDATE_APPLICANT_STATUS: 
+    case UPDATE_APPLICANT_STATUS: { 
+      return {
+        ...state,
+        updateApplicantStatus: {
+          receipt_code: action.payload.receipt_code,
+          is_printed_arrived: action.payload.is_printed_arrived
+        },
+      }
+    }
+    case UPDATE_APPLICANT_STATUS_SUCCESS: {
       return {
         ...state,
       }
-    case UPDATE_APPLICANT_STATUS_SUCCESS: 
+    }
+    case UPDATE_APPLICANT_STATUS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+      }
+    }
+    case UPDATE_APPLICANT_SUBMIT_STATUS: { 
+      return {
+        ...state,
+        updateApplicantSubmitStatus: action.payload.receipt_code
+      }
+    }
+    case UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS: {
       return {
         ...state,
       }
-    case UPDATE_APPLICANT_STATUS_FAILURE: 
+    }
+    case UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE: {
       return {
         ...state,
+        error: action.payload,
       }
-    // case UPDATE_APPLICANT_LIST:
-    //   const newApplicantsList = { ...state.applicantsList };
-    //   const newCurrnetApplicantInfo = { ...state.currnetApplicantInfo };
-    //   const { applicants_information_response } = state.applicantsList;
-    //   const { is_printed_arrived } = action.payload;
-
-    //   newApplicantsList.applicants_information_response = applicants_information_response.map(v =>
-    //     v.is_printed_arrived === is_printed_arrived ? { ...v } : v,
-    //   );
-    //   // newCurrnetApplicantInfo.applicant_information.status = {
-    //   //   is_printed_arrived,
-    //   //   is_submit,
-    //   // };
-
-    //   return {
-    //     ...state,
-    //     applicantsList: newApplicantsList,
-    //     currnetApplicantInfo: newCurrnetApplicantInfo,
-    //   };
-    case RESET_UPDATE_STATUS:
-      return {
-        ...state,
-        updateApplicantStatusStatus: 0,
-      };
+    }
+    
     default:
       return state;
   }
