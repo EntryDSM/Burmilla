@@ -28,7 +28,6 @@ interface Props {
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
-  // resetUpdateStatus;
 }
 
 const Submitted: FC<Props> = ({
@@ -42,7 +41,6 @@ const Submitted: FC<Props> = ({
   updateApplicantSubmitStatus,
   setIsContainerWidth,
   getApplicantInfo,
-  // resetUpdateStatus,
 }) => {
   const checkGradeType = React.useCallback(() => {
     return (
