@@ -6,12 +6,15 @@ import {
   getApplicantInfo,
   updateApplicantStatus,
   updateApplicantSubmitStatus,
+  checkPassword,
+  deleteApplicantTable
  } from '../../data/modules/redux/action/applicant';
 import { 
   GetApplicantsListPayload, 
   GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
   UpdateApplicantSubmitStatusPayload,
+  CheckPasswordRequest
 } from "../../data/api/apiTypes";
 
 const useApplicant = () => {
@@ -23,7 +26,8 @@ const useApplicant = () => {
     getApplicantInfo: (payload: GetApplicantInfoPayload) => dispatch(getApplicantInfo(payload)),
     updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => dispatch(updateApplicantStatus(payload)),
     updateApplicantSubmitStatus: (payload: UpdateApplicantSubmitStatusPayload) => dispatch(updateApplicantSubmitStatus(payload)),
-    
+    checkPassword: (payload: CheckPasswordRequest) => dispatch(checkPassword(payload)),
+    deleteApplicantTable: () => dispatch(deleteApplicantTable()),
   };
   return {
     state,
