@@ -10,8 +10,7 @@ export interface ApplicantState {
  currnetApplicantInfo: getApplicantInfoResponse;
  updateApplicantStatus: updateApplicantStatusResponse;
  updateApplicantSubmitStatus: updateApplicantSubmitStatusResponse;
-//  isCheckPassword: boolean;
-//  isDeleteTable: boolean;
+ isCheckPassword: boolean;
  error: error;
 }
 
