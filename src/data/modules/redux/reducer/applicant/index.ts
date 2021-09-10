@@ -12,6 +12,10 @@ import {
   UPDATE_APPLICANT_SUBMIT_STATUS,
   UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
   UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
+  CHECK_PASSWORD_SUCCESS,
+  CHECK_PASSWORD_FAILURE,
+  DELETE_APPLICANT_TABLE_SUCCESS,
+  DELETE_APPLICANT_TABLE_FAILURE
 } from "../../action/applicant/interface";
 
 const InitialState: ApplicantState = {
@@ -85,6 +89,7 @@ const InitialState: ApplicantState = {
   updateApplicantSubmitStatus: {
     receipt_code: null,
   },
+  isCheckPassword: false,
   error: {
     status: 0,
     message: '',
@@ -177,7 +182,29 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         error: action.payload,
       }
     }
-    
+    case CHECK_PASSWORD_SUCCESS: {
+      return { 
+        ...state,
+        isCheckPassword: true,
+      }
+    }
+    case CHECK_PASSWORD_FAILURE: {
+      return { 
+        ...state,
+        error: action.payload,
+      }
+    }
+    case DELETE_APPLICANT_TABLE_SUCCESS: {
+      return { 
+        ...state,
+      }
+    }
+    case DELETE_APPLICANT_TABLE_FAILURE: {
+      return { 
+        ...state,
+        error: action.payload
+      }
+    }
     default:
       return state;
   }
