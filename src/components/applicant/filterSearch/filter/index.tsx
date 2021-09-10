@@ -4,14 +4,33 @@ import { Button } from "../../../common";
 import { Checkbox } from "../../../common";
 import { downloadExcel } from "../../../../utils/download";
 import { downloadApplicantsListExcel } from "../../../../data/api/index";
-import { GetApplicantsListPayload } from "../../../../data/api/apiTypes";
+import {
+  GetApplicantsListPayload,
+  CheckPasswordRequest,
+} from "../../../../data/api/apiTypes";
+import DeleteTable from "../../deleteTable";
 
 interface Props {
+  disable: boolean;
   filters: GetApplicantsListPayload;
+  isCheckPassword: boolean;
+  isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
+  checkPassword: (payload: CheckPasswordRequest) => void;
+  deleteApplicantTable: () => void;
+  setIsDeleteTableModalSwitch: (payload: boolean) => void;
 }
 
-const Filter: FC<Props> = ({ filters, setFilter }) => {
+const Filter: FC<Props> = ({
+  disable,
+  filters,
+  isCheckPassword,
+  isDeleteTableModalSwitch,
+  setFilter,
+  checkPassword,
+  deleteApplicantTable,
+  setIsDeleteTableModalSwitch,
+}) => {
   const checkLists = [
     { content: "대전", value: "is_daejeon" },
     { content: "전국", value: "is_nationwide" },
@@ -58,7 +77,10 @@ const Filter: FC<Props> = ({ filters, setFilter }) => {
     await downloadExcel(downloadApplicantsListExcel, "지원자목록");
   }, []);
 
-  const handleDeleteApplicants = React.useCallback(async () => {}, []);
+  const handleDeleteApplicants = React.useCallback(() => {
+    setIsDeleteTableModalSwitch(!isDeleteTableModalSwitch);
+    console.log("test", isDeleteTableModalSwitch);
+  }, []);
 
   return (
     <S.FilterWrapper>
