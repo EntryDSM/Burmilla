@@ -4,3 +4,4 @@ export { default as search_icon } from './applicants_list_search.svg';
 export { default as shift_left_icon } from './applicants_shift_left.svg';
 export { default as shift_right_icon } from './applicants_shift_right.svg';
 export { default as selected } from './applicants_selected.svg';
+export { default as close_modal } from './applicants_close_modal.svg';
