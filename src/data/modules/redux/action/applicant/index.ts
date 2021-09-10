@@ -48,7 +48,7 @@ export const checkPassword = createAction(CHECK_PASSWORD)<CheckPasswordRequest>(
 export const checkPasswordSuccess = createAction(CHECK_PASSWORD_SUCCESS)<boolean>();
 export const checkPasswordFailure = createAction(CHECK_PASSWORD_FAILURE)<error>();
 export const deleteApplicantTable = createAction(DELETE_APPLICANT_TABLE)();
-export const deleteApplicantTableSuccess = createAction(DELETE_APPLICANT_TABLE_SUCCESS)<boolean>();
+export const deleteApplicantTableSuccess = createAction(DELETE_APPLICANT_TABLE_SUCCESS)();
 export const deleteApplicantTableFailure = createAction(DELETE_APPLICANT_TABLE_FAILURE)<error>();
 
 export type applicantActionType = 
