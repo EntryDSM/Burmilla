@@ -10,7 +10,7 @@ interface Props {
 
 const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
   const categoryList = [
-    { content: "전화번호", id: "telephone_number" },
+    { content: "전화번호", id: "telephone" },
     { content: "이름", id: "name" },
     { content: "접수번호", id: "receipt_code" },
   ];
@@ -26,9 +26,8 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
   }, [isOpened]);
 
   const handleSelectItem = React.useCallback(
-    (category: { content: string; id: string }) => {
+    (category: { content; id }) => {
       setFilter({
-        size: 1,
         [selectedCategory.id]: null,
         [category.id]: keyword,
       });
@@ -41,9 +40,9 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(e.target.value);
       setFilter({
-        size: 1,
         [selectedCategory.id]: e.currentTarget.value || null,
       });
+      console.log(e.target.value);
     },
     [selectedCategory, keyword]
   );
@@ -75,7 +74,7 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
           value={keyword}
           onChange={handleChangeKeyword}
         />
-        <img src={searchIcon} />
+        <img src={searchIcon} alt={"searchIcon"} />
       </S.SearchInputContainer>
     </S.SearchBarWrapper>
   );
