@@ -20,7 +20,6 @@ interface Props {
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
-  // resetUpdateStatus;
 }
 
 const ApplicantInfo: FC<Props> = ({
