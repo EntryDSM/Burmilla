@@ -141,6 +141,29 @@ export const updateApplicantSubmitStatusApi = async (access_token: string, paylo
   }
 }
 
+export const checkPasswordApi = async (access_token: string, payload: T.CheckPasswordRequest) => {
+  try {
+    const request = instance('main');
+    await request.get(uri.signin, {
+      headers: authorization(getAccessToken()),
+      params: payload,
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const deleteApplicantTableApi = async (access_token: string) => {
+  try {
+    const request = instance('main');
+    await request.delete(uri.delete_table, {
+      headers: authorization(getAccessToken()),
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
 export const downloadApplicantsListExcel = async () => {
   const response = await instance('excel').get(uri.applicants_print , {
     headers: authorization(getAccessToken()),
@@ -156,5 +179,5 @@ export const downloadAdmissionExcel = async () => {
     responseType: 'blob',
   });
 
-  return response;
+  return response.data;
 };
