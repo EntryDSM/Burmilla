@@ -55,7 +55,7 @@ export interface applicantStatus {
 }
   
 export interface applicantPersonalData {
-   photo_file_name: string;
+   photo_url: string;
    name: string;
    email: string;
    birth_date: string;
@@ -68,7 +68,7 @@ export interface applicantPersonalData {
    parent_tel: string;
    school_tel: string;
    home_tel: string;
-   graduated: boolean;
+   is_graduated: boolean;
 }
   
 export interface applicantEvaluation {
