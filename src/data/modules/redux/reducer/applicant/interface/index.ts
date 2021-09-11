@@ -10,7 +10,7 @@ export interface ApplicantState {
  currnetApplicantInfo: getApplicantInfoResponse;
  updateApplicantStatus: updateApplicantStatusResponse;
  updateApplicantSubmitStatus: updateApplicantSubmitStatusResponse;
- isCheckPassword: boolean;
+ password: string;
  error: error;
 }
 
@@ -91,3 +91,7 @@ export interface updateApplicantStatusResponse {
 export interface updateApplicantSubmitStatusResponse {
    receipt_code?: number;
  }
+
+export interface checkPasswordResponse {
+   password: string;
+}
