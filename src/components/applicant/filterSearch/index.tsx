@@ -11,7 +11,6 @@ import {
 interface Props {
   filters: GetApplicantsListPayload;
   isDeleteTableModalSwitch: boolean;
-  isCheckPassword: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
   checkPassword: (payload: CheckPasswordRequest) => void;
   deleteApplicantTable: () => void;
@@ -20,7 +19,6 @@ interface Props {
 
 const FilterSearch: FC<Props> = ({
   filters,
-  isCheckPassword,
   isDeleteTableModalSwitch,
   setFilter,
   checkPassword,
@@ -35,9 +33,7 @@ const FilterSearch: FC<Props> = ({
         setFilter={setFilter}
       />
       <Filter
-        disable={!isCheckPassword}
         filters={filters}
-        isCheckPassword={isCheckPassword}
         isDeleteTableModalSwitch={isDeleteTableModalSwitch}
         setFilter={setFilter}
         deleteApplicantTable={deleteApplicantTable}
