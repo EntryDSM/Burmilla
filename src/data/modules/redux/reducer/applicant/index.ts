@@ -12,6 +12,7 @@ import {
   UPDATE_APPLICANT_SUBMIT_STATUS,
   UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
   UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
+  PASSWORD,
   CHECK_PASSWORD_SUCCESS,
   CHECK_PASSWORD_FAILURE,
   DELETE_APPLICANT_TABLE_SUCCESS,
@@ -89,7 +90,7 @@ const InitialState: ApplicantState = {
   updateApplicantSubmitStatus: {
     receipt_code: null,
   },
-  isCheckPassword: false,
+  password: '',
   error: {
     status: 0,
     message: '',
@@ -182,10 +183,15 @@ const applicantReducer = (state: ApplicantState = InitialState, action: applican
         error: action.payload,
       }
     }
+    case PASSWORD: {
+      return {
+        ...state,
+        password: action.payload,
+      }
+    }
     case CHECK_PASSWORD_SUCCESS: {
       return { 
         ...state,
-        isCheckPassword: true,
       }
     }
     case CHECK_PASSWORD_FAILURE: {
