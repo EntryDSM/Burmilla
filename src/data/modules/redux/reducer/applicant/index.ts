@@ -48,7 +48,7 @@ const InitialState: ApplicantState = {
           is_submit: false,
         },
         personal_data: {
-          photo_file_name: '',
+          photo_url: '',
           name: '',
           email: '',
           birth_date: '',
@@ -61,7 +61,7 @@ const InitialState: ApplicantState = {
           parent_tel: '',
           school_tel: '',
           home_tel: '',
-          graduated: false,
+          is_graduated: false,
         },
         evaluation: {
           volunteer_time: 0,
