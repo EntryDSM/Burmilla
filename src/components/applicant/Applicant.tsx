@@ -20,13 +20,14 @@ interface Props {
   applicantsList: GetApplicantsListResponse;
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
-  isCheckPassword: boolean;
+  password: string;
   setFilter: (payload: GetApplicantsListPayload) => void;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
+  setPassword: (payload: string) => void;
   checkPassword: (payload: CheckPasswordRequest) => void;
   deleteApplicantTable: () => void;
 }
@@ -36,25 +37,35 @@ const Applicant: FC<Props> = ({
   applicantsList,
   currnetApplicantInfo,
   updateApplicantStatusStatus,
-  isCheckPassword,
+  password,
   setFilter,
   updateApplicantStatus,
   updateApplicantSubmitStatus,
   getApplicantInfo,
-  deleteApplicantTable,
+  setPassword,
   checkPassword,
+  deleteApplicantTable,
 }) => {
   const [isContainerWidth, setIsContainerWidth] =
     React.useState<boolean>(false);
   const [isDeleteTableModalSwitch, setIsDeleteTableModalSwitch] =
     React.useState<boolean>(false);
+
+  const checkPasswordDisable = () => {
+    if (password === "testpassword") {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <>
       {isDeleteTableModalSwitch && (
         <DeleteTable
-          disable={!isCheckPassword}
-          isCheckPassword={isCheckPassword}
-          isDeleteTableModalSwitch={isDeleteTableModalSwitch}
+          password={password}
+          applicantsList={applicantsList}
+          disable={checkPasswordDisable()}
+          setPassword={setPassword}
           checkPassword={checkPassword}
           deleteApplicantTable={deleteApplicantTable}
           setIsDeleteTableModalSwitch={setIsDeleteTableModalSwitch}
@@ -64,7 +75,6 @@ const Applicant: FC<Props> = ({
         <S.ApplicantContainer>
           <FilterSearch
             filters={filters}
-            isCheckPassword={isCheckPassword}
             isDeleteTableModalSwitch={isDeleteTableModalSwitch}
             setFilter={setFilter}
             deleteApplicantTable={deleteApplicantTable}
