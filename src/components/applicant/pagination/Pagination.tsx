@@ -2,8 +2,6 @@ import React, { FC } from "react";
 import * as S from "./style";
 import { shift_left_icon, shift_right_icon } from "../../../assets/applicants";
 import { getIndexList } from "../../../utils/pagination";
-import { SET_FILTER } from "../../../data/modules/redux/action/applicant/interface";
-import { useDispatch } from "react-redux";
 import {
   GetApplicantsListPayload,
   GetApplicantsListResponse,
@@ -12,70 +10,64 @@ import {
 interface Props {
   applicantsList: GetApplicantsListResponse;
   filters: GetApplicantsListPayload;
+  getApplicantsList: (payload: GetApplicantsListPayload) => void;
   setFilter: (payload: GetApplicantsListPayload) => void;
 }
 
-const Pagination: FC<Props> = ({ applicantsList, filters, setFilter }) => {
+const Pagination: FC<Props> = ({
+  applicantsList,
+  filters,
+  getApplicantsList,
+  setFilter,
+}) => {
   const [currentIndex, setCurrentIndex] = React.useState(1);
   const [indexList, setIndexList] = React.useState<number[]>([]);
-
-  const dispatch = useDispatch();
 
   React.useEffect(() => {
     setIndexList(getIndexList(currentIndex, applicantsList.total_pages));
   }, [currentIndex, applicantsList.total_pages]);
 
+  const carcPage = () => {
+    if (currentIndex < 1) {
+      return currentIndex + 1;
+    }
+    if (currentIndex === 1) {
+      return currentIndex;
+    }
+    if (currentIndex > 1) {
+      return currentIndex - 2;
+    }
+  };
+
   React.useEffect(() => {
-    setCurrentIndex(0);
-  }, [applicantsList.total_pages]);
-
-  const handleClickIndex = React.useCallback(
-    (index: number) => {
-      setCurrentIndex(index);
-      setFilter({
-        page: index - 1,
-      });
-      // dispatch({ type: SET_FILTER });
-    },
-    [setFilter, dispatch]
-  );
-
-  const handleClickPrev = React.useCallback(() => {
-    if (currentIndex > 1) setCurrentIndex(currentIndex - 1);
     setFilter({
-      page: currentIndex,
+      page: carcPage(),
     });
-    dispatch({ type: SET_FILTER });
-  }, [currentIndex, SET_FILTER]);
+    getApplicantsList(filters);
+  }, [currentIndex]);
 
-  const handleClickNext = React.useCallback(() => {
+  React.useEffect(() => {
+    setCurrentIndex(1);
+  }, []);
+
+  const handleClickIndex = async (index: number) => {
+    await setCurrentIndex(index);
+  };
+
+  const handleClickPrev = async () => {
+    if (currentIndex > 1) await setCurrentIndex(currentIndex - 1);
+  };
+
+  const handleClickNext = async () => {
     if (currentIndex < applicantsList.total_pages)
-      setCurrentIndex(currentIndex + 1);
-    setFilter({
-      page: currentIndex,
-    });
-    dispatch({ type: SET_FILTER });
-  }, [currentIndex, applicantsList.total_pages, SET_FILTER]);
-
-  const nextBtn = React.useMemo(() => {
-    return (
-      <S.PageBtn className="move-btn" onClick={handleClickNext}>
-        <img src={shift_right_icon} alt="shift_right" />
-      </S.PageBtn>
-    );
-  }, [filters]);
-
-  const prevBtn = React.useMemo(() => {
-    return (
-      <S.PageBtn className="move-btn" onClick={handleClickPrev}>
-        <img src={shift_left_icon} alt="shift_left" />
-      </S.PageBtn>
-    );
-  }, [filters]);
+      await setCurrentIndex(currentIndex + 1);
+  };
 
   return (
     <S.PaginationContainer className="no-select">
-      {prevBtn}
+      <S.PageBtn className="move-btn" onClick={handleClickPrev}>
+        <img src={shift_left_icon} alt="shift_left" />
+      </S.PageBtn>
       {indexList.map((i) => (
         <S.PageBtn
           key={i.toString()}
@@ -85,7 +77,9 @@ const Pagination: FC<Props> = ({ applicantsList, filters, setFilter }) => {
           {i}
         </S.PageBtn>
       ))}
-      {nextBtn}
+      <S.PageBtn className="move-btn" onClick={handleClickNext}>
+        <img src={shift_right_icon} alt="shift_right" />
+      </S.PageBtn>
     </S.PaginationContainer>
   );
 };
