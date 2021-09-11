@@ -12,20 +12,14 @@ interface Props {
 
 const BasicInfo: FC<Props> = ({
   applicantPersonalData: {
-    photo_file_name,
+    photo_url,
     name,
-    email,
     birth_date,
     school_name,
     educational_status,
     application_type,
     address,
     detail_address,
-    telephone_number,
-    parent_tel,
-    school_tel,
-    home_tel,
-    graduated,
   },
 }) => {
   const checkApplicationType = React.useCallback(() => {
@@ -37,7 +31,7 @@ const BasicInfo: FC<Props> = ({
 
   return (
     <S.Wrapper>
-      <S.IDPicture src={photo_file_name} alt="ID Photo" />
+      <S.IDPicture src={photo_url} alt="ID Photo" />
       <ul>
         <S.InfoLine isOneLine={true}>
           <h3>{name}</h3> <p>{birth_date}</p>
