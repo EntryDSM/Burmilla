@@ -2,6 +2,7 @@ export const color = {
   main: '#f57278',
   sub: '#ff8888',
   backgorund: 'white',
+  inputBackground: '#f5f5f5',
   fail: '#707070',
   middleBar: '#cbcbcb',
   light: '#ffebec',
