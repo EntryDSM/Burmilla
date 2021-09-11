@@ -45,7 +45,7 @@ export const ContentSelector = styled.div`
 `;
 
 export const Document = styled.div`
-  height: 125px;
+  height: 155px;
   overflow-y: scroll;
   font-weight: 300;
   font-size: 14px;
