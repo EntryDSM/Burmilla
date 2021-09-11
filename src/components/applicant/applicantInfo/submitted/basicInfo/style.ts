@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const IDPicture = styled.img`
-  width: 115px;
+  width: 140px;
   height: 140px;
   border: solid 1px #707070;
   margin-right: 28px;
