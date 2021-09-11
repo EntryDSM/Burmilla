@@ -12,6 +12,7 @@ import {
   UPDATE_APPLICANT_SUBMIT_STATUS,
   UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS,
   UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE,
+  PASSWORD,
   CHECK_PASSWORD,
   CHECK_PASSWORD_SUCCESS,
   CHECK_PASSWORD_FAILURE,
@@ -44,8 +45,9 @@ export const updateApplicantStatusFailure = createAction(UPDATE_APPLICANT_STATUS
 export const updateApplicantSubmitStatus = createAction(UPDATE_APPLICANT_SUBMIT_STATUS)<UpdateApplicantSubmitStatusPayload>();
 export const updateApplicantSubmitStatusSuccess = createAction(UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS)();
 export const updateApplicantSubmitStatusFailure = createAction(UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE)<error>();
+export const setPassword = createAction(PASSWORD)<string>();
 export const checkPassword = createAction(CHECK_PASSWORD)<CheckPasswordRequest>();
-export const checkPasswordSuccess = createAction(CHECK_PASSWORD_SUCCESS)<boolean>();
+export const checkPasswordSuccess = createAction(CHECK_PASSWORD_SUCCESS)();
 export const checkPasswordFailure = createAction(CHECK_PASSWORD_FAILURE)<error>();
 export const deleteApplicantTable = createAction(DELETE_APPLICANT_TABLE)();
 export const deleteApplicantTableSuccess = createAction(DELETE_APPLICANT_TABLE_SUCCESS)();
@@ -65,6 +67,7 @@ export type applicantActionType =
   | ReturnType<typeof updateApplicantSubmitStatus>
   | ReturnType<typeof updateApplicantSubmitStatusSuccess>
   | ReturnType<typeof updateApplicantSubmitStatusFailure>
+  | ReturnType<typeof setPassword>
   | ReturnType<typeof checkPassword>
   | ReturnType<typeof checkPasswordSuccess>
   | ReturnType<typeof checkPasswordFailure>
