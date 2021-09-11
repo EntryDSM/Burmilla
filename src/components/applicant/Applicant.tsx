@@ -26,6 +26,7 @@ interface Props {
   updateApplicantSubmitStatus: (
     payload: UpdateApplicantSubmitStatusPayload
   ) => void;
+  getApplicantsList: (payload: GetApplicantsListPayload) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
   setPassword: (payload: string) => void;
   checkPassword: (payload: CheckPasswordRequest) => void;
@@ -41,6 +42,7 @@ const Applicant: FC<Props> = ({
   setFilter,
   updateApplicantStatus,
   updateApplicantSubmitStatus,
+  getApplicantsList,
   getApplicantInfo,
   setPassword,
   checkPassword,
@@ -93,6 +95,7 @@ const Applicant: FC<Props> = ({
             <Pagination
               applicantsList={applicantsList}
               filters={filters}
+              getApplicantsList={getApplicantsList}
               setFilter={setFilter}
             />
           </S.PaginationBox>
