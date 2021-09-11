@@ -31,7 +31,6 @@ const ApplicantInfo: FC<Props> = ({
   updateApplicantSubmitStatus,
   setIsContainerWidth,
   getApplicantInfo,
-  // resetUpdateStatus,
 }) => {
   const filterResponse = applicantsList.applicants_information_responses.filter(
     (i) => {
