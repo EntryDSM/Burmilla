@@ -8,12 +8,9 @@ import {
   GetApplicantsListPayload,
   CheckPasswordRequest,
 } from "../../../../data/api/apiTypes";
-import DeleteTable from "../../deleteTable";
 
 interface Props {
-  disable: boolean;
   filters: GetApplicantsListPayload;
-  isCheckPassword: boolean;
   isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
   checkPassword: (payload: CheckPasswordRequest) => void;
@@ -22,9 +19,7 @@ interface Props {
 }
 
 const Filter: FC<Props> = ({
-  disable,
   filters,
-  isCheckPassword,
   isDeleteTableModalSwitch,
   setFilter,
   checkPassword,
