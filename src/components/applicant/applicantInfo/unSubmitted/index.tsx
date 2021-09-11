@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import * as S from "./style";
 import { details_arrow } from "../../../../assets/applicants";
-import { returnContact } from "../../../../utils/checkType";
+import { phoneWithHyphen } from "../../../../utils/checkType";
 
 interface Props {
   isContainerWidth: boolean;
@@ -27,7 +27,7 @@ const Unsubmitted: FC<Props> = ({
   setIsContainerWidth,
 }) => {
   const setContactForm = React.useCallback((contact: string) => {
-    return returnContact(contact);
+    return phoneWithHyphen(contact);
   }, []);
 
   const handleClickDetailArrow = () => {
