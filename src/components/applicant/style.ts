@@ -37,4 +37,5 @@ export const ApplicantInfoWrap = styled.div<{
   ${({ isContainerWidth }) => css`
     width: ${isContainerWidth ? '42' : '0'}%; 
   `};
+  height: 100%;
 `;
