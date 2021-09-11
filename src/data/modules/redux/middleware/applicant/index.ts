@@ -15,6 +15,8 @@ function* applicantSaga() {
   yield takeLatest(GET_APPLICANT_INFO, getApplicantInfoSaga);
   yield takeLatest(UPDATE_APPLICANT_STATUS, updateApplicantStatusSaga);
   yield takeLatest(UPDATE_APPLICANT_SUBMIT_STATUS, updateApplicantSubmitStatusSaga);
+  yield takeLatest(CHECK_PASSWORD, checkPasswordSaga);
+  yield takeLatest(DELETE_APPLICANT_TABLE, deleteApplicantTableSaga);
 }
 
 export default applicantSaga;
