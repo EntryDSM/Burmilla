@@ -60,7 +60,6 @@ const Submitted: FC<Props> = ({
         updateApplicantSubmitStatus={updateApplicantSubmitStatus}
         setIsContainerWidth={setIsContainerWidth}
         getApplicantInfo={getApplicantInfo}
-        // resetUpdateStatus={resetUpdateStatus}
       />
       <BasicInfo applicantPersonalData={applicantPersonalData} />
       <DetailInfo
