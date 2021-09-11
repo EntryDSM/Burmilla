@@ -5,7 +5,7 @@ import {
   ApplicantPersonalData,
   ApplicantEvaluation,
 } from "../../../../../data/api/apiTypes";
-import { returnContact } from "../../../../../utils/checkType";
+import { phoneWithHyphen } from "../../../../../utils/checkType";
 
 interface Props {
   applicantPersonalData: ApplicantPersonalData;
@@ -30,7 +30,7 @@ const DetailInfo: FC<Props> = ({
   },
 }) => {
   const setContactForm = React.useCallback((contact: string) => {
-    return returnContact(contact);
+    return phoneWithHyphen(contact);
   }, []);
 
   return (
