@@ -21,7 +21,6 @@ interface Props {
   ) => void;
   setIsContainerWidth: (payload: boolean) => void;
   getApplicantInfo: (payload: GetApplicantInfoPayload) => void;
-  // resetUpdateStatus;
 }
 
 const ApplicantStatuses: FC<Props> = ({
@@ -33,7 +32,6 @@ const ApplicantStatuses: FC<Props> = ({
   updateApplicantSubmitStatus,
   setIsContainerWidth,
   getApplicantInfo,
-  // resetUpdateStatus,
 }) => {
   const handleClickDetailArrow = () => {
     setIsContainerWidth(!isContainerWidth);
@@ -44,13 +42,13 @@ const ApplicantStatuses: FC<Props> = ({
     is_printed_arrived: boolean
   ) => {
     if (window.confirm("지원자의 원서 제출 상태를 수정하시겠습니까?")) {
-      updateApplicantStatus({ receipt_code, is_printed_arrived });
+      await updateApplicantStatus({ receipt_code, is_printed_arrived });
     }
   };
 
   const handleClickCancelSubmitted = async (receipt_code: number) => {
     if (window.confirm("지원자의 최종 제출 상태를 수정하시겠습니까?")) {
-      updateApplicantSubmitStatus({ receipt_code });
+      await updateApplicantSubmitStatus({ receipt_code });
     }
   };
 
