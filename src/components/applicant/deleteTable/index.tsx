@@ -39,6 +39,10 @@ const DeleteTable: FC<Props> = ({
     setIsDeleteTableModalSwitch(false);
   }, []);
 
+  const modalClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
   const handleChangePassword = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setPassword(e.target.value);
@@ -57,14 +61,9 @@ const DeleteTable: FC<Props> = ({
     return false;
   }, []);
 
-  const keyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-    }
-  };
-
   return (
-    <S.ModalWrapper>
-      <S.ModalDeleteTabel>
+    <S.ModalWrapper onClick={handleClickOffModal}>
+      <S.ModalDeleteTabel onClick={modalClickHandler}>
         <S.ModalDeleteImg>
           <S.CloseModalImg
             src={close_modal}
@@ -88,7 +87,6 @@ const DeleteTable: FC<Props> = ({
               placeholder="비밀번호를 입력해주세요"
               value={password}
               onChange={handleChangePassword}
-              onKeyPress={keyPressHandler}
             />
             <S.CheckDisplayImg
               src={isPasswordShown ? hide_icon : display_icon}
