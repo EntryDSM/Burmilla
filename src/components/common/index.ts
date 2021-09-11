@@ -34,9 +34,9 @@ export const Button = styled.button`
     border-radius: 4px;
     background-color: ${color.primaryColor};
     color: ${color.backgorund};
-    font-size: 12.6px;
+    font-size: 13px;
     font-weight: bold;
-    font-family: 'Noto Sans KR-Bold', sans-serif !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
   }
   &.header__logout-btn {
     width: 88px;
@@ -51,9 +51,9 @@ export const Button = styled.button`
     border-radius: 4px;
     background-color: ${color.primaryColor};
     color: ${color.backgorund};
-    font-size: 12.6px;
+    font-size: 13px;
     font-weight: bold;
-    font-family: 'Noto Sans KR-Bold', sans-serif !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
   }
   &.statistics-all__excel-btn {
     width: 110px;
