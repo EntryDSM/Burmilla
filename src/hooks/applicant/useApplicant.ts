@@ -6,6 +6,7 @@ import {
   getApplicantInfo,
   updateApplicantStatus,
   updateApplicantSubmitStatus,
+  setPassword,
   checkPassword,
   deleteApplicantTable
  } from '../../data/modules/redux/action/applicant';
@@ -26,6 +27,7 @@ const useApplicant = () => {
     getApplicantInfo: (payload: GetApplicantInfoPayload) => dispatch(getApplicantInfo(payload)),
     updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => dispatch(updateApplicantStatus(payload)),
     updateApplicantSubmitStatus: (payload: UpdateApplicantSubmitStatusPayload) => dispatch(updateApplicantSubmitStatus(payload)),
+    setPassword: (payload: string) => dispatch(setPassword(payload)),
     checkPassword: (payload: CheckPasswordRequest) => dispatch(checkPassword(payload)),
     deleteApplicantTable: () => dispatch(deleteApplicantTable()),
   };
