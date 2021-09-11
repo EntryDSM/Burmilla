@@ -16,6 +16,7 @@ export const UPDATE_APPLICANT_SUBMIT_STATUS = 'applicant/UPDATE_APPLICANT_SUBMIT
 export const UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS = 'applicant/UPDATE_APPLICANT_SUBMIT_STATUS_SUCCESS' as const;
 export const UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE = 'applicant/UPDATE_APPLICANT_SUBMIT_STATUS_FAILURE' as const;
 
+export const PASSWORD = 'applicant/PASSWORD' as const;
 export const CHECK_PASSWORD = 'applicant/CHECK_PASSWORD' as const;
 export const CHECK_PASSWORD_SUCCESS = 'applicant/CHECK_PASSWORD_SUCCESS' as const;
 export const CHECK_PASSWORD_FAILURE = 'applicant/CHECK_PASSWORD_FAILURE' as const;
