@@ -3,17 +3,13 @@ import { list_progressbar, search_icon } from "../../../assets/applicants";
 import SearchBar from "./searchBar";
 import Filter from "./filter";
 import FilterSearchWrapper from "./style";
-import {
-  GetApplicantsListPayload,
-  CheckPasswordRequest,
-} from "../../../data/api/apiTypes";
+import { GetApplicantsListPayload } from "../../../data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
   isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
-  checkPassword: (payload: CheckPasswordRequest) => void;
-  deleteApplicantTable: () => void;
+  getApplicantsList: (payload: GetApplicantsListPayload) => void;
   setIsDeleteTableModalSwitch: (payload: boolean) => void;
 }
 
@@ -21,8 +17,7 @@ const FilterSearch: FC<Props> = ({
   filters,
   isDeleteTableModalSwitch,
   setFilter,
-  checkPassword,
-  deleteApplicantTable,
+  getApplicantsList,
   setIsDeleteTableModalSwitch,
 }) => {
   return (
@@ -36,8 +31,7 @@ const FilterSearch: FC<Props> = ({
         filters={filters}
         isDeleteTableModalSwitch={isDeleteTableModalSwitch}
         setFilter={setFilter}
-        deleteApplicantTable={deleteApplicantTable}
-        checkPassword={checkPassword}
+        getApplicantsList={getApplicantsList}
         setIsDeleteTableModalSwitch={setIsDeleteTableModalSwitch}
       />
     </FilterSearchWrapper>
