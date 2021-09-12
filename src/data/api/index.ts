@@ -3,17 +3,8 @@ import uri from './uri';
 import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
 import { getAccessToken } from '../../utils/token';
-
-export enum API_STATUS {
-  loginStatus = 'loginStatus',
-  refreshTokenStatus = 'refreshTokenStatus',
-  getStatisticsStatus = 'getStatisticsStatus',
-  getApplicantsListStatus = 'getApplicantsListStatus',
-  getApplicantInfoStatus = 'getApplicantInfoStatus',
-  updateApplicantStatusStatus = 'updateApplicantStatusStatus',
-  getSchedulesStatus = 'getSchedulesStatus',
-  updateScheduleStatusStatus = 'updateScheduleStatusStatus',
-}
+import { signinRequest } from '../../models/dto/request/signinRequest';
+import { refreshResponse, signinResponse } from '../../models/dto/response/signinResponse';
 
 const instance = (api: 'main' | 'excel') =>
   axios.create({
@@ -29,39 +20,35 @@ const authorization = (token: string) => ({
   'Cache-Control': 'no-cache',
 });
 
-// export const loginApi = async (payload: T.LoginPayload) => {
-//   try {
-//     const response = await instance('main').post<T.Tokens>(uri.signin, payload);
-//     localStorage.setItem('access_token', response.data.access_token);
-//     return response.data;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
-// export const refreshTokenApi = async (payload: T.RefreshToken) => {
-//   try {
-//     const response = await instance('main').put<T.RefreshResponse>(uri.signin, null, {
-//       headers: authorization(payload.refresh_token),
-//     });
-//     localStorage.setItem('access_token', response.data.access_token);
-//     return response;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-export const loginApi = async (payload: T.LoginPayload) => {
-  const response = await instance('main').post<T.Tokens>(uri.signin, payload);
-
-  return [response.data, response.status];
+export const signinApi = async (body: signinRequest) => {
+  try {
+    const request = instance('main');
+    const response = await request.post<signinResponse>(uri.signin, body);
+    localStorage.setItem('access_token', response.data.access_token);
+    localStorage.setItem('refresh_token', response.data.refresh_token);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const refreshTokenApi = async (payload: T.Tokens) => {
-  const response = await instance('main').put<T.Tokens>(uri.signin, null, {
-    headers: authorization(payload.refresh_token),
-  });
-
-  return [response.data, response.status];
+export const refreshTokenApi = async () => {
+  try {
+    const request = instance('main');
+    const { data } = await request.put<refreshResponse>(
+      uri.signin,
+      {},
+      {
+        headers: {
+          'x-refresh-token': localStorage.getItem('refresh_token'),
+        },
+      },
+    );
+    localStorage.setItem('access_token', data.access_token);
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getScheduleApi = async () => {
@@ -170,7 +157,7 @@ export const downloadApplicantsListExcel = async () => {
     responseType: 'blob',
   });
 
-  return response;
+  return response.data;
 };
 
 export const downloadAdmissionExcel = async () => {
