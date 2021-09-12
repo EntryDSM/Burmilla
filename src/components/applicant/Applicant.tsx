@@ -3,7 +3,7 @@ import * as S from "./style";
 import ApplicantInfo from "./applicantInfo";
 import ApplicantsList from "./applicantsList";
 import FilterSearch from "./filterSearch";
-import Pagination from "./pagination/index";
+import Pagination from "./pagination/Pagination";
 import DeleteTable from "./deleteTable";
 import {
   GetApplicantsListResponse,
@@ -79,8 +79,7 @@ const Applicant: FC<Props> = ({
             filters={filters}
             isDeleteTableModalSwitch={isDeleteTableModalSwitch}
             setFilter={setFilter}
-            deleteApplicantTable={deleteApplicantTable}
-            checkPassword={checkPassword}
+            getApplicantsList={getApplicantsList}
             setIsDeleteTableModalSwitch={setIsDeleteTableModalSwitch}
           />
           <ApplicantsList
