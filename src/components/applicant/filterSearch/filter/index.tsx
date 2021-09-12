@@ -33,27 +33,31 @@ const Filter: FC<Props> = ({
     { content: "사회통합 전형", value: "is_social" },
   ];
 
-  const handleChangeFilter = (value: string) => {
-    let newFilter = { size: 10 };
+  React.useEffect(() => {
+    getApplicantsList(filters);
+  }, [filters]);
+
+  const handleChangeFilter = async (value: string) => {
+    let newFilter = { page: 0 };
 
     if (value === "is_daejeon" && !filters[value] && filters["is_nationwide"]) {
       newFilter["is_daejeon"] = true;
-      newFilter["is_nationwide"] = null;
+      newFilter["is_nationwide"] = false;
     } else if (
       value === "is_nationwide" &&
       !filters[value] &&
       filters["is_daejeon"]
     ) {
       newFilter["is_nationwide"] = true;
-      newFilter["is_daejeon"] = null;
+      newFilter["is_daejeon"] = false;
     } else if (value === "is_printed_arrived") {
       newFilter[value] = filters[value] === false ? null : false;
     } else {
-      newFilter[value] = !filters[value] || null;
+      newFilter[value] = !filters[value] || false;
     }
 
-    setFilter(newFilter);
-    console.log(value);
+    await setFilter(newFilter);
+    getApplicantsList(filters);
   };
 
   const checkIsChecked = React.useCallback(
