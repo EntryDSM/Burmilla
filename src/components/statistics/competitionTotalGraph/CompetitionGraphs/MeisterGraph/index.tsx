@@ -15,7 +15,7 @@ const MeisterGraph: FC<Props> = ({ meisterScore }) => {
   React.useEffect(() => {
     setIsWidthOfMeisterGraphBar(meisterScore.special_count);
     setIsAppearGraphOpa(true);
-  }, []);
+  }, [meisterScore]);
 
   const graphBarContent = () => {
     if (isWidthOfMeisterGraphBar >= 1) {
