@@ -45,15 +45,16 @@ export const Button = styled.button`
     font-size: 16px;
   }
   &.admission-ticket__download-btn {
-    width: 86px;
-    height: 26px;
+    width: 90px;
+    height: 32px;
+    margin-left: 20px;
     border: 1px solid ${color.primaryColor};
     border-radius: 4px;
     background-color: ${color.primaryColor};
     color: ${color.backgorund};
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
-    font-family: 'Noto Sans KR', sans-serif !important;
+    font-family: 'Noto Sans KR-Bold', sans-serif !important;
   }
   &.statistics-all__excel-btn {
     width: 110px;
