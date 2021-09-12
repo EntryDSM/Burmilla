@@ -5,10 +5,18 @@ import { GetApplicantsListPayload } from "../../../../data/api/apiTypes";
 interface Props {
   searchProgressImg: string;
   searchIcon: string;
+  filters: GetApplicantsListPayload;
   setFilter: (payload: GetApplicantsListPayload) => void;
+  getApplicantsList: (payload: GetApplicantsListPayload) => void;
 }
 
-const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
+const SearchBar: FC<Props> = ({
+  searchProgressImg,
+  searchIcon,
+  filters,
+  setFilter,
+  getApplicantsList,
+}) => {
   const categoryList = [
     { content: "전화번호", id: "telephone" },
     { content: "이름", id: "name" },
@@ -32,6 +40,7 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
         [category.id]: keyword,
       });
       setSelectedCategory(category);
+      console.log(selectedCategory.id);
     },
     [selectedCategory, keyword]
   );
@@ -42,9 +51,11 @@ const SearchBar: FC<Props> = ({ searchProgressImg, searchIcon, setFilter }) => {
       setFilter({
         [selectedCategory.id]: e.currentTarget.value || null,
       });
+      getApplicantsList(filters);
       console.log(e.target.value);
+      console.log("test", filters);
     },
-    [selectedCategory, keyword]
+    [keyword]
   );
 
   return (
