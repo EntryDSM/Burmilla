@@ -1,58 +1,48 @@
 import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
-
 import * as S from "../style";
 import { logo } from "../../../assets/header";
 import { display_icon, hide_icon } from "../../../assets/login";
-import { useAuth } from "../../../hooks/auth";
-import checkApiStatus from "../../../data/api/checkApiStatus";
-import { setToken } from "../../../utils/token";
+import { useSignIn } from "src/hooks/signin";
+import { useAuth } from "src/hooks/auth";
+import { SIGNIN } from "../../../data/modules/redux/action/signin";
 
 const LoginContent: FC = () => {
-  const [id, setId] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
-  const [isFailed, setIsFailed] = React.useState<boolean>(false);
   const [isPasswordShown, setIsPasswordShown] = React.useState<boolean>(false);
 
-  const { push } = useHistory();
-
-  const {
-    login,
-    authStore: { loginStatus, tokens },
-  } = useAuth();
+  const history = useHistory();
+  const { state, setState } = useSignIn();
+  const authState = useAuth();
 
   React.useEffect(() => {
-    if (checkApiStatus(loginStatus)._201) {
-      setToken({
-        access_token: tokens["access_token"],
-        refresh_token: tokens["refresh_token"],
-      });
-      alert("로그인 성공");
-      push("/");
-    } else if (checkApiStatus(loginStatus)._400) {
-      setIsFailed(true);
-    } else if (checkApiStatus(loginStatus)._401) {
-      setIsFailed(true);
-    } else if (checkApiStatus(loginStatus)._404) {
-      setIsFailed(true);
-    }
-  }, [loginStatus]);
+    return () => {
+      setState.reset();
+    };
+  }, []);
 
-  const handleChangeEmail = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setId(e.target.value),
-    []
-  );
-  const handleChangePassword = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
-    []
-  );
-  const handleLogin = React.useCallback(() => {
-    login({ id, password });
-  }, [id, password]);
+  React.useEffect(() => {
+    if (authState.state.isLogin) {
+      history.push("/");
+    }
+  }, [authState.state.isLogin]);
+
+  const idChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState.setId(e.target.value);
+  };
+  const passwordChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState.setPassword(e.target.value);
+  };
+
+  const loginButtonClickHandler = () => {
+    setState.signin({
+      id: state.id,
+      password: state.password,
+    });
+  };
 
   const keyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleLogin();
+      loginButtonClickHandler();
     }
   };
 
@@ -75,18 +65,17 @@ const LoginContent: FC = () => {
         <S.LoginContentSign>
           <S.LoginContentSignLogo>
             <img src={logo} alt="logo" />
-            {isFailed ? (
+            {state.error.type === SIGNIN ? (
               <span>아이디 또는 비밀번호가 잘못되었습니다!</span>
             ) : (
               ""
             )}
           </S.LoginContentSignLogo>
           <S.LoginContentSignInput>
-            <S.LoginInputEmail
+            <S.LoginInputId
               type="text"
               placeholder="아이디"
-              value={id}
-              onChange={handleChangeEmail}
+              onChange={idChangeHandler}
               onKeyPress={keyPressHandler}
             />
             <p />
@@ -94,8 +83,7 @@ const LoginContent: FC = () => {
               <S.LoginInputPassword
                 type={isPasswordShown ? "text" : "password"}
                 placeholder="비밀번호"
-                value={password}
-                onChange={handleChangePassword}
+                onChange={passwordChangeHandler}
                 onKeyPress={keyPressHandler}
               />
               <S.LoginPasswordDisplayIcon>
@@ -108,7 +96,7 @@ const LoginContent: FC = () => {
               </S.LoginPasswordDisplayIcon>
             </S.LoginPasswordBox>
           </S.LoginContentSignInput>
-          <S.LoginBtn onClick={handleLogin}>Sign in</S.LoginBtn>
+          <S.LoginBtn onClick={loginButtonClickHandler}>Sign in</S.LoginBtn>
         </S.LoginContentSign>
       </S.LoginContentWrapper>
     </S.LoginContent>
