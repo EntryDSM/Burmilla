@@ -1,18 +1,23 @@
 import React, { FC } from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
-
 import * as S from "./style";
 import { logo } from "../../assets/header";
 import { Button } from "../common";
-import { getAccessToken, clearStorage } from "../../utils/token";
+import { error } from "../../models/error";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
-const Header: FC = () => {
+interface Props {
+  isLogin: boolean;
+  setIsLogin: (value: boolean) => void;
+  setAccessToken: (value: string) => void;
+  error: error;
+}
+
+const Header: FC<Props> = (props) => {
   const location = useLocation();
   const history = useHistory();
-  const token = getAccessToken();
 
   const headerItemsBox = () => {
-    if (token) {
+    if (props.isLogin) {
       return (
         <>
           {headerItems.map((item) => (
@@ -62,9 +67,11 @@ const Header: FC = () => {
   ];
 
   const handleButtonClick = React.useCallback(() => {
-    alert("로그아웃됩니다.");
-    clearStorage();
-    history.go(0);
+    alert("로그아웃됩니다");
+    props.setIsLogin(false);
+    props.setAccessToken("");
+    localStorage.removeItem("access_token");
+    history.push("/login");
   }, []);
 
   return (
