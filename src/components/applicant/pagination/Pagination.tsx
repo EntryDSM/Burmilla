@@ -28,7 +28,7 @@ const Pagination: FC<Props> = ({
   }, [currentIndex, applicantsList.total_pages]);
 
   const carcPage = () => {
-    if (currentIndex < 1) {
+    if (currentIndex < 0) {
       return currentIndex + 1;
     }
     if (currentIndex === 1) {
