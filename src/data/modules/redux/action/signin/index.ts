@@ -20,7 +20,7 @@ export const setError = createAction(ERROR)<error>();
 export const signinFailure = createAction(SIGNIN_FAILURE)<error>();
 export const signinSuccess = createAction(SIGNIN_SUCCESS)<string>();
 export const signin = createAction(SIGNIN)<signinRequest>();
-export const refreshToken = createAction(REFRESH_TOKEN)();
+export const refreshToken = createAction(REFRESH_TOKEN)<{ callback: () => void }>();
 export const refreshTokenFailure = createAction(REFRESH_TOKEN_FAILURE)<error>();
 export const refreshTokenSuccess = createAction(REFRESH_TOKEN_SUCCESS)();
 export const reset = createAction(RESET)();
