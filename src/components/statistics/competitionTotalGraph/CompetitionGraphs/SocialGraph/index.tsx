@@ -15,7 +15,7 @@ const SocialGraph: FC<Props> = ({ socialScore }) => {
   React.useEffect(() => {
     setIsWidthOfSocialGraphBar(socialScore.special_count);
     setIsAppearGraphOpa(true);
-  }, []);
+  }, [socialScore]);
 
   const graphBarContent = () => {
     if (isWidthOfSocialGraphBar >= 1) {
