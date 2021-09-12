@@ -52,10 +52,6 @@ const ApplicantStatuses: FC<Props> = ({
     }
   };
 
-  const handleDownloadAdmission = React.useCallback(async () => {
-    await downloadExcel(downloadAdmissionExcel, "수험표");
-  }, []);
-
   return (
     <S.Wrapper>
       <S.DetailInfo
@@ -74,12 +70,6 @@ const ApplicantStatuses: FC<Props> = ({
           onClick={() => handleClickCancelSubmitted(receipt_code)}
         >
           최종제출 취소
-        </Button>
-        <Button
-          className="admission-ticket__download-btn"
-          onClick={() => handleDownloadAdmission()}
-        >
-          수험표 출력
         </Button>
       </S.ButtonContainer>
     </S.Wrapper>
