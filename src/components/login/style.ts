@@ -136,7 +136,7 @@ export const LoginContentSignInput = styled.div`
   height: 100%;
 `;
 
-export const LoginInputEmail = styled.input`
+export const LoginInputId = styled.input`
   width: 100%;
   height: 54px;
   box-sizing: border-box;
