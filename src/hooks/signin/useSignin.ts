@@ -27,8 +27,8 @@ const useSignin = () => {
     signin: (payload: signinRequest) => {
       dispatch(signin(payload));
     },
-    refreshToken: () => {
-      dispatch(refreshToken());
+    refreshToken: (callback: () => void) => {
+      dispatch(refreshToken({ callback }));
     },
     reset: () => {
       dispatch(reset());
