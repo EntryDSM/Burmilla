@@ -1,30 +1,3 @@
-  export interface ApiPayload<T = null> {
-    data?: T;
-    status?: number;
-  }
-  
-  export interface LoginPayload {
-    id: string;
-    password: string;
-  }
-  
-  export interface RefreshTokenPayload {
-    refreshToken: string;
-  }
-  
-  export interface Tokens {
-    access_token?: string | null;
-    refresh_token?: string | null;
-  }
-
-  // export interface RefreshToken {
-  //   refresh_token: string;
-  // }
-
-  // export interface RefreshResponse {
-  //   access_token: string;
-  // }
-
   export interface GetSchedulesPayload {
     type: string; 
     date: string;
