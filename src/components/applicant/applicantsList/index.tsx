@@ -11,7 +11,6 @@ import {
 
 interface Props {
   isContainerWidth: boolean;
-  filters: GetApplicantsListPayload;
   currnetApplicantInfo: GetApplicantInfoResponse;
   applicantsList: GetApplicantsListResponse;
   setIsContainerWidth: (payload: boolean) => void;
@@ -20,7 +19,6 @@ interface Props {
 
 const ApplicantsList: FC<Props> = ({
   isContainerWidth,
-  filters,
   currnetApplicantInfo,
   applicantsList,
   setIsContainerWidth,

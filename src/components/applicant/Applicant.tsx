@@ -84,7 +84,6 @@ const Applicant: FC<Props> = ({
           />
           <ApplicantsList
             isContainerWidth={isContainerWidth}
-            filters={filters}
             applicantsList={applicantsList}
             currnetApplicantInfo={currnetApplicantInfo}
             setIsContainerWidth={setIsContainerWidth}

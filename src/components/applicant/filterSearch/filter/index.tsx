@@ -53,7 +53,7 @@ const Filter: FC<Props> = ({
     }
 
     setFilter(newFilter);
-    // console.log(filters);
+    console.log(value);
   };
 
   const checkIsChecked = React.useCallback(
@@ -61,7 +61,7 @@ const Filter: FC<Props> = ({
       if (value === "is_printed_arrived" && filters[value] === false) {
         return true;
       } else {
-        return !filters[value] || filters[value];
+        return filters[value];
       }
     },
     [filters]

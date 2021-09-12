@@ -25,7 +25,9 @@ const FilterSearch: FC<Props> = ({
       <SearchBar
         searchProgressImg={list_progressbar}
         searchIcon={search_icon}
+        filters={filters}
         setFilter={setFilter}
+        getApplicantsList={getApplicantsList}
       />
       <Filter
         filters={filters}
