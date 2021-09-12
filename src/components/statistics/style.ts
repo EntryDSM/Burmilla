@@ -66,7 +66,8 @@ export const CompetitionTableWrapper = styled.div`
     width: 33%;
     border-spacing: 0;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif !important;
     font-weight: 500;
     color: ${color.primaryTextColor};
     padding: 0;
@@ -76,7 +77,8 @@ export const CompetitionTableWrapper = styled.div`
     width: 45%;
     border-spacing: 0;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif !important;
     font-weight: 500;
     color: ${color.primaryTextColor};
     padding: 0;
@@ -119,7 +121,7 @@ export const CompetitionTableWrapper = styled.div`
 export const TotalScore = styled.div`
   display: flex;
   align-items: flex-end;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   font-family: 'Noto Sans KR-Bold', sans-serif !important;
 `;
