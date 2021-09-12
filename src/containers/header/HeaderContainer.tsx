@@ -1,22 +1,24 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useAuth } from "../../hooks/auth";
 import { useSignIn } from "../../hooks/signin";
+import { useStatistics } from "src/hooks/statistics";
 import Header from "../../components/header/Header";
 
-const HeaderContainer = () => {
+const HeaderContainer: FC = () => {
   const authState = useAuth();
   const signinState = useSignIn();
+  const statisticsState = useStatistics();
 
   const refreshToken = () => {
-    signinState.setState.refreshToken();
+    signinState.setState.refreshToken(statisticsState.setState.getStatistics);
   };
 
   useEffect(() => {
-    const errorStatus = authState.state.error.status;
+    const errorStatus = statisticsState.state.error.status;
     if (errorStatus === 401 || errorStatus === 403) {
       refreshToken();
     }
-  }, [authState.state.error]);
+  }, [statisticsState.state.error]);
 
   return <Header {...authState.state} {...authState.setState} />;
 };
