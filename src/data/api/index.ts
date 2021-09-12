@@ -165,6 +165,6 @@ export const downloadAdmissionExcel = async () => {
     headers: authorization(getAccessToken()),
     responseType: 'blob',
   });
-
+  
   return response.data;
 };
