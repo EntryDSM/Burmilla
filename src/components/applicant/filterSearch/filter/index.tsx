@@ -3,18 +3,17 @@ import * as S from "./style";
 import { Button } from "../../../common";
 import { Checkbox } from "../../../common";
 import { downloadExcel } from "../../../../utils/download";
-import { downloadApplicantsListExcel } from "../../../../data/api/index";
 import {
-  GetApplicantsListPayload,
-  CheckPasswordRequest,
-} from "../../../../data/api/apiTypes";
+  downloadApplicantsListExcel,
+  downloadAdmissionExcel,
+} from "../../../../data/api/index";
+import { GetApplicantsListPayload } from "../../../../data/api/apiTypes";
 
 interface Props {
   filters: GetApplicantsListPayload;
   isDeleteTableModalSwitch: boolean;
   setFilter: (payload: GetApplicantsListPayload) => void;
-  checkPassword: (payload: CheckPasswordRequest) => void;
-  deleteApplicantTable: () => void;
+  getApplicantsList: (payload: GetApplicantsListPayload) => void;
   setIsDeleteTableModalSwitch: (payload: boolean) => void;
 }
 
@@ -22,8 +21,7 @@ const Filter: FC<Props> = ({
   filters,
   isDeleteTableModalSwitch,
   setFilter,
-  checkPassword,
-  deleteApplicantTable,
+  getApplicantsList,
   setIsDeleteTableModalSwitch,
 }) => {
   const checkLists = [
@@ -36,7 +34,7 @@ const Filter: FC<Props> = ({
   ];
 
   const handleChangeFilter = (value: string) => {
-    let newFilter = { size: 1 };
+    let newFilter = { size: 10 };
 
     if (value === "is_daejeon" && !filters[value] && filters["is_nationwide"]) {
       newFilter["is_daejeon"] = true;
@@ -55,6 +53,7 @@ const Filter: FC<Props> = ({
     }
 
     setFilter(newFilter);
+    // console.log(filters);
   };
 
   const checkIsChecked = React.useCallback(
@@ -62,7 +61,7 @@ const Filter: FC<Props> = ({
       if (value === "is_printed_arrived" && filters[value] === false) {
         return true;
       } else {
-        return false;
+        return !filters[value] || filters[value];
       }
     },
     [filters]
@@ -72,9 +71,12 @@ const Filter: FC<Props> = ({
     await downloadExcel(downloadApplicantsListExcel, "지원자목록");
   }, []);
 
+  const handleDownloadAdmission = React.useCallback(async () => {
+    await downloadExcel(downloadAdmissionExcel, "수험표");
+  }, []);
+
   const handleDeleteApplicants = React.useCallback(() => {
     setIsDeleteTableModalSwitch(!isDeleteTableModalSwitch);
-    console.log("test", isDeleteTableModalSwitch);
   }, []);
 
   return (
@@ -96,6 +98,12 @@ const Filter: FC<Props> = ({
           onClick={handleDownloadExcel}
         >
           Excel 출력
+        </Button>
+        <Button
+          className="admission-ticket__download-btn"
+          onClick={() => handleDownloadAdmission()}
+        >
+          수험표 출력
         </Button>
         <Button className="delete-all__btn" onClick={handleDeleteApplicants}>
           전체 삭제
