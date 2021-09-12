@@ -23,6 +23,7 @@ const InitialState: ApplicantState = {
   getApplicantsListStatus: 0,
   getApplicantInfoStatus: 0,
   updateApplicantStatusStatus: 0,
+  password: '',
   filters: {
     size: 10,
     page: 0,
@@ -90,7 +91,6 @@ const InitialState: ApplicantState = {
   updateApplicantSubmitStatus: {
     receipt_code: null,
   },
-  password: '',
   error: {
     status: 0,
     message: '',
@@ -100,7 +100,6 @@ const InitialState: ApplicantState = {
 
 const applicantReducer = (state: ApplicantState = InitialState, action: applicantActionType) => {
   switch (action.type) {
-    
     case SET_FILTER: {
       return {
         ...state,
