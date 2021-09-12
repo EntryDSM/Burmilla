@@ -51,9 +51,6 @@ const SearchBar: FC<Props> = ({
       setFilter({
         [selectedCategory.id]: e.currentTarget.value || null,
       });
-      // getApplicantsList(filters);
-      console.log(e.target.value);
-      console.log("test", filters);
     },
     [keyword]
   );
