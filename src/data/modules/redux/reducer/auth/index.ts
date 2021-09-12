@@ -10,7 +10,7 @@ const initState: IAuthState = {
   },
 };
 
-const ModalReducer = (state: IAuthState = initState, action: authActionType) => {
+const AuthReducer = (state: IAuthState = initState, action: authActionType) => {
   switch (action.type) {
     case ACCESS_TOKEN: {
       return {
@@ -30,4 +30,4 @@ const ModalReducer = (state: IAuthState = initState, action: authActionType) => 
   }
 };
 
-export default ModalReducer;
+export default AuthReducer;
