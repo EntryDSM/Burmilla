@@ -33,7 +33,7 @@ export const TR = styled.tr<{ isSelected: boolean }>`
   line-height: 2.8;
   cursor: pointer;
   border-bottom: 0.8px solid ${({ isSelected }) => (isSelected ? color.primaryColor : '#d3d3d3')};
-  background-color: ${({ isSelected }) => (isSelected ? '#fffafa' : 'white')};
+  background-color: ${({ isSelected }) => (isSelected ? '#fff7f7' : 'white')};
 
   &:last-child {
     border-bottom: 1.5px solid #303030;
