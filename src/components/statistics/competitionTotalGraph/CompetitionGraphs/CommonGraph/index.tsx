@@ -15,7 +15,7 @@ const CommonGraph: FC<Props> = ({ commonScore }) => {
   React.useEffect(() => {
     setIsWidthOfCommonGraphBar(commonScore.common_count);
     setIsAppearGraphOpa(true);
-  }, []);
+  }, [commonScore]);
 
   const graphBarContent = () => {
     if (isWidthOfCommonGraphBar >= 1) {
