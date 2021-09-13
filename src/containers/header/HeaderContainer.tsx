@@ -15,7 +15,7 @@ const HeaderContainer: FC = () => {
 
   useEffect(() => {
     const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401 || errorStatus === 403) {
+    if (errorStatus === 401 || errorStatus === 403 || errorStatus === 404) {
       refreshToken();
     }
   }, [statisticsState.state.error]);
