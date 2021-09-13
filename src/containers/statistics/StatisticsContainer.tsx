@@ -14,16 +14,6 @@ const StatisticsContainer: FC = () => {
     total_competition_rate,
   } = statisticsState.state.statistics;
 
-  const history = useHistory();
-
-  React.useEffect(() => {
-    const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401 || errorStatus === 404) {
-      alert("다시 로그인해주세요.");
-      history.push("/login");
-    }
-  }, []);
-
   React.useEffect(() => {
     statisticsState.setState.getStatistics();
   }, []);
