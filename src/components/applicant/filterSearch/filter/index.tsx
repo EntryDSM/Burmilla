@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import * as S from "./style";
 import { Button } from "../../../common";
 import { Checkbox } from "../../../common";
+import { useSchedule } from "src/hooks/schedule";
+import { APPLICATION_PERIOD } from "../../../../data/modules/redux/reducer/schedule/scheduleConstance";
 import { downloadExcel } from "../../../../utils/download";
 import {
   downloadApplicantsListExcel,
@@ -32,6 +34,7 @@ const Filter: FC<Props> = ({
     { content: "마이스터 전형", value: "is_meister" },
     { content: "사회통합 전형", value: "is_social" },
   ];
+  const { state } = useSchedule();
 
   React.useEffect(() => {
     getApplicantsList(filters);
@@ -76,6 +79,9 @@ const Filter: FC<Props> = ({
   }, []);
 
   const handleDownloadAdmission = React.useCallback(async () => {
+    if (state.status === APPLICATION_PERIOD) {
+      alert("원서 접수기간이 끝나지 않았습니다.");
+    }
     await downloadExcel(downloadAdmissionExcel, "수험표");
   }, []);
 
