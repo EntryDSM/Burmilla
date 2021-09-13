@@ -1,6 +1,7 @@
 import React, { FC, Suspense } from "react";
 import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
 import { useSchedule } from "../../hooks/schedule";
+import { useHistory } from "react-router";
 import { useFooter } from "../../hooks/default";
 import {
   APPLICATION_PERIOD,
@@ -26,6 +27,8 @@ const MainContainer: FC = () => {
     return scheduleState.state.processes[status];
   };
 
+  const history = useHistory();
+
   const status = scheduleState.state.status;
   const dates = scheduleState.state.date;
 
@@ -47,6 +50,14 @@ const MainContainer: FC = () => {
     })[0];
     return result ? result.date : "";
   };
+
+  React.useEffect(() => {
+    const errorStatus = scheduleState.state.error.status;
+    if (errorStatus === 401 || errorStatus === 404) {
+      alert("다시 로그인해주세요.");
+      history.push("/login");
+    }
+  }, []);
 
   React.useEffect(() => {
     scheduleState.setState.getStatus();
