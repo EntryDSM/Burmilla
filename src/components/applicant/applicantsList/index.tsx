@@ -3,7 +3,6 @@ import * as S from "./style";
 import ApplicantsListHeader from "./applicantsListHeader";
 import ApplicantsListItem from "./applicantsListItem";
 import {
-  GetApplicantsListPayload,
   GetApplicantsListResponse,
   GetApplicantInfoResponse,
   GetApplicantInfoPayload,
