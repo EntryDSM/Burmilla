@@ -31,6 +31,10 @@ export const CheckboxContainer = styled.div`
     font-weight: bold;
     color: ${color.lightBorderColor};
     margin-left: 12px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
