@@ -1,4 +1,5 @@
 import React, { FC, Suspense } from "react";
+import { useHistory } from "react-router";
 import { useStatistics } from "../../hooks/statistics";
 
 const Statistics = React.lazy(() => import("../../components/statistics"));
@@ -12,6 +13,16 @@ const StatisticsContainer: FC = () => {
     total_applicant_count,
     total_competition_rate,
   } = statisticsState.state.statistics;
+
+  const history = useHistory();
+
+  React.useEffect(() => {
+    const errorStatus = statisticsState.state.error.status;
+    if (errorStatus === 401 || errorStatus === 404) {
+      alert("다시 로그인해주세요.");
+      history.push("/login");
+    }
+  }, []);
 
   React.useEffect(() => {
     statisticsState.setState.getStatistics();
