@@ -1,20 +1,34 @@
 # Burmilla
 EntryDSM 6.0 adminsystem Front
 
+## Getting Started
+
+### Get Codes
+
+```npm
+git clone https://github.com/EntryDSM/Burmilla.git code clone
+```
+
 ## 📁 Structure
 
 ```
   src
   ├─ App.tsx
-  ├─ index.js
-  ├─ assets
-  ├─ components
-  ├─ hooks
-  ├─ page
+  ├─ index.tsx
+  ├─ utils
+    ├─ saga
+    └─ util
   ├─ styles
-  └─ data
+  ├─ route
+  ├─ models
+    └─ dto
+  ├─ hooks
+  ├─ data
     ├─api
     └─ modules
+  ├─ containers
+  └─ components
+   
 ```
 
 ## 📦 Packages
