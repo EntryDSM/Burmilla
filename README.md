@@ -1,6 +1,14 @@
 # Burmilla
 EntryDSM 6.0 adminsystem Front
 
+## Getting Started
+
+### Get Codes
+
+```npm
+git clone https://github.com/EntryDSM/Burmilla.git code clone
+```
+
 ## 📁 Structure
 
 ```
