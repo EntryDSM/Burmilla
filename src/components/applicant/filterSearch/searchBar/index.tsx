@@ -52,7 +52,7 @@ const SearchBar: FC<Props> = ({
         [selectedCategory.id]: e.currentTarget.value || null,
       });
     },
-    [keyword]
+    [selectedCategory, keyword]
   );
 
   return (
