@@ -52,14 +52,6 @@ const MainContainer: FC = () => {
   };
 
   React.useEffect(() => {
-    const errorStatus = scheduleState.state.error.status;
-    if (errorStatus === 401 || errorStatus === 404) {
-      alert("다시 로그인해주세요.");
-      history.push("/login");
-    }
-  }, []);
-
-  React.useEffect(() => {
     scheduleState.setState.getStatus();
   }, []);
 
