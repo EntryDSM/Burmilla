@@ -61,6 +61,8 @@
     is_common?: boolean;
     is_meister?: boolean;
     is_social?: boolean;
+    is_in?: boolean;
+    is_out?: boolean;
     receipt_code?: number;
     telephone?: number;
     name?: string;
