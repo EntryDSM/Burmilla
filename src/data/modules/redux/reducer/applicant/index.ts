@@ -33,6 +33,8 @@ const InitialState: ApplicantState = {
     is_common: false,
     is_meister: false,
     is_social: false,
+    is_in: false,
+    is_out: false,
     receipt_code: null,
     telephone: null,
     name: null,
