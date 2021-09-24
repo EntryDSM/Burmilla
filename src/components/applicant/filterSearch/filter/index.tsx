@@ -33,6 +33,8 @@ const Filter: FC<Props> = ({
     { content: "일반 전형", value: "is_common" },
     { content: "마이스터 전형", value: "is_meister" },
     { content: "사회통합 전형", value: "is_social" },
+    { content: "정원 내", value: "is_in" },
+    { content: "정원 외", value: "is_out" },
   ];
   const { state } = useSchedule();
 
