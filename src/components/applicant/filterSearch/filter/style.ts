@@ -14,7 +14,7 @@ export const FilterSelectBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
+  width: 68%;
   min-width: ${pxToRem(652.8)}rem;
 `;
 
@@ -22,7 +22,7 @@ export const FilterButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 50%;
+  width: 32%;
   min-width: ${pxToRem(416)}rem;
 `;
 
