@@ -65,6 +65,8 @@ const InitialState: ApplicantState = {
           school_tel: '',
           home_tel: '',
           is_graduated: false,
+          application_remark: '',
+          headcount: '',
         },
         evaluation: {
           volunteer_time: 0,
