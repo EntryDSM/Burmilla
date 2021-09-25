@@ -71,6 +71,8 @@ export interface applicantPersonalData {
    school_tel: string;
    home_tel: string;
    is_graduated: boolean;
+   application_remark: string;
+   headcount: string;
 }
   
 export interface applicantEvaluation {
