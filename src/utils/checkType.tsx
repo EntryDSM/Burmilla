@@ -17,6 +17,29 @@ export const returnApplicationType = (applicationType: string) => {
   }
 };
 
+export const returnApplicationRemark = (applicationRemark: string) => {
+  switch (applicationRemark) {
+    case "ONE_PARENT":
+      return "한부모가족";
+    case "FROM_NORTH":
+      return "북한이탈주민";
+    case "MULTICULTURAL":
+      return "다문화가정";
+    case "BASIC_LIVING":
+      return "기초생활수급자";
+    case "LOWEST_INCOME":
+      return "차상위계층";
+    case "TEEN_HOUSEHOLDER":
+      return "소년소녀가장";
+    case "PRIVILEGED_ADMISSION ":
+      return "특례 입학 대상자";
+    case "NATIONAL_MERIT ":
+      return "국가 유공자";
+    default:
+      return "";
+  }
+};
+
 export const returnAdditionalType = (additionalType: string) => {
   switch (additionalType) {
     case "NATIONAL_MERIT":
