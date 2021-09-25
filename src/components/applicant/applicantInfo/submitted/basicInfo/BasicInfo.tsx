@@ -3,6 +3,7 @@ import * as S from "./style";
 import { ApplicantPersonalData } from "../../../../../data/api/apiTypes";
 import {
   returnApplicationType,
+  returnApplicationRemark,
   returnEducationalType,
 } from "../../../../../utils/checkType";
 
@@ -20,11 +21,15 @@ const BasicInfo: FC<Props> = ({
     application_type,
     address,
     detail_address,
+    application_remark,
   },
 }) => {
   const checkApplicationType = React.useCallback(() => {
     return returnApplicationType(application_type);
   }, [application_type]);
+  const checkApplicationRemark = React.useCallback(() => {
+    return returnApplicationRemark(application_remark);
+  }, [application_remark]);
   const checkEducationalType = React.useCallback(() => {
     return returnEducationalType(educational_status);
   }, [educational_status]);
@@ -41,6 +46,8 @@ const BasicInfo: FC<Props> = ({
             checkEducationalType() +
             " " +
             checkApplicationType()}
+          <p />
+          {checkApplicationRemark()}
         </S.InfoLine>
         <S.InfoLine isOneLine={false}>
           <p>{address}</p>
