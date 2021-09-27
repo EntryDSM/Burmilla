@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import * as S from "./style";
+import { useHistory } from "react-router-dom";
 import { details_arrow } from "../../../../../assets/applicants";
 import { Checkbox, Button } from "../../../../common";
-import { downloadExcel } from "../../../../../utils/download";
-import { downloadAdmissionExcel } from "../../../../../data/api/index";
 import {
   GetApplicantInfoPayload,
   UpdateApplicantStatusPayload,
@@ -27,12 +26,12 @@ const ApplicantStatuses: FC<Props> = ({
   isContainerWidth,
   is_printed_arrived,
   receipt_code,
-  updateApplicantStatusStatus,
   updateApplicantStatus,
   updateApplicantSubmitStatus,
   setIsContainerWidth,
-  getApplicantInfo,
 }) => {
+  const history = useHistory();
+
   const handleClickDetailArrow = () => {
     setIsContainerWidth(!isContainerWidth);
   };
@@ -44,11 +43,17 @@ const ApplicantStatuses: FC<Props> = ({
     if (window.confirm("지원자의 원서 제출 상태를 수정하시겠습니까?")) {
       await updateApplicantStatus({ receipt_code, is_printed_arrived });
     }
+    if (updateApplicantStatus) {
+      setTimeout(() => history.go(0), 300);
+    }
   };
 
   const handleClickCancelSubmitted = async (receipt_code: number) => {
     if (window.confirm("지원자의 최종 제출 상태를 수정하시겠습니까?")) {
       await updateApplicantSubmitStatus({ receipt_code });
+    }
+    if (updateApplicantSubmitStatus) {
+      setTimeout(() => history.go(0), 300);
     }
   };
 
