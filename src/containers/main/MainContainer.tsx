@@ -1,7 +1,6 @@
 import React, { FC, Suspense } from "react";
 import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
 import { useSchedule } from "../../hooks/schedule";
-import { useHistory } from "react-router";
 import { useFooter } from "../../hooks/default";
 import {
   APPLICATION_PERIOD,
@@ -26,8 +25,6 @@ const MainContainer: FC = () => {
     if (!scheduleState.state.processes[status]) return ScheduleDummyData;
     return scheduleState.state.processes[status];
   };
-
-  const history = useHistory();
 
   const status = scheduleState.state.status;
   const dates = scheduleState.state.date;
