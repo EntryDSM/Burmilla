@@ -23,7 +23,7 @@ const MainContent: FC<Props> = ({
       <S.MainTitle>2022년 신입생 모집</S.MainTitle>
       <S.MainDescription className="mainDescription">{title}</S.MainDescription>
       <S.MainDescription className="subDescription">
-        {getDescription(date)}
+        {getDescription(date.slice(0, 10))}
       </S.MainDescription>
       <MainButton onClick={buttonClickHandler}>{buttonText}</MainButton>
     </S.MainContentWrapper>
