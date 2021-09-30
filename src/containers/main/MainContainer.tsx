@@ -1,6 +1,10 @@
 import React, { FC, Suspense } from "react";
 import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
+import { clearStorage } from "../../utils/token";
+import { useHistory } from "react-router";
 import { useSchedule } from "../../hooks/schedule";
+import { useAuth } from "../../hooks/auth";
+import { useSignIn } from "../../hooks/signin";
 import { useFooter } from "../../hooks/default";
 import {
   APPLICATION_PERIOD,
@@ -21,6 +25,9 @@ const Main = React.lazy(() => import("../../components/main"));
 const MainContainer: FC = () => {
   const Footer = useFooter();
   const scheduleState = useSchedule();
+  const authState = useAuth();
+  const signinState = useSignIn();
+  const history = useHistory();
   const getNowProcess = (status: string) => {
     if (!scheduleState.state.processes[status]) return ScheduleDummyData;
     return scheduleState.state.processes[status];
@@ -51,6 +58,22 @@ const MainContainer: FC = () => {
   React.useEffect(() => {
     scheduleState.setState.getStatus();
   }, []);
+
+  const refreshToken = () => {
+    signinState.setState.refreshToken(scheduleState.setState.getStatus);
+  };
+
+  React.useEffect(() => {
+    const errorStatus = scheduleState.state.error.status;
+    if (errorStatus === 401 || errorStatus === 403 || errorStatus === 404) {
+      refreshToken();
+      clearStorage();
+    }
+  }, [scheduleState.state.error]);
+
+  React.useEffect(() => {
+    if (authState.state.isLogin) scheduleState.setState.getStatus();
+  }, [authState.state.isLogin, history.location.pathname]);
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>
