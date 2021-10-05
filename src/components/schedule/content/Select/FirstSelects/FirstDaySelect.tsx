@@ -3,11 +3,10 @@ import * as S from "../../../style";
 import { select_off, select_on } from "../../../../../assets/schedule";
 
 interface Props {
-  firstScheduleDay: number;
   setFirstScheduleDay: (payload: number) => void;
 }
 
-const MonthSelect: FC<Props> = ({ firstScheduleDay, setFirstScheduleDay }) => {
+const MonthSelect: FC<Props> = ({ setFirstScheduleDay }) => {
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
   const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
@@ -25,7 +24,11 @@ const MonthSelect: FC<Props> = ({ firstScheduleDay, setFirstScheduleDay }) => {
   const onSelectDayClick = (e) => {
     const day = e.target.innerText;
     day < 10 ? setFirstScheduleDay(0 + day) : setFirstScheduleDay(day);
+    localStorage.setItem("firstScheduleDay", JSON.stringify(day));
   };
+
+  const getLocalStorage =
+    JSON.parse(localStorage.getItem("firstScheduleDay")) || "25";
 
   const activeImg = React.useMemo(() => {
     if (active) return <img src={select_on} alt="select_on" />;
@@ -35,7 +38,7 @@ const MonthSelect: FC<Props> = ({ firstScheduleDay, setFirstScheduleDay }) => {
   return (
     <S.Select disabled={disabled} onClick={onSelectClick}>
       <S.SelectContent>
-        <p>{firstScheduleDay}</p>
+        <p>{getLocalStorage}</p>
         {activeImg}
       </S.SelectContent>
       {active && (
