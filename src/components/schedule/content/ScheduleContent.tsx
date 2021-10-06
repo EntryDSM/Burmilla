@@ -12,6 +12,7 @@ import {
   SECOND_ANNOUNCEMENT,
   START_DATE,
 } from "../../../data/modules/redux/reducer/schedule/scheduleConstance";
+import { processTimeType } from "../../../data/modules/redux/reducer/schedule/interface";
 
 interface Props {
   scheduleImg: string;
@@ -28,7 +29,7 @@ interface Props {
   interviewScheduleDay: number;
   secondScheduleMonth: number;
   secondScheduleDay: number;
-  scheduleDate: Array<Object>;
+  date: Array<processTimeType>;
   setStartScheduleMonth: (payload: number) => void;
   setStartScheduleDay: (payload: number) => void;
   setEndScheduleMonth: (payload: number) => void;
@@ -61,6 +62,7 @@ const ScheduleContent: FC<Props> = ({
   interviewScheduleDay,
   secondScheduleMonth,
   secondScheduleDay,
+  date,
   setStartScheduleMonth,
   setStartScheduleDay,
   setEndScheduleMonth,
@@ -115,16 +117,25 @@ const ScheduleContent: FC<Props> = ({
         <>
           <S.ScheduleDateTitle>시작일</S.ScheduleDateTitle>
           <S.ScheduleDateSelectBox>
-            <StartMonthSelect setStartScheduleMonth={setStartScheduleMonth} />
+            <StartMonthSelect
+              date={date}
+              setStartScheduleMonth={setStartScheduleMonth}
+            />
             <S.ScheduleSelectDivision>월</S.ScheduleSelectDivision>
-            <StartDaySelect setStartScheduleDay={setStartScheduleDay} />
+            <StartDaySelect
+              date={date}
+              setStartScheduleDay={setStartScheduleDay}
+            />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
           <S.ScheduleDateTitle>마감일</S.ScheduleDateTitle>
           <S.ScheduleDateSelectBox>
-            <EndMonthSelect setEndScheduleMonth={setEndScheduleMonth} />
+            <EndMonthSelect
+              date={date}
+              setEndScheduleMonth={setEndScheduleMonth}
+            />
             <S.ScheduleSelectDivision>월</S.ScheduleSelectDivision>
-            <EndDaySelect setEndScheduleDay={setEndScheduleDay} />
+            <EndDaySelect date={date} setEndScheduleDay={setEndScheduleDay} />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
         </>
@@ -134,9 +145,15 @@ const ScheduleContent: FC<Props> = ({
         <>
           <S.ScheduleDateTitle>시작일</S.ScheduleDateTitle>
           <S.ScheduleDateSelectBox>
-            <FirstMonthSelect setFirstScheduleMonth={setFirstScheduleMonth} />
+            <FirstMonthSelect
+              date={date}
+              setFirstScheduleMonth={setFirstScheduleMonth}
+            />
             <S.ScheduleSelectDivision>월</S.ScheduleSelectDivision>
-            <FirstDaySelect setFirstScheduleDay={setFirstScheduleDay} />
+            <FirstDaySelect
+              date={date}
+              setFirstScheduleDay={setFirstScheduleDay}
+            />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
         </>
@@ -147,10 +164,14 @@ const ScheduleContent: FC<Props> = ({
           <S.ScheduleDateTitle>시작일</S.ScheduleDateTitle>
           <S.ScheduleDateSelectBox>
             <InterMonthSelect
+              date={date}
               setInterviewScheduleMonth={setInterviewScheduleMonth}
             />
             <S.ScheduleSelectDivision>월</S.ScheduleSelectDivision>
-            <InterDaySelect setInterviewScheduleDay={setInterviewScheduleDay} />
+            <InterDaySelect
+              date={date}
+              setInterviewScheduleDay={setInterviewScheduleDay}
+            />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
         </>
@@ -161,10 +182,14 @@ const ScheduleContent: FC<Props> = ({
           <S.ScheduleDateTitle>시작일</S.ScheduleDateTitle>
           <S.ScheduleDateSelectBox>
             <SecondMonthSelect
+              date={date}
               setSecondScheduleMonth={setSecondScheduleMonth}
             />
             <S.ScheduleSelectDivision>월</S.ScheduleSelectDivision>
-            <SecondDaySelect setSecondScheduleDay={setSecondScheduleDay} />
+            <SecondDaySelect
+              date={date}
+              setSecondScheduleDay={setSecondScheduleDay}
+            />
             <S.ScheduleSelectDivision>일</S.ScheduleSelectDivision>
           </S.ScheduleDateSelectBox>
         </>
