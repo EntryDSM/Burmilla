@@ -28,7 +28,6 @@ export interface IScheduleState {
 
 export interface processTimeType {
   type: string;
-  year: string;
   date: string;
 }
 
