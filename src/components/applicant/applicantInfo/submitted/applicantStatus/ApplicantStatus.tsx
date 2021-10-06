@@ -40,7 +40,7 @@ const ApplicantStatuses: FC<Props> = ({
     receipt_code: number,
     is_printed_arrived: boolean
   ) => {
-    if (window.confirm("지원자의 원서 제출 상태를 수정하시겠습니까?")) {
+    if (window.confirm("지원자의 원서 도착 여부를 수정하시겠습니까?")) {
       await updateApplicantStatus({ receipt_code, is_printed_arrived });
     }
     if (updateApplicantStatus) {
@@ -67,7 +67,7 @@ const ApplicantStatuses: FC<Props> = ({
         onClick={() => handleClickNotArrived(receipt_code, !is_printed_arrived)}
       >
         <Checkbox isChecked={is_printed_arrived} />
-        <p>원서 미도착</p>
+        <p>원서 도착 확인</p>
       </S.CheckboxContainer>
       <S.ButtonContainer>
         <Button
