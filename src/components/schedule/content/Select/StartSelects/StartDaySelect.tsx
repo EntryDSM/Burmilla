@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
 import { select_off, select_on } from "../../../../../assets/schedule";
+import { processTimeType } from "../../../../../data/modules/redux/reducer/schedule/interface";
+import { START_DATE } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 
 interface Props {
+  date: Array<processTimeType>;
   setStartScheduleDay: (payload: number) => void;
 }
 
-const MonthSelect: FC<Props> = ({ setStartScheduleDay }) => {
+const MonthSelect: FC<Props> = ({ date, setStartScheduleDay }) => {
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
   const onestToThirtyOnest = [...Array(31)].map((_, i) => i + 1);
@@ -38,7 +41,11 @@ const MonthSelect: FC<Props> = ({ setStartScheduleDay }) => {
   return (
     <S.Select disabled={disabled} onClick={onSelectClick}>
       <S.SelectContent>
-        <p>{getLocalStorage}</p>
+        <p>
+          {date
+            .filter((date) => date.type === START_DATE)[0]
+            .date.slice(8, 10) && getLocalStorage}
+        </p>
         {activeImg}
       </S.SelectContent>
       {active && (
