@@ -13,7 +13,10 @@ import {
   SECOND_ANNOUNCEMENT,
   START_DATE,
 } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
-import { scheduleUpdateTypes } from "../../data/modules/redux/reducer/schedule/interface";
+import {
+  processTimeType,
+  scheduleUpdateTypes,
+} from "../../data/modules/redux/reducer/schedule/interface";
 import ScheduleContent from "./content";
 
 interface Props {
@@ -32,7 +35,7 @@ interface Props {
   firstScheduleDate: string;
   interviewScheduleDate: string;
   secondScheduleDate: string;
-  scheduleDate: Array<scheduleUpdateTypes>;
+  date: Array<processTimeType>;
   setStartScheduleMonth: (payload: number) => void;
   setStartScheduleDay: (payload: number) => void;
   setEndScheduleMonth: (payload: number) => void;
@@ -67,7 +70,7 @@ const Schedule: FC<Props> = ({
   firstScheduleDate,
   interviewScheduleDate,
   secondScheduleDate,
-  scheduleDate,
+  date,
   setStartScheduleMonth,
   setStartScheduleDay,
   setEndScheduleMonth,
@@ -133,7 +136,7 @@ const Schedule: FC<Props> = ({
             interviewScheduleDay={interviewScheduleDay}
             secondScheduleMonth={secondScheduleMonth}
             secondScheduleDay={secondScheduleDay}
-            scheduleDate={scheduleDate}
+            date={date}
             setStartScheduleMonth={setStartScheduleMonth}
             setStartScheduleDay={setStartScheduleDay}
             setEndScheduleMonth={setEndScheduleMonth}
@@ -165,7 +168,7 @@ const Schedule: FC<Props> = ({
             interviewScheduleDay={interviewScheduleDay}
             secondScheduleMonth={secondScheduleMonth}
             secondScheduleDay={secondScheduleDay}
-            scheduleDate={scheduleDate}
+            date={date}
             setStartScheduleMonth={setStartScheduleMonth}
             setStartScheduleDay={setStartScheduleDay}
             setEndScheduleMonth={setEndScheduleMonth}
@@ -197,7 +200,7 @@ const Schedule: FC<Props> = ({
             interviewScheduleDay={interviewScheduleDay}
             secondScheduleMonth={secondScheduleMonth}
             secondScheduleDay={secondScheduleDay}
-            scheduleDate={scheduleDate}
+            date={date}
             setStartScheduleMonth={setStartScheduleMonth}
             setStartScheduleDay={setStartScheduleDay}
             setEndScheduleMonth={setEndScheduleMonth}
@@ -229,7 +232,7 @@ const Schedule: FC<Props> = ({
             interviewScheduleDay={interviewScheduleDay}
             secondScheduleMonth={secondScheduleMonth}
             secondScheduleDay={secondScheduleDay}
-            scheduleDate={scheduleDate}
+            date={date}
             setStartScheduleMonth={setStartScheduleMonth}
             setStartScheduleDay={setStartScheduleDay}
             setEndScheduleMonth={setEndScheduleMonth}
