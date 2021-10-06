@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import * as S from "../../../style";
 import { select_off, select_on } from "../../../../../assets/schedule";
+import { processTimeType } from "../../../../../data/modules/redux/reducer/schedule/interface";
+import { SECOND_ANNOUNCEMENT } from "src/data/modules/redux/reducer/schedule/scheduleConstance";
 
 interface Props {
+  date: Array<processTimeType>;
   setSecondScheduleMonth: (payload: number) => void;
 }
 
-const MonthSelect: FC<Props> = ({ setSecondScheduleMonth }) => {
+const MonthSelect: FC<Props> = ({ date, setSecondScheduleMonth }) => {
   const [active, setActive] = React.useState(false);
   const [disabled, setDisabled] = React.useState("normal");
   const JanuaryToDecember = [...Array(12)].map((_, i) => i + 1);
@@ -41,7 +44,11 @@ const MonthSelect: FC<Props> = ({ setSecondScheduleMonth }) => {
   return (
     <S.Select disabled={disabled} onClick={onSelectClick}>
       <S.SelectContent>
-        <p>{getLocalStorage}</p>
+        <p>
+          {date
+            .filter((date) => date.type === SECOND_ANNOUNCEMENT)[0]
+            .date.slice(5, 7) && getLocalStorage}
+        </p>
         {activeImg}
       </S.SelectContent>
       {active && (
