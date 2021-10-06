@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import * as S from "../style";
-import { useHistory } from "react-router";
 import { StartMonthSelect, StartDaySelect } from "./Select/StartSelects";
 import { EndMonthSelect, EndDaySelect } from "./Select/EndSelects";
 import { FirstMonthSelect, FirstDaySelect } from "./Select/FirstSelects";
