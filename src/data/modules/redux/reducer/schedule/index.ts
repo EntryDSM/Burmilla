@@ -68,32 +68,26 @@ const InitialState: IScheduleState = {
   secondScheduleDate: '',
   date: [
     {
-      year: '2022',
       type: 'START_DATE',
       date: '2022-10-31',
     },
     {
-      year: '2022',
       type: 'END_DATE',
       date: '2022-10-31',
     },
     {
-      year: '2022',
       type: 'FIRST_ANNOUNCEMENT',
       date: '2022-10-31',
     },
     {
-      year: '2022',
       type: 'SECOND_ANNOUNCEMENT',
       date: '2022-10-31',
     },
     {
-      year: '2022',
       type: 'INTERVIEW',
       date: '2022-10-31',
     },
     {
-      year: '2022',
       type: 'NOT_APPLICATION_PERIOD',
       date: '2021-10-20',
     },
