@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import * as S from "./style";
+import { error } from "../../models/error";
 import ApplicantInfo from "./applicantInfo";
 import ApplicantsList from "./applicantsList";
 import FilterSearch from "./filterSearch";
@@ -21,6 +22,7 @@ interface Props {
   currnetApplicantInfo: GetApplicantInfoResponse;
   updateApplicantStatusStatus: number;
   password: string;
+  error: error;
   setFilter: (payload: GetApplicantsListPayload) => void;
   updateApplicantStatus: (payload: UpdateApplicantStatusPayload) => void;
   updateApplicantSubmitStatus: (
@@ -39,6 +41,7 @@ const Applicant: FC<Props> = ({
   currnetApplicantInfo,
   updateApplicantStatusStatus,
   password,
+  error,
   setFilter,
   updateApplicantStatus,
   updateApplicantSubmitStatus,
@@ -66,6 +69,7 @@ const Applicant: FC<Props> = ({
         <DeleteTable
           password={password}
           applicantsList={applicantsList}
+          error={error}
           disable={checkPasswordDisable()}
           setPassword={setPassword}
           checkPassword={checkPassword}
