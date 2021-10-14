@@ -29,6 +29,10 @@ const ScheduleContainer: FC = () => {
     if (authState.state.isLogin) setState.getStatus();
   }, [authState.state.isLogin, history.location.pathname]);
 
+  React.useEffect(() => {
+    setState.getStatus();
+  }, []);
+
   return (
     <Suspense fallback={<div>로딩중...</div>}>
       <Schedule {...state} {...setState} />;
