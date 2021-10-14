@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import { useHistory } from "react-router";
 import * as S from "./style";
+import { useHistory } from "react-router";
+import { error } from "../../../models/error";
 import { close_modal } from "../../../assets/applicants";
 import { display_icon, hide_icon } from "../../../assets/login";
 import {
@@ -12,6 +13,7 @@ interface Props {
   disable: boolean;
   applicantsList: GetApplicantsListResponse;
   password: string;
+  error: error;
   setPassword: (payload: string) => void;
   checkPassword: (payload: CheckPasswordRequest) => void;
   deleteApplicantTable: () => void;
@@ -22,6 +24,7 @@ const DeleteTable: FC<Props> = ({
   disable,
   applicantsList,
   password,
+  error,
   setPassword,
   checkPassword,
   deleteApplicantTable,
@@ -54,12 +57,13 @@ const DeleteTable: FC<Props> = ({
     setIsPasswordShown(!isPasswordShown);
   };
 
-  const handleClickDeleteTable = React.useCallback(() => {
+  const handleClickDeleteTable = () => {
     if (disable === true) {
       deleteApplicantTable();
+      history.push("/");
     }
     return false;
-  }, []);
+  };
 
   return (
     <S.ModalWrapper onClick={handleClickOffModal}>
