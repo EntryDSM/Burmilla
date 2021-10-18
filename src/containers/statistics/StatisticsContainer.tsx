@@ -18,6 +18,7 @@ const StatisticsContainer: FC = () => {
     social_score,
     total_applicant_count,
     total_competition_rate,
+    total_submitted_applicant_count,
   } = statisticsState.state.statistics;
 
   React.useEffect(() => {
@@ -30,7 +31,7 @@ const StatisticsContainer: FC = () => {
 
   React.useEffect(() => {
     const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401 || errorStatus === 403 || errorStatus === 404) {
+    if (errorStatus === 401) {
       refreshToken();
       clearStorage();
     }
@@ -48,6 +49,7 @@ const StatisticsContainer: FC = () => {
         socialScore={social_score}
         totalApplicantCount={total_applicant_count}
         totalCompetitionRate={total_competition_rate}
+        total_submitted_applicant_count={total_submitted_applicant_count}
       />
     </Suspense>
   );
