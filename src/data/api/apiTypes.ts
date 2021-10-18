@@ -47,6 +47,7 @@
   export interface GetEachStatisticsResponse {
     total_applicant_count: number;
     total_competition_rate: number;
+    total_submitted_applicant_count: number;
     common_score: CommonScoreDistribution;
     meister_score: SpecialScoreDistribution;
     social_score: SpecialScoreDistribution;
