@@ -142,14 +142,21 @@ export const CompetitionViewWrapper = styled.table`
 `;
 
 export const CompetitionViewTH = styled.th`
+  width: 65%;
+  text-align: left;
   font-weight: bold;
   color: ${color.primaryTextColor};
+
+  span {
+    font-size: 16px;
+  }
 `;
 
 export const CompetitionViewTD = styled.td`
-  color: ${color.primaryTextColor};
+  width: 35%;
   text-align: right;
   font-weight: bold;
+  color: ${color.primaryTextColor};
 
   > b {
     font-weight: bold;
