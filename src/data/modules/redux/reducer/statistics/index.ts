@@ -7,6 +7,7 @@ const initialState: IStatisticsState = {
   statistics: {
     total_applicant_count: 0,
     total_competition_rate: 0,
+    total_submitted_applicant_count: 0,
     common_score: {
       '158-170': 0,
       '145-157': 0,
@@ -59,6 +60,7 @@ const statisticsReducer = (state: IStatisticsState = initialState, action: stati
         statistics: {
           total_applicant_count: action.payload.total_applicant_count,
           total_competition_rate: action.payload.total_competition_rate,
+          total_submitted_applicant_count: action.payload.total_submitted_applicant_count,
           common_score: action.payload.common_score,
           meister_score: action.payload.meister_score,
           social_score: action.payload.social_score,
