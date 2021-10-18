@@ -19,7 +19,7 @@ const ScheduleContainer: FC = () => {
 
   React.useEffect(() => {
     const errorStatus = state.error.status;
-    if (errorStatus === 401 || errorStatus === 403 || errorStatus === 404) {
+    if (errorStatus === 401) {
       refreshToken();
       clearStorage();
     }
