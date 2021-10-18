@@ -14,6 +14,7 @@ interface Props {
   socialScore: SpecialScoreDistribution;
   totalApplicantCount: number;
   totalCompetitionRate: number;
+  total_submitted_applicant_count: number;
 }
 
 const Statistics: FC<Props> = ({
@@ -22,6 +23,7 @@ const Statistics: FC<Props> = ({
   socialScore,
   totalApplicantCount,
   totalCompetitionRate,
+  total_submitted_applicant_count,
 }) => {
   return (
     <S.StatisticsPageContainer>
@@ -32,6 +34,7 @@ const Statistics: FC<Props> = ({
           <CompetitionView
             totalApplicantCount={totalApplicantCount}
             totalCompetitionRate={totalCompetitionRate}
+            total_submitted_applicant_count={total_submitted_applicant_count}
           />
           <S.CompetitionTableTitle>
             2022년 신입생 지원률
