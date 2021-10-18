@@ -146,10 +146,6 @@ export const CompetitionViewTH = styled.th`
   text-align: left;
   font-weight: bold;
   color: ${color.primaryTextColor};
-
-  span {
-    font-size: 16px;
-  }
 `;
 
 export const CompetitionViewTD = styled.td`
