@@ -1,7 +1,7 @@
 import React, { FC, Suspense } from "react";
 import ScheduleDummyData from "../../utils/util/loadingDummyData/ScheduleDummyData";
-import { clearStorage } from "../../utils/token";
 import { useHistory } from "react-router";
+import { useStatistics } from "src/hooks/statistics";
 import { useSchedule } from "../../hooks/schedule";
 import { useAuth } from "../../hooks/auth";
 import { useSignIn } from "../../hooks/signin";
@@ -25,6 +25,7 @@ const Main = React.lazy(() => import("../../components/main"));
 const MainContainer: FC = () => {
   const Footer = useFooter();
   const scheduleState = useSchedule();
+  const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
   const history = useHistory();
@@ -64,15 +65,14 @@ const MainContainer: FC = () => {
   };
 
   React.useEffect(() => {
-    const errorStatus = scheduleState.state.error.status;
-    if (errorStatus === 401 || errorStatus === 403 || errorStatus === 404) {
+    const errorStatus = statisticsState.state.error.status;
+    if (errorStatus === 401) {
       refreshToken();
-      clearStorage();
     }
-  }, [scheduleState.state.error]);
+  }, [statisticsState.state.error]);
 
   React.useEffect(() => {
-    if (authState.state.isLogin) scheduleState.setState.getStatus();
+    if (authState.state.isLogin) statisticsState.setState.getStatistics();
   }, [authState.state.isLogin, history.location.pathname]);
 
   return (
