@@ -21,9 +21,8 @@ const ScheduleContainer: FC = () => {
     const errorStatus = state.error.status;
     if (errorStatus === 401) {
       refreshToken();
-      clearStorage();
     }
-  }, [state.error]);
+  }, []);
 
   React.useEffect(() => {
     if (authState.state.isLogin) setState.getStatus();
