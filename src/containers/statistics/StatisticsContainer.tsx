@@ -1,6 +1,5 @@
 import React, { FC, Suspense } from "react";
 import { useHistory } from "react-router";
-import { clearStorage } from "../../utils/token";
 import { useAuth } from "../../hooks/auth";
 import { useSignIn } from "../../hooks/signin";
 import { useStatistics } from "../../hooks/statistics";
@@ -33,7 +32,6 @@ const StatisticsContainer: FC = () => {
     const errorStatus = statisticsState.state.error.status;
     if (errorStatus === 401) {
       refreshToken();
-      clearStorage();
     }
   }, [statisticsState.state.error]);
 
