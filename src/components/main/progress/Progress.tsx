@@ -22,7 +22,7 @@ const Progress: FC<Props> = ({ status, date }) => {
     const dateObj = new Date(date);
     const nowDateObj = new Date();
     const leftSecond = dateObj.getTime() - nowDateObj.getTime();
-    return Math.ceil(leftSecond / SECOND_DATE);
+    return Math.floor(leftSecond / SECOND_DATE);
   };
   return (
     <S.Progress>
