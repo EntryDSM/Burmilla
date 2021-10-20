@@ -67,25 +67,25 @@ const InitialState: IScheduleState = {
   interviewScheduleDate: '',
   secondScheduleDate: '',
   date: [
-    {
-      type: 'START_DATE',
-      date: '2022-10-31',
-    },
-    {
+     {
       type: 'END_DATE',
-      date: '2022-10-31',
+      date: '2021-10-07T17:00',
     },
     {
       type: 'FIRST_ANNOUNCEMENT',
-      date: '2022-10-31',
-    },
-    {
-      type: 'SECOND_ANNOUNCEMENT',
-      date: '2022-10-31',
+      date: '2021-10-22T00:00',
     },
     {
       type: 'INTERVIEW',
-      date: '2022-10-31',
+      date: '2021-10-23T00:00',
+    },
+    {
+      type: 'SECOND_ANNOUNCEMENT',
+      date: '2021-10-25T00:00',
+    },
+    {
+      type: 'START_DATE',
+      date: '2021-10-04T08:00',
     },
     {
       type: 'NOT_APPLICATION_PERIOD',
