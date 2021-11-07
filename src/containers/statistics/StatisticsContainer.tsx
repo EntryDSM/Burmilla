@@ -1,5 +1,6 @@
 import React, { FC, Suspense } from "react";
 import { useHistory } from "react-router";
+import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 import { useAuth } from "../../hooks/auth";
 import { useSignIn } from "../../hooks/signin";
 import { useStatistics } from "../../hooks/statistics";
@@ -29,8 +30,19 @@ const StatisticsContainer: FC = () => {
   };
 
   React.useEffect(() => {
+    if (
+      statisticsState.state.error.status === 401 &&
+      signinState.state.error.type === REFRESH_TOKEN
+    ) {
+      authState.setState.setAccessToken("");
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+    }
+  }, [signinState.state.error]);
+
+  React.useEffect(() => {
     const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401) {
+    if (errorStatus === 401 || errorStatus === 403) {
       refreshToken();
     }
   }, [statisticsState.state.error]);
