@@ -13,6 +13,7 @@ const instance = (api: 'main' | 'excel') =>
     headers: {
       'Content-Type': 'application/json',
     },
+    withCredentials: true,
   });
 
 const authorization = (token: string) => ({
