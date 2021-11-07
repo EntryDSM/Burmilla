@@ -4,18 +4,19 @@ import { useSignIn } from "../../hooks/signin";
 import { useAuth } from "../../hooks/auth";
 import { useHistory } from "react-router";
 import { useStatistics } from "src/hooks/statistics";
+import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 
 const Applicant = React.lazy(() => import("../../components/applicant"));
 
 const ApplicantContainer: FC = () => {
-  const { state, setState } = useApplicant();
+  const applicantState = useApplicant();
   const history = useHistory();
   const statisticsState = useStatistics();
   const authState = useAuth();
   const signinState = useSignIn();
 
   React.useEffect(() => {
-    setState.getApplicantsList(state.filters);
+    applicantState.setState.getApplicantsList(applicantState.state.filters);
   }, []);
 
   const refreshToken = () => {
@@ -23,8 +24,19 @@ const ApplicantContainer: FC = () => {
   };
 
   React.useEffect(() => {
+    if (
+      applicantState.state.error.status === 401 &&
+      signinState.state.error.type === REFRESH_TOKEN
+    ) {
+      authState.setState.setAccessToken("");
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+    }
+  }, [signinState.state.error]);
+
+  React.useEffect(() => {
     const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401) {
+    if (errorStatus === 401 || errorStatus === 403) {
       refreshToken();
     }
   }, [statisticsState.state.error]);
@@ -35,7 +47,7 @@ const ApplicantContainer: FC = () => {
 
   return (
     <Suspense fallback={<div>로딩중...</div>}>
-      <Applicant {...state} {...setState} />;
+      <Applicant {...applicantState.state} {...applicantState.setState} />;
     </Suspense>
   );
 };
