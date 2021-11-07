@@ -16,6 +16,13 @@ const Header: FC<Props> = (props) => {
   const location = useLocation();
   const history = useHistory();
 
+  const handleButtonClick = () => {
+    props.setIsLogin(false);
+    props.setAccessToken("");
+    localStorage.removeItem("access_token");
+    history.push("/login");
+  };
+
   const headerItemsBox = () => {
     if (props.isLogin) {
       return (
@@ -65,14 +72,6 @@ const Header: FC<Props> = (props) => {
       content: "지원자 목록",
     },
   ];
-
-  const handleButtonClick = React.useCallback(() => {
-    alert("로그아웃됩니다");
-    props.setIsLogin(false);
-    props.setAccessToken("");
-    localStorage.removeItem("access_token");
-    history.push("/login");
-  }, []);
 
   return (
     <S.HeaderWrapper>
