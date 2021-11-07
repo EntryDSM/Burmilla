@@ -19,6 +19,7 @@ import {
   START_DATE,
   scheduleType,
 } from "../../data/modules/redux/reducer/schedule/scheduleConstance";
+import { REFRESH_TOKEN } from "src/data/modules/redux/action/signin";
 
 const Main = React.lazy(() => import("../../components/main"));
 
@@ -65,8 +66,19 @@ const MainContainer: FC = () => {
   };
 
   React.useEffect(() => {
+    if (
+      scheduleState.state.error.status === 401 &&
+      signinState.state.error.type === REFRESH_TOKEN
+    ) {
+      authState.setState.setAccessToken("");
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+    }
+  }, [signinState.state.error]);
+
+  React.useEffect(() => {
     const errorStatus = statisticsState.state.error.status;
-    if (errorStatus === 401) {
+    if (errorStatus === 401 || errorStatus === 403) {
       refreshToken();
     }
   }, [statisticsState.state.error]);
