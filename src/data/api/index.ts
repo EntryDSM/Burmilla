@@ -3,7 +3,8 @@ import uri from './uri';
 import { BaseURL } from './baseURL';
 import * as T from './apiTypes';
 import { getAccessToken } from '../../utils/token';
-import { signinRequest } from '../../models/dto/request/signinRequest';
+import { signinRequest } from 'src/models/dto/request/signinRequest';
+import { passwordRequest } from 'src/models/dto/request/passwordRequest';
 import { refreshResponse, signinResponse } from '../../models/dto/response/signinResponse';
 
 const instance = (api: 'main' | 'excel') =>
@@ -16,10 +17,32 @@ const instance = (api: 'main' | 'excel') =>
     withCredentials: true,
   });
 
+  const jungbinInstance = (api: 'main' | 'excel') => 
+    axios.create({
+      timeout: 10000,
+      baseURL: 'https://api.smooth-bear.live/',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+    });
+
 const authorization = (token: string) => ({
   Authorization: `Bearer ${token}`,
   'Cache-Control': 'no-cache',
 });
+
+export const changePassword = async (access_token: string, body: passwordRequest) => {
+  try {
+    const request = jungbinInstance('main');
+    const response = await request.put(uri.jungbin, body.password, {
+      headers: authorization(getAccessToken())
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export const signinApi = async (body: signinRequest) => {
   try {

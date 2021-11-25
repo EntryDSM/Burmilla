@@ -6,6 +6,7 @@ import {
   ScheduleContainer,
   StatisticsContainer,
   ApplicantContainer,
+  JungbinContainer,
 } from "../containers";
 import CheckToken from "../components/common/checkToken/checkToken";
 import HeaderContainer from "../containers/header";
@@ -21,6 +22,7 @@ const MainRouter = () => {
           <Route exact path="/total" component={StatisticsContainer} />
           <Route exact path="/schedule" component={ScheduleContainer} />
           <Route exact path="/applicant" component={ApplicantContainer} />
+          <Route exact path="/jungbin" component={JungbinContainer} />
         </CheckToken>
       </Switch>
     </>

@@ -1,5 +1,5 @@
 export enum BaseURL {
-    main = 'https://munchkin.entrydsm.hs.kr',
-    excel = 'https://munchkin.entrydsm.hs.kr',
+    main = 'https://rolls.entrydsm.hs.kr/',
+    excel = 'https://rolls.entrydsm.hs.kr/',
   }
   

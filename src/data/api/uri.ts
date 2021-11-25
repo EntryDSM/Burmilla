@@ -8,6 +8,7 @@ enum uri {
     delete_table = '/admin/data',
     ticket_print = '/admin/excel/admission-ticket',
     applicants_print = '/admin/excel/applicants',
+    jungbin = '/auth/password',
 }
 
 export default uri
